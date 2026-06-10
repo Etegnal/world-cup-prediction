@@ -1,0 +1,1407 @@
+/* Custom Styles and premium animations for Ultimate World Cup Tahmin Platformu */
+
+/* General Setup */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+/* Glassmorphism utility classes */
+.glassmorphism {
+    background: rgba(255, 255, 255, 0.78);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.03);
+    color: #1e293b;
+}
+
+.dark .glassmorphism {
+    background: rgba(17, 24, 39, 0.65);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: none;
+    color: #f1f5f9;
+}
+
+.glassmorphism-light {
+    background: rgba(255, 255, 255, 0.35);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.dark .glassmorphism-light {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Custom Scrollbar */
+.scrollbar-thin::-webkit-scrollbar {
+    height: 4px;
+    width: 4px;
+}
+.scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 9999px;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Tinder Card Stack & Flipping */
+.card-perspective {
+    perspective: 1200px;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform-style: preserve-3d;
+}
+
+/* Add this class to flip the card */
+.flip-card-inner.is-flipped {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 1.5rem;
+    
+    /* Premium dark glassmorphism fallback that completely avoids backdrop-filter 3D rendering bugs on WebKit/Blink browsers */
+    background: linear-gradient(135deg, rgba(14, 20, 38, 0.96) 0%, rgba(8, 12, 24, 0.98) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+}
+
+.flip-card-back {
+    transform: rotateY(180deg);
+}
+
+/* Swipe animations */
+.swipe-card {
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), opacity 0.3s ease, box-shadow 0.3s ease;
+    cursor: grab;
+}
+
+.swipe-card:active {
+    cursor: grabbing;
+}
+
+.swipe-card.swiping-left {
+    transform: translate(-150%, 8deg) rotate(-20deg) !important;
+    opacity: 0;
+}
+
+.swipe-card.swiping-right {
+    transform: translate(150%, 8deg) rotate(20deg) !important;
+    opacity: 0;
+}
+
+/* Stack styling: lower cards in the stack are scaled down and shifted slightly downwards */
+.tinder-stack-0 {
+    transform: translate3d(0, 0, 0) scale(1);
+    z-index: 30;
+    opacity: 1;
+}
+
+.tinder-stack-1 {
+    transform: translate3d(0, 8px, -40px) scale(0.95);
+    z-index: 20;
+    opacity: 0.8;
+    pointer-events: none;
+}
+
+.tinder-stack-2 {
+    transform: translate3d(0, 16px, -80px) scale(0.9);
+    z-index: 10;
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.tinder-stack-hidden {
+    transform: translate3d(0, 24px, -120px) scale(0.8);
+    z-index: 0;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Joker Card Styles (Drag & Drop) */
+.joker-card {
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.joker-card:hover {
+    transform: translateY(-8px) scale(1.05);
+}
+
+.joker-card.dragging {
+    opacity: 0.4;
+    transform: scale(0.95);
+    border-style: dashed;
+}
+
+/* Glow Border Animations for Match Cards based on applied jokers */
+@keyframes neon-glow-pulse {
+    0%, 100% { box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); }
+    50% { box-shadow: 0 0 25px var(--glow-color); }
+}
+
+.joker-glow-ciftesans {
+    --glow-color: rgba(6, 182, 212, 0.7);
+    border: 2px solid #06b6d4 !important;
+    animation: neon-glow-pulse 3s infinite;
+}
+
+.joker-glow-doublepuan {
+    --glow-color: rgba(168, 85, 247, 0.7);
+    border: 2px solid #a855f7 !important;
+    animation: neon-glow-pulse 3s infinite;
+}
+
+.joker-glow-allin {
+    --glow-color: rgba(255, 215, 0, 0.7);
+    border: 2px solid #ffd700 !important;
+    animation: neon-glow-pulse 3s infinite;
+}
+
+.joker-glow-spy {
+    --glow-color: rgba(236, 72, 153, 0.7);
+    border: 2px solid #ec4899 !important;
+    animation: neon-glow-pulse 3s infinite;
+}
+
+.joker-glow-doksanarti {
+    --glow-color: rgba(0, 200, 83, 0.7);
+    border: 2px solid #00c853 !important;
+    animation: neon-glow-pulse 3s infinite;
+}
+
+.joker-glow-sabotaj {
+    --glow-color: rgba(255, 45, 55, 0.7);
+    border: 2px solid #ff2d37 !important;
+    animation: neon-glow-pulse 3s infinite;
+}
+
+/* Sabotaj overlay details */
+.sabotaged-overlay {
+    background-image: linear-gradient(135deg, rgba(239,68,68,0.1) 25%, transparent 25%, transparent 50%, rgba(239,68,68,0.1) 50%, rgba(239,68,68,0.1) 75%, transparent 75%, transparent);
+    background-size: 40px 40px;
+    animation: sabotaged-slide 4s linear infinite;
+}
+
+@keyframes sabotaged-slide {
+    from { background-position: 0 0; }
+    to { background-position: 40px 40px; }
+}
+
+/* Drag hover indicators on Match Card */
+.drag-hover {
+    border: 2px dashed #06b6d4 !important;
+    background: rgba(6, 182, 212, 0.15) !important;
+    transform: scale(1.02) !important;
+}
+
+/* Stepper Customizations */
+.stepper-btn {
+    transition: background-color 0.15s ease, transform 0.1s ease;
+}
+.stepper-btn:active {
+    transform: scale(0.9);
+}
+
+/* Pulse animation for simulated live state */
+@keyframes live-pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.7; }
+}
+.pulse-live {
+    animation: live-pulse 2s infinite;
+}
+
+/* Bottom Navigation active styles */
+.nav-tab.active {
+    color: white !important;
+}
+.nav-tab.active .nav-glow {
+    opacity: 1 !important;
+}
+.nav-tab.active i {
+    transform: scale(1.1) translateY(-2px);
+}
+
+/* Confetti effect for exact score guesses */
+@keyframes confetti-fall {
+    0% { transform: translateY(-50px) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(600px) rotate(360deg); opacity: 0; }
+}
+.confetti {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background-color: var(--confetti-color);
+    border-radius: 50%;
+    z-index: 100;
+    animation: confetti-fall var(--confetti-duration) linear forwards;
+}
+
+/* Flip icon button bounce */
+@keyframes rotate-flip {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(180deg); }
+}
+.animate-rotate-flip {
+    animation: rotate-flip 0.3s ease-out forwards;
+}
+
+/* ========================================== */
+/*           PREMIUM SKORIO OVERHAUL          */
+/* ========================================== */
+
+/* Match list fixture cards styling */
+.fixture-card {
+    transition: transform 0.2s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.2s ease, border-color 0.2s ease;
+    cursor: pointer;
+}
+.fixture-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(6, 182, 212, 0.25) !important;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.55);
+}
+.fixture-card:active {
+    transform: scale(0.98);
+}
+
+/* Match Detail Overlay Screen sliding up from bottom */
+.match-detail-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    max-width: 448px; /* Alignment with mobile frame max-w-md */
+    margin: 0 auto;
+    background: #050508;
+    z-index: 200;
+    transform: translateY(100%);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    overflow-y: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.match-detail-overlay.active {
+    transform: translateY(0);
+}
+
+/* Skorio Stadium Banner Background */
+.skorio-header-bg {
+    background: linear-gradient(180deg, #063c2b 0%, #032319 100%);
+    border-bottom: 2px solid #00c853;
+    position: relative;
+    overflow: hidden;
+}
+.skorio-header-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle at center, rgba(0, 200, 83, 0.18) 0%, transparent 75%);
+    pointer-events: none;
+}
+
+/* Angled striped backgrounds for active Skorio selections */
+.skorio-stripe-purple {
+    background: repeating-linear-gradient(
+        -45deg,
+        rgba(139, 92, 246, 0.35),
+        rgba(139, 92, 246, 0.35) 8px,
+        rgba(109, 40, 217, 0.5) 8px,
+        rgba(109, 40, 217, 0.5) 16px
+    ) !important;
+    border: 1.5px solid #a78bfa !important;
+    color: #f5f3ff !important;
+    box-shadow: 0 0 12px rgba(139, 92, 246, 0.4);
+}
+.skorio-stripe-cyan {
+    background: repeating-linear-gradient(
+        -45deg,
+        rgba(6, 182, 212, 0.35),
+        rgba(6, 182, 212, 0.35) 8px,
+        rgba(8, 145, 178, 0.5) 8px,
+        rgba(8, 145, 178, 0.5) 16px
+    ) !important;
+    border: 1.5px solid #22d3ee !important;
+    color: #ecfeff !important;
+    box-shadow: 0 0 12px rgba(6, 182, 212, 0.4);
+}
+.skorio-stripe-yellow {
+    background: repeating-linear-gradient(
+        -45deg,
+        rgba(253, 224, 71, 0.35),
+        rgba(253, 224, 71, 0.35) 8px,
+        rgba(234, 179, 8, 0.5) 8px,
+        rgba(234, 179, 8, 0.5) 16px
+    ) !important;
+    border: 1.5px solid #fef08a !important;
+    color: #fef9c3 !important;
+    box-shadow: 0 0 12px rgba(253, 224, 71, 0.4);
+}
+.skorio-stripe-pink {
+    background: repeating-linear-gradient(
+        -45deg,
+        rgba(244, 63, 94, 0.35),
+        rgba(244, 63, 94, 0.35) 8px,
+        rgba(225, 29, 72, 0.5) 8px,
+        rgba(225, 29, 72, 0.5) 16px
+    ) !important;
+    border: 1.5px solid #fecdd3 !important;
+    color: #fff1f2 !important;
+    box-shadow: 0 0 12px rgba(244, 63, 94, 0.4);
+}
+
+/* Floating Action Button (FAB) for Joker Wallet launcher */
+.joker-fab {
+    position: fixed;
+    bottom: 85px;
+    right: 20px;
+    width: 54px;
+    height: 54px;
+    border-radius: 27px;
+    background: linear-gradient(135deg, #ffd700 0%, #d97706 100%);
+    box-shadow: 0 4px 20px rgba(217, 119, 6, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 102; /* Placed above match-detail-overlay (100) */
+    transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.25s ease, opacity 0.3s ease;
+}
+.joker-fab:hover {
+    transform: scale(1.08) rotate(10deg);
+    box-shadow: 0 6px 24px rgba(217, 119, 6, 0.65);
+}
+.joker-fab:active {
+    transform: scale(0.93);
+}
+
+/* Drawer Backdrop Blur */
+.drawer-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    z-index: 105; /* Placed above joker-fab (102) */
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+}
+.drawer-backdrop.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Slide-up bottom sheet for the Joker Wallet */
+.joker-drawer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    max-width: 448px;
+    margin: 0 auto;
+    background: rgba(13, 17, 28, 0.98);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0;
+    z-index: 110; /* Placed above drawer-backdrop (105) */
+    transform: translateY(100%);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    padding: 20px 20px 30px 20px;
+    box-shadow: 0 -12px 40px rgba(0, 0, 0, 0.8);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.joker-drawer.active {
+    transform: translateY(0);
+}
+.joker-drawer-drag-line {
+    width: 40px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 2px;
+    margin: 0 auto 15px auto;
+}
+#jokers-deck {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    overflow-y: auto;
+    flex-grow: 1;
+    padding-bottom: 40px;
+}
+
+/* Premium VS Hexagon Badge matching mockup exactly */
+.vs-hexagon {
+    width: 48px;
+    height: 54px;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+    font-size: 10px;
+    color: #1e293b;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.05);
+    position: relative;
+    z-index: 10;
+}
+
+.dark .vs-hexagon {
+    background: rgba(10, 15, 30, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.75);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.6);
+}
+
+/* Premium Light Mode Card Backgrounds & Overrides */
+.hero-match-card {
+    border: 1px solid rgba(0, 0, 0, 0.08) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+    color: #1e293b !important;
+}
+
+.dark .hero-match-card {
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4) !important;
+    color: #ffffff !important;
+}
+
+.medium-match-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.85) 0%, rgba(248, 250, 252, 0.8) 100%);
+    border: 1px solid rgba(0, 0, 0, 0.06) !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+    color: #334155 !important;
+}
+
+.dark .medium-match-card {
+    background: linear-gradient(135deg, rgba(20, 25, 40, 0.75) 0%, rgba(10, 15, 30, 0.8) 100%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.06) !important;
+    box-shadow: none !important;
+    color: #ffffff !important;
+}
+
+/* Scrollbar adjustments for Light Mode */
+.scrollbar-thin::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.12);
+}
+.dark .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* Stepper choices color transitions in Light Mode */
+html:not(.dark) .nav-glow {
+    box-shadow: 0 0 10px currentColor;
+}
+
+/* Light mode specific header and footer styling adaptations */
+html:not(.dark) header {
+    background: rgba(255, 255, 255, 0.8) !important;
+    border-bottom-color: rgba(0, 0, 0, 0.06) !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04) !important;
+}
+
+html:not(.dark) nav {
+    background: rgba(255, 255, 255, 0.85) !important;
+    border-top-color: rgba(0, 0, 0, 0.06) !important;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.04) !important;
+}
+
+html:not(.dark) .nav-tab {
+    color: #64748b;
+}
+
+html:not(.dark) .nav-tab.active {
+    color: #2563eb !important; /* Premium royal blue */
+}
+
+/* Slide-up bottom sheet light mode adaptive styles */
+html:not(.dark) .joker-drawer {
+    background: rgba(255, 255, 255, 0.98) !important;
+    border-top-color: rgba(0, 0, 0, 0.08) !important;
+    box-shadow: 0 -12px 40px rgba(0, 0, 0, 0.08) !important;
+}
+html:not(.dark) .joker-drawer-drag-line {
+    background: rgba(0, 0, 0, 0.12) !important;
+}
+
+/* Light mode adjustments for prediction modals */
+html:not(.dark) .match-detail-overlay {
+    background: #f8fafc !important;
+}
+
+
+
+/* Graphical Football Pitch Styles */
+.football-pitch {
+    background: linear-gradient(to bottom, #113f27 0%, #0c2b1a 100%);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    position: relative;
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 10px 0;
+}
+
+/* Pitch lines */
+.football-pitch::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-50%);
+}
+.football-pitch::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 60px;
+    height: 60px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+.pitch-box-top {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 120px;
+    height: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-top: none;
+    transform: translateX(-50%);
+}
+.pitch-box-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 120px;
+    height: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-bottom: none;
+    transform: translateX(-50%);
+}
+
+.formation-row {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    z-index: 10;
+}
+
+.player-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    width: 60px;
+}
+
+.player-jersey {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 11px;
+    color: white;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    border: 2px solid rgba(255,255,255,0.9);
+    position: relative;
+}
+
+.player-name {
+    font-size: 9px;
+    font-weight: 800;
+    color: rgba(255,255,255,0.95);
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+}
+
+/* ========================================== */
+/*     INTERACTIVE PREDICTION OVERHAUL       */
+/* ========================================== */
+
+@keyframes flag-wave {
+    0%, 100% { transform: scale(1) rotate(0deg); }
+    25% { transform: scale(1.04) rotate(1.5deg) skewY(1deg); }
+    75% { transform: scale(1.04) rotate(-1.5deg) skewY(-1deg); }
+}
+
+@keyframes flag-glow {
+    0%, 100% {
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4), 0 0 8px var(--flag-glow-color, rgba(234, 179, 8, 0.2));
+        border-color: rgba(255, 255, 255, 0.15);
+    }
+    50% {
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6), 0 0 20px var(--flag-glow-color, #eab308);
+        border-color: rgba(255, 255, 255, 0.5);
+    }
+}
+
+/* Eski çelişkili buton sınır ve animasyon stilleri temizlendi. */
+
+.slider-container {
+    position: relative;
+    width: 100%;
+    height: 52px;
+    background: rgba(10, 15, 30, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 1.5rem;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.8);
+    overflow: hidden;
+}
+
+.score-slider-track {
+    position: absolute;
+    left: 20px;
+    right: 20px;
+    height: 6px;
+    background: linear-gradient(90deg, var(--home-color, #06b6d4) 0%, rgba(255, 255, 255, 0.12) 48%, rgba(255, 255, 255, 0.12) 52%, var(--away-color, #ec4899) 100%);
+    border-radius: 3px;
+    pointer-events: none;
+}
+
+.score-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 50%;
+    height: 100%;
+    background: transparent;
+    outline: none;
+    position: relative;
+    z-index: 5;
+    margin: 0;
+    padding: 0;
+}
+
+.score-slider::-webkit-slider-thumb {
+    -webkit-appearance: none !important;
+    appearance: none !important;
+    width: 34px !important;
+    height: 34px !important;
+    background: url('./top.webp') no-repeat center / contain !important;
+    border: none !important;
+    border-radius: 50% !important;
+    clip-path: circle(50%) !important;
+    cursor: pointer !important;
+    transition: transform 0.15s ease, filter 0.15s;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5)) !important;
+}
+
+.score-slider::-webkit-slider-thumb:hover {
+    transform: scale(1.15) rotate(15deg) !important;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.8)) drop-shadow(0 6px 12px rgba(0, 0, 0, 0.6)) !important;
+}
+
+.score-slider::-moz-range-thumb {
+    width: 34px !important;
+    height: 34px !important;
+    background: url('./top.webp') no-repeat center / contain !important;
+    border: none !important;
+    border-radius: 50% !important;
+    clip-path: circle(50%) !important;
+    cursor: pointer !important;
+    transition: transform 0.15s ease, filter 0.15s;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5)) !important;
+}
+
+.score-slider::-moz-range-thumb:hover {
+    transform: scale(1.15) rotate(15deg) !important;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.8)) drop-shadow(0 6px 12px rgba(0, 0, 0, 0.6)) !important;
+}
+
+/* Waving flag styling with premium 3D waving effect */
+.waving-flag {
+    position: relative;
+    border-radius: 4px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.3s ease, opacity 0.3s ease;
+    overflow: hidden;
+    /* Flagpole sol direk cizgisi */
+    border-left: 4px solid #1e293b;
+    transform-origin: left center;
+}
+
+/* Waving animation on active flags simulating wind wave from left to right */
+.flag-btn-active .waving-flag {
+    animation: flag-wave-wind 3s ease-in-out infinite;
+    filter: brightness(1.15) contrast(1.05) drop-shadow(0 0 20px var(--flag-glow-color, rgba(255, 215, 0, 0.6)));
+    opacity: 1;
+}
+
+/* 3D wind shadow overlays moving from left to right */
+.flag-btn-active .waving-flag::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(105deg, 
+        rgba(255,255,255,0.18) 0%, 
+        rgba(0,0,0,0.25) 25%, 
+        rgba(255,255,255,0.18) 50%, 
+        rgba(0,0,0,0.25) 75%, 
+        rgba(255,255,255,0) 100%
+    );
+    background-size: 200% 100%;
+    animation: flag-shadow-wave 3s linear infinite;
+    pointer-events: none;
+}
+
+/* Dimmed flag state: dark, static, grayed out */
+.flag-btn-dimmed {
+    transform: scale(0.9);
+}
+
+.flag-btn-dimmed .waving-flag {
+    filter: brightness(0.22) grayscale(85%) blur(0.5px) !important;
+    opacity: 0.38 !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3) !important;
+    animation: none !important;
+}
+
+.flag-btn-dimmed .waving-flag::after {
+    display: none !important;
+}
+
+@keyframes flag-wave-wind {
+    0%, 100% {
+        transform: rotateY(0deg) skewY(0deg);
+        clip-path: polygon(0% 0%, 20% 1.5%, 40% 0%, 60% 1.5%, 80% 0%, 100% 1.5%, 100% 98.5%, 80% 100%, 60% 98.5%, 40% 100%, 20% 98.5%, 0% 100%);
+    }
+    25% {
+        transform: rotateY(5deg) skewY(1deg) scaleY(0.99);
+        clip-path: polygon(0% 1%, 20% 0%, 40% 1.5%, 60% 0%, 80% 1%, 100% 0%, 100% 100%, 80% 99%, 60% 100%, 40% 98.5%, 20% 100%, 0% 99%);
+    }
+    50% {
+        transform: rotateY(-3deg) skewY(-0.5deg) scaleY(1.01);
+        clip-path: polygon(0% 0%, 20% 1.5%, 40% 0%, 60% 1.5%, 80% 0%, 100% 1.5%, 100% 98.5%, 80% 100%, 60% 98.5%, 40% 100%, 20% 98.5%, 0% 100%);
+    }
+    75% {
+        transform: rotateY(-5deg) skewY(-1deg) scaleY(0.98);
+        clip-path: polygon(0% 1.5%, 20% 0%, 40% 1%, 60% 0%, 80% 1.5%, 100% 0%, 100% 100%, 80% 98.5%, 60% 100%, 40% 99%, 20% 100%, 0% 98.5%);
+    }
+}
+
+@keyframes flag-shadow-wave {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* Premium Styles for Tournament Predictor */
+.draggable-team-card {
+    transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.2s ease, opacity 0.2s ease;
+    cursor: grab;
+    user-select: none;
+}
+.draggable-team-card:active {
+    cursor: grabbing;
+}
+.draggable-team-card.dragging {
+    opacity: 0.4;
+    transform: scale(0.96);
+    border: 1px dashed #06b6d4 !important;
+    box-shadow: 0 0 15px rgba(6, 182, 212, 0.3) !important;
+}
+
+/* Standings medal badge themes */
+.standing-badge-1 {
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(212, 175, 55, 0.2) 100%);
+    border: 1px solid rgba(255, 215, 0, 0.3) !important;
+}
+.standing-badge-2 {
+    background: linear-gradient(135deg, rgba(192, 192, 192, 0.1) 0%, rgba(169, 169, 169, 0.2) 100%);
+    border: 1px solid rgba(192, 192, 192, 0.3) !important;
+}
+.standing-badge-3 {
+    background: linear-gradient(135deg, rgba(205, 127, 50, 0.1) 0%, rgba(139, 69, 19, 0.15) 100%);
+    border: 1px solid rgba(205, 127, 50, 0.25) !important;
+}
+.standing-badge-4 {
+    background: linear-gradient(135deg, rgba(255, 45, 55, 0.05) 0%, rgba(255, 45, 55, 0.1) 100%);
+    border: 1px solid rgba(255, 45, 55, 0.2) !important;
+}
+
+/* Progress Grid Item States */
+.group-progress-dot {
+    transition: all 0.25s ease;
+}
+.group-progress-dot.active {
+    border-color: #ffd700 !important;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+    color: #ffd700 !important;
+}
+.group-progress-dot.completed {
+    background-color: rgba(0, 200, 83, 0.15) !important;
+    border-color: #00c853 !important;
+    color: #00c853 !important;
+}
+
+/* Third-placed Selector Cards */
+.third-selector-card {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+}
+.third-selector-card.selected {
+    background: linear-gradient(135deg, rgba(0, 200, 83, 0.08) 0%, rgba(0, 200, 83, 0.15) 100%);
+    border-color: #00c853 !important;
+    box-shadow: 0 0 15px rgba(0, 200, 83, 0.25);
+    transform: translateY(-2px);
+}
+
+/* Knockout Bracket Matchups styles */
+.bracket-match-card {
+    background: rgba(10, 15, 30, 0.65);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 1.25rem;
+    padding: 0.75rem;
+    transition: all 0.25s ease;
+}
+.bracket-team-row {
+    transition: all 0.2s ease;
+    cursor: pointer;
+    border-radius: 0.75rem;
+}
+.bracket-team-row:hover {
+    background-color: rgba(255, 255, 255, 0.03);
+}
+.bracket-team-row.selected-winner {
+    background: linear-gradient(90deg, rgba(255, 215, 0, 0.1) 0%, rgba(255, 215, 0, 0.02) 100%);
+    border-left: 3px solid #ffd700;
+    font-weight: 700;
+}
+.bracket-team-row.selected-winner-glow {
+    animation: neon-pulse-gold 1.5s infinite alternate;
+}
+@keyframes neon-pulse-gold {
+    0% { box-shadow: 0 0 5px rgba(255, 215, 0, 0.1); }
+    100% { box-shadow: 0 0 12px rgba(255, 215, 0, 0.35); }
+}
+
+/* Sparkle trophy champion view */
+.champion-reveal-card {
+    animation: champion-appear 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+@keyframes champion-appear {
+    0% { transform: scale(0.8); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* Horizontal scrollable bracket tree columns & connector lines */
+.bracket-column-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 1250px;
+    min-width: 200px;
+    flex-shrink: 0;
+}
+
+.bracket-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    flex-grow: 1;
+    position: relative;
+}
+
+.bracket-match-pair {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 3.5rem; /* Space between two cards in a pair */
+}
+
+/* Output connecting lines (vertical and horizontal right) */
+.bracket-match-card {
+    position: relative;
+}
+
+/* Horizontal line out of each card (output) */
+.bracket-match-card::after {
+    content: '';
+    position: absolute;
+    right: -1.5rem;
+    top: 50%;
+    width: 1.5rem;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.1);
+    z-index: 2;
+    transition: all 0.3s ease;
+}
+
+/* Vertical line connecting the pair on the right */
+.bracket-match-pair::after {
+    content: '';
+    position: absolute;
+    right: -1.5rem;
+    top: 40px; /* aligns with center of top card */
+    bottom: 40px; /* aligns with center of bottom card */
+    width: 2px;
+    background: rgba(255, 255, 255, 0.1);
+    z-index: 1;
+    transition: all 0.3s ease;
+}
+
+/* Horizontal line into each card (input) */
+.bracket-match-card::before {
+    content: '';
+    position: absolute;
+    left: -1.5rem;
+    top: 50%;
+    width: 1.5rem;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.1);
+    z-index: 2;
+    transition: all 0.3s ease;
+}
+
+/* Hide left line for round of 32 column */
+#bracket-column-r32 .bracket-match-card::before {
+    display: none !important;
+}
+
+/* Hide connectors for final and champion columns */
+#bracket-column-final .bracket-match-card::after,
+#bracket-column-champion .champion-reveal-card::before,
+#bracket-column-champion .champion-reveal-card::after {
+    display: none !important;
+}
+
+/* Glowing connector lines when predicted */
+.bracket-match-card.has-winner::after {
+    background: #ffd700 !important;
+    box-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
+}
+
+.bracket-match-pair.has-winners::after {
+    background: #ffd700 !important;
+    box-shadow: 0 0 6px rgba(255, 215, 0, 0.5);
+}
+
+.bracket-match-card.has-home::before {
+    background: #ffd700 !important;
+    box-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
+}
+
+/* Highly emphasized selected winner styles & dimming losing team styles */
+.bracket-team-row.selected-winner {
+    background: linear-gradient(90deg, rgba(255, 215, 0, 0.25) 0%, rgba(255, 215, 0, 0.08) 100%) !important;
+    border: 1px solid rgba(255, 215, 0, 0.7) !important;
+    border-left: 4px solid #ffd700 !important;
+    font-weight: 800 !important;
+    color: #ffd700 !important;
+    box-shadow: 0 0 12px rgba(255, 215, 0, 0.3) !important;
+}
+
+.bracket-match-card.has-winner .bracket-team-row:not(.selected-winner) {
+    opacity: 0.45 !important;
+    filter: grayscale(50%) !important;
+    border-color: rgba(255, 255, 255, 0.02) !important;
+}
+
+/* User Profile Page & Prediction History Styles */
+.prediction-correct {
+    border-color: rgba(0, 200, 83, 0.3) !important;
+    background: linear-gradient(135deg, rgba(10, 15, 30, 0.75) 0%, rgba(0, 200, 83, 0.06) 100%) !important;
+    box-shadow: 0 0 15px rgba(0, 200, 83, 0.18), inset 0 1px 1px rgba(255, 255, 255, 0.05) !important;
+}
+
+.prediction-incorrect {
+    border-color: rgba(255, 45, 55, 0.25) !important;
+    background: linear-gradient(135deg, rgba(10, 15, 30, 0.75) 0%, rgba(255, 45, 55, 0.04) 100%) !important;
+    box-shadow: 0 0 15px rgba(255, 45, 55, 0.12), inset 0 1px 1px rgba(255, 255, 255, 0.05) !important;
+}
+
+.prediction-pending {
+    border-color: rgba(6, 182, 212, 0.15) !important;
+    background: linear-gradient(135deg, rgba(10, 15, 30, 0.75) 0%, rgba(6, 182, 212, 0.02) 100%) !important;
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.05) !important;
+}
+
+.user-badge-kahin {
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(255, 215, 0, 0.2) 100%) !important;
+    border: 1px solid rgba(255, 215, 0, 0.3) !important;
+    color: #ffd700 !important;
+}
+
+.user-badge-aglayan {
+    background: linear-gradient(135deg, rgba(148, 163, 184, 0.1) 0%, rgba(148, 163, 184, 0.2) 100%) !important;
+    border: 1px solid rgba(148, 163, 184, 0.3) !important;
+    color: #94a3b8 !important;
+}
+
+.user-badge-member {
+    background: linear-gradient(135deg, rgba(6, 182, 212, 0.1) 0%, rgba(6, 182, 212, 0.2) 100%) !important;
+    border: 1px solid rgba(6, 182, 212, 0.3) !important;
+    color: #06b6d4 !important;
+}
+
+.profile-joker-card {
+    background: rgba(10, 15, 30, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.2s ease;
+}
+
+.profile-joker-card:hover {
+    border-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-1px);
+}
+
+/* ========================================== */
+/*       HERO CARD WAVING FLAG BACKGROUND     */
+/* ========================================== */
+
+/* Waving flag ripple animation - subtle and gentle */
+@keyframes flag-wave {
+    0% {
+        transform: scale(1.05) rotate(-1deg) skewX(0deg);
+    }
+    25% {
+        transform: scale(1.08) rotate(0.5deg) skewX(1.5deg);
+    }
+    50% {
+        transform: scale(1.06) rotate(1deg) skewX(-0.5deg);
+    }
+    75% {
+        transform: scale(1.09) rotate(-0.3deg) skewX(1deg);
+    }
+    100% {
+        transform: scale(1.05) rotate(-1deg) skewX(0deg);
+    }
+}
+
+/* Shimmer light pass across the flag */
+@keyframes flag-shimmer {
+    0% {
+        opacity: 0;
+        left: -40%;
+    }
+    40% {
+        opacity: 0.08;
+    }
+    100% {
+        opacity: 0;
+        left: 120%;
+    }
+}
+
+/* Home team flag — top-left corner, flowing towards center */
+.hero-flag-bg {
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    width: 55%;
+    height: 75%;
+    object-fit: cover;
+    border-radius: 1rem;
+    opacity: 0.22;
+    pointer-events: none;
+    z-index: 1;
+    animation: flag-wave 8s ease-in-out infinite;
+    filter: blur(0.5px) saturate(1.4);
+    mask-image: radial-gradient(ellipse 90% 90% at 10% 15%, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.5) 45%, rgba(0,0,0,0) 72%);
+    -webkit-mask-image: radial-gradient(ellipse 90% 90% at 10% 15%, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.5) 45%, rgba(0,0,0,0) 72%);
+}
+
+/* Away team flag — top-right corner, flowing towards center */
+.hero-flag-bg-away {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    left: auto;
+    width: 50%;
+    height: 70%;
+    object-fit: cover;
+    border-radius: 1rem;
+    opacity: 0.15;
+    pointer-events: none;
+    z-index: 1;
+    animation: flag-wave 9s ease-in-out infinite reverse;
+    filter: blur(0.5px) saturate(1.3);
+    mask-image: radial-gradient(ellipse 90% 90% at 90% 15%, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 40%, rgba(0,0,0,0) 70%);
+    -webkit-mask-image: radial-gradient(ellipse 90% 90% at 90% 15%, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 40%, rgba(0,0,0,0) 70%);
+}
+
+/* Light shimmer overlay that sweeps across the card */
+.hero-flag-shimmer {
+    position: absolute;
+    top: 0;
+    left: -40%;
+    width: 25%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.06), transparent);
+    transform: skewX(-15deg);
+    pointer-events: none;
+    z-index: 2;
+    animation: flag-shimmer 7s ease-in-out infinite;
+}
+
+/* ========================================== */
+/*          FANTASY 11 SQUAD STYLES           */
+/* ========================================== */
+
+/* Floating Action Button (FAB) for Fantasy 11 Squad builder */
+.fantasy-fab {
+    position: fixed;
+    bottom: 85px;
+    left: 20px;
+    width: 54px;
+    height: 54px;
+    border-radius: 27px;
+    background: linear-gradient(135deg, #00c853 0%, #06b6d4 100%);
+    box-shadow: 0 4px 20px rgba(0, 200, 83, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 102; /* Placed above match-detail-overlay (100) */
+    transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.25s ease, opacity 0.3s ease;
+}
+.fantasy-fab:hover {
+    transform: scale(1.08) rotate(-10deg);
+    box-shadow: 0 6px 24px rgba(0, 200, 83, 0.65);
+}
+.fantasy-fab:active {
+    transform: scale(0.93);
+}
+
+/* Fantasy 11 Overlay Screen sliding up from bottom */
+.fantasy-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    max-width: 448px; /* Alignment with mobile frame max-w-md */
+    margin: 0 auto;
+    background: #050508;
+    z-index: 200; /* Above navbar (105) */
+    transform: translateY(100%);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+.fantasy-overlay.active {
+    transform: translateY(0);
+}
+
+/* Sticky header inside fantasy overlay */
+.fantasy-header-section {
+    padding: 16px;
+    background: rgba(5, 5, 8, 0.95);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Modern Card-Based Fantasy Squad Layout */
+.fantasy-slot {
+    width: 100%;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    user-select: none;
+    outline: none;
+}
+
+/* Empty position slots */
+.empty-card-slot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1.5px dashed rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.4);
+}
+.empty-card-slot:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(6, 182, 212, 0.3);
+    color: #06b6d4;
+    box-shadow: 0 0 15px rgba(6, 182, 212, 0.1);
+    transform: translateY(-2px);
+}
+
+/* Filled position slots */
+.filled-card-slot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: white;
+}
+.filled-card-slot:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(234, 179, 8, 0.3);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    transform: translateY(-2px);
+}
+
+/* Captain Highlight Glow */
+.captain-glow {
+    border-color: rgba(234, 179, 8, 0.4) !important;
+    background: linear-gradient(135deg, rgba(234, 179, 8, 0.05) 0%, rgba(255, 255, 255, 0.03) 100%) !important;
+    box-shadow: 0 0 15px rgba(234, 179, 8, 0.15) !important;
+}
+.captain-glow::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 16px;
+    padding: 1px;
+    background: linear-gradient(135deg, #eab308, transparent, transparent, #eab308);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+}
+
+/* Slide-up bottom sheet for Fantasy player selection */
+.fantasy-drawer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    max-width: 448px;
+    margin: 0 auto;
+    background: rgba(13, 17, 28, 0.98);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 1.5rem 1.5rem 0 0;
+    z-index: 220; /* Above fantasy overlay (200) */
+    transform: translateY(100%);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    padding: 20px 20px 30px 20px;
+    box-shadow: 0 -12px 40px rgba(0, 0, 0, 0.8);
+    max-height: 80vh;
+    display: flex;
+    flex-direction: column;
+}
+.fantasy-drawer.active {
+    transform: translateY(0);
+}
+.fantasy-drawer-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    z-index: 210; /* Above fantasy overlay (200), below drawer (220) */
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+}
+.fantasy-drawer-backdrop.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* ============================== */
+/* MATCH REPORT - NEON STAT BARS  */
+/* ============================== */
+.neon-bar-home-win {
+    background: linear-gradient(90deg, rgba(6, 182, 212, 0.2), rgba(6, 182, 212, 0.7), rgba(6, 182, 212, 1));
+    box-shadow: 0 0 12px rgba(6, 182, 212, 0.5), 0 0 24px rgba(6, 182, 212, 0.2), 0 0 40px rgba(6, 182, 212, 0.08), inset 0 1px 0 rgba(255,255,255,0.25);
+    border: 1px solid rgba(6, 182, 212, 0.5);
+}
+.neon-bar-away-win {
+    background: linear-gradient(90deg, rgba(236, 72, 153, 1), rgba(236, 72, 153, 0.7), rgba(236, 72, 153, 0.2));
+    box-shadow: 0 0 12px rgba(236, 72, 153, 0.5), 0 0 24px rgba(236, 72, 153, 0.2), 0 0 40px rgba(236, 72, 153, 0.08), inset 0 1px 0 rgba(255,255,255,0.25);
+    border: 1px solid rgba(236, 72, 153, 0.5);
+}
+.neon-bar-neutral {
+    background: linear-gradient(90deg, rgba(100, 116, 139, 0.3), rgba(100, 116, 139, 0.55));
+    border: 1px solid rgba(100, 116, 139, 0.2);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
+}
+.neon-bar-animate {
+    transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Stat row stagger animation */
+.stat-row-item {
+    animation: statRowFadeIn 0.4s ease-out backwards;
+}
+.stat-row-item:nth-child(1) { animation-delay: 0.05s; }
+.stat-row-item:nth-child(2) { animation-delay: 0.1s; }
+.stat-row-item:nth-child(3) { animation-delay: 0.15s; }
+.stat-row-item:nth-child(4) { animation-delay: 0.2s; }
+.stat-row-item:nth-child(5) { animation-delay: 0.25s; }
+.stat-row-item:nth-child(6) { animation-delay: 0.3s; }
+.stat-row-item:nth-child(7) { animation-delay: 0.35s; }
+.stat-row-item:nth-child(8) { animation-delay: 0.4s; }
+.stat-row-item:nth-child(9) { animation-delay: 0.45s; }
+.stat-row-item:nth-child(10) { animation-delay: 0.5s; }
+@keyframes statRowFadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Timeline goal node pulse */
+@keyframes goal-pulse {
+    0%, 100% { box-shadow: 0 0 8px rgba(34, 197, 94, 0.3); }
+    50% { box-shadow: 0 0 16px rgba(34, 197, 94, 0.5); }
+}
+
+
+
+
