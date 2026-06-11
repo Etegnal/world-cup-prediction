@@ -2647,23 +2647,46 @@ export class AdminPanel {
         modal.id = 'admin-manual-paste-modal';
         modal.className = 'fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 backdrop-blur-md p-4';
         modal.innerHTML = `
-            <div class="bg-slate-900 border border-white/10 rounded-2xl p-5 max-w-md w-full shadow-2xl relative">
+            <div class="bg-slate-900 border border-white/10 rounded-2xl p-5 max-w-md w-full shadow-2xl relative max-h-[90vh] overflow-y-auto">
                 <h3 class="text-brand-cyan text-xs font-black uppercase tracking-wider mb-1 flex items-center gap-1.5">
                     <i data-lucide="clipboard-paste" class="w-4 h-4"></i> Manuel SofaScore Veri Girişi
                 </h3>
                 <p class="text-[9px] text-slate-400 mb-3 leading-relaxed">
-                    Sisteminizde CORS hatası varsa SofaScore lineups verisini el ile yapıştırabilirsiniz.
+                    SofaScore korumaları sebebiyle veriler doğrudan çekilemezse aşağıdaki yöntemlerden birini kullanabilirsiniz.
                 </p>
-                <ol class="list-decimal list-inside text-[9px] text-slate-300 gap-1.5 flex flex-col mb-3 bg-black/30 p-2.5 rounded-lg border border-white/5 font-medium">
-                    <li>
-                        <a href="https://www.sofascore.com/api/v1/event/${sofaScoreId}/lineups" target="_blank" class="text-brand-cyan hover:underline font-bold inline-flex items-center gap-0.5">
-                            Buraya tıklayarak lineups sayfasını yeni sekmede açın 🔗
-                        </a>
-                    </li>
-                    <li>Açılan sayfadaki tüm yazıları seçip kopyalayın (<kbd class="bg-slate-800 px-1 py-0.5 rounded text-[8px] text-white font-bold">Ctrl+A</kbd> ve <kbd class="bg-slate-800 px-1 py-0.5 rounded text-[8px] text-white font-bold">Ctrl+C</kbd>).</li>
-                    <li>Kopyaladığınız JSON kodlarını aşağıdaki kutuya yapıştırın.</li>
-                </ol>
-                <textarea id="manual-json-input" class="w-full h-36 bg-slate-950 border border-white/10 rounded-lg p-2 text-[9px] font-mono text-white outline-none focus:border-brand-cyan resize-none mb-3" placeholder='{"home":{"players":[...]},"away":{"players":[...]}}'></textarea>
+                
+                <div class="mb-3">
+                    <p class="text-[9px] font-bold text-brand-gold mb-1 uppercase tracking-wider">YÖNTEM A: 1-Tıkla Otomatik Kopyalama Kısayolu (TAVSİYE EDİLEN ⚡)</p>
+                    <ol class="list-decimal list-inside text-[9px] text-slate-300 gap-1.5 flex flex-col bg-black/30 p-2.5 rounded-lg border border-white/5 font-medium mb-2 leading-relaxed">
+                        <li>Aşağıdaki butona basarak kısayol kodunu kopyalayın:
+                            <button id="copy-bookmarklet-btn" class="mt-1 px-2.5 py-1 bg-brand-cyan hover:bg-cyan-400 text-black font-bold text-[8px] uppercase rounded transition-all flex items-center gap-1 cursor-pointer" type="button">
+                                <i data-lucide="copy" class="w-3 h-3"></i> Kodu Kopyala
+                            </button>
+                        </li>
+                        <li>Tarayıcınızın üst kısmındaki yer imleri çubuğuna (yoksa açmak için <kbd class="bg-slate-800 px-1 py-0.5 rounded text-[8px] text-white">Ctrl+Shift+B</kbd> basın) sağ tıklayıp <b>"Sayfa Ekle" (Yer imi ekle)</b> deyin.</li>
+                        <li>İsim olarak <b>"SofaScore Kopyala"</b> yazın. Adres (URL) kısmına kopyaladığınız kodu yapıştırıp kaydedin.</li>
+                        <li>
+                            <a href="https://www.sofascore.com" target="_blank" class="text-brand-cyan hover:underline font-bold inline-flex items-center gap-0.5">
+                                sofascore.com sitesine gitmek için tıklayın 🔗
+                            </a>
+                        </li>
+                        <li>Sitedeyken yer imlerindeki bu yeni kısayola tıklayın, maç ID'sini girip tamam deyin. Veri otomatik kopyalanacaktır!</li>
+                    </ol>
+                </div>
+
+                <div class="mb-3">
+                    <p class="text-[9px] font-bold text-slate-400 mb-1 uppercase tracking-wider">YÖNTEM B: Manuel Sayfa Açma (Eski Yöntem)</p>
+                    <ol class="list-decimal list-inside text-[9px] text-slate-300 gap-1.5 flex flex-col bg-black/30 p-2.5 rounded-lg border border-white/5 font-medium leading-relaxed">
+                        <li>
+                            <a href="https://www.sofascore.com/api/v1/event/${sofaScoreId}/lineups" target="_blank" class="text-brand-cyan hover:underline font-bold inline-flex items-center gap-0.5">
+                                Buraya tıklayarak lineups sayfasını yeni sekmede açın 🔗
+                            </a> (Eğer 403 hatası alırsanız önce <a href="https://www.sofascore.com" target="_blank" class="text-brand-cyan hover:underline font-bold">sofascore.com</a> ana sayfasını açıp doğrulama yapın).
+                        </li>
+                        <li>Açılan sayfadaki tüm yazıları seçip kopyalayın (<kbd class="bg-slate-800 px-1 py-0.5 rounded text-[8px] text-white">Ctrl+A</kbd> ve <kbd class="bg-slate-800 px-1 py-0.5 rounded text-[8px] text-white">Ctrl+C</kbd>).</li>
+                    </ol>
+                </div>
+
+                <textarea id="manual-json-input" class="w-full h-24 bg-slate-950 border border-white/10 rounded-lg p-2 text-[9px] font-mono text-white outline-none focus:border-brand-cyan resize-none mb-3" placeholder='Kopyaladığınız JSON verisini buraya yapıştırın...'></textarea>
                 <div class="flex gap-2">
                     <button id="manual-paste-cancel-btn" class="flex-grow py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 text-[10px] font-bold uppercase rounded-lg transition-all" type="button">İptal</button>
                     <button id="manual-paste-submit-btn" class="flex-grow py-2 bg-brand-green hover:bg-brand-green/90 text-black text-[10px] font-black uppercase rounded-lg transition-all" type="button">Reytingleri Yükle ⚡</button>
@@ -2676,6 +2699,16 @@ export class AdminPanel {
         if (window.lucide) {
             window.lucide.createIcons();
         }
+
+        modal.querySelector('#copy-bookmarklet-btn').addEventListener('click', async () => {
+            const bookmarkletCode = `javascript:(async function(){const id=prompt("SofaScore Mac ID:", "${sofaScoreId}");if(!id)return;try{const r=await fetch("https://www.sofascore.com/api/v1/event/"+id+"/lineups");if(!r.ok)throw new Error("Veri alinamadi (Kod: "+r.status+")");const d=await r.json();await navigator.clipboard.writeText(JSON.stringify(d));alert("Kadro JSON verisi basariyla kopyalandi! Simdi tahmin sitesindeki kutuya yapistirabilirsiniz.")}catch(e){alert("Hata: "+e.message+"\\n\\nNot: Bu butona sadece www.sofascore.com sitesi acikken tiklamalisiniz.")}})();`;
+            try {
+                await navigator.clipboard.writeText(bookmarkletCode);
+                alert("Kısayol kodu başarıyla kopyalandı! Şimdi tarayıcınızın yer imleri çubuğuna sağ tıklayıp 'Sayfa Ekle' veya 'Yer imi ekle' diyerek Adres/URL kısmına yapıştırabilirsiniz.");
+            } catch (err) {
+                alert("Otomatik kopyalanamadı, lütfen şu kodu el ile kopyalayın:\n\n" + bookmarkletCode);
+            }
+        });
 
         modal.querySelector('#manual-paste-cancel-btn').addEventListener('click', () => {
             modal.remove();
