@@ -4538,32 +4538,36 @@ export async function getAllFantasySquads() {
     }
 }
 
-// Manually update match team pairings and date/time (useful for knockout stages)
-export async function updateMatchTeamsAndDate(matchId, homeTeam, awayTeam, date) {
+// Manually update all match details
+export async function updateMatchDetails(matchId, fields) {
     await initDb();
     
-    let homeFlag = "https://flagcdn.com/un.svg";
-    let awayFlag = "https://flagcdn.com/un.svg";
-    
-    if (homeTeam !== "Belirsiz") {
-        const hData = Object.values(TEAMS_DATA).find(t => t.nameTr === homeTeam);
-        if (hData) homeFlag = hData.flag;
+    // Auto-resolve flags if team names are updated and flags are not explicitly provided
+    if (fields.homeTeam && !fields.homeFlag) {
+        if (fields.homeTeam !== "Belirsiz") {
+            const hData = Object.values(TEAMS_DATA).find(t => t.nameTr === fields.homeTeam);
+            if (hData) fields.homeFlag = hData.flag;
+            else fields.homeFlag = "https://flagcdn.com/un.svg";
+        } else {
+            fields.homeFlag = "https://flagcdn.com/un.svg";
+        }
     }
     
-    if (awayTeam !== "Belirsiz") {
-        const aData = Object.values(TEAMS_DATA).find(t => t.nameTr === awayTeam);
-        if (aData) awayFlag = aData.flag;
+    if (fields.awayTeam && !fields.awayFlag) {
+        if (fields.awayTeam !== "Belirsiz") {
+            const aData = Object.values(TEAMS_DATA).find(t => t.nameTr === fields.awayTeam);
+            if (aData) fields.awayFlag = aData.flag;
+            else fields.awayFlag = "https://flagcdn.com/un.svg";
+        } else {
+            fields.awayFlag = "https://flagcdn.com/un.svg";
+        }
     }
     
     if (CONFIG.IS_DEMO_MODE) {
         const data = getMockData();
         const matchIndex = data.matches.findIndex(m => m.id === matchId);
         if (matchIndex >= 0) {
-            data.matches[matchIndex].homeTeam = homeTeam;
-            data.matches[matchIndex].awayTeam = awayTeam;
-            data.matches[matchIndex].homeFlag = homeFlag;
-            data.matches[matchIndex].awayFlag = awayFlag;
-            if (date) data.matches[matchIndex].date = date;
+            data.matches[matchIndex] = { ...data.matches[matchIndex], ...fields };
             saveMockData(data);
             return true;
         }
@@ -4571,17 +4575,10 @@ export async function updateMatchTeamsAndDate(matchId, homeTeam, awayTeam, date)
     } else {
         try {
             const docRef = fStore.doc(db, "matches", matchId);
-            const updateObj = {
-                homeTeam,
-                awayTeam,
-                homeFlag,
-                awayFlag
-            };
-            if (date) updateObj.date = date;
-            await fStore.updateDoc(docRef, updateObj);
+            await fStore.updateDoc(docRef, fields);
             return true;
         } catch (err) {
-            console.error("Failed to update match teams/date in Firestore:", err);
+            console.error("Failed to update match details in Firestore:", err);
             return false;
         }
     }

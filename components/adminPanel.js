@@ -1,6 +1,6 @@
 // Admin Panel Component (passcode authorization + match completions + live simulators + analyses updates)
 import { CONFIG } from '../config.js';
-import { getMatches, completeMatch, updateLiveScore, resetMockDb, updateAdminAnalysis, getApiStats, saveApiStats, resetAllUsersJokers, getUsers, getPredictions, updateUserJokers, savePrediction, updateUserDetails, deleteUser, getPlayers, savePlayer, deletePlayer, savePlayerRatings, hashPassword, updateMatchTeamsAndDate, getAllGroupPredictions, getAllBracketPredictions, updateMatchSofaScoreId, calculateRealisticPrice } from '../firebase-db.js';
+import { getMatches, completeMatch, updateLiveScore, resetMockDb, updateAdminAnalysis, getApiStats, saveApiStats, resetAllUsersJokers, getUsers, getPredictions, updateUserJokers, savePrediction, updateUserDetails, deleteUser, getPlayers, savePlayer, deletePlayer, savePlayerRatings, hashPassword, updateMatchDetails, getAllGroupPredictions, getAllBracketPredictions, updateMatchSofaScoreId, calculateRealisticPrice } from '../firebase-db.js';
 import { TEAMS_DATA } from './teamsData.js';
 
 export class AdminPanel {
@@ -108,17 +108,54 @@ export class AdminPanel {
                                 </div>
                             </div>
 
+                            <!-- Yan Sorular Cevapları Girişi -->
+                            <div class="bg-black/30 p-3 rounded-xl border border-white/5 flex flex-col gap-2.5 mt-1">
+                                <span class="text-[9px] font-black text-brand-gold uppercase tracking-wider block border-b border-white/5 pb-1">Yan Soru Cevapları</span>
+                                
+                                <div class="grid grid-cols-2 gap-2.5">
+                                    <div>
+                                        <label class="text-[8px] font-bold text-slate-400 uppercase block mb-1">İlk Yarı Sonucu</label>
+                                        <select id="admin-comp-ht-result" class="w-full bg-slate-900 border border-white/10 rounded-lg px-2 py-1.5 text-[10px] text-white outline-none">
+                                            <option value="draw">Beraberlik (draw)</option>
+                                            <option value="home">Ev Sahibi (home)</option>
+                                            <option value="away">Deplasman (away)</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label class="text-[8px] font-bold text-slate-400 uppercase block mb-1">İlk Golü Kim Atar</label>
+                                        <input type="text" id="admin-comp-first-scorer" value="Diğer" class="w-full bg-slate-900 border border-white/10 rounded-lg px-2 py-1 text-[10px] text-white outline-none">
+                                    </div>
+                                </div>
+
+                                <div class="grid grid-cols-2 gap-2.5">
+                                    <div>
+                                        <label class="text-[8px] font-bold text-slate-400 uppercase block mb-1">Kırmızı Kart Var mı?</label>
+                                        <select id="admin-comp-red-card" class="w-full bg-slate-900 border border-white/10 rounded-lg px-2 py-1.5 text-[10px] text-white outline-none">
+                                            <option value="false">Hayır (false)</option>
+                                            <option value="true">Evet (true)</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label class="text-[8px] font-bold text-slate-400 uppercase block mb-1">Köşe Vuruşu Alt/Üst</label>
+                                        <select id="admin-comp-corners" class="w-full bg-slate-900 border border-white/10 rounded-lg px-2 py-1.5 text-[10px] text-white outline-none">
+                                            <option value="under">Alt (under)</option>
+                                            <option value="over">Üst (over)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
                             <button id="admin-comp-finalize-btn" class="w-full py-2.5 mt-2 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-black text-xs font-black uppercase tracking-wider rounded-xl transition-all active:scale-95 shadow-md shadow-emerald-950">
                                 Maçı Resmi Olarak Sonuçlandır 🏁
                             </button>
                         </div>
                     </div>
 
-                    <!-- 3.5. Knockout Match Pairings Editor -->
+                    <!-- 3.5. Match Details & Status Editor -->
                     <div class="bg-slate-950/40 p-4 rounded-2xl border border-white/5">
                         <h3 class="text-xs font-outfit font-black text-brand-gold uppercase tracking-widest mb-3 flex items-center gap-1.5">
                             <i data-lucide="edit-3" class="w-3.5 h-3.5"></i>
-                            Eleme Eşleşmeleri & Tarih Düzenle
+                            Maç Detaylarını & Durumunu Düzenle
                         </h3>
                         <div class="flex flex-col gap-2.5">
                             <select id="admin-edit-match-select" class="bg-slate-900 border border-white/10 rounded-xl px-3 py-2 text-xs text-slate-200 outline-none">
@@ -142,13 +179,50 @@ export class AdminPanel {
                                 </div>
                             </div>
 
-                            <div>
-                                <label class="text-[9px] font-bold text-slate-400 uppercase tracking-widest block mb-1">Maç Tarihi & Saati</label>
-                                <input type="text" id="admin-edit-match-date" class="w-full bg-slate-900 border border-white/10 rounded-xl px-3 py-2 text-xs text-white outline-none" placeholder="Örn: 2026-07-19T22:00:00">
+                            <div class="flex gap-3">
+                                <div class="flex-1">
+                                    <label class="text-[9px] font-bold text-slate-400 uppercase tracking-widest block mb-1">Maç Durumu</label>
+                                    <select id="admin-edit-match-status" class="w-full bg-slate-900 border border-white/10 rounded-xl px-3 py-2 text-xs text-white outline-none">
+                                        <option value="SCHEDULED">Planlandı (SCHEDULED)</option>
+                                        <option value="LIVE">Canlı (LIVE)</option>
+                                        <option value="FINISHED">Bitti (FINISHED)</option>
+                                    </select>
+                                </div>
+                                <div class="flex-1">
+                                    <label class="text-[9px] font-bold text-slate-400 uppercase tracking-widest block mb-1">Grup / Aşama</label>
+                                    <input type="text" id="admin-edit-match-group" class="w-full bg-slate-900 border border-white/10 rounded-xl px-3 py-2 text-xs text-white outline-none" placeholder="Örn: A veya Son 16">
+                                </div>
                             </div>
 
-                            <button id="admin-edit-match-save-btn" class="w-full py-2 bg-brand-cyan hover:bg-brand-cyan/80 text-black text-xs font-black uppercase tracking-wider rounded-xl transition-all active:scale-95 shadow-md">
-                                Eşleşmeyi / Tarihi Güncelle 💾
+                            <div class="flex gap-3">
+                                <div class="flex-1">
+                                    <label class="text-[9px] font-bold text-slate-400 uppercase tracking-widest block mb-1">Ev Sahibi Bayrak URL</label>
+                                    <input type="text" id="admin-edit-home-flag" class="w-full bg-slate-900 border border-white/10 rounded-xl px-3 py-2 text-xs text-white outline-none">
+                                </div>
+                                <div class="flex-1">
+                                    <label class="text-[9px] font-bold text-slate-400 uppercase tracking-widest block mb-1">Deplasman Bayrak URL</label>
+                                    <input type="text" id="admin-edit-away-flag" class="w-full bg-slate-900 border border-white/10 rounded-xl px-3 py-2 text-xs text-white outline-none">
+                                </div>
+                            </div>
+
+                            <div class="flex gap-3">
+                                <div class="flex-1">
+                                    <label class="text-[9px] font-bold text-slate-400 uppercase tracking-widest block mb-1">Maç Tarihi & Saati</label>
+                                    <input type="text" id="admin-edit-match-date" class="w-full bg-slate-900 border border-white/10 rounded-xl px-3 py-2 text-xs text-white outline-none" placeholder="Örn: 2026-07-19T22:00:00">
+                                </div>
+                                <div class="flex-1">
+                                    <label class="text-[9px] font-bold text-slate-400 uppercase tracking-widest block mb-1">SofaScore ID</label>
+                                    <input type="text" id="admin-edit-sofa-id" class="w-full bg-slate-900 border border-white/10 rounded-xl px-3 py-2 text-xs text-white outline-none" placeholder="Örn: 123456">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="text-[9px] font-bold text-slate-400 uppercase tracking-widest block mb-1">Analiz & Detay Metni</label>
+                                <textarea id="admin-edit-match-analysis" class="w-full bg-slate-900 border border-white/10 rounded-xl p-3 text-xs text-slate-200 outline-none min-h-[60px] resize-none" placeholder="Analiz yazısı..."></textarea>
+                            </div>
+
+                            <button id="admin-edit-match-save-btn" class="w-full py-2.5 bg-brand-cyan hover:bg-brand-cyan/80 text-black text-xs font-black uppercase tracking-wider rounded-xl transition-all active:scale-95 shadow-md shadow-cyan-950/40">
+                                Maç Detaylarını Kaydet 💾
                             </button>
                         </div>
                     </div>
@@ -946,11 +1020,16 @@ export class AdminPanel {
                 const hScore = parseInt(compHomeScore.value);
                 const aScore = parseInt(compAwayScore.value);
 
+                const compHtResult = document.getElementById('admin-comp-ht-result');
+                const compFirstScorer = document.getElementById('admin-comp-first-scorer');
+                const compRedCard = document.getElementById('admin-comp-red-card');
+                const compCorners = document.getElementById('admin-comp-corners');
+
                 const sideAnswers = {
-                    htResult: "draw",
-                    firstScorer: "Diğer",
-                    redCard: false,
-                    cornersOverUnder: "under"
+                    htResult: compHtResult ? compHtResult.value : "draw",
+                    firstScorer: compFirstScorer ? compFirstScorer.value.trim() : "Diğer",
+                    redCard: compRedCard ? compRedCard.value === "true" : false,
+                    cornersOverUnder: compCorners ? compCorners.value : "under"
                 };
 
                 const success = await completeMatch(matchId, hScore, aScore, sideAnswers);
@@ -1064,21 +1143,33 @@ export class AdminPanel {
             });
         }
 
-        // 3.5. Knockout Match pairings manual updates
+        // 3.5. Match Details & Status Editor manual updates
         const editMatchSelect = document.getElementById('admin-edit-match-select');
         const editHomeTeam = document.getElementById('admin-edit-home-team');
         const editAwayTeam = document.getElementById('admin-edit-away-team');
+        const editMatchStatus = document.getElementById('admin-edit-match-status');
+        const editMatchGroup = document.getElementById('admin-edit-match-group');
+        const editHomeFlag = document.getElementById('admin-edit-home-flag');
+        const editAwayFlag = document.getElementById('admin-edit-away-flag');
         const editMatchDate = document.getElementById('admin-edit-match-date');
+        const editSofaId = document.getElementById('admin-edit-sofa-id');
+        const editMatchAnalysis = document.getElementById('admin-edit-match-analysis');
         const editMatchSaveBtn = document.getElementById('admin-edit-match-save-btn');
 
-        if (editMatchSelect) {
+        if (editMatchSelect && editHomeTeam && editAwayTeam && editMatchStatus && editMatchGroup && editHomeFlag && editAwayFlag && editMatchDate && editSofaId && editMatchAnalysis) {
             const updateMatchForm = () => {
                 const matchId = editMatchSelect.value;
                 const match = this.appState.matches.find(m => m.id === matchId);
                 if (match) {
                     editHomeTeam.value = match.homeTeam;
                     editAwayTeam.value = match.awayTeam;
+                    editMatchStatus.value = match.status || 'SCHEDULED';
+                    editMatchGroup.value = match.group || '';
+                    editHomeFlag.value = match.homeFlag || '';
+                    editAwayFlag.value = match.awayFlag || '';
                     editMatchDate.value = match.date || '';
+                    editSofaId.value = match.sofaScoreId || '';
+                    editMatchAnalysis.value = match.analysis || '';
                 }
             };
             editMatchSelect.addEventListener('change', updateMatchForm);
@@ -1088,21 +1179,29 @@ export class AdminPanel {
         if (editMatchSaveBtn) {
             editMatchSaveBtn.addEventListener('click', async () => {
                 const matchId = editMatchSelect.value;
-                const home = editHomeTeam.value;
-                const away = editAwayTeam.value;
-                const date = editMatchDate.value.trim();
+                const fields = {
+                    homeTeam: editHomeTeam.value,
+                    awayTeam: editAwayTeam.value,
+                    status: editMatchStatus.value,
+                    group: editMatchGroup.value,
+                    homeFlag: editHomeFlag.value,
+                    awayFlag: editAwayFlag.value,
+                    date: editMatchDate.value.trim(),
+                    sofaScoreId: editSofaId.value.trim(),
+                    analysis: editMatchAnalysis.value.trim()
+                };
 
                 editMatchSaveBtn.disabled = true;
                 const origText = editMatchSaveBtn.textContent;
                 editMatchSaveBtn.textContent = 'Güncelleniyor...';
 
-                const success = await updateMatchTeamsAndDate(matchId, home, away, date);
+                const success = await updateMatchDetails(matchId, fields);
                 
                 editMatchSaveBtn.disabled = false;
                 editMatchSaveBtn.textContent = origText;
 
                 if (success) {
-                    alert('Maç eşleşmeleri ve tarihi başarıyla güncellendi!');
+                    alert('Maç detayları başarıyla güncellendi!');
                     // Reload matches state in parent app
                     await this.appState.loadState();
                     this.render();

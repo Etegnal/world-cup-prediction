@@ -5,3 +5,4 @@ dist/
 scratch/*
 !scratch/scraped_players.json
 .DS_Store
+*.apk
