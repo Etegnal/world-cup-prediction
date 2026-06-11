@@ -1098,8 +1098,8 @@ export class FixtureCard {
                         <button class="detail-tab-btn flex-1 py-1.5 rounded-lg text-center transition-all ${this.activeTab === 'opinion' ? 'bg-brand-green text-black font-extrabold' : 'text-slate-400'}" data-tab="opinion">Kamuoyu</button>
                         <button class="detail-tab-btn flex-1 py-1.5 rounded-lg text-center transition-all ${this.activeTab === 'admin' ? 'bg-brand-green text-black font-extrabold' : 'text-slate-400'}" data-tab="admin">Yorum</button>
                         ${isFinished || isLive ? `
-                            <button class="detail-tab-btn flex-1 py-1.5 rounded-lg text-center transition-all ${this.activeTab === 'report' ? 'bg-brand-green text-black font-extrabold' : 'text-slate-400'}" data-tab="report">Rapor</button>
-                            <button class="detail-tab-btn flex-1 py-1.5 rounded-lg text-center transition-all ${this.activeTab === 'ratings' ? 'bg-brand-green text-black font-extrabold' : 'text-slate-400'}" data-tab="ratings">Reytingler</button>
+                            <button class="detail-tab-btn flex-1 py-1.5 rounded-lg text-center transition-all ${this.activeTab === 'report' ? 'bg-brand-green text-black font-extrabold' : 'text-slate-400'}" data-tab="report">İstatistikler</button>
+                            <button class="detail-tab-btn flex-1 py-1.5 rounded-lg text-center transition-all ${this.activeTab === 'ratings' ? 'bg-brand-green text-black font-extrabold' : 'text-slate-400'}" data-tab="ratings">Zaman Tüneli</button>
                         ` : ''}
                     </div>
                 </div>
@@ -1748,44 +1748,70 @@ export class FixtureCard {
                 </div>
             `;
         } else if (this.activeTab === 'report') {
-            // ====== MATCH REPORT TAB - STATISTICS + TIMELINE ======
+            // ====== MATCH REPORT TAB - STATISTICS ONLY ======
             const stats = match.statistics || [];
-            const incidents = match.incidents || [];
 
             // === STATISTICS SECTION ===
             let statsHtml = '';
             if (stats && stats.length > 0) {
                 const statNameMap = {
-                    'Ball possession': 'Topla Oynama',
-                    'Total shots': 'Toplam Şut',
-                    'Shots on target': 'Kaleyi Bulan Şut',
-                    'Shots off target': 'Kale Dışı',
-                    'Blocked shots': 'Engellenen Şut',
-                    'Total passes': 'Toplam Pas',
-                    'Accurate passes': 'Doğru Pas',
-                    'Long balls': 'Uzun Top',
-                    'Tackles': 'Müdahale',
-                    'Interceptions': 'Top Kapma',
-                    'Clearances': 'Uzaklaştırma',
-                    'Fouls': 'Faul',
-                    'Corners': 'Körner',
-                    'Offsides': 'Ofsayt',
-                    'Yellow cards': 'Sarı Kart',
-                    'Red cards': 'Kırmızı Kart',
-                    'Free kicks': 'Serbest Vuruş',
-                    'Goal kicks': 'Kale Vuruşu',
-                    'Throw-ins': 'Taç Atışı',
-                    'Big chances': 'Net Pozisyon',
-                    'Big chances missed': 'Kaçan Net Pozisyon',
-                    'Hit woodwork': 'Direk/Çıta',
-                    'Counter attacks': 'Kontra Atak',
-                    'Saves': 'Kurtarma'
+                    'expected goals (xg)': 'Beklenen Gol (xG)',
+                    'xg on target (xgot)': 'Kaleyi Bulan Beklenen Gol (xGOT)',
+                    'ball possession': 'Topla Oynama',
+                    'possession': 'Topla Oynama',
+                    'total shots': 'Toplam Şut',
+                    'shots on target': 'Kaleyi Bulan Şut',
+                    'shots off target': 'Kale Dışı Şut',
+                    'blocked shots': 'Engellenen Şut',
+                    'shots inside the box': 'Ceza Sahası İçi Şutlar',
+                    'shots outside the box': 'Ceza Sahası Dışı Şutlar',
+                    'hit woodwork': 'Direkten Dönen Top',
+                    'hit the woodwork': 'Direkten Dönen Top',
+                    'big chances': 'Net Gol Fırsatı',
+                    'big chances missed': 'Kaçan Net Fırsat',
+                    'corners': 'Köşe Vuruşları (Korner)',
+                    'corner kicks': 'Köşe Vuruşları (Korner)',
+                    'passes': 'Paslar',
+                    'total passes': 'Toplam Pas',
+                    'accurate passes': 'İsabetli Pas',
+                    'long balls': 'Uzun Toplar',
+                    'long passes': 'Uzun Paslar',
+                    'crosses': 'Ortalar',
+                    'passes in final third': '3. Bölgede Paslar',
+                    'accurate through passes': 'İsabetli Ara Paslar',
+                    'tackles': 'Müdahale',
+                    'interceptions': 'Top Kapma',
+                    'clearances': 'Uzaklaştırma',
+                    'fouls': 'Faul',
+                    'offsides': 'Ofsayt',
+                    'yellow cards': 'Sarı Kart',
+                    'red cards': 'Kırmızı Kart',
+                    'free kicks': 'Serbest Vuruş',
+                    'goal kicks': 'Kale Vuruşu',
+                    'throw-ins': 'Taç Atışı',
+                    'throw ins': 'Taç Atışı',
+                    'counter attacks': 'Kontra Ataklar',
+                    'saves': 'Kurtarışlar',
+                    'goalkeeper saves': 'Kaleci Kurtarışları',
+                    'expected assists (xa)': 'Beklenen Asist (xA)',
+                    'duels won': 'Kazanılan İkili Mücadeleler',
+                    'errors leading to shot': 'Şutla Sonuçlanan Hatalar',
+                    'errors leading to goal': 'Golle Sonuçlanan Hatalar',
+                    'xgot faced': 'Karşılaşılan xGOT',
+                    'goals prevented': 'Önlenen Goller',
+                    'touches in opposition box': 'Rakip Ceza Sahasında Topla Buluşma'
                 };
 
-                stats.forEach(group => {
-                    const items = group.statisticsItems || [];
+                const fullMatchGroup = stats.find(g => g.period === 'Match') || stats[0];
+                if (fullMatchGroup) {
+                    const items = fullMatchGroup.statisticsItems || [];
+                    const seenStats = new Set();
                     items.forEach(item => {
-                        const label = statNameMap[item.name] || item.name;
+                        const cleanName = item.name.toLowerCase().trim();
+                        if (seenStats.has(cleanName)) return; // Deduplicate!
+                        seenStats.add(cleanName);
+
+                        const label = statNameMap[cleanName] || item.name;
                         const homeVal = item.homeValue !== undefined ? item.homeValue : parseInt(item.home) || 0;
                         const awayVal = item.awayValue !== undefined ? item.awayValue : parseInt(item.away) || 0;
                         const maxVal = Math.max(homeVal, awayVal, 1);
@@ -1813,10 +1839,35 @@ export class FixtureCard {
                             </div>
                         `;
                     });
-                });
+                }
             } else {
                 statsHtml = '<div class="text-center py-6 text-[10px] text-slate-500 italic uppercase font-black tracking-widest">Bu maç için istatistik verisi bulunmamaktadır.</div>';
             }
+
+            contentContainer.innerHTML = `
+                <!-- MATCH STATISTICS -->
+                <div class="flex flex-col bg-slate-950/60 border border-white/[0.06] rounded-2xl p-5 backdrop-blur-sm">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-[9px] font-black text-brand-cyan uppercase tracking-widest flex items-center gap-1.5">
+                            <i data-lucide="bar-chart-3" class="w-3.5 h-3.5"></i> Maç İstatistikleri
+                        </span>
+                    </div>
+                    <div class="flex justify-between items-center pb-3 mb-2 border-b border-white/[0.06]">
+                        <div class="flex items-center gap-2.5">
+                            <img src="${match.homeFlag}" class="w-6 h-4 object-cover rounded shadow-md border border-white/10" alt="">
+                            <span class="text-[11px] font-outfit font-black text-slate-200 uppercase tracking-wide">${match.homeTeam}</span>
+                        </div>
+                        <div class="flex items-center gap-2.5">
+                            <span class="text-[11px] font-outfit font-black text-slate-200 uppercase tracking-wide">${match.awayTeam}</span>
+                            <img src="${match.awayFlag}" class="w-6 h-4 object-cover rounded shadow-md border border-white/10" alt="">
+                        </div>
+                    </div>
+                    ${statsHtml}
+                </div>
+            `;
+        } else if (this.activeTab === 'ratings') {
+            // ====== MATCH TIMELINE TAB (ZAMAN TÜNELİ) ======
+            const incidents = match.incidents || [];
 
             // === TIMELINE SECTION ===
             let timelineHtml = '';
@@ -1925,26 +1976,6 @@ export class FixtureCard {
             }
 
             contentContainer.innerHTML = `
-                <!-- MATCH STATISTICS -->
-                <div class="flex flex-col bg-slate-950/60 border border-white/[0.06] rounded-2xl p-5 backdrop-blur-sm">
-                    <div class="flex items-center justify-between mb-3">
-                        <span class="text-[9px] font-black text-brand-cyan uppercase tracking-widest flex items-center gap-1.5">
-                            <i data-lucide="bar-chart-3" class="w-3.5 h-3.5"></i> Maç İstatistikleri
-                        </span>
-                    </div>
-                    <div class="flex justify-between items-center pb-3 mb-2 border-b border-white/[0.06]">
-                        <div class="flex items-center gap-2.5">
-                            <img src="${match.homeFlag}" class="w-6 h-4 object-cover rounded shadow-md border border-white/10" alt="">
-                            <span class="text-[11px] font-outfit font-black text-slate-200 uppercase tracking-wide">${match.homeTeam}</span>
-                        </div>
-                        <div class="flex items-center gap-2.5">
-                            <span class="text-[11px] font-outfit font-black text-slate-200 uppercase tracking-wide">${match.awayTeam}</span>
-                            <img src="${match.awayFlag}" class="w-6 h-4 object-cover rounded shadow-md border border-white/10" alt="">
-                        </div>
-                    </div>
-                    ${statsHtml}
-                </div>
-
                 <!-- MATCH TIMELINE -->
                 <div class="flex flex-col gap-0 bg-slate-950/60 border border-white/[0.06] rounded-2xl p-5 backdrop-blur-sm">
                     <div class="flex items-center justify-between mb-4">
@@ -1964,68 +1995,6 @@ export class FixtureCard {
                         </div>
                     </div>
                     ${timelineHtml}
-                </div>
-            `;
-        } else if (this.activeTab === 'ratings') {
-            const homePlayers = await getPlayers(match.homeTeam);
-            const awayPlayers = await getPlayers(match.awayTeam);
-            
-            const mapPlayerWithRating = (p, isHome) => {
-                const rating = match.playerRatings ? parseFloat(match.playerRatings[p.id]) || null : null;
-                return { ...p, rating, isHome };
-            };
-
-            const homeList = homePlayers.map(p => mapPlayerWithRating(p, true));
-            const awayList = awayPlayers.map(p => mapPlayerWithRating(p, false));
-            const allPlayers = [...homeList, ...awayList];
-            
-            allPlayers.sort((a, b) => {
-                if (a.rating === null) return 1;
-                if (b.rating === null) return -1;
-                return b.rating - a.rating;
-            });
-            
-            let ratingsHtml = '';
-            
-            if (allPlayers.every(p => p.rating === null)) {
-                ratingsHtml = `<div class="text-center py-6 text-[10px] text-slate-500 italic uppercase font-black tracking-widest">Maça ait oyuncu reyting verisi bulunmamaktadır.</div>`;
-            } else {
-                allPlayers.forEach((p, idx) => {
-                    if (p.rating === null) return;
-                    
-                    const isMVP = idx === 0 && p.rating > 0;
-                    const ratingColor = p.rating >= 8.0 ? 'text-brand-green bg-green-500/10 border-green-500/20' : 
-                                        (p.rating >= 7.0 ? 'text-brand-gold bg-yellow-500/10 border-yellow-500/20' : 
-                                        (p.rating >= 6.0 ? 'text-slate-300 bg-white/5 border-white/10' : 'text-brand-red bg-red-500/10 border-red-500/20'));
-                    
-                    const flag = p.isHome ? match.homeFlag : match.awayFlag;
-                    
-                    ratingsHtml += `
-                        <div class="flex items-center justify-between p-3 bg-slate-900/50 border ${isMVP ? 'border-brand-gold/40 shadow-neon-gold bg-brand-gold/5' : 'border-white/5'} rounded-2xl hover:border-white/10 transition-all animate-fade-in">
-                            <div class="flex items-center gap-3">
-                                <img src="${flag}" class="w-5 h-3.5 object-cover rounded shadow-sm shrink-0" alt="">
-                                <div class="flex flex-col text-left">
-                                    <span class="text-xs font-bold text-slate-200 flex items-center">
-                                        ${p.name}
-                                        ${isMVP ? '<span class="text-[8px] bg-brand-gold/20 text-brand-gold px-1.5 py-0.2 rounded-md font-bold ml-1.5 uppercase flex items-center gap-0.5">👑 MVP</span>' : ''}
-                                    </span>
-                                    <span class="text-[8px] text-slate-500 uppercase font-black tracking-wider mt-0.5">${p.isHome ? match.homeTeam : match.awayTeam} • ${p.pos}</span>
-                                </div>
-                            </div>
-                            <span class="text-xs font-outfit font-black border px-2.5 py-0.5 rounded-full ${ratingColor}">
-                                ${p.rating.toFixed(1)}
-                            </span>
-                        </div>
-                    `;
-                });
-            }
-
-            contentContainer.innerHTML = `
-                <div class="flex flex-col gap-3">
-                    <span class="text-[8px] font-bold text-slate-400 uppercase tracking-widest pl-1">SofaScore Oyuncu Performans Reytingleri</span>
-                    <div class="flex flex-col gap-2 max-h-[350px] overflow-y-auto pr-1">
-                        ${ratingsHtml}
-                    </div>
                 </div>
             `;
         }
