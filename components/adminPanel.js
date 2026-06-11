@@ -1904,6 +1904,12 @@ export class AdminPanel {
                         <i data-lucide="zap" class="w-3 h-3"></i> Veri Çek
                     </button>
                 </div>
+                <div class="flex justify-between items-center mt-1 px-0.5">
+                    <span class="text-[8px] text-slate-500">CORS hatası alırsanız eklentiyi aktifleştirin veya sağdaki butonu kullanın -></span>
+                    <button class="admin-manual-paste-btn text-[8px] text-brand-cyan hover:underline hover:text-brand-cyan/80 transition-colors font-bold cursor-pointer" data-match-id="${m.id}" type="button">
+                        Manuel Veri Yapıştır 📋
+                    </button>
+                </div>
             `;
 
             // Bind link save button
@@ -1962,11 +1968,28 @@ export class AdminPanel {
                     this.renderAdminMatchesList(matches);
                     await this.renderActiveMatchEditor(matchId);
                 } catch (err) {
-                    alert("SofaScore'dan veri çekilirken hata oluştu: " + err.message);
+                    console.error("Fetch ratings failed:", err);
+                    if (confirm(`SofaScore'dan otomatik veri çekilemedi. (${err.message})\n\nBunun yerine lineups JSON verisini el ile yapıştırmak ister misiniz?`)) {
+                        this.openManualPasteModal(matchId, inputVal);
+                    }
                 } finally {
                     fetchBtn.disabled = false;
                     fetchBtn.innerHTML = origBtnText;
                 }
+            });
+
+            // Bind manual paste button
+            div.querySelector('.admin-manual-paste-btn').addEventListener('click', (e) => {
+                e.stopPropagation();
+                const matchId = e.currentTarget.dataset.matchId;
+                const inputVal = document.getElementById(`sofa-input-${matchId}`).value.trim();
+                
+                if (!inputVal) {
+                    alert("Lütfen önce SofaScore Linki veya ID'si giriniz!");
+                    return;
+                }
+                
+                this.openManualPasteModal(matchId, inputVal);
             });
 
             listContainer.appendChild(div);
@@ -2597,6 +2620,173 @@ export class AdminPanel {
         });
 
         alert(`Başarılı! SofaScore üzerindeki ${sofaScoreId} ID'li maçtan ${matchedCount} oyuncu başarıyla eşleştirildi ve reytingleri yüklendi. Skor: ${data.homeScore} - ${data.awayScore} (Durum: ${data.status === 'FINISHED' ? 'Bitti' : 'Canlı/Bekliyor'}). Kontrol ettikten sonra "Reytingleri Kaydet" butonuna basarak kaydedebilirsiniz.`);
+    }
+
+    openManualPasteModal(matchId, sofaScoreUrlOrId) {
+        // Extract SofaScore ID
+        let sofaScoreId = sofaScoreUrlOrId.trim();
+        if (sofaScoreId.includes("sofascore.com")) {
+            const matchIdFromUrl = sofaScoreId.match(/(?:id:|\/)([0-9]+)(?:[#\?\/]|$)/) || sofaScoreId.match(/\/([0-9]+)$/) || sofaScoreId.match(/([0-9]+)/);
+            if (matchIdFromUrl && matchIdFromUrl[1]) {
+                sofaScoreId = matchIdFromUrl[1];
+            }
+        } else {
+            sofaScoreId = sofaScoreId.replace(/[^0-9]/g, '');
+        }
+
+        if (!sofaScoreId) {
+            alert("Lütfen geçerli bir SofaScore linki veya sayısal ID giriniz.");
+            return;
+        }
+
+        // Check if modal already exists and remove it
+        const existing = document.getElementById('admin-manual-paste-modal');
+        if (existing) existing.remove();
+
+        const modal = document.createElement('div');
+        modal.id = 'admin-manual-paste-modal';
+        modal.className = 'fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 backdrop-blur-md p-4';
+        modal.innerHTML = `
+            <div class="bg-slate-900 border border-white/10 rounded-2xl p-5 max-w-md w-full shadow-2xl relative">
+                <h3 class="text-brand-cyan text-xs font-black uppercase tracking-wider mb-1 flex items-center gap-1.5">
+                    <i data-lucide="clipboard-paste" class="w-4 h-4"></i> Manuel SofaScore Veri Girişi
+                </h3>
+                <p class="text-[9px] text-slate-400 mb-3 leading-relaxed">
+                    Sisteminizde CORS hatası varsa SofaScore lineups verisini el ile yapıştırabilirsiniz.
+                </p>
+                <ol class="list-decimal list-inside text-[9px] text-slate-300 gap-1.5 flex flex-col mb-3 bg-black/30 p-2.5 rounded-lg border border-white/5 font-medium">
+                    <li>
+                        <a href="https://api.sofascore.com/api/v1/event/${sofaScoreId}/lineups" target="_blank" class="text-brand-cyan hover:underline font-bold inline-flex items-center gap-0.5">
+                            Buraya tıklayarak lineups sayfasını yeni sekmede açın 🔗
+                        </a>
+                    </li>
+                    <li>Açılan sayfadaki tüm yazıları seçip kopyalayın (<kbd class="bg-slate-800 px-1 py-0.5 rounded text-[8px] text-white font-bold">Ctrl+A</kbd> ve <kbd class="bg-slate-800 px-1 py-0.5 rounded text-[8px] text-white font-bold">Ctrl+C</kbd>).</li>
+                    <li>Kopyaladığınız JSON kodlarını aşağıdaki kutuya yapıştırın.</li>
+                </ol>
+                <textarea id="manual-json-input" class="w-full h-36 bg-slate-950 border border-white/10 rounded-lg p-2 text-[9px] font-mono text-white outline-none focus:border-brand-cyan resize-none mb-3" placeholder='{"home":{"players":[...]},"away":{"players":[...]}}'></textarea>
+                <div class="flex gap-2">
+                    <button id="manual-paste-cancel-btn" class="flex-grow py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 text-[10px] font-bold uppercase rounded-lg transition-all" type="button">İptal</button>
+                    <button id="manual-paste-submit-btn" class="flex-grow py-2 bg-brand-green hover:bg-brand-green/90 text-black text-[10px] font-black uppercase rounded-lg transition-all" type="button">Reytingleri Yükle ⚡</button>
+                </div>
+            </div>
+        `;
+
+        document.body.appendChild(modal);
+
+        if (window.lucide) {
+            window.lucide.createIcons();
+        }
+
+        modal.querySelector('#manual-paste-cancel-btn').addEventListener('click', () => {
+            modal.remove();
+        });
+
+        modal.querySelector('#manual-paste-submit-btn').addEventListener('click', () => {
+            const jsonText = modal.querySelector('#manual-json-input').value.trim();
+            if (!jsonText) {
+                alert("Lütfen kopyaladığınız SofaScore JSON içeriğini yapıştırın.");
+                return;
+            }
+
+            const success = this.processManualLineupsJson(matchId, jsonText, sofaScoreId);
+            if (success) {
+                modal.remove();
+                this.selectedRatingsMatchId = matchId;
+                this.renderActiveMatchEditor(matchId);
+            }
+        });
+    }
+
+    processManualLineupsJson(matchId, jsonText, sofaScoreId) {
+        try {
+            const lineupsData = JSON.parse(jsonText);
+            const players = [];
+
+            const parseTeamLineup = (lineup, teamSide) => {
+                if (!lineup) return;
+                if (lineup.players) {
+                    lineup.players.forEach(p => {
+                        const name = p.player?.name;
+                        const rating = p.statistics?.rating;
+                        if (name) {
+                            players.push({
+                                name,
+                                rating: rating ? parseFloat(rating) : null,
+                                team: teamSide
+                            });
+                        }
+                    });
+                }
+                if (lineup.substitutes) {
+                    lineup.substitutes.forEach(p => {
+                        const name = p.player?.name;
+                        const rating = p.statistics?.rating;
+                        if (name) {
+                            players.push({
+                                name,
+                                rating: rating ? parseFloat(rating) : null,
+                                team: teamSide
+                            });
+                        }
+                    });
+                }
+            };
+
+            parseTeamLineup(lineupsData.home, 'home');
+            parseTeamLineup(lineupsData.away, 'away');
+
+            if (players.length === 0) {
+                throw new Error("Yapıştırılan veri içerisinde oyuncu veya reyting bulunamadı. Doğru JSON verisini kopyaladığınızdan emin olun.");
+            }
+
+            const data = {
+                status: "FINISHED",
+                homeScore: null,
+                awayScore: null,
+                players,
+                statistics: null,
+                incidents: []
+            };
+
+            // Store in fetchedScores
+            this.fetchedScores = {
+                matchId: matchId,
+                homeScore: null,
+                awayScore: null,
+                status: "FINISHED",
+                sofaScoreId: sofaScoreId,
+                statistics: null,
+                incidents: []
+            };
+
+            // Match players and populate inputs
+            const ratingInputs = document.querySelectorAll('.admin-player-rating-input');
+            let matchedCount = 0;
+
+            ratingInputs.forEach(input => {
+                const localName = input.dataset.playerName || '';
+                const apiMatch = this.findBestMatchLocal(localName, data.players || []);
+
+                if (apiMatch) {
+                    const val = parseFloat(apiMatch.rating);
+                    if (!isNaN(val) && val > 0) {
+                        input.value = val.toFixed(1);
+                        matchedCount++;
+                        return;
+                    }
+                }
+                if (!input.value || input.value === "0.0") {
+                    input.value = "6.0";
+                }
+            });
+
+            alert(`Başarılı! Manuel yapıştırılan veriden ${matchedCount} oyuncu başarıyla eşleştirildi. Kontrol ettikten sonra "Reytingleri Kaydet" butonuna basarak kaydedebilirsiniz.`);
+            return true;
+        } catch (err) {
+            console.error("Manual lineups parsing failed:", err);
+            alert("Yapıştırılan veri işlenirken hata oluştu. Lütfen kopyaladığınız URL içeriğini (lineups JSON) tam olarak yapıştırdığınızdan emin olun.\nHata: " + err.message);
+            return false;
+        }
     }
 
     async saveMatchRatings(matchId) {
