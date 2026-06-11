@@ -4334,9 +4334,26 @@ export async function deletePlayer(playerId) {
     }
 }
 
-// Save user's fantasy squad for a match
+// Save user's fantasy squad for a match (matchId parameter is actually the round key e.g. "round_1")
 export async function saveFantasySquad(userId, matchId, squadData) {
     await initDb();
+    
+    // Server-side/DB-side Lock validation
+    const matches = await getMatches();
+    const roundMatches = matches.filter(m => getMatchFantasyRound(m, matches) === matchId);
+    if (roundMatches.length > 0) {
+        let earliestMatchTime = Infinity;
+        roundMatches.forEach(m => {
+            const time = new Date(m.date).getTime();
+            if (time < earliestMatchTime) earliestMatchTime = time;
+        });
+        const lockTime = earliestMatchTime - 15 * 60 * 1000;
+        if (Date.now() >= lockTime) {
+            console.error("Failed to save fantasy squad: Round is locked");
+            return false;
+        }
+    }
+
     if (CONFIG.IS_DEMO_MODE) {
         const data = getMockData();
         if (!data.fantasySquads) data.fantasySquads = {};

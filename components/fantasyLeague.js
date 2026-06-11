@@ -53,6 +53,19 @@ export class FantasyLeague {
         return `${day} ${month} ${year}`;
     }
 
+    isRoundLocked() {
+        if (!this.dayMatches || this.dayMatches.length === 0) return false;
+        let earliestMatchTime = Infinity;
+        this.dayMatches.forEach(m => {
+            const time = new Date(m.date).getTime();
+            if (time < earliestMatchTime) {
+                earliestMatchTime = time;
+            }
+        });
+        const lockTime = earliestMatchTime - 15 * 60 * 1000;
+        return Date.now() >= lockTime;
+    }
+
     async init(roundKey) {
         this.activeRound = roundKey;
         this.squad = Array(11).fill(null);
@@ -163,6 +176,7 @@ export class FantasyLeague {
     render() {
         if (!this.activeRound) return;
         
+        const isLocked = this.isRoundLocked();
         const budgetUsed = this.getBudgetUsed();
         const budgetPct = Math.min((budgetUsed / 100) * 100, 100);
         const budgetColor = budgetUsed > 100 ? '#ef4444' : (budgetUsed >= 85 ? '#f59e0b' : '#00c853');
@@ -318,10 +332,10 @@ export class FantasyLeague {
 
                 <!-- Options / AutoFill Section -->
                 <div class="flex gap-3 mt-1">
-                    <button id="fantasy-clear-btn" class="flex-grow py-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 text-xs font-black uppercase tracking-wider transition-all active:scale-95">
+                    <button id="fantasy-clear-btn" class="flex-grow py-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 text-xs font-black uppercase tracking-wider transition-all active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed" ${isLocked ? 'disabled' : ''}>
                         KADROYU TEMİZLE
                     </button>
-                    <button id="fantasy-autofill-btn" class="flex-grow py-2.5 rounded-xl bg-gradient-to-r from-brand-green to-brand-blue text-white text-xs font-black uppercase tracking-wider transition-all active:scale-95 shadow-md shadow-emerald-950/20">
+                    <button id="fantasy-autofill-btn" class="flex-grow py-2.5 rounded-xl bg-gradient-to-r from-brand-green to-brand-blue text-white text-xs font-black uppercase tracking-wider transition-all active:scale-95 shadow-md shadow-emerald-950/20 disabled:opacity-50 disabled:cursor-not-allowed" ${isLocked ? 'disabled' : ''}>
                         OTOMATİK DOLDUR
                     </button>
                 </div>
@@ -329,8 +343,8 @@ export class FantasyLeague {
 
             <!-- Bottom Floating Action Bar -->
             <div class="sticky bottom-[58px] left-0 right-0 p-4 bg-brand-dark/95 border-t border-white/5 z-30">
-                <button id="fantasy-save-btn" class="w-full py-3 bg-brand-gold hover:bg-yellow-500 text-black text-xs font-black uppercase tracking-widest rounded-xl transition-all active:scale-95 shadow-lg shadow-yellow-950/40">
-                    Kadro Planını Kaydet 💾
+                <button id="fantasy-save-btn" class="w-full py-3 ${isLocked ? 'bg-slate-800 text-slate-500 cursor-not-allowed' : 'bg-brand-gold hover:bg-yellow-500 text-black active:scale-95'} text-xs font-black uppercase tracking-widest rounded-xl transition-all shadow-lg shadow-yellow-950/40" ${isLocked ? 'disabled' : ''}>
+                    ${isLocked ? 'Kadro Seçimi Kilitlendi 🔐' : 'Kadro Planını Kaydet 💾'}
                 </button>
             </div>
 
@@ -349,12 +363,13 @@ export class FantasyLeague {
     }
 
     renderSlotMarkup(index, pos, label) {
+        const isLocked = this.isRoundLocked();
         const player = this.squad[index];
         if (player) {
             const isCaptain = this.captainIndex === index;
             const flagUrl = this.getPlayerFlag(player);
             return `
-                <div class="fantasy-slot filled-card-slot ${isCaptain ? 'captain-glow' : ''}" data-index="${index}">
+                <div class="fantasy-slot filled-card-slot ${isCaptain ? 'captain-glow' : ''} ${isLocked ? 'opacity-90 cursor-default' : ''}" data-index="${index}">
                     <div class="flex items-center gap-3 min-w-0">
                         <!-- Flag or Player Image -->
                         <div class="relative w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center overflow-hidden shrink-0">
@@ -371,32 +386,38 @@ export class FantasyLeague {
                         <div class="text-right">
                             <span class="block text-[10px] font-black text-slate-300">${player.price}M</span>
                         </div>
-                        <!-- Captain Toggle Crown Button -->
-                        <button class="fantasy-captain-btn w-6 h-6 rounded-lg ${isCaptain ? 'bg-brand-gold text-black font-black' : 'bg-white/5 text-slate-400 hover:text-white hover:bg-white/10'} border border-white/10 flex items-center justify-center text-[10px] font-black z-20 transition-all cursor-pointer" data-index="${index}" title="Kaptan Yap">
-                            ${isCaptain ? '👑' : 'C'}
-                        </button>
-                        <!-- Remove Cross Button -->
-                        <button class="fantasy-remove-btn w-6 h-6 rounded-lg bg-red-950/20 hover:bg-red-500/30 border border-red-500/20 hover:border-red-500/50 flex items-center justify-center text-red-400 hover:text-white text-xs font-bold z-20 transition-all cursor-pointer" data-index="${index}" title="Kadro dışı bırak">
-                            <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
-                        </button>
+                        ${isLocked ? `
+                            <span class="w-6 h-6 rounded-lg bg-white/5 border border-white/5 flex items-center justify-center text-[10px] font-black" title="Kaptan">
+                                ${isCaptain ? '👑' : 'C'}
+                            </span>
+                        ` : `
+                            <!-- Captain Toggle Crown Button -->
+                            <button class="fantasy-captain-btn w-6 h-6 rounded-lg ${isCaptain ? 'bg-brand-gold text-black font-black' : 'bg-white/5 text-slate-400 hover:text-white hover:bg-white/10'} border border-white/10 flex items-center justify-center text-[10px] font-black z-20 transition-all cursor-pointer" data-index="${index}" title="Kaptan Yap">
+                                ${isCaptain ? '👑' : 'C'}
+                            </button>
+                            <!-- Remove Cross Button -->
+                            <button class="fantasy-remove-btn w-6 h-6 rounded-lg bg-red-950/20 hover:bg-red-500/30 border border-red-500/20 hover:border-red-500/50 flex items-center justify-center text-red-400 hover:text-white text-xs font-bold z-20 transition-all cursor-pointer" data-index="${index}" title="Kadro dışı bırak">
+                                <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
+                            </button>
+                        `}
                     </div>
                 </div>
             `;
         } else {
             return `
-                <div class="fantasy-slot empty-card-slot" data-index="${index}" data-pos="${pos}">
+                <div class="fantasy-slot empty-card-slot ${isLocked ? 'cursor-default opacity-50' : ''}" data-index="${index}" data-pos="${pos}">
                     <div class="flex items-center gap-3">
                         <div class="w-10 h-10 rounded-xl bg-white/5 border border-dashed border-white/20 flex items-center justify-center text-slate-400 shrink-0">
-                            <i data-lucide="plus" class="w-4.5 h-4.5 opacity-70"></i>
+                            <i data-lucide="${isLocked ? 'lock' : 'plus'}" class="w-4.5 h-4.5 opacity-70"></i>
                         </div>
                         <div class="text-left">
                             <span class="block text-[8px] font-black text-brand-cyan tracking-wider uppercase">${pos} • ${label}</span>
-                            <span class="block text-[10px] text-slate-500 font-bold mt-0.5">Oyuncu Ekle</span>
+                            <span class="block text-[10px] text-slate-500 font-bold mt-0.5">${isLocked ? 'Tahmin Süresi Doldu' : 'Oyuncu Ekle'}</span>
                         </div>
                     </div>
                     <div class="flex items-center gap-2 shrink-0">
-                        <span class="text-[9px] font-semibold text-slate-600">Boş</span>
-                        <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-slate-600"></i>
+                        <span class="text-[9px] font-semibold text-slate-600">${isLocked ? 'Kilitli 🔐' : 'Boş'}</span>
+                        ${isLocked ? '' : '<i data-lucide="chevron-right" class="w-3.5 h-3.5 text-slate-600"></i>'}
                     </div>
                 </div>
             `;
@@ -426,6 +447,7 @@ export class FantasyLeague {
         const slots = this.modal.querySelectorAll('.fantasy-slot');
         slots.forEach(slot => {
             slot.addEventListener('click', (e) => {
+                if (this.isRoundLocked()) return;
                 // If the click is on sub-buttons, prevent standard click
                 if (e.target.closest('.fantasy-captain-btn') || e.target.closest('.fantasy-remove-btn')) {
                     return;
@@ -440,6 +462,7 @@ export class FantasyLeague {
         const capBtns = this.modal.querySelectorAll('.fantasy-captain-btn');
         capBtns.forEach(btn => {
             btn.addEventListener('click', (e) => {
+                if (this.isRoundLocked()) return;
                 e.stopPropagation();
                 const index = parseInt(btn.dataset.index);
                 this.captainIndex = index;
@@ -451,6 +474,7 @@ export class FantasyLeague {
         const removeBtns = this.modal.querySelectorAll('.fantasy-remove-btn');
         removeBtns.forEach(btn => {
             btn.addEventListener('click', (e) => {
+                if (this.isRoundLocked()) return;
                 e.stopPropagation();
                 const index = parseInt(btn.dataset.index);
                 this.squad[index] = null;
@@ -465,6 +489,7 @@ export class FantasyLeague {
         const clearBtn = document.getElementById('fantasy-clear-btn');
         if (clearBtn) {
             clearBtn.addEventListener('click', () => {
+                if (this.isRoundLocked()) return;
                 if (confirm("Kadrodaki tüm oyuncuları çıkarmak istediğinize emin misiniz?")) {
                     this.squad = Array(11).fill(null);
                     this.captainIndex = null;
@@ -477,6 +502,7 @@ export class FantasyLeague {
         const autoFillBtn = document.getElementById('fantasy-autofill-btn');
         if (autoFillBtn) {
             autoFillBtn.addEventListener('click', () => {
+                if (this.isRoundLocked()) return;
                 try {
                     const result = this.autoFillSquadAlgorithm(this.playersPool);
                     this.squad = result.squad;
@@ -492,6 +518,10 @@ export class FantasyLeague {
         const saveBtn = document.getElementById('fantasy-save-btn');
         if (saveBtn) {
             saveBtn.addEventListener('click', async () => {
+                if (this.isRoundLocked()) {
+                    alert("Bu turun tahmin süresi dolmuştur! Kadro kaydedilemez.");
+                    return;
+                }
                 await this.saveSquad();
             });
         }
@@ -827,6 +857,10 @@ export class FantasyLeague {
     }
 
     async saveSquad() {
+        if (this.isRoundLocked()) {
+            alert("Bu turun tahmin süresi dolmuştur! Kadro kaydedilemez.");
+            return;
+        }
         // Validation checks
         const emptySlots = this.squad.filter(p => p === null).length;
         if (emptySlots > 0) {
