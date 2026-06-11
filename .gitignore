@@ -2,5 +2,6 @@ node_modules/
 dist/
 .netlify/
 .env
-scratch/
+scratch/*
+!scratch/scraped_players.json
 .DS_Store
