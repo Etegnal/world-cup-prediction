@@ -1,6 +1,6 @@
 // Admin Panel Component (passcode authorization + match completions + live simulators + analyses updates)
 import { CONFIG } from '../config.js';
-import { getMatches, completeMatch, updateLiveScore, resetMockDb, updateAdminAnalysis, getApiStats, saveApiStats, resetAllUsersJokers, getUsers, getPredictions, updateUserJokers, savePrediction, updateUserDetails, deleteUser, getPlayers, savePlayer, deletePlayer, savePlayerRatings, hashPassword, updateMatchDetails, getAllGroupPredictions, getAllBracketPredictions, updateMatchSofaScoreId, calculateRealisticPrice, saveGroupPredictions } from '../firebase-db.js';
+import { getMatches, completeMatch, updateLiveScore, resetMockDb, updateAdminAnalysis, getApiStats, saveApiStats, resetAllUsersJokers, getUsers, getPredictions, updateUserJokers, savePrediction, updateUserDetails, deleteUser, getPlayers, savePlayer, deletePlayer, savePlayerRatings, hashPassword, updateMatchDetails, getAllGroupPredictions, getAllBracketPredictions, updateMatchSofaScoreId, calculateRealisticPrice, saveGroupPredictions, saveBracketPredictions } from '../firebase-db.js';
 import { TEAMS_DATA } from './teamsData.js';
 
 export class AdminPanel {
@@ -298,6 +298,7 @@ export class AdminPanel {
                 if (m.homeTeam) teamInfo[m.homeTeam] = { code: m.homeTeamCode, flag: m.homeFlag };
                 if (m.awayTeam) teamInfo[m.awayTeam] = { code: m.awayTeamCode, flag: m.awayFlag };
             });
+            this.teamInfo = teamInfo;
 
             // Extract default groups dynamically
             const defaultGroups = {};
@@ -314,6 +315,7 @@ export class AdminPanel {
             });
 
             if (!this.tempGroupPreds) this.tempGroupPreds = {};
+            if (!this.tempBracketPreds) this.tempBracketPreds = {};
 
             const totalUsers = users.length;
             const totalPreds = allPredictions.length;
@@ -446,90 +448,95 @@ export class AdminPanel {
 
                 // Build bracket predictions block
                 let bracketPredsHtml = '';
-                if (userBracketPred) {
-                    const stages = [
-                        { key: 'r32', name: 'Son 32' },
-                        { key: 'r16', name: 'Son 16' },
-                        { key: 'qf', name: 'Çeyrek Final' },
-                        { key: 'sf', name: 'Yarı Final' },
-                        { key: 'final', name: 'Final & Şampiyon' }
-                    ];
+                const stages = [
+                    { key: 'r32', name: 'Son 32' },
+                    { key: 'r16', name: 'Son 16' },
+                    { key: 'qf', name: 'Çeyrek Final' },
+                    { key: 'sf', name: 'Yarı Final' },
+                    { key: 'final', name: 'Final & Şampiyon' }
+                ];
 
-                    const thirdsHtml = userBracketPred.selectedThirds && userBracketPred.selectedThirds.length > 0
-                        ? `
-                            <div class="border-b border-white/5 pb-2">
-                                <span class="text-[9px] font-black text-brand-gold uppercase tracking-wider block mb-1.5">En İyi 3. Tercihleri:</span>
-                                <div class="flex flex-wrap gap-1">
-                                    ${userBracketPred.selectedThirds.map(t => {
-                                        const info = teamInfo[t] || { code: 'N/A', flag: '' };
-                                        return `
-                                            <span class="inline-flex items-center gap-1 bg-slate-900 border border-white/10 px-1.5 py-0.5 rounded text-[8px] text-slate-300 font-bold">
-                                                <img src="${info.flag}" class="w-3 h-2 rounded-sm object-cover" alt="">
-                                                ${t}
-                                            </span>
-                                        `;
-                                    }).join('')}
-                                </div>
+                const thirdsHtml = userBracketPred && userBracketPred.selectedThirds && userBracketPred.selectedThirds.length > 0
+                    ? `
+                        <div class="border-b border-white/5 pb-2">
+                            <span class="text-[9px] font-black text-brand-gold uppercase tracking-wider block mb-1.5">En İyi 3. Tercihleri:</span>
+                            <div class="flex flex-wrap gap-1">
+                                ${userBracketPred.selectedThirds.map(t => {
+                                    const info = teamInfo[t] || { code: 'N/A', flag: '' };
+                                    return `
+                                        <span class="inline-flex items-center gap-1 bg-slate-900 border border-white/10 px-1.5 py-0.5 rounded text-[8px] text-slate-300 font-bold">
+                                            <img src="${info.flag}" class="w-3 h-2 rounded-sm object-cover" alt="">
+                                            ${t}
+                                        </span>
+                                    `;
+                                }).join('')}
                             </div>
-                        `
-                        : '';
+                        </div>
+                    `
+                    : '';
 
-                    const roundsHtml = stages.map(st => {
-                        const roundData = userBracketPred[st.key] || {};
-                        const winners = Object.values(roundData).filter(Boolean);
-                        
-                        if (winners.length === 0) return '';
-                        
-                        if (st.key === 'final') {
-                            const champion = roundData['match-final-1'];
-                            if (!champion) return '';
-                            const info = teamInfo[champion] || { code: 'N/A', flag: '' };
-                            return `
-                                <div class="flex items-center justify-between bg-brand-gold/10 border border-brand-gold/20 p-2 rounded-xl mt-1.5">
-                                    <span class="text-[9px] font-black text-brand-gold uppercase tracking-widest flex items-center gap-1">👑 ŞAMPİYON:</span>
-                                    <div class="flex items-center gap-1 font-black text-white text-[10px]">
-                                        <img src="${info.flag}" class="w-3.5 h-2.5 rounded-sm object-cover" alt="">
-                                        <span>${champion}</span>
-                                    </div>
-                                </div>
-                            `;
-                        }
-
+                const roundsHtml = userBracketPred ? stages.map(st => {
+                    const roundData = userBracketPred[st.key] || {};
+                    const winners = Object.values(roundData).filter(Boolean);
+                    
+                    if (winners.length === 0) return '';
+                    
+                    if (st.key === 'final') {
+                        const champion = roundData['match-final-1'];
+                        if (!champion) return '';
+                        const info = teamInfo[champion] || { code: 'N/A', flag: '' };
                         return `
-                            <div class="border-b border-white/5 pb-2 mt-2">
-                                <span class="text-[9px] font-black text-brand-cyan uppercase tracking-wider block mb-1.5">${st.name} Kazananları (${winners.length}):</span>
-                                <div class="flex flex-wrap gap-1">
-                                    ${winners.map(t => {
-                                        const info = teamInfo[t] || { code: 'N/A', flag: '' };
-                                        return `
-                                            <span class="inline-flex items-center gap-1 bg-slate-900/50 border border-white/5 px-1.5 py-0.5 rounded text-[8px] text-slate-400">
-                                                <img src="${info.flag}" class="w-3 h-2 rounded-sm object-cover" alt="">
-                                                ${t}
-                                            </span>
-                                        `;
-                                    }).join('')}
+                            <div class="flex items-center justify-between bg-brand-gold/10 border border-brand-gold/20 p-2 rounded-xl mt-1.5">
+                                <span class="text-[9px] font-black text-brand-gold uppercase tracking-widest flex items-center gap-1">👑 ŞAMPİYON:</span>
+                                <div class="flex items-center gap-1 font-black text-white text-[10px]">
+                                    <img src="${info.flag}" class="w-3.5 h-2.5 rounded-sm object-cover" alt="">
+                                    <span>${champion}</span>
                                 </div>
                             </div>
                         `;
-                    }).join('');
+                    }
 
-                    bracketPredsHtml = `
-                        <div class="flex flex-col gap-2 bg-black/25 p-3 rounded-xl border border-white/5 mt-2.5">
+                    return `
+                        <div class="border-b border-white/5 pb-2 mt-2">
+                            <span class="text-[9px] font-black text-brand-cyan uppercase tracking-wider block mb-1.5">${st.name} Kazananları (${winners.length}):</span>
+                            <div class="flex flex-wrap gap-1">
+                                ${winners.map(t => {
+                                    const info = teamInfo[t] || { code: 'N/A', flag: '' };
+                                    return `
+                                        <span class="inline-flex items-center gap-1 bg-slate-900/50 border border-white/5 px-1.5 py-0.5 rounded text-[8px] text-slate-400">
+                                            <img src="${info.flag}" class="w-3 h-2 rounded-sm object-cover" alt="">
+                                            ${t}
+                                        </span>
+                                    `;
+                                }).join('')}
+                            </div>
+                        </div>
+                    `;
+                }).join('') : '';
+
+                bracketPredsHtml = `
+                    <div class="flex flex-col gap-2 bg-black/25 p-3 rounded-xl border border-white/5 mt-2.5">
+                        <div class="flex items-center justify-between border-b border-white/5 pb-2 mb-1.5">
                             <span class="text-[8px] font-bold text-slate-400 uppercase tracking-widest pl-0.5">Eleme Ağacı Tahminleri</span>
+                            <button class="admin-edit-bracket-toggle-btn text-[8px] font-black text-brand-cyan bg-brand-cyan/10 border border-brand-cyan/20 px-2 py-0.5 rounded uppercase cursor-pointer" data-user-id="${u.id}" type="button">
+                                Düzenle / Oluştur ⚙️
+                            </button>
+                        </div>
+                        
+                        <!-- Read-only view (visible by default) -->
+                        <div class="admin-bracket-readonly-view" id="bracket-readonly-${u.id}">
                             <div class="flex flex-col max-h-[250px] overflow-y-auto pr-1">
                                 ${thirdsHtml}
                                 ${roundsHtml || '<div class="text-center py-2 text-[10px] text-slate-500 italic">Eşleşme tahmini yapılmamış.</div>'}
                             </div>
                         </div>
-                    `;
-                } else {
-                    bracketPredsHtml = `
-                        <div class="flex flex-col gap-2 bg-black/25 p-3 rounded-xl border border-white/5 mt-2.5">
-                            <span class="text-[8px] font-bold text-slate-400 uppercase tracking-widest pl-0.5">Eleme Ağacı Tahminleri</span>
-                            <div class="text-center py-2 text-[10px] text-slate-500 italic">Eleme ağacı tahmini bulunmamaktadır.</div>
+                        
+                        <!-- Edit view (hidden by default) -->
+                        <div class="admin-bracket-edit-view hidden flex flex-col gap-3" id="bracket-edit-${u.id}">
+                            <!-- Will be rendered dynamically via renderBracketEditView -->
                         </div>
-                    `;
-                }
+                    </div>
+                `;
 
                 // Remaining jokers mapping with editable increment/decrement controls
                 const jokers = u.jokers || {};
@@ -741,6 +748,41 @@ export class AdminPanel {
                             groupLetters.forEach(g => {
                                 this.renderGroupEditCard(userId, g, teamInfo);
                             });
+                            
+                            readonlyView.classList.add('hidden');
+                            editView.classList.remove('hidden');
+                        } else {
+                            readonlyView.classList.remove('hidden');
+                            editView.classList.add('hidden');
+                        }
+                    }
+                });
+            });
+
+            // Bind Bracket Prediction Toggle View
+            this.container.querySelectorAll('.admin-edit-bracket-toggle-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const userId = btn.dataset.userId;
+                    const readonlyView = document.getElementById(`bracket-readonly-${userId}`);
+                    const editView = document.getElementById(`bracket-edit-${userId}`);
+                    
+                    if (readonlyView && editView) {
+                        const isEditHidden = editView.classList.contains('hidden');
+                        if (isEditHidden) {
+                            // Reset temp data to match current prediction status before editing
+                            const userBracketPred = allBracketPreds[userId];
+                            this.tempBracketPreds[userId] = userBracketPred ? JSON.parse(JSON.stringify(userBracketPred)) : {
+                                selectedThirds: [],
+                                r32: {},
+                                r16: {},
+                                qf: {},
+                                sf: {},
+                                final: {}
+                            };
+                            
+                            // Re-render bracket edit view
+                            this.renderBracketEditView(userId);
                             
                             readonlyView.classList.add('hidden');
                             editView.classList.remove('hidden');
@@ -3193,6 +3235,319 @@ export class AdminPanel {
         
         html += `</div>`;
         cardEl.innerHTML = html;
+    }
+
+    getBracketMatchupsForUser(userId) {
+        const groupLetters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L'];
+        const currentPreds = this.tempGroupPreds[userId];
+        const bracket = this.tempBracketPreds[userId];
+        if (!bracket) return null;
+        
+        const winners = {};
+        const runners = {};
+        const thirdsMap = {};
+        
+        groupLetters.forEach(g => {
+            if (currentPreds[g] && currentPreds[g].length === 4) {
+                winners[g] = currentPreds[g][0];
+                runners[g] = currentPreds[g][1];
+                thirdsMap[currentPreds[g][2]] = g;
+            }
+        });
+        
+        const selectedThirds = bracket.selectedThirds || [];
+        const selectedThirdsSorted = [...selectedThirds].sort((a, b) => {
+            const groupA = thirdsMap[a] || '';
+            const groupB = thirdsMap[b] || '';
+            return groupA.localeCompare(groupB);
+        });
+        
+        const r32 = {
+            'match-r32-1':  { home: winners['A'], away: selectedThirdsSorted[0], label: 'Son 32 - 1. Eşleşme' },
+            'match-r32-2':  { home: winners['B'], away: selectedThirdsSorted[1], label: 'Son 32 - 2. Eşleşme' },
+            'match-r32-3':  { home: winners['C'], away: runners['F'], label: 'Son 32 - 3. Eşleşme' },
+            'match-r32-4':  { home: winners['D'], away: selectedThirdsSorted[2], label: 'Son 32 - 4. Eşleşme' },
+            'match-r32-5':  { home: winners['E'], away: selectedThirdsSorted[3], label: 'Son 32 - 5. Eşleşme' },
+            'match-r32-6':  { home: winners['F'], away: runners['C'], label: 'Son 32 - 6. Eşleşme' },
+            'match-r32-7':  { home: winners['G'], away: selectedThirdsSorted[4], label: 'Son 32 - 7. Eşleşme' },
+            'match-r32-8':  { home: winners['H'], away: runners['J'], label: 'Son 32 - 8. Eşleşme' },
+            'match-r32-9':  { home: winners['I'], away: selectedThirdsSorted[5], label: 'Son 32 - 9. Eşleşme' },
+            'match-r32-10': { home: winners['J'], away: runners['H'], label: 'Son 32 - 10. Eşleşme' },
+            'match-r32-11': { home: winners['K'], away: selectedThirdsSorted[6], label: 'Son 32 - 11. Eşleşme' },
+            'match-r32-12': { home: winners['L'], away: selectedThirdsSorted[7], label: 'Son 32 - 12. Eşleşme' },
+            'match-r32-13': { home: runners['A'], away: runners['B'], label: 'Son 32 - 13. Eşleşme' },
+            'match-r32-14': { home: runners['D'], away: runners['G'], label: 'Son 32 - 14. Eşleşme' },
+            'match-r32-15': { home: runners['E'], away: runners['I'], label: 'Son 32 - 15. Eşleşme' },
+            'match-r32-16': { home: runners['K'], away: runners['L'], label: 'Son 32 - 16. Eşleşme' }
+        };
+        
+        const r16 = {
+            'match-r16-1': { home: bracket.r32['match-r32-1'], away: bracket.r32['match-r32-13'], label: 'Son 16 - 1. Eşleşme' },
+            'match-r16-2': { home: bracket.r32['match-r32-2'], away: bracket.r32['match-r32-14'], label: 'Son 16 - 2. Eşleşme' },
+            'match-r16-3': { home: bracket.r32['match-r32-3'], away: bracket.r32['match-r32-15'], label: 'Son 16 - 3. Eşleşme' },
+            'match-r16-4': { home: bracket.r32['match-r32-4'], away: bracket.r32['match-r32-16'], label: 'Son 16 - 4. Eşleşme' },
+            'match-r16-5': { home: bracket.r32['match-r32-5'], away: bracket.r32['match-r32-9'],  label: 'Son 16 - 5. Eşleşme' },
+            'match-r16-6': { home: bracket.r32['match-r32-6'], away: bracket.r32['match-r32-10'], label: 'Son 16 - 6. Eşleşme' },
+            'match-r16-7': { home: bracket.r32['match-r32-7'], away: bracket.r32['match-r32-11'], label: 'Son 16 - 7. Eşleşme' },
+            'match-r16-8': { home: bracket.r32['match-r32-8'], away: bracket.r32['match-r32-12'], label: 'Son 16 - 8. Eşleşme' }
+        };
+        
+        const qf = {
+            'match-qf-1': { home: bracket.r16['match-r16-1'], away: bracket.r16['match-r16-5'], label: 'Çeyrek Final - 1. Eşleşme' },
+            'match-qf-2': { home: bracket.r16['match-r16-2'], away: bracket.r16['match-r16-6'], label: 'Çeyrek Final - 2. Eşleşme' },
+            'match-qf-3': { home: bracket.r16['match-r16-3'], away: bracket.r16['match-r16-7'], label: 'Çeyrek Final - 3. Eşleşme' },
+            'match-qf-4': { home: bracket.r16['match-r16-4'], away: bracket.r16['match-r16-8'], label: 'Çeyrek Final - 4. Eşleşme' }
+        };
+        
+        const sf = {
+            'match-sf-1': { home: bracket.qf['match-qf-1'], away: bracket.qf['match-qf-3'], label: 'Yarı Final - 1. Eşleşme' },
+            'match-sf-2': { home: bracket.qf['match-qf-2'], away: bracket.qf['match-qf-4'], label: 'Yarı Final - 2. Eşleşme' }
+        };
+        
+        const final = {
+            'match-final-1': { home: bracket.sf['match-sf-1'], away: bracket.sf['match-sf-2'], label: 'Dünya Kupası Finali 🏆' }
+        };
+        
+        return { r32, r16, qf, sf, final };
+    }
+
+    clearBracketDownstreamWinner(userId, teamName, roundKey) {
+        const roundOrder = ['r32', 'r16', 'qf', 'sf', 'final'];
+        const startIdx = roundKey === 'thirds' ? 0 : roundOrder.indexOf(roundKey) + 1;
+        const bracket = this.tempBracketPreds[userId];
+        if (!bracket) return;
+        
+        for (let i = startIdx; i < roundOrder.length; i++) {
+            const r = roundOrder[i];
+            if (bracket[r]) {
+                Object.keys(bracket[r]).forEach(mId => {
+                    if (bracket[r][mId] === teamName) {
+                        delete bracket[r][mId];
+                    }
+                });
+            }
+        }
+    }
+
+    renderBracketEditView(userId) {
+        const editViewEl = document.getElementById(`bracket-edit-${userId}`);
+        if (!editViewEl) return;
+        
+        const currentPreds = this.tempGroupPreds[userId];
+        const bracket = this.tempBracketPreds[userId];
+        if (!currentPreds || !bracket) return;
+        
+        const groupLetters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L'];
+        
+        const candidateThirds = groupLetters.map(g => {
+            const teams = currentPreds[g];
+            return teams ? { team: teams[2], group: g } : null;
+        }).filter(Boolean);
+        
+        const selectedThirds = new Set(bracket.selectedThirds || []);
+        
+        let html = `
+            <div class="bg-slate-900/60 p-3.5 rounded-xl border border-white/5 flex flex-col gap-2">
+                <span class="text-[9px] font-black text-brand-gold uppercase tracking-wider block mb-1">
+                    En İyi 3.ler Aşaması (8 adet seçilmeli - Seçilen: ${selectedThirds.size}/8)
+                </span>
+                <div class="grid grid-cols-2 xs:grid-cols-3 gap-2">
+                    ${candidateThirds.map(ct => {
+                        const isChecked = selectedThirds.has(ct.team);
+                        return `
+                            <label class="flex items-center gap-2 bg-black/30 border border-white/5 hover:border-white/10 px-2 py-1.5 rounded-lg text-[10px] text-slate-300 cursor-pointer select-none">
+                                <input type="checkbox" class="admin-bracket-third-cb font-bold" data-user-id="${userId}" data-team-name="${ct.team}" ${isChecked ? 'checked' : ''}>
+                                <div class="flex flex-col">
+                                    <span class="font-extrabold text-white truncate max-w-[90px]">${ct.team}</span>
+                                    <span class="text-[8px] text-slate-500 uppercase tracking-widest font-semibold">Grup ${ct.group}</span>
+                                </div>
+                            </label>
+                        `;
+                    }).join('')}
+                </div>
+            </div>
+        `;
+        
+        if (selectedThirds.size !== 8) {
+            html += `
+                <div class="bg-red-950/20 border border-red-500/20 p-4 rounded-xl text-center text-[10px] text-red-400 font-bold">
+                    ⚠️ Eleme ağacı maçlarını görebilmek ve tahmin etmek için lütfen grup üçüncülerinden TAM OLARAK 8 adet takım seçiniz.
+                </div>
+            `;
+        } else {
+            const stages = [
+                { key: 'r32', name: 'Son 32 Eşleşmeleri' },
+                { key: 'r16', name: 'Son 16 Eşleşmeleri' },
+                { key: 'qf', name: 'Çeyrek Final Eşleşmeleri' },
+                { key: 'sf', name: 'Yarı Final Eşleşmeleri' },
+                { key: 'final', name: 'Final & Şampiyon' }
+            ];
+            
+            const matchups = this.getBracketMatchupsForUser(userId);
+            
+            stages.forEach(st => {
+                const stageMatches = matchups[st.key] || {};
+                const stagePreds = bracket[st.key] || {};
+                
+                html += `
+                    <div class="bg-slate-900/40 p-3 rounded-xl border border-white/5 flex flex-col gap-2 mt-1">
+                        <span class="text-[9px] font-black text-brand-cyan uppercase tracking-wider block border-b border-white/5 pb-1">
+                            ${st.name}
+                        </span>
+                        <div class="grid grid-cols-1 xs:grid-cols-2 gap-2">
+                `;
+                
+                Object.entries(stageMatches).forEach(([matchId, m]) => {
+                    const selectedWinner = stagePreds[matchId] || '';
+                    const homeTeam = m.home || '';
+                    const awayTeam = m.away || '';
+                    
+                    const isHomeSelected = selectedWinner === homeTeam && homeTeam !== '';
+                    const isAwaySelected = selectedWinner === awayTeam && awayTeam !== '';
+                    
+                    const canPredict = homeTeam !== '' && awayTeam !== '';
+                    
+                    html += `
+                        <div class="bg-black/20 p-2 rounded-lg border border-white/5 flex flex-col gap-1.5 text-[10px]">
+                            <span class="text-[8px] font-bold text-slate-500 uppercase tracking-wider block">${m.label}</span>
+                            <div class="flex items-center justify-between gap-1.5">
+                                <select class="admin-bracket-match-select bg-slate-900 border border-white/10 rounded px-2 py-1 text-slate-200 text-[10px] font-extrabold outline-none focus:border-brand-green w-full" 
+                                    data-user-id="${userId}" data-round="${st.key}" data-match-id="${matchId}" ${!canPredict ? 'disabled' : ''}>
+                                    <option value="" ${selectedWinner === '' ? 'selected' : ''}>-- Kazanan Seçin --</option>
+                                    ${homeTeam ? `<option value="${homeTeam}" ${isHomeSelected ? 'selected' : ''}>${homeTeam}</option>` : ''}
+                                    ${awayTeam ? `<option value="${awayTeam}" ${isAwaySelected ? 'selected' : ''}>${awayTeam}</option>` : ''}
+                                    ${!canPredict ? `<option value="" disabled selected>Belli Değil (Bekleniyor)</option>` : ''}
+                                </select>
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                if (st.key === 'final') {
+                    const finalWinner = bracket.final['match-final-1'] || '';
+                    const championInfo = (this.teamInfo && this.teamInfo[finalWinner]) || { flag: '' };
+                    
+                    html += `
+                        <div class="col-span-full bg-brand-gold/5 border border-brand-gold/20 p-3 rounded-lg flex flex-col gap-2 mt-1">
+                            <span class="text-[9px] font-black text-brand-gold uppercase tracking-widest block text-center">🏆 ŞAMPİYON TAHMİNİ 🏆</span>
+                            <div class="flex items-center justify-center gap-2">
+                                ${finalWinner ? `
+                                    ${championInfo.flag ? `<img src="${championInfo.flag}" class="w-6 h-4 rounded-sm object-cover shadow border border-white/10" alt="">` : ''}
+                                    <span class="font-black text-white text-xs">${finalWinner}</span>
+                                ` : `
+                                    <span class="italic text-slate-500 text-[10px]">Final kazananı bekleniyor...</span>
+                                `}
+                            </div>
+                        </div>
+                    `;
+                }
+                
+                html += `
+                        </div>
+                    </div>
+                `;
+            });
+        }
+        
+        html += `
+            <div class="flex gap-2 mt-2">
+                <button class="admin-save-bracket-preds-btn flex-grow py-2 bg-brand-green hover:bg-brand-green/90 text-black text-[10px] font-black uppercase tracking-wider rounded-lg transition-all active:scale-95 shadow-md font-bold font-outfit" data-user-id="${userId}" type="button">
+                    Eleme Ağacını Kaydet 💾
+                </button>
+                <button class="admin-edit-bracket-cancel-btn py-2 px-3 bg-white/5 hover:bg-white/10 border border-white/10 text-slate-400 text-[10px] font-black uppercase tracking-wider rounded-lg transition-all active:scale-95 shadow-md cursor-pointer" data-user-id="${userId}" type="button">
+                    Vazgeç
+                </button>
+            </div>
+        `;
+        
+        editViewEl.innerHTML = html;
+        
+        editViewEl.querySelectorAll('.admin-bracket-third-cb').forEach(cb => {
+            cb.addEventListener('change', (e) => {
+                const team = cb.dataset.teamName;
+                const checked = cb.checked;
+                
+                if (checked) {
+                    if (selectedThirds.size >= 8) {
+                        alert("En fazla 8 adet en iyi üçüncü takım seçebilirsiniz!");
+                        cb.checked = false;
+                        return;
+                    }
+                    selectedThirds.add(team);
+                } else {
+                    selectedThirds.delete(team);
+                    this.clearBracketDownstreamWinner(userId, team, 'thirds');
+                }
+                
+                bracket.selectedThirds = Array.from(selectedThirds);
+                this.renderBracketEditView(userId);
+            });
+        });
+        
+        editViewEl.querySelectorAll('.admin-bracket-match-select').forEach(sel => {
+            sel.addEventListener('change', (e) => {
+                const matchId = sel.dataset.matchId;
+                const round = sel.dataset.round;
+                const val = sel.value;
+                
+                const oldVal = bracket[round][matchId] || '';
+                bracket[round][matchId] = val;
+                
+                if (oldVal && oldVal !== val) {
+                    this.clearBracketDownstreamWinner(userId, oldVal, round);
+                }
+                
+                this.renderBracketEditView(userId);
+            });
+        });
+        
+        const saveBtn = editViewEl.querySelector('.admin-save-bracket-preds-btn');
+        if (saveBtn) {
+            saveBtn.addEventListener('click', async (e) => {
+                e.stopPropagation();
+                
+                if (selectedThirds.size !== 8) {
+                    alert("Lütfen tam olarak 8 adet En İyi 3. takım seçiniz!");
+                    return;
+                }
+                
+                const finalWinner = bracket.final['match-final-1'];
+                if (!finalWinner) {
+                    alert("Lütfen tüm eşleşmeleri tahmin edip Şampiyonu seçiniz!");
+                    return;
+                }
+                
+                saveBtn.disabled = true;
+                const origText = saveBtn.innerHTML;
+                saveBtn.innerHTML = '<i class="w-3.5 h-3.5 animate-spin"></i> Kaydediliyor...';
+                
+                try {
+                    const success = await saveBracketPredictions(userId, bracket);
+                    if (success) {
+                        alert("Eleme ağacı tahminleri başarıyla kaydedildi!");
+                        await this.appState.refreshDashboard();
+                    } else {
+                        alert("Eleme ağacı tahminleri kaydedilirken bir hata oluştu.");
+                    }
+                } catch (saveErr) {
+                    console.error("Save bracket predictions failed:", saveErr);
+                    alert("Hata: " + saveErr.message);
+                } finally {
+                    saveBtn.disabled = false;
+                    saveBtn.innerHTML = origText;
+                }
+            });
+        }
+        
+        const cancelBtn = editViewEl.querySelector('.admin-edit-bracket-cancel-btn');
+        if (cancelBtn) {
+            cancelBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const readonlyView = document.getElementById(`bracket-readonly-${userId}`);
+                readonlyView.classList.remove('hidden');
+                editViewEl.classList.add('hidden');
+            });
+        }
     }
 }
 

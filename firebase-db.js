@@ -3842,13 +3842,28 @@ export function calculateBracketPoints(userId, data) {
 
     // 2. Elemeler (Knockout) Scoring (2 points for correct winner prediction)
     // Matches 73-104 correspond to knockout matches
+    const getActualMatchIdFromBracketId = (bracketMatchId) => {
+        const mapping = {
+            'match-r32-1': 'match-wc73', 'match-r32-2': 'match-wc74', 'match-r32-3': 'match-wc75', 'match-r32-4': 'match-wc76',
+            'match-r32-5': 'match-wc77', 'match-r32-6': 'match-wc78', 'match-r32-7': 'match-wc79', 'match-r32-8': 'match-wc80',
+            'match-r32-9': 'match-wc81', 'match-r32-10': 'match-wc82', 'match-r32-11': 'match-wc83', 'match-r32-12': 'match-wc84',
+            'match-r32-13': 'match-wc85', 'match-r32-14': 'match-wc86', 'match-r32-15': 'match-wc87', 'match-r32-16': 'match-wc88',
+            'match-r16-1': 'match-wc89', 'match-r16-2': 'match-wc90', 'match-r16-3': 'match-wc91', 'match-r16-4': 'match-wc92',
+            'match-r16-5': 'match-wc93', 'match-r16-6': 'match-wc94', 'match-r16-7': 'match-wc95', 'match-r16-8': 'match-wc96',
+            'match-qf-1': 'match-wc97', 'match-qf-2': 'match-wc98', 'match-qf-3': 'match-wc99', 'match-qf-4': 'match-wc100',
+            'match-sf-1': 'match-wc101', 'match-sf-2': 'match-wc102', 'match-final-1': 'match-wc104'
+        };
+        return mapping[bracketMatchId] || bracketMatchId;
+    };
+
     const allRounds = ['r32', 'r16', 'qf', 'sf', 'final'];
     allRounds.forEach(round => {
         const roundPreds = userBracketPred[round];
         if (roundPreds) {
             for (const [matchId, predWinner] of Object.entries(roundPreds)) {
-                // Find actual match
-                const actualMatch = data.matches.find(m => m.id === matchId);
+                // Find actual match using translated match ID
+                const actualMatchId = getActualMatchIdFromBracketId(matchId);
+                const actualMatch = data.matches.find(m => m.id === actualMatchId);
                 if (actualMatch && actualMatch.status === 'FINISHED') {
                     const hScore = parseInt(actualMatch.homeScore) || 0;
                     const aScore = parseInt(actualMatch.awayScore) || 0;
