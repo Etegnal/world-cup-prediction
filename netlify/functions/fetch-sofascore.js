@@ -13,7 +13,7 @@ export async function handler(event, context) {
 
     try {
         // Fetch event details (score, status, etc.)
-        const eventRes = await fetch(`https://api.sofascore.com/api/v1/event/${eventId}`, {
+        const eventRes = await fetch(`https://www.sofascore.com/api/v1/event/${eventId}`, {
             headers: {
                 "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
                 "Referer": "https://www.sofascore.com/",
@@ -31,7 +31,7 @@ export async function handler(event, context) {
         const awayScore = eventData.event?.awayScore?.display;
 
         // Fetch lineups (ratings)
-        const lineupsRes = await fetch(`https://api.sofascore.com/api/v1/event/${eventId}/lineups`, {
+        const lineupsRes = await fetch(`https://www.sofascore.com/api/v1/event/${eventId}/lineups`, {
             headers: {
                 "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
                 "Referer": "https://www.sofascore.com/",
@@ -83,7 +83,7 @@ export async function handler(event, context) {
         // Fetch team statistics
         let statistics = null;
         try {
-            const statsRes = await fetch(`https://api.sofascore.com/api/v1/event/${eventId}/statistics`, {
+            const statsRes = await fetch(`https://www.sofascore.com/api/v1/event/${eventId}/statistics`, {
                 headers: {
                     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
                     "Referer": "https://www.sofascore.com/",
@@ -104,7 +104,7 @@ export async function handler(event, context) {
         // Fetch match events (timeline)
         let incidents = [];
         try {
-            const incidentsRes = await fetch(`https://api.sofascore.com/api/v1/event/${eventId}/incidents`, {
+            const incidentsRes = await fetch(`https://www.sofascore.com/api/v1/event/${eventId}/incidents`, {
                 headers: {
                     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
                     "Referer": "https://www.sofascore.com/",

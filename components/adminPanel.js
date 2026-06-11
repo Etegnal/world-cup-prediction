@@ -1341,7 +1341,7 @@ export class AdminPanel {
         let compId = window.location.pathname.match(/\\/competition\\/(\\d+)/)?.[1];
         if (!compId || compId === "0") {
             console.log("URL'de turnuva ID'si bulunamadı (0). Aktif turnuva listesi API'den çekiliyor...");
-            const activeRes = await fetch("https://api.sofascore.com/api/v1/fantasy/competitions/active");
+            const activeRes = await fetch("https://www.sofascore.com/api/v1/fantasy/competitions/active");
             if (activeRes.ok) {
                 const activeData = await activeRes.json();
                 if (Array.isArray(activeData) && activeData.length > 0) {
@@ -1354,7 +1354,7 @@ export class AdminPanel {
 
         if (compId && compId !== "0") {
             console.log("Turnuva ID tespit edildi:", compId, ". Oyuncu listesi çekiliyor...");
-            const res = await fetch("https://api.sofascore.com/api/v1/fantasy/competition/" + compId + "/players");
+            const res = await fetch("https://www.sofascore.com/api/v1/fantasy/competition/" + compId + "/players");
             if (res.ok) {
                 const data = await res.json();
                 const players = data.players || data.playerPool || [];
@@ -2171,10 +2171,10 @@ export class AdminPanel {
 
     async fetchSofaScoreDirectly(sofaScoreId) {
         const tryFetch = async (proxyUrl) => {
-            const eventUrl = `https://api.sofascore.com/api/v1/event/${sofaScoreId}`;
-            const lineupsUrl = `https://api.sofascore.com/api/v1/event/${sofaScoreId}/lineups`;
-            const statsUrl = `https://api.sofascore.com/api/v1/event/${sofaScoreId}/statistics`;
-            const incidentsUrl = `https://api.sofascore.com/api/v1/event/${sofaScoreId}/incidents`;
+            const eventUrl = `https://www.sofascore.com/api/v1/event/${sofaScoreId}`;
+            const lineupsUrl = `https://www.sofascore.com/api/v1/event/${sofaScoreId}/lineups`;
+            const statsUrl = `https://www.sofascore.com/api/v1/event/${sofaScoreId}/statistics`;
+            const incidentsUrl = `https://www.sofascore.com/api/v1/event/${sofaScoreId}/incidents`;
 
             const getFinalUrl = (targetUrl) => {
                 if (!proxyUrl) return targetUrl;
@@ -2656,7 +2656,7 @@ export class AdminPanel {
                 </p>
                 <ol class="list-decimal list-inside text-[9px] text-slate-300 gap-1.5 flex flex-col mb-3 bg-black/30 p-2.5 rounded-lg border border-white/5 font-medium">
                     <li>
-                        <a href="https://api.sofascore.com/api/v1/event/${sofaScoreId}/lineups" target="_blank" class="text-brand-cyan hover:underline font-bold inline-flex items-center gap-0.5">
+                        <a href="https://www.sofascore.com/api/v1/event/${sofaScoreId}/lineups" target="_blank" class="text-brand-cyan hover:underline font-bold inline-flex items-center gap-0.5">
                             Buraya tıklayarak lineups sayfasını yeni sekmede açın 🔗
                         </a>
                     </li>
