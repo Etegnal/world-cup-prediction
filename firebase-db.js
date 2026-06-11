@@ -4206,6 +4206,65 @@ export async function updateUserDetails(userId, details) {
     }
 }
 
+// Delete user from database
+export async function deleteUser(userId) {
+    await initDb();
+    if (CONFIG.IS_DEMO_MODE) {
+        const data = getMockData();
+        data.users = (data.users || []).filter(u => u.id !== userId);
+        data.predictions = (data.predictions || []).filter(p => p.userId !== userId);
+        if (data.groupPredictions && data.groupPredictions[userId]) {
+            delete data.groupPredictions[userId];
+        }
+        if (data.bracketPredictions && data.bracketPredictions[userId]) {
+            delete data.bracketPredictions[userId];
+        }
+        if (data.fantasySquads && data.fantasySquads[userId]) {
+            delete data.fantasySquads[userId];
+        }
+        saveMockData(data);
+        return true;
+    } else {
+        try {
+            // Delete user doc
+            await fStore.deleteDoc(fStore.doc(db, "users", userId));
+            
+            // Delete predictions associated with this user
+            const q = fStore.query(fStore.collection(db, "predictions"), fStore.where("userId", "==", userId));
+            const snap = await fStore.getDocs(q);
+            if (!snap.empty) {
+                const batch = fStore.writeBatch(db);
+                snap.forEach(doc => {
+                    batch.delete(doc.ref);
+                });
+                await batch.commit();
+            }
+
+            // Delete group predictions (doc ID is userId)
+            await fStore.deleteDoc(fStore.doc(db, "groupPredictions", userId)).catch(() => {});
+
+            // Delete bracket predictions (doc ID is userId)
+            await fStore.deleteDoc(fStore.doc(db, "bracketPredictions", userId)).catch(() => {});
+
+            // Delete fantasy squads (query by userId)
+            const qFantasy = fStore.query(fStore.collection(db, "fantasySquads"), fStore.where("userId", "==", userId));
+            const snapFantasy = await fStore.getDocs(qFantasy);
+            if (!snapFantasy.empty) {
+                const batch = fStore.writeBatch(db);
+                snapFantasy.forEach(doc => {
+                    batch.delete(doc.ref);
+                });
+                await batch.commit();
+            }
+
+            return true;
+        } catch (err) {
+            console.error("Failed to delete user from Firestore:", err);
+            return false;
+        }
+    }
+}
+
 // --- FANTASY 11 HELPER FUNCTIONS ---
 
 // Get list of players, optionally filtered by team or position

@@ -1,6 +1,6 @@
 // Admin Panel Component (passcode authorization + match completions + live simulators + analyses updates)
 import { CONFIG } from '../config.js';
-import { getMatches, completeMatch, updateLiveScore, resetMockDb, updateAdminAnalysis, getApiStats, saveApiStats, resetAllUsersJokers, getUsers, getPredictions, updateUserJokers, savePrediction, updateUserDetails, getPlayers, savePlayer, deletePlayer, savePlayerRatings, hashPassword, updateMatchTeamsAndDate, getAllGroupPredictions, getAllBracketPredictions, updateMatchSofaScoreId, calculateRealisticPrice } from '../firebase-db.js';
+import { getMatches, completeMatch, updateLiveScore, resetMockDb, updateAdminAnalysis, getApiStats, saveApiStats, resetAllUsersJokers, getUsers, getPredictions, updateUserJokers, savePrediction, updateUserDetails, deleteUser, getPlayers, savePlayer, deletePlayer, savePlayerRatings, hashPassword, updateMatchTeamsAndDate, getAllGroupPredictions, getAllBracketPredictions, updateMatchSofaScoreId, calculateRealisticPrice } from '../firebase-db.js';
 import { TEAMS_DATA } from './teamsData.js';
 
 export class AdminPanel {
@@ -447,7 +447,10 @@ export class AdminPanel {
                                     </div>
                                     <div>
                                         <label class="text-[8px] font-bold text-slate-500 uppercase block mb-0.5">Şifre</label>
-                                        <input type="password" class="admin-edit-password bg-slate-900 border border-white/10 rounded px-2.5 py-1.5 text-xs text-white outline-none focus:border-brand-green w-full" value="${u.password ? '••••••••' : ''}">
+                                        <div class="flex gap-1.5">
+                                            <input type="password" class="admin-edit-password bg-slate-900 border border-white/10 rounded px-2.5 py-1.5 text-xs text-white outline-none focus:border-brand-green w-full" value="${u.password || ''}" data-orig="${u.password || ''}">
+                                            <button class="admin-toggle-pw-btn px-2 py-1.5 bg-white/5 hover:bg-white/10 border border-white/10 rounded text-[8px] font-bold text-slate-400 hover:text-slate-200 transition-colors cursor-pointer" type="button">Göster</button>
+                                        </div>
                                     </div>
                                     <div>
                                         <label class="text-[8px] font-bold text-slate-500 uppercase block mb-0.5">Toplam Puan</label>
@@ -463,9 +466,14 @@ export class AdminPanel {
                                         </select>
                                     </div>
                                 </div>
-                                <button class="admin-save-user-details-btn w-full mt-2 py-2 bg-brand-cyan hover:bg-brand-cyan/90 text-black text-[10px] font-black uppercase tracking-wider rounded-lg transition-all active:scale-95 shadow-md" data-user-id="${u.id}" type="button">
-                                    Kullanıcı Bilgilerini Kaydet 💾
-                                </button>
+                                <div class="flex gap-2 mt-2">
+                                    <button class="admin-save-user-details-btn flex-grow py-2 bg-brand-cyan hover:bg-brand-cyan/90 text-black text-[10px] font-black uppercase tracking-wider rounded-lg transition-all active:scale-95 shadow-md" data-user-id="${u.id}" type="button">
+                                        Kullanıcı Bilgilerini Kaydet 💾
+                                    </button>
+                                    <button class="admin-delete-user-btn py-2 px-3 bg-red-950/40 hover:bg-red-900 border border-red-500/30 text-red-400 text-[10px] font-black uppercase tracking-wider rounded-lg transition-all active:scale-95 shadow-md cursor-pointer" data-user-id="${u.id}" type="button">
+                                        Sil 🗑
+                                    </button>
+                                </div>
                             </div>
 
                             <!-- Jokers Row -->
@@ -736,7 +744,8 @@ export class AdminPanel {
                     btn.textContent = 'Kaydediliyor...';
                     
                     const details = { name, points, badge };
-                    if (password && password !== '••••••••') {
+                    const origPw = pwInput.dataset.orig || '';
+                    if (password && password !== origPw) {
                         details.password = password;
                     }
                     
@@ -750,6 +759,41 @@ export class AdminPanel {
                         this.appState.refreshDashboard();
                     } else {
                         alert("Kullanıcı bilgileri güncellenirken hata oluştu.");
+                    }
+                });
+            });
+
+            // Bind User Toggle Password Visibility Buttons
+            this.container.querySelectorAll('.admin-toggle-pw-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const input = btn.previousElementSibling;
+                    if (input.type === 'password') {
+                        input.type = 'text';
+                        btn.textContent = 'Gizle';
+                    } else {
+                        input.type = 'password';
+                        btn.textContent = 'Göster';
+                    }
+                });
+            });
+
+            // Bind User Delete Buttons
+            this.container.querySelectorAll('.admin-delete-user-btn').forEach(btn => {
+                btn.addEventListener('click', async () => {
+                    const userId = btn.dataset.userId;
+                    const parentCard = btn.closest('.user-admin-card');
+                    const userName = parentCard.querySelector('.admin-edit-username').value;
+                    
+                    if (confirm(`"${userName}" isimli kullanıcıyı ve bu kullanıcıya ait TÜM tahminleri kalıcı olarak silmek istediğinize emin misiniz?`)) {
+                        btn.disabled = true;
+                        const success = await deleteUser(userId);
+                        if (success) {
+                            alert("Kullanıcı başarıyla silindi!");
+                            this.appState.refreshDashboard();
+                        } else {
+                            btn.disabled = false;
+                            alert("Kullanıcı silinirken bir hata oluştu.");
+                        }
                     }
                 });
             });
