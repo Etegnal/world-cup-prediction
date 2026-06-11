@@ -2656,7 +2656,7 @@ export class AdminPanel {
                 </p>
                 
                 <div class="mb-3">
-                    <p class="text-[9px] font-bold text-brand-gold mb-1 uppercase tracking-wider">YÖNTEM A: 1-Tıkla Otomatik Kopyalama Kısayolu (TAVSİYE EDİLEN ⚡)</p>
+                    <p class="text-[9px] font-bold text-brand-gold mb-1 uppercase tracking-wider">YÖNTEM A: 1-Tıkla Otomatik Kopyalama Kısayolu</p>
                     <ol class="list-decimal list-inside text-[9px] text-slate-300 gap-1.5 flex flex-col bg-black/30 p-2.5 rounded-lg border border-white/5 font-medium mb-2 leading-relaxed">
                         <li>Aşağıdaki butona basarak kısayol kodunu kopyalayın:
                             <button id="copy-bookmarklet-btn" class="mt-1 px-2.5 py-1 bg-brand-cyan hover:bg-cyan-400 text-black font-bold text-[8px] uppercase rounded transition-all flex items-center gap-1 cursor-pointer" type="button">
@@ -2674,7 +2674,18 @@ export class AdminPanel {
                     </ol>
                 </div>
 
-                <textarea id="manual-json-input" class="w-full h-24 bg-slate-950 border border-white/10 rounded-lg p-2 text-[9px] font-mono text-white outline-none focus:border-brand-cyan resize-none mb-3" placeholder="Sitede kısayola tıkladıktan sonra kopyalanan verileri buraya yapıştırın (Ctrl+V)..."></textarea>
+                <div class="mb-3">
+                    <p class="text-[9px] font-bold text-slate-400 mb-1 uppercase tracking-wider">YÖNTEM B: Tarayıcı Ağ Kayıtları İle Kopyalama (%100 KESİN ÇÖZÜM 🛠️)</p>
+                    <ol class="list-decimal list-inside text-[9px] text-slate-300 gap-1.5 flex flex-col bg-black/30 p-2.5 rounded-lg border border-white/5 font-medium leading-relaxed">
+                        <li>SofaScore'da maç detay sayfasındayken klavyeden <kbd class="bg-slate-800 px-1 py-0.5 rounded text-[8px] text-white">F12</kbd> tuşuna basın (veya sağ tıklayıp <b>İncele / Inspect</b> deyin).</li>
+                        <li>Açılan pencerede üstteki sekmelerden <b>Network (Ağ)</b> sekmesine tıklayın.</li>
+                        <li>Sayfayı yenileyin (<kbd class="bg-slate-800 px-1 py-0.5 rounded text-[8px] text-white">F5</kbd>) ve sol üstteki arama kutusuna <b>lineups</b> yazın.</li>
+                        <li>Listelenen <code>lineups</code> isteğine sağ tıklayıp <b>Copy -> Copy response (Yanıtı kopyala)</b> seçeneğini seçin.</li>
+                        <li>Kopyaladığınız bu veriyi aşağıdaki kutuya yapıştırın.</li>
+                    </ol>
+                </div>
+
+                <textarea id="manual-json-input" class="w-full h-24 bg-slate-950 border border-white/10 rounded-lg p-2 text-[9px] font-mono text-white outline-none focus:border-brand-cyan resize-none mb-3" placeholder="Kopyaladığınız verileri buraya yapıştırın (Ctrl+V)..."></textarea>
                 <div class="flex gap-2">
                     <button id="manual-paste-cancel-btn" class="flex-grow py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 text-[10px] font-bold uppercase rounded-lg transition-all" type="button">İptal</button>
                     <button id="manual-paste-submit-btn" class="flex-grow py-2 bg-brand-green hover:bg-brand-green/90 text-black text-[10px] font-black uppercase rounded-lg transition-all" type="button">Reytingleri Yükle ⚡</button>
