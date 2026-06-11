@@ -2663,30 +2663,18 @@ export class AdminPanel {
                                 <i data-lucide="copy" class="w-3 h-3"></i> Kodu Kopyala
                             </button>
                         </li>
-                        <li>Tarayıcınızın üst kısmındaki yer imleri çubuğuna (yoksa açmak için <kbd class="bg-slate-800 px-1 py-0.5 rounded text-[8px] text-white">Ctrl+Shift+B</kbd> basın) sağ tıklayıp <b>"Sayfa Ekle" (Yer imi ekle)</b> deyin.</li>
+                        <li>Tarayıcınızın yer imleri çubuğuna (yoksa açmak için <kbd class="bg-slate-800 px-1 py-0.5 rounded text-[8px] text-white">Ctrl+Shift+B</kbd> basın) sağ tıklayıp <b>"Sayfa Ekle" (Yer imi ekle)</b> deyin.</li>
                         <li>İsim olarak <b>"SofaScore Kopyala"</b> yazın. Adres (URL) kısmına kopyaladığınız kodu yapıştırıp kaydedin.</li>
                         <li>
                             <a href="https://www.sofascore.com" target="_blank" class="text-brand-cyan hover:underline font-bold inline-flex items-center gap-0.5">
                                 sofascore.com sitesine gitmek için tıklayın 🔗
-                            </a>
+                            </a> ve oradan maçı aratarak <b>maç detay sayfasını</b> açın.
                         </li>
-                        <li>Sitedeyken yer imlerindeki bu yeni kısayola tıklayın, maç ID'sini girip tamam deyin. Veri otomatik kopyalanacaktır!</li>
+                        <li>Maç sayfasındayken yer imlerindeki bu yeni <b>"SofaScore Kopyala"</b> kısayoluna tıklayın. Sayfa verisi otomatik kopyalanacaktır!</li>
                     </ol>
                 </div>
 
-                <div class="mb-3">
-                    <p class="text-[9px] font-bold text-slate-400 mb-1 uppercase tracking-wider">YÖNTEM B: Manuel Sayfa Açma (Eski Yöntem)</p>
-                    <ol class="list-decimal list-inside text-[9px] text-slate-300 gap-1.5 flex flex-col bg-black/30 p-2.5 rounded-lg border border-white/5 font-medium leading-relaxed">
-                        <li>
-                            <a href="https://www.sofascore.com/api/v1/event/${sofaScoreId}/lineups" target="_blank" class="text-brand-cyan hover:underline font-bold inline-flex items-center gap-0.5">
-                                Buraya tıklayarak lineups sayfasını yeni sekmede açın 🔗
-                            </a> (Eğer 403 hatası alırsanız önce <a href="https://www.sofascore.com" target="_blank" class="text-brand-cyan hover:underline font-bold">sofascore.com</a> ana sayfasını açıp doğrulama yapın).
-                        </li>
-                        <li>Açılan sayfadaki tüm yazıları seçip kopyalayın (<kbd class="bg-slate-800 px-1 py-0.5 rounded text-[8px] text-white">Ctrl+A</kbd> ve <kbd class="bg-slate-800 px-1 py-0.5 rounded text-[8px] text-white">Ctrl+C</kbd>).</li>
-                    </ol>
-                </div>
-
-                <textarea id="manual-json-input" class="w-full h-24 bg-slate-950 border border-white/10 rounded-lg p-2 text-[9px] font-mono text-white outline-none focus:border-brand-cyan resize-none mb-3" placeholder='Kopyaladığınız JSON verisini buraya yapıştırın...'></textarea>
+                <textarea id="manual-json-input" class="w-full h-24 bg-slate-950 border border-white/10 rounded-lg p-2 text-[9px] font-mono text-white outline-none focus:border-brand-cyan resize-none mb-3" placeholder="Sitede kısayola tıkladıktan sonra kopyalanan verileri buraya yapıştırın (Ctrl+V)..."></textarea>
                 <div class="flex gap-2">
                     <button id="manual-paste-cancel-btn" class="flex-grow py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 text-[10px] font-bold uppercase rounded-lg transition-all" type="button">İptal</button>
                     <button id="manual-paste-submit-btn" class="flex-grow py-2 bg-brand-green hover:bg-brand-green/90 text-black text-[10px] font-black uppercase rounded-lg transition-all" type="button">Reytingleri Yükle ⚡</button>
@@ -2701,7 +2689,7 @@ export class AdminPanel {
         }
 
         modal.querySelector('#copy-bookmarklet-btn').addEventListener('click', async () => {
-            const bookmarkletCode = `javascript:(async function(){const id=prompt("SofaScore Mac ID:", "${sofaScoreId}");if(!id)return;try{const r=await fetch("https://www.sofascore.com/api/v1/event/"+id+"/lineups");if(!r.ok)throw new Error("Veri alinamadi (Kod: "+r.status+")");const d=await r.json();await navigator.clipboard.writeText(JSON.stringify(d));alert("Kadro JSON verisi basariyla kopyalandi! Simdi tahmin sitesindeki kutuya yapistirabilirsiniz.")}catch(e){alert("Hata: "+e.message+"\\n\\nNot: Bu butona sadece www.sofascore.com sitesi acikken tiklamalisiniz.")}})();`;
+            const bookmarkletCode = `javascript:(function(){try{const el=document.getElementById("__NEXT_DATA__");if(!el)throw new Error("Bu sayfa bir SofaScore mac detay sayfasi degil veya veri bulunamadi. Lutfen dogru mac sayfasinda oldugunuzdan emin olun.");navigator.clipboard.writeText(el.textContent).then(()=>{alert("Mac verileri basariyla kopyalandi! Simdi tahmin sitesine donup manuel veri yapistirma kutusuna yapistirabilirsiniz.")}).catch(err=>{throw err});}catch(e){alert("Hata: "+e.message+"\\n\\nNot: Bu kisayolu sadece sofascore.com'daki bir macin detay sayfasindayken (kadrolarin gosterildigi sayfa) tiklamalisiniz.")}})();`;
             try {
                 await navigator.clipboard.writeText(bookmarkletCode);
                 alert("Kısayol kodu başarıyla kopyalandı! Şimdi tarayıcınızın yer imleri çubuğuna sağ tıklayıp 'Sayfa Ekle' veya 'Yer imi ekle' diyerek Adres/URL kısmına yapıştırabilirsiniz.");
@@ -2732,7 +2720,44 @@ export class AdminPanel {
 
     processManualLineupsJson(matchId, jsonText, sofaScoreId) {
         try {
-            const lineupsData = JSON.parse(jsonText);
+            const rawData = JSON.parse(jsonText);
+            
+            // Helper to recursively find lineups object
+            const findLineups = (obj) => {
+                if (!obj || typeof obj !== 'object') return null;
+                if (obj.home && obj.away && (
+                    (obj.home.players && Array.isArray(obj.home.players)) || 
+                    (obj.away.players && Array.isArray(obj.away.players))
+                )) {
+                    return obj;
+                }
+                for (const key in obj) {
+                    if (Object.prototype.hasOwnProperty.call(obj, key)) {
+                        const found = findLineups(obj[key]);
+                        if (found) return found;
+                    }
+                }
+                return null;
+            };
+
+            // Helper to recursively find event/match details object
+            const findEvent = (obj) => {
+                if (!obj || typeof obj !== 'object') return null;
+                if (obj.homeTeam && obj.awayTeam && obj.status && obj.id) {
+                    return obj;
+                }
+                for (const key in obj) {
+                    if (Object.prototype.hasOwnProperty.call(obj, key)) {
+                        const found = findEvent(obj[key]);
+                        if (found) return found;
+                    }
+                }
+                return null;
+            };
+
+            const lineupsData = findLineups(rawData) || rawData;
+            const eventData = findEvent(rawData);
+
             const players = [];
 
             const parseTeamLineup = (lineup, teamSide) => {
@@ -2772,10 +2797,21 @@ export class AdminPanel {
                 throw new Error("Yapıştırılan veri içerisinde oyuncu veya reyting bulunamadı. Doğru JSON verisini kopyaladığınızdan emin olun.");
             }
 
+            // Extract scores and status from event data if available
+            let homeScore = null;
+            let awayScore = null;
+            let status = "FINISHED";
+            
+            if (eventData) {
+                homeScore = eventData.homeScore?.display !== undefined ? parseInt(eventData.homeScore.display) : null;
+                awayScore = eventData.awayScore?.display !== undefined ? parseInt(eventData.awayScore.display) : null;
+                status = eventData.status?.type === 'finished' ? 'FINISHED' : 'SCHEDULED';
+            }
+
             const data = {
-                status: "FINISHED",
-                homeScore: null,
-                awayScore: null,
+                status,
+                homeScore,
+                awayScore,
                 players,
                 statistics: null,
                 incidents: []
@@ -2784,9 +2820,9 @@ export class AdminPanel {
             // Store in fetchedScores
             this.fetchedScores = {
                 matchId: matchId,
-                homeScore: null,
-                awayScore: null,
-                status: "FINISHED",
+                homeScore,
+                awayScore,
+                status,
                 sofaScoreId: sofaScoreId,
                 statistics: null,
                 incidents: []
@@ -2817,7 +2853,7 @@ export class AdminPanel {
             return true;
         } catch (err) {
             console.error("Manual lineups parsing failed:", err);
-            alert("Yapıştırılan veri işlenirken hata oluştu. Lütfen kopyaladığınız URL içeriğini (lineups JSON) tam olarak yapıştırdığınızdan emin olun.\nHata: " + err.message);
+            alert("Yapıştırılan veri işlenirken hata oluştu. Lütfen kopyaladığınız site içeriğini tam olarak yapıştırdığınızdan emin olun.\nHata: " + err.message);
             return false;
         }
     }
