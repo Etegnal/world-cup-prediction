@@ -1,6 +1,6 @@
 // Admin Panel Component (passcode authorization + match completions + live simulators + analyses updates)
 import { CONFIG } from '../config.js';
-import { getMatches, completeMatch, updateLiveScore, resetMockDb, updateAdminAnalysis, getApiStats, saveApiStats, resetAllUsersJokers, getUsers, getPredictions, updateUserJokers, savePrediction, updateUserDetails, deleteUser, getPlayers, savePlayer, deletePlayer, savePlayerRatings, hashPassword, updateMatchDetails, getAllGroupPredictions, getAllBracketPredictions, updateMatchSofaScoreId, calculateRealisticPrice } from '../firebase-db.js';
+import { getMatches, completeMatch, updateLiveScore, resetMockDb, updateAdminAnalysis, getApiStats, saveApiStats, resetAllUsersJokers, getUsers, getPredictions, updateUserJokers, savePrediction, updateUserDetails, deleteUser, getPlayers, savePlayer, deletePlayer, savePlayerRatings, hashPassword, updateMatchDetails, getAllGroupPredictions, getAllBracketPredictions, updateMatchSofaScoreId, calculateRealisticPrice, saveGroupPredictions } from '../firebase-db.js';
 import { TEAMS_DATA } from './teamsData.js';
 
 export class AdminPanel {
@@ -299,6 +299,22 @@ export class AdminPanel {
                 if (m.awayTeam) teamInfo[m.awayTeam] = { code: m.awayTeamCode, flag: m.awayFlag };
             });
 
+            // Extract default groups dynamically
+            const defaultGroups = {};
+            const groupLetters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L"];
+            groupLetters.forEach(g => {
+                const teams = new Set();
+                matches.forEach(m => {
+                    if (m.group === g) {
+                        if (m.homeTeam) teams.add(m.homeTeam);
+                        if (m.awayTeam) teams.add(m.awayTeam);
+                    }
+                });
+                defaultGroups[g] = Array.from(teams).slice(0, 4);
+            });
+
+            if (!this.tempGroupPreds) this.tempGroupPreds = {};
+
             const totalUsers = users.length;
             const totalPreds = allPredictions.length;
             const activeJokersCount = allPredictions.filter(p => p.appliedJoker && !matches.find(m => m.id === p.matchId)?.status === 'FINISHED').length;
@@ -336,30 +352,31 @@ export class AdminPanel {
                 const userGroupPred = allGroupPreds[u.id];
                 const userBracketPred = allBracketPreds[u.id];
 
-                // Build group predictions block
-                let groupPredsHtml = '';
-                if (userGroupPred && Object.keys(userGroupPred).length > 0) {
-                    groupPredsHtml = `
-                        <div class="flex flex-col gap-2 bg-black/25 p-3 rounded-xl border border-white/5 mt-2.5">
-                            <span class="text-[8px] font-bold text-slate-400 uppercase tracking-widest pl-0.5">Grup Sıralamaları Tahminleri</span>
-                            <div class="grid grid-cols-2 xs:grid-cols-3 gap-2.5 max-h-[200px] overflow-y-auto pr-1">
-                                ${Object.entries(userGroupPred).map(([groupLetter, teams]) => {
+                // Initialize temp predictions for this user if not yet initialized
+                if (!this.tempGroupPreds[u.id]) {
+                    this.tempGroupPreds[u.id] = userGroupPred ? JSON.parse(JSON.stringify(userGroupPred)) : JSON.parse(JSON.stringify(defaultGroups));
+                }
+                const currentPreds = this.tempGroupPreds[u.id];
+
+                // Build group predictions editor html
+                const editGroupsHtml = groupLetters.map(g => {
+                    const teams = currentPreds[g] || defaultGroups[g] || [];
+                    return `
+                        <div class="bg-slate-900/40 border border-white/5 p-2 rounded-xl text-[9px] edit-group-card" id="edit-group-card-${u.id}-${g}">
+                            <div class="font-extrabold text-brand-cyan mb-1.5 text-center border-b border-white/5 pb-1">GRUP ${g}</div>
+                            <div class="flex flex-col gap-1.5">
+                                ${teams.map((t, idx) => {
                                     return `
-                                        <div class="bg-slate-900/40 border border-white/5 p-2 rounded-xl text-[9px]">
-                                            <div class="font-extrabold text-brand-cyan mb-1.5 text-center border-b border-white/5 pb-1">GRUP ${groupLetter}</div>
-                                            <div class="flex flex-col gap-1">
-                                                ${teams.map((t, idx) => {
-                                                    const info = teamInfo[t] || { code: 'N/A', flag: '' };
-                                                    return `
-                                                        <div class="flex items-center justify-between text-[8px] text-slate-300">
-                                                            <div class="flex items-center gap-1 truncate max-w-[65px]">
-                                                                <span class="text-slate-500 font-bold">${idx+1}.</span>
-                                                                <span class="truncate">${t}</span>
-                                                            </div>
-                                                            <img src="${info.flag}" class="w-3.5 h-2.5 rounded-sm object-cover" alt="">
-                                                        </div>
-                                                    `;
-                                                }).join('')}
+                                        <div class="flex items-center justify-between text-[9px] text-slate-300 py-0.5 border-b border-white/5 last:border-0">
+                                            <div class="flex items-center gap-1 truncate max-w-[70px]">
+                                                <span class="text-slate-500 font-bold font-mono">${idx+1}.</span>
+                                                <span class="truncate" title="${t}">${t}</span>
+                                            </div>
+                                            <div class="flex items-center gap-1 shrink-0">
+                                                <button type="button" class="admin-team-move-btn px-1 bg-white/5 border border-white/10 rounded hover:bg-white/10 text-[8px] font-bold text-slate-400 cursor-pointer disabled:opacity-30 disabled:pointer-events-none" 
+                                                    data-user-id="${u.id}" data-group="${g}" data-index="${idx}" data-dir="up" ${idx === 0 ? 'disabled' : ''}>▲</button>
+                                                <button type="button" class="admin-team-move-btn px-1 bg-white/5 border border-white/10 rounded hover:bg-white/10 text-[8px] font-bold text-slate-400 cursor-pointer disabled:opacity-30 disabled:pointer-events-none" 
+                                                    data-user-id="${u.id}" data-group="${g}" data-index="${idx}" data-dir="down" ${idx === 3 ? 'disabled' : ''}>▼</button>
                                             </div>
                                         </div>
                                     `;
@@ -367,14 +384,65 @@ export class AdminPanel {
                             </div>
                         </div>
                     `;
-                } else {
-                    groupPredsHtml = `
-                        <div class="flex flex-col gap-2 bg-black/25 p-3 rounded-xl border border-white/5 mt-2.5">
+                }).join('');
+
+                // Build group predictions block
+                let groupPredsHtml = `
+                    <div class="flex flex-col gap-2 bg-black/25 p-3 rounded-xl border border-white/5 mt-2.5">
+                        <div class="flex items-center justify-between border-b border-white/5 pb-2 mb-1.5">
                             <span class="text-[8px] font-bold text-slate-400 uppercase tracking-widest pl-0.5">Grup Sıralamaları Tahminleri</span>
-                            <div class="text-center py-2 text-[10px] text-slate-500 italic">Grup sıralama tahmini bulunmamaktadır.</div>
+                            <button class="admin-edit-groups-toggle-btn text-[8px] font-black text-brand-cyan bg-brand-cyan/10 border border-brand-cyan/20 px-2 py-0.5 rounded uppercase cursor-pointer" data-user-id="${u.id}" type="button">
+                                Düzenle / Oluştur ⚙️
+                            </button>
                         </div>
-                    `;
-                }
+                        
+                        <!-- Read-only view (visible by default) -->
+                        <div class="admin-groups-readonly-view" id="groups-readonly-${u.id}">
+                            ${userGroupPred && Object.keys(userGroupPred).length > 0 ? `
+                                <div class="grid grid-cols-2 xs:grid-cols-3 gap-2.5 max-h-[200px] overflow-y-auto pr-1">
+                                    ${Object.entries(userGroupPred).map(([groupLetter, teams]) => {
+                                        return `
+                                            <div class="bg-slate-900/40 border border-white/5 p-2 rounded-xl text-[9px]">
+                                                <div class="font-extrabold text-brand-cyan mb-1.5 text-center border-b border-white/5 pb-1">GRUP ${groupLetter}</div>
+                                                <div class="flex flex-col gap-1">
+                                                    ${teams.map((t, idx) => {
+                                                        const info = teamInfo[t] || { code: 'N/A', flag: '' };
+                                                        return `
+                                                            <div class="flex items-center justify-between text-[8px] text-slate-300">
+                                                                <div class="flex items-center gap-1 truncate max-w-[65px]">
+                                                                    <span class="text-slate-500 font-bold">${idx+1}.</span>
+                                                                    <span class="truncate">${t}</span>
+                                                                </div>
+                                                                <img src="${info.flag}" class="w-3.5 h-2.5 rounded-sm object-cover" alt="">
+                                                            </div>
+                                                        `;
+                                                    }).join('')}
+                                                </div>
+                                            </div>
+                                        `;
+                                    }).join('')}
+                                </div>
+                            ` : `
+                                <div class="text-center py-2 text-[10px] text-slate-500 italic">Grup sıralama tahmini bulunmamaktadır.</div>
+                            `}
+                        </div>
+                        
+                        <!-- Edit view (hidden by default) -->
+                        <div class="admin-groups-edit-view hidden flex flex-col gap-3.5" id="groups-edit-${u.id}">
+                            <div class="grid grid-cols-2 xs:grid-cols-3 gap-2.5 max-h-[350px] overflow-y-auto pr-1">
+                                ${editGroupsHtml}
+                            </div>
+                            <div class="flex gap-2">
+                                <button class="admin-save-group-preds-btn flex-grow py-2 bg-brand-green hover:bg-brand-green/90 text-black text-[10px] font-black uppercase tracking-wider rounded-lg transition-all active:scale-95 shadow-md font-bold" data-user-id="${u.id}" type="button">
+                                    Grup Tahminlerini Kaydet 💾
+                                </button>
+                                <button class="admin-edit-groups-cancel-btn py-2 px-3 bg-white/5 hover:bg-white/10 border border-white/10 text-slate-400 text-[10px] font-black uppercase tracking-wider rounded-lg transition-all active:scale-95 shadow-md cursor-pointer" data-user-id="${u.id}" type="button">
+                                    Vazgeç
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
 
                 // Build bracket predictions block
                 let bracketPredsHtml = '';
@@ -654,7 +722,97 @@ export class AdminPanel {
 
             this.container.innerHTML = usersHtml;
 
+            // Bind Group Prediction Toggle View and Save Buttons
+            this.container.querySelectorAll('.admin-edit-groups-toggle-btn, .admin-edit-groups-cancel-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const userId = btn.dataset.userId;
+                    const readonlyView = document.getElementById(`groups-readonly-${userId}`);
+                    const editView = document.getElementById(`groups-edit-${userId}`);
+                    
+                    if (readonlyView && editView) {
+                        const isEditHidden = editView.classList.contains('hidden');
+                        if (isEditHidden) {
+                            // Reset temp data to match current prediction status before editing
+                            const userGroupPred = allGroupPreds[userId];
+                            this.tempGroupPreds[userId] = userGroupPred ? JSON.parse(JSON.stringify(userGroupPred)) : JSON.parse(JSON.stringify(defaultGroups));
+                            
+                            // Re-render all 12 group cards for this user to make sure we show current state
+                            groupLetters.forEach(g => {
+                                this.renderGroupEditCard(userId, g, teamInfo);
+                            });
+                            
+                            readonlyView.classList.add('hidden');
+                            editView.classList.remove('hidden');
+                        } else {
+                            readonlyView.classList.remove('hidden');
+                            editView.classList.add('hidden');
+                        }
+                    }
+                });
+            });
 
+            // Bind Save Group Predictions Buttons
+            this.container.querySelectorAll('.admin-save-group-preds-btn').forEach(btn => {
+                btn.addEventListener('click', async (e) => {
+                    e.stopPropagation();
+                    const userId = btn.dataset.userId;
+                    const predsToSave = this.tempGroupPreds[userId];
+                    if (!predsToSave) return;
+                    
+                    btn.disabled = true;
+                    const origText = btn.innerHTML;
+                    btn.innerHTML = '<i class="w-3.5 h-3.5 animate-spin"></i> Kaydediliyor...';
+                    
+                    try {
+                        const success = await saveGroupPredictions(userId, predsToSave);
+                        if (success) {
+                            alert("Grup tahminleri başarıyla kaydedildi!");
+                            // Refresh dashboard
+                            await this.appState.refreshDashboard();
+                        } else {
+                            alert("Grup tahminleri kaydedilirken bir hata oluştu.");
+                        }
+                    } catch (saveErr) {
+                        console.error("Save group predictions failed:", saveErr);
+                        alert("Hata: " + saveErr.message);
+                    } finally {
+                        btn.disabled = false;
+                        btn.innerHTML = origText;
+                    }
+                });
+            });
+
+            // Bind Group Prediction Team Reordering Click Listener (Event Delegation)
+            const usersListContainer = document.getElementById('admin-users-list');
+            if (usersListContainer) {
+                usersListContainer.addEventListener('click', (e) => {
+                    const moveBtn = e.target.closest('.admin-team-move-btn');
+                    if (!moveBtn) return;
+                    
+                    e.stopPropagation();
+                    const userId = moveBtn.dataset.userId;
+                    const groupLetter = moveBtn.dataset.group;
+                    const index = parseInt(moveBtn.dataset.index);
+                    const dir = moveBtn.dataset.dir;
+                    
+                    const teams = this.tempGroupPreds[userId][groupLetter];
+                    if (!teams) return;
+                    
+                    if (dir === 'up' && index > 0) {
+                        const temp = teams[index];
+                        teams[index] = teams[index - 1];
+                        teams[index - 1] = temp;
+                    } else if (dir === 'down' && index < teams.length - 1) {
+                        const temp = teams[index];
+                        teams[index] = teams[index + 1];
+                        teams[index + 1] = temp;
+                    }
+                    
+                    // Re-render just this group edit card
+                    this.renderGroupEditCard(userId, groupLetter, teamInfo);
+                });
+            }
 
             // Bind accordion toggle clicks
             this.container.querySelectorAll('.user-admin-card').forEach(card => {
@@ -3002,6 +3160,39 @@ export class AdminPanel {
         } else {
             alert("Reytingler kaydedilirken bir hata oluştu.");
         }
+    }
+
+    renderGroupEditCard(userId, groupLetter, teamInfo) {
+        const cardEl = document.getElementById(`edit-group-card-${userId}-${groupLetter}`);
+        if (!cardEl) return;
+        
+        const teams = this.tempGroupPreds[userId][groupLetter] || [];
+        
+        let html = `
+            <div class="font-extrabold text-brand-cyan mb-1.5 text-center border-b border-white/5 pb-1">GRUP ${groupLetter}</div>
+            <div class="flex flex-col gap-1.5">
+        `;
+        
+        teams.forEach((t, idx) => {
+            const info = teamInfo[t] || { code: 'N/A', flag: 'https://flagcdn.com/un.svg' };
+            html += `
+                <div class="flex items-center justify-between text-[9px] text-slate-300 py-0.5 border-b border-white/5 last:border-0">
+                    <div class="flex items-center gap-1 truncate max-w-[70px]">
+                        <span class="text-slate-500 font-bold font-mono">${idx+1}.</span>
+                        <span class="truncate" title="${t}">${t}</span>
+                    </div>
+                    <div class="flex items-center gap-1 shrink-0">
+                        <button type="button" class="admin-team-move-btn px-1.5 py-0.5 bg-white/5 border border-white/10 rounded hover:bg-white/10 text-[8px] font-bold text-slate-400 cursor-pointer disabled:opacity-30 disabled:pointer-events-none" 
+                            data-user-id="${userId}" data-group="${groupLetter}" data-index="${idx}" data-dir="up" ${idx === 0 ? 'disabled' : ''}>▲</button>
+                        <button type="button" class="admin-team-move-btn px-1.5 py-0.5 bg-white/5 border border-white/10 rounded hover:bg-white/10 text-[8px] font-bold text-slate-400 cursor-pointer disabled:opacity-30 disabled:pointer-events-none" 
+                            data-user-id="${userId}" data-group="${groupLetter}" data-index="${idx}" data-dir="down" ${idx === 3 ? 'disabled' : ''}>▼</button>
+                    </div>
+                </div>
+            `;
+        });
+        
+        html += `</div>`;
+        cardEl.innerHTML = html;
     }
 }
 
