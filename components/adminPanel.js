@@ -2153,8 +2153,16 @@ export class AdminPanel {
             const statsUrl = `https://api.sofascore.com/api/v1/event/${sofaScoreId}/statistics`;
             const incidentsUrl = `https://api.sofascore.com/api/v1/event/${sofaScoreId}/incidents`;
 
+            const getFinalUrl = (targetUrl) => {
+                if (!proxyUrl) return targetUrl;
+                if (proxyUrl.includes("corsproxy.org")) {
+                    return `https://corsproxy.org/?${targetUrl}`;
+                }
+                return `${proxyUrl}${encodeURIComponent(targetUrl)}`;
+            };
+
             // 1. Event Details
-            const eventRes = await fetch(`${proxyUrl}${encodeURIComponent(eventUrl)}`);
+            const eventRes = await fetch(getFinalUrl(eventUrl));
             if (!eventRes.ok) throw new Error(`Event details fetch failed with status ${eventRes.status}`);
             const eventData = await eventRes.json();
 
@@ -2165,7 +2173,7 @@ export class AdminPanel {
             // 2. Lineups
             let players = [];
             try {
-                const lineupsRes = await fetch(`${proxyUrl}${encodeURIComponent(lineupsUrl)}`);
+                const lineupsRes = await fetch(getFinalUrl(lineupsUrl));
                 if (lineupsRes.ok) {
                     const lineupsData = await lineupsRes.json();
                     const parseTeamLineup = (lineup, teamSide) => {
@@ -2207,7 +2215,7 @@ export class AdminPanel {
             // 3. Stats
             let statistics = null;
             try {
-                const statsRes = await fetch(`${proxyUrl}${encodeURIComponent(statsUrl)}`);
+                const statsRes = await fetch(getFinalUrl(statsUrl));
                 if (statsRes.ok) {
                     const statsData = await statsRes.json();
                     const allPeriodStats = statsData.statistics?.find(s => s.period === 'ALL');
@@ -2222,7 +2230,7 @@ export class AdminPanel {
             // 4. Incidents
             let incidents = [];
             try {
-                const incidentsRes = await fetch(`${proxyUrl}${encodeURIComponent(incidentsUrl)}`);
+                const incidentsRes = await fetch(getFinalUrl(incidentsUrl));
                 if (incidentsRes.ok) {
                     const incidentsData = await incidentsRes.json();
                     incidents = incidentsData.incidents || [];
@@ -2242,14 +2250,25 @@ export class AdminPanel {
         };
 
         try {
-            console.log("Trying client CORS proxy 1: allorigins");
-            return await tryFetch("https://api.allorigins.win/raw?url=");
-        } catch (err1) {
-            console.warn("Client CORS proxy 1 failed, trying CORS proxy 2 (corsproxy.io)...", err1);
+            console.log("Trying direct SofaScore fetch (requires CORS extension)...");
+            return await tryFetch("");
+        } catch (errDirect) {
+            console.warn("Direct fetch failed (likely CORS restriction). Trying proxies...", errDirect);
             try {
-                return await tryFetch("https://corsproxy.io/?url=");
-            } catch (err2) {
-                throw new Error("SofaScore verisi direct proxy ile de çekilemedi. Her iki CORS proxy sunucusu da başarısız oldu.");
+                console.log("Trying client CORS proxy 1: allorigins");
+                return await tryFetch("https://api.allorigins.win/raw?url=");
+            } catch (err1) {
+                console.warn("Client CORS proxy 1 failed, trying CORS proxy 2 (corsproxy.org)...", err1);
+                try {
+                    return await tryFetch("https://corsproxy.org/?");
+                } catch (err2) {
+                    console.warn("Client CORS proxy 2 failed, trying CORS proxy 3 (corsproxy.io)...", err2);
+                    try {
+                        return await tryFetch("https://corsproxy.io/?url=");
+                    } catch (err3) {
+                        throw new Error("Tüm CORS proxy sunucuları ve doğrudan bağlantı denemeleri başarısız oldu.");
+                    }
+                }
             }
         }
     }
@@ -2532,7 +2551,7 @@ export class AdminPanel {
                         if (sofaScoreId === "11873766") {
                             // Keep mock fallback
                         } else {
-                            throw new Error("SofaScore verileri çekilemedi. Netlify fonksiyonu devredışı ve genel CORS proxy sunucuları (allorigins, corsproxy.io) yanıt vermedi. Lütfen internet bağlantınızı veya SofaScore ID'sini kontrol edin.");
+                            throw new Error("SofaScore verileri çekilemedi. Genel CORS proxy sunucuları SofaScore tarafından engellenmiş olabilir. İPUCU: Tarayıcınıza ücretsiz bir 'Allow CORS: Access-Control-Allow-Origin' eklentisi kurup aktifleştirerek verileri doğrudan ve sorunsuz şekilde çekebilirsiniz.");
                         }
                     }
                 }
