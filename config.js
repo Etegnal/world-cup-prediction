@@ -5,6 +5,7 @@ export const CONFIG = {
     // When false, tries to connect to real Firebase Firestore.
     IS_DEMO_MODE: false,
     API_FOOTBALL_KEY: "", // API-Football Key for automatically fetching ratings (RapidAPI)
+    SPORTDB_API_KEY: "cHQZm8aayC8IxAYZoFLLAYkV58xUiED928pp1fif", // SportDB.dev API Key for live scores and stats
 
     // Firebase Settings (Set IS_DEMO_MODE to false once you put your real config)
     FIREBASE_CONFIG: {

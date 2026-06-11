@@ -286,7 +286,10 @@ class App {
 
     closeAllModals() {
         const matchModal = document.getElementById('match-detail-modal');
-        if (matchModal) matchModal.classList.remove('active');
+        if (matchModal) {
+            matchModal.classList.remove('active');
+            this.fixtureCardComp.activeMatchId = null;
+        }
         
         const teamsModal = document.getElementById('teams-modal');
         if (teamsModal) teamsModal.classList.remove('active');
@@ -309,6 +312,7 @@ class App {
                     clearInterval(this.fixtureCardComp.countdownInterval);
                 }
                 matchModal.classList.remove('active');
+                this.fixtureCardComp.activeMatchId = null;
                 // Only re-render fixture cards if we're on the matches screen
                 if (this.activeScreen === 'matches') {
                     this.fixtureCardComp.render();

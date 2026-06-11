@@ -1985,136 +1985,248 @@ const TEAM_TRANSLATIONS = {
     "panama": "Panama"
 };
 
-// API'den gelen golcülerden ilk golü atanı (en küçük dakikaya sahip olanı) ayıklayan yardımcı metod
-function extractFirstScorer(homeScorers, awayScorers) {
-    const parseScorers = (str) => {
-        if (!str || str === 'null' || str === 'undefined') return [];
-        return str.split(',').map(s => s.trim()).filter(Boolean);
-    };
-    
-    const homeList = parseScorers(homeScorers);
-    const awayList = parseScorers(awayScorers);
-    
-    if (homeList.length === 0 && awayList.length === 0) return "Diğer";
-    
-    const getMinute = (nameWithMin) => {
-        const match = nameWithMin.match(/\((\d+)\)?/);
-        return match ? parseInt(match[1]) : 999;
-    };
-    
-    const homeParsed = homeList.map(name => ({ name, min: getMinute(name) }));
-    const awayParsed = awayList.map(name => ({ name, min: getMinute(name) }));
-    
-    const allScorers = [...homeParsed, ...awayParsed].sort((a, b) => a.min - b.min);
-    if (allScorers.length > 0) {
-        // İsmin etrafındaki parantezli dakikaları ve ham sayıları temizle
-        let cleanName = allScorers[0].name.replace(/\s*\(\d+['\s]*\)/g, '').trim();
-        cleanName = cleanName.replace(/\s*\d+['\s]*/g, '').trim();
-        return cleanName;
+// SportDB.dev API önbellek verisini okuma
+export async function getLiveScoresCache() {
+    await initDb();
+    if (CONFIG.IS_DEMO_MODE) {
+        try {
+            const cacheStr = localStorage.getItem("SPORTDB_LIVE_CACHE");
+            return cacheStr ? JSON.parse(cacheStr) : null;
+        } catch (e) {
+            return null;
+        }
+    } else {
+        try {
+            const cacheDoc = await fStore.getDoc(fStore.doc(db, "live_scores_cache", "current"));
+            return cacheDoc.exists() ? cacheDoc.data() : null;
+        } catch (e) {
+            console.error("Failed to read Firestore live cache:", e);
+            return null;
+        }
     }
-    return "Diğer";
 }
 
-let lastSyncTime = 0;
-const SYNC_INTERVAL = 300000; // 5 dakika önbellek süresi (ms)
-
-// Ücretsiz World Cup 2026 API'sinden skorları ve maç durumlarını senkronize eden ana metod
-export async function syncLiveScoresFromFreeApi() {
+// SportDB.dev API'den skorları ve maç durumlarını senkronize eden paylaşımlı önbellek metod
+export async function syncLiveScoresFromSportDb(forceUpdate = false) {
+    await initDb();
     const now = Date.now();
-    if (now - lastSyncTime < SYNC_INTERVAL) {
-        console.log("Free score API sync: Önbellekten okundu (Son 5 dk içinde senkronize edilmiş)");
-        return null;
+    
+    // 1. Tüm maçları çek
+    let matches = [];
+    if (CONFIG.IS_DEMO_MODE) {
+        matches = getMockData().matches;
+    } else {
+        try {
+            const snapshot = await fStore.getDocs(fStore.collection(db, "matches"));
+            snapshot.forEach(doc => {
+                matches.push(doc.data());
+            });
+        } catch (e) {
+            console.error("Failed to fetch matches for live sync:", e);
+            return null;
+        }
     }
-    lastSyncTime = now;
-    try {
-        console.log("Free score API sync: Fetching matches from worldcup26.ir...");
-        const response = await fetch("https://worldcup26.ir/get/games");
-        const resData = await response.json();
-        
-        if (resData && resData.games && resData.games.length > 0) {
-            let matches = [];
-            if (CONFIG.IS_DEMO_MODE) {
-                matches = getMockData().matches;
-            } else {
-                const snapshot = await fStore.getDocs(fStore.collection(db, "matches"));
-                snapshot.forEach(doc => {
-                    matches.push(doc.data());
-                });
-            }
 
-            let updatedCount = 0;
-            const updates = [];
-            
-            resData.games.forEach(g => {
-                if (!g.home_team_name_en || !g.away_team_name_en) return;
-                const homeTranslated = TEAM_TRANSLATIONS[g.home_team_name_en.toLowerCase().trim()] || g.home_team_name_en;
-                const awayTranslated = TEAM_TRANSLATIONS[g.away_team_name_en.toLowerCase().trim()] || g.away_team_name_en;
-                
-                const matchIndex = matches.findIndex(m => 
-                    (m.homeTeam.toLowerCase().trim() === homeTranslated.toLowerCase().trim() && 
-                     m.awayTeam.toLowerCase().trim() === awayTranslated.toLowerCase().trim())
-                );
-                
-                if (matchIndex >= 0) {
-                    const localMatch = matches[matchIndex];
-                    const newHomeScore = parseInt(g.home_score) || 0;
-                    const newAwayScore = parseInt(g.away_score) || 0;
-                    const finished = g.finished === 'TRUE';
-                    const notStarted = g.time_elapsed === 'notstarted';
-                    
-                    let newStatus = "SCHEDULED";
-                    if (finished) {
-                        newStatus = "FINISHED";
-                    } else if (!notStarted) {
-                        newStatus = "LIVE";
-                    }
-                    
-                    // Skor veya durumda değişiklik varsa yerel veriyi güncelle
-                    if (localMatch.homeScore !== newHomeScore || 
-                        localMatch.awayScore !== newAwayScore || 
-                        localMatch.status !== newStatus) {
+    // 2. Aktif maç var mı kontrol et (Maç başlangıcından 5 dk öncesi ile 2.5 saat sonrası arası)
+    const activeMatchesInDb = matches.filter(m => {
+        if (m.isFinalized) return false;
+        if (m.status === 'LIVE') return true;
+        if (m.status === 'SCHEDULED') {
+            const matchTime = new Date(m.date).getTime();
+            const timeDiff = now - matchTime;
+            // 5 dakika önceden 2.5 saat sonraya kadar aktif kabul et
+            return timeDiff >= -300000 && timeDiff <= 9000000;
+        }
+        return false;
+    });
+
+    if (activeMatchesInDb.length === 0 && !forceUpdate) {
+        console.log("SportDB sync: Aktif veya yakında başlayacak maç bulunmuyor. API çağrısı engellendi.");
+        return matches;
+    }
+
+    // 3. Ortak önbelleği kontrol et
+    let cache = null;
+    if (CONFIG.IS_DEMO_MODE) {
+        try {
+            const cacheStr = localStorage.getItem("SPORTDB_LIVE_CACHE");
+            if (cacheStr) cache = JSON.parse(cacheStr);
+        } catch (e) {}
+    } else {
+        try {
+            const cacheDoc = await fStore.getDoc(fStore.doc(db, "live_scores_cache", "current"));
+            if (cacheDoc.exists()) {
+                cache = cacheDoc.data();
+            }
+        } catch (e) {
+            console.error("Failed to read Firestore live cache:", e);
+        }
+    }
+
+    const cacheAgeLimit = 420000; // 7 dakika önbellek süresi (ms)
+    const canRefreshCache = forceUpdate || !cache || (now - cache.lastUpdated > cacheAgeLimit);
+
+    if (!canRefreshCache) {
+        console.log("SportDB sync: Önbellek güncel, veriler önbellekten okundu.");
+        if (cache && cache.matches) {
+            let updated = false;
+            cache.matches.forEach(cMatch => {
+                const localMatch = matches.find(m => m.id === cMatch.id);
+                if (localMatch && !localMatch.isFinalized) {
+                    if (localMatch.homeScore !== cMatch.homeScore || 
+                        localMatch.awayScore !== cMatch.awayScore || 
+                        localMatch.status !== cMatch.status ||
+                        localMatch.elapsedTime !== cMatch.elapsedTime ||
+                        localMatch.sportDbEventId !== cMatch.sportDbEventId) {
                         
-                        localMatch.homeScore = newHomeScore;
-                        localMatch.awayScore = newAwayScore;
-                        localMatch.status = newStatus;
-                        
-                        // Maç canlı veya bitmişse, ilk golcü bilgisini otomatik güncelle
-                        if (newStatus === "LIVE" || newStatus === "FINISHED") {
-                            const firstScorerName = extractFirstScorer(g.home_scorers, g.away_scorers);
-                            if (firstScorerName && firstScorerName !== "Diğer") {
-                                localMatch.sideQuestions.firstScorer = firstScorerName;
-                            }
-                        }
-                        
-                        updates.push(localMatch);
-                        updatedCount++;
+                        localMatch.homeScore = cMatch.homeScore;
+                        localMatch.awayScore = cMatch.awayScore;
+                        localMatch.status = cMatch.status;
+                        localMatch.elapsedTime = cMatch.elapsedTime;
+                        localMatch.sportDbEventId = cMatch.sportDbEventId;
+                        localMatch.sportDbLinks = cMatch.sportDbLinks;
+                        updated = true;
                     }
                 }
             });
-            
-            if (updatedCount > 0) {
-                console.log(`Free score API sync: Updated scores for ${updatedCount} matches!`);
-                if (CONFIG.IS_DEMO_MODE) {
-                    const data = getMockData();
-                    data.matches = matches;
-                    saveMockData(data);
-                } else {
-                    const batch = fStore.writeBatch(db);
-                    updates.forEach(m => {
-                        const matchDoc = fStore.doc(db, "matches", m.id);
-                        batch.set(matchDoc, m, { merge: true });
-                    });
-                    await batch.commit();
-                }
-            } else {
-                console.log("Free score API sync: No new match updates detected.");
+            if (updated && CONFIG.IS_DEMO_MODE) {
+                const mockData = getMockData();
+                mockData.matches = matches;
+                saveMockData(mockData);
             }
-            return matches;
         }
-    } catch (err) {
-        console.error("Free World Cup live score API sync failed:", err);
+        return matches;
     }
-    return null;
+
+    // 4. API'den yeni skorları al ve önbelleği güncelle
+    console.log("SportDB sync: Önbellek eski veya zorlandı. API sorgulanıyor...");
+    
+    // Kilit kontrolü (30 saniye kilitleme)
+    if (!CONFIG.IS_DEMO_MODE && cache && cache.isLocked && (now - cache.lastUpdated < 30000)) {
+        console.log("SportDB sync: Başka bir istemci şu an güncelleme yapıyor, kilit beklendi.");
+        return matches;
+    }
+
+    if (!CONFIG.IS_DEMO_MODE) {
+        try {
+            await fStore.setDoc(fStore.doc(db, "live_scores_cache", "current"), {
+                isLocked: true,
+                lastUpdated: now
+            }, { merge: true });
+        } catch (e) {}
+    }
+
+    try {
+        const apiKey = CONFIG.SPORTDB_API_KEY || "cHQZm8aayC8IxAYZoFLLAYkV58xUiED928pp1fif";
+        const targetUrl = "https://api.sportdb.dev/api/flashscore/football/live";
+        const proxyUrl = `https://corsproxy.io/?url=${encodeURIComponent(targetUrl)}&reqHeaders=x-api-key:${apiKey}`;
+        
+        const response = await fetch(proxyUrl);
+        if (!response.ok) {
+            throw new Error(`API response status: ${response.status}`);
+        }
+        const apiMatches = await response.json();
+        
+        const cacheMatches = [];
+        const dbUpdates = [];
+        let updatedCount = 0;
+
+        apiMatches.forEach(g => {
+            if (!g.homeName || !g.awayName) return;
+            const homeTranslated = TEAM_TRANSLATIONS[g.homeName.toLowerCase().trim()] || g.homeName;
+            const awayTranslated = TEAM_TRANSLATIONS[g.awayName.toLowerCase().trim()] || g.awayName;
+
+            const localMatch = matches.find(m => 
+                (m.homeTeam.toLowerCase().trim() === homeTranslated.toLowerCase().trim() && 
+                 m.awayTeam.toLowerCase().trim() === awayTranslated.toLowerCase().trim())
+            );
+
+            if (localMatch) {
+                if (localMatch.isFinalized) return;
+
+                const newHomeScore = parseInt(g.homeScore) || 0;
+                const newAwayScore = parseInt(g.awayScore) || 0;
+                
+                let newStatus = "SCHEDULED";
+                if (g.eventStage === "FINISHED") {
+                    newStatus = "FINISHED";
+                } else if (g.eventStage === "LIVE" || g.eventStage === "IN_PROGRESS") {
+                    newStatus = "LIVE";
+                }
+
+                const elapsedTime = g.gameTime && g.gameTime !== "-1" ? `${g.gameTime}'` : (newStatus === "FINISHED" ? "MS" : "");
+
+                cacheMatches.push({
+                    id: localMatch.id,
+                    homeScore: newHomeScore,
+                    awayScore: newAwayScore,
+                    status: newStatus,
+                    elapsedTime: elapsedTime,
+                    sportDbEventId: g.eventId,
+                    sportDbLinks: g.links
+                });
+
+                if (localMatch.homeScore !== newHomeScore || 
+                    localMatch.awayScore !== newAwayScore || 
+                    localMatch.status !== newStatus ||
+                    localMatch.elapsedTime !== elapsedTime ||
+                    !localMatch.sportDbEventId) {
+                    
+                    localMatch.homeScore = newHomeScore;
+                    localMatch.awayScore = newAwayScore;
+                    localMatch.status = newStatus;
+                    localMatch.elapsedTime = elapsedTime;
+                    localMatch.sportDbEventId = g.eventId;
+                    localMatch.sportDbLinks = g.links;
+
+                    dbUpdates.push(localMatch);
+                    updatedCount++;
+                }
+            }
+        });
+
+        // Önbelleği kaydet
+        const cacheData = {
+            matches: cacheMatches,
+            lastUpdated: now,
+            isLocked: false
+        };
+
+        if (CONFIG.IS_DEMO_MODE) {
+            localStorage.setItem("SPORTDB_LIVE_CACHE", JSON.stringify(cacheData));
+        } else {
+            await fStore.setDoc(fStore.doc(db, "live_scores_cache", "current"), cacheData);
+        }
+
+        // Veritabanını güncelle
+        if (updatedCount > 0) {
+            console.log(`SportDB sync: ${updatedCount} maç skoru güncellendi.`);
+            if (CONFIG.IS_DEMO_MODE) {
+                const mockData = getMockData();
+                mockData.matches = matches;
+                saveMockData(mockData);
+            } else {
+                const batch = fStore.writeBatch(db);
+                dbUpdates.forEach(m => {
+                    const matchDoc = fStore.doc(db, "matches", m.id);
+                    batch.set(matchDoc, m, { merge: true });
+                });
+                await batch.commit();
+            }
+        }
+        
+        return matches;
+    } catch (err) {
+        console.error("SportDB score sync failed:", err);
+        if (!CONFIG.IS_DEMO_MODE) {
+            try {
+                await fStore.setDoc(fStore.doc(db, "live_scores_cache", "current"), {
+                    isLocked: false
+                }, { merge: true });
+            } catch (e) {}
+        }
+    }
+    return matches;
 }
 
 // 2. Get Matches List
@@ -2313,7 +2425,7 @@ export async function updateAdminAnalysis(matchId, analysisText) {
 }
 
 // 6. Complete Match (Runs Puanlama Algoritması)
-export async function completeMatch(matchId, homeScore, awayScore, sideAnswersActual) {
+export async function completeMatch(matchId, homeScore, awayScore, sideAnswersActual, extraData = {}) {
     await initDb();
     if (CONFIG.IS_DEMO_MODE) {
         const data = getMockData();
@@ -2324,7 +2436,10 @@ export async function completeMatch(matchId, homeScore, awayScore, sideAnswersAc
         match.homeScore = parseInt(homeScore);
         match.awayScore = parseInt(awayScore);
         match.status = "FINISHED";
+        match.isFinalized = true;
         match.sideQuestions = { ...sideAnswersActual };
+        if (extraData.statistics) match.statistics = extraData.statistics;
+        if (extraData.incidents) match.incidents = extraData.incidents;
 
         // Puanlama Hesaplaması
         const matchPredictions = data.predictions.filter(p => p.matchId === matchId);
@@ -2416,12 +2531,18 @@ export async function completeMatch(matchId, homeScore, awayScore, sideAnswersAc
     } else {
         try {
             const matchDocRef = fStore.doc(db, "matches", matchId);
-            await fStore.updateDoc(matchDocRef, {
+            const updatePayload = {
                 homeScore: parseInt(homeScore),
                 awayScore: parseInt(awayScore),
                 status: "FINISHED",
+                isFinalized: true,
                 sideQuestions: sideAnswersActual
-            });
+            };
+            if (extraData.statistics) updatePayload.statistics = extraData.statistics;
+            if (extraData.incidents) updatePayload.incidents = extraData.incidents;
+            if (extraData.elapsedTime) updatePayload.elapsedTime = extraData.elapsedTime;
+            
+            await fStore.updateDoc(matchDocRef, updatePayload);
             await recalculateAllUsersPoints();
             return true;
         } catch (err) {

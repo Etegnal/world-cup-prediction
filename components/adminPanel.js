@@ -1,6 +1,6 @@
 // Admin Panel Component (passcode authorization + match completions + live simulators + analyses updates)
 import { CONFIG } from '../config.js';
-import { getMatches, completeMatch, updateLiveScore, resetMockDb, updateAdminAnalysis, getApiStats, saveApiStats, resetAllUsersJokers, getUsers, getPredictions, updateUserJokers, savePrediction, updateUserDetails, deleteUser, getPlayers, savePlayer, deletePlayer, savePlayerRatings, hashPassword, updateMatchDetails, getAllGroupPredictions, getAllBracketPredictions, updateMatchSofaScoreId, calculateRealisticPrice, saveGroupPredictions, saveBracketPredictions } from '../firebase-db.js';
+import { getMatches, completeMatch, updateLiveScore, resetMockDb, updateAdminAnalysis, getApiStats, saveApiStats, resetAllUsersJokers, getUsers, getPredictions, updateUserJokers, savePrediction, updateUserDetails, deleteUser, getPlayers, savePlayer, deletePlayer, savePlayerRatings, hashPassword, updateMatchDetails, getAllGroupPredictions, getAllBracketPredictions, updateMatchSofaScoreId, calculateRealisticPrice, saveGroupPredictions, saveBracketPredictions, fetchMatchStatsFromApi } from '../firebase-db.js';
 import { TEAMS_DATA } from './teamsData.js';
 
 export class AdminPanel {
@@ -144,6 +144,10 @@ export class AdminPanel {
                                     </div>
                                 </div>
                             </div>
+
+                            <button id="admin-comp-fetch-api-btn" class="w-full py-2 mb-2 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-black text-xs font-black uppercase tracking-wider rounded-xl transition-all active:scale-95 shadow-md flex items-center justify-center gap-1">
+                                🔄 İstatistikleri API'den Çek
+                            </button>
 
                             <button id="admin-comp-finalize-btn" class="w-full py-2.5 mt-2 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-black text-xs font-black uppercase tracking-wider rounded-xl transition-all active:scale-95 shadow-md shadow-emerald-950">
                                 Maçı Resmi Olarak Sonuçlandır 🏁
@@ -1210,9 +1214,55 @@ export class AdminPanel {
 
         // 3. Complete Match trigger
         const finalizeBtn = document.getElementById('admin-comp-finalize-btn');
+        const fetchApiBtn = document.getElementById('admin-comp-fetch-api-btn');
         const compMatchSelect = document.getElementById('admin-complete-match-select');
         const compHomeScore = document.getElementById('admin-comp-home-score');
         const compAwayScore = document.getElementById('admin-comp-away-score');
+
+        if (fetchApiBtn) {
+            fetchApiBtn.addEventListener('click', async () => {
+                const matchId = compMatchSelect.value;
+                if (!matchId) {
+                    alert("Lütfen sonuçlandırmak için önce bir maç seçin!");
+                    return;
+                }
+                
+                fetchApiBtn.disabled = true;
+                fetchApiBtn.innerHTML = "⌛ Çekiliyor...";
+                
+                try {
+                    const data = await fetchMatchStatsFromApi(matchId);
+                    
+                    if (compHomeScore) compHomeScore.value = data.homeScore;
+                    if (compAwayScore) compAwayScore.value = data.awayScore;
+                    
+                    const compHtResult = document.getElementById('admin-comp-ht-result');
+                    if (compHtResult) compHtResult.value = data.htResult;
+                    
+                    const compFirstScorer = document.getElementById('admin-comp-first-scorer');
+                    if (compFirstScorer) compFirstScorer.value = data.firstScorer;
+                    
+                    const compRedCard = document.getElementById('admin-comp-red-card');
+                    if (compRedCard) compRedCard.value = String(data.redCard);
+                    
+                    const compCorners = document.getElementById('admin-comp-corners');
+                    if (compCorners) compCorners.value = data.cornersOverUnder;
+                    
+                    this.compExtraData = {
+                        statistics: data.statistics,
+                        incidents: data.incidents
+                    };
+                    
+                    alert("Maç verileri API'den başarıyla çekildi ve form alanları dolduruldu! Lütfen kontrol edin ve ardından sonuçlandırın.");
+                } catch (err) {
+                    console.error(err);
+                    alert("API'den veri çekilemedi: " + err.message);
+                } finally {
+                    fetchApiBtn.disabled = false;
+                    fetchApiBtn.innerHTML = "🔄 İstatistikleri API'den Çek";
+                }
+            });
+        }
 
         if (finalizeBtn) {
             finalizeBtn.addEventListener('click', async () => {
@@ -1232,8 +1282,11 @@ export class AdminPanel {
                     cornersOverUnder: compCorners ? compCorners.value : "under"
                 };
 
-                const success = await completeMatch(matchId, hScore, aScore, sideAnswers);
+                const extraData = this.compExtraData || {};
+
+                const success = await completeMatch(matchId, hScore, aScore, sideAnswers, extraData);
                 if (success) {
+                    this.compExtraData = null; // reset
                     alert("Maç resmi olarak sonuçlandırıldı, puanlama algoritması koşturuldu ve liderlik tablosu güncellendi!");
                     
                     // Hide live indicators if no other live matches

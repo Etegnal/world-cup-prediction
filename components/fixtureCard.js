@@ -1,4 +1,4 @@
-import { savePrediction, getPredictions, getUsers, getPlayers } from '../firebase-db.js';
+import { savePrediction, getPredictions, getUsers, getPlayers, syncLiveScoresFromSportDb, getLiveScoresCache } from '../firebase-db.js';
 
 // Helper to get real match preview details (H2H, Stadiums, Star Players) dynamically
 // Helper to get real match preview details (H2H, Stadiums, Star Players) dynamically
@@ -278,6 +278,71 @@ export class FixtureCard {
         this.appState = appState; // Reference to global app state
         this.modal = document.getElementById('match-detail-modal');
         this.activeTab = 'predictions'; // predictions, opinion, admin
+        this.activeMatchId = null;
+        this.startLivePolling();
+    }
+
+    startLivePolling() {
+        if (this.pollingInterval) clearInterval(this.pollingInterval);
+        
+        this.pollingInterval = setInterval(async () => {
+            if (!this.appState || !this.appState.activeUser) return;
+            
+            // Only poll if there is an active match window
+            if (!this.hasActiveMatchWindow(this.appState.matches)) {
+                return;
+            }
+            
+            console.log("Live score polling: Active match window open, syncing scores...");
+            try {
+                const updatedMatches = await syncLiveScoresFromSportDb();
+                if (updatedMatches && updatedMatches.length > 0) {
+                    this.appState.matches = updatedMatches;
+                    
+                    // Re-render dashboard list if on the matches screen
+                    if (this.appState.activeScreen === 'matches') {
+                        await this.render();
+                    }
+                    
+                    // Re-render open modal if the active match id is set
+                    if (this.activeMatchId) {
+                        const activeMatch = updatedMatches.find(m => m.id === this.activeMatchId);
+                        if (activeMatch) {
+                            const index = updatedMatches.findIndex(m => m.id === this.activeMatchId);
+                            await this.refreshOpenMatchDetail(activeMatch, index);
+                        }
+                    }
+                }
+            } catch (err) {
+                console.error("Live score polling failed:", err);
+            }
+        }, 60000); // Poll every 60 seconds
+    }
+
+    hasActiveMatchWindow(matches) {
+        if (!matches) return false;
+        const now = Date.now();
+        return matches.some(m => {
+            if (m.isFinalized || m.status === 'FINISHED') return false;
+            if (m.status === 'LIVE') return true;
+            const startTime = new Date(m.date).getTime();
+            // Start checking from 5 minutes before kickoff, until 2.5 hours after kickoff
+            return (now >= startTime - 5 * 60 * 1000) && (now <= startTime + 2.5 * 60 * 60 * 1000);
+        });
+    }
+
+    async refreshOpenMatchDetail(match, index) {
+        if (this.activeMatchId !== match.id) return;
+        const preds = await getPredictions(this.appState.activeUser.id, match.id);
+        const pred = preds.length > 0 ? preds[0] : null;
+        
+        // Temporarily set isBackAction to true to bypass pushState when refreshing
+        this.isBackAction = true;
+        try {
+            await this.openMatchDetail(match, index, pred);
+        } finally {
+            this.isBackAction = false;
+        }
     }
 
     async render() {
@@ -378,10 +443,53 @@ export class FixtureCard {
         const listSection = document.createElement('div');
         listSection.className = 'w-full flex flex-col gap-5';
 
+        const listHeaderContainer = document.createElement('div');
+        listHeaderContainer.className = 'flex justify-between items-center w-full mb-1';
+        
         const listHeader = document.createElement('h3');
         listHeader.className = 'text-xs font-outfit font-black tracking-widest text-slate-800 dark:text-slate-200 uppercase';
         listHeader.textContent = 'Tahmin Bekleyen Maçlar';
-        listSection.appendChild(listHeader);
+        listHeaderContainer.appendChild(listHeader);
+
+        const hasActiveMatches = this.hasActiveMatchWindow(matches);
+        if (hasActiveMatches) {
+            const refreshBtn = document.createElement('button');
+            refreshBtn.id = 'user-refresh-live-scores-btn';
+            refreshBtn.className = 'text-[9px] font-black text-brand-green bg-brand-green/10 border border-brand-green/20 px-2.5 py-1 rounded-full uppercase tracking-wider hover:bg-brand-green/20 transition-all flex items-center gap-1 cursor-pointer';
+            refreshBtn.innerHTML = '<i data-lucide="refresh-cw" class="w-3 h-3"></i> Skorları Güncelle 🔄';
+            refreshBtn.addEventListener('click', async (e) => {
+                e.stopPropagation();
+                refreshBtn.disabled = true;
+                refreshBtn.innerHTML = '⌛ Güncelleniyor...';
+                try {
+                    const cache = await getLiveScoresCache();
+                    const now = Date.now();
+                    // 2 minutes = 120,000 ms limit
+                    if (cache && cache.lastUpdated && (now - cache.lastUpdated < 120000)) {
+                        const remainingSecs = Math.ceil((120000 - (now - cache.lastUpdated)) / 1000);
+                        alert(`Skorlar zaten güncel! Tekrar güncellemek için ${remainingSecs} saniye bekleyin.`);
+                        refreshBtn.innerHTML = '<i data-lucide="refresh-cw" class="w-3 h-3"></i> Skorları Güncelle 🔄';
+                        refreshBtn.disabled = false;
+                        return;
+                    }
+
+                    const updatedMatches = await syncLiveScoresFromSportDb(true);
+                    if (updatedMatches) {
+                        this.appState.matches = updatedMatches;
+                        await this.render();
+                        alert('Canlı skorlar başarıyla güncellendi!');
+                    }
+                } catch (err) {
+                    console.error("Manual refresh failed:", err);
+                    alert("Skorlar güncellenemedi: " + err.message);
+                    refreshBtn.innerHTML = '<i data-lucide="refresh-cw" class="w-3 h-3"></i> Skorları Güncelle 🔄';
+                    refreshBtn.disabled = false;
+                }
+            });
+            listHeaderContainer.appendChild(refreshBtn);
+        }
+        
+        listSection.appendChild(listHeaderContainer);
 
         // Group by calendar day
         const matchesByDay = new Map();
@@ -716,7 +824,7 @@ export class FixtureCard {
                         <span class="text-3xl font-outfit font-black text-white tracking-wider">${match.homeScore} : ${match.awayScore}</span>
                         <span class="text-[9px] font-black text-red-300 bg-red-500/30 px-3 py-0.5 rounded-full mt-2 tracking-widest flex items-center gap-1">
                             <span class="w-1.5 h-1.5 rounded-full bg-red-400 animate-ping"></span>
-                            ${isLive ? 'CANLI' : 'BİTTİ'}
+                            ${isLive ? `CANLI ${match.elapsedTime ? `(${match.elapsedTime})` : ''}` : 'BİTTİ'}
                         </span>
                     ` : `
                         <span class="text-3xl font-outfit font-black text-white tracking-wider">VS</span>
@@ -821,7 +929,7 @@ export class FixtureCard {
             <div class="flex flex-col items-center justify-center min-w-[70px] z-10">
                 ${isFinished || isLive ? `
                     <span class="text-sm font-outfit font-black text-brand-cyan">${match.homeScore} : ${match.awayScore}</span>
-                    ${isLive ? `<span class="text-[7px] text-red-400 font-extrabold animate-pulse tracking-widest mt-0.5">CANLI</span>` : ''}
+                    ${isLive ? `<span class="text-[7px] text-red-400 font-extrabold animate-pulse tracking-widest mt-0.5">CANLI ${match.elapsedTime ? `(${match.elapsedTime})` : ''}</span>` : ''}
                 ` : `
                     <span class="text-xs font-outfit font-bold text-slate-400">${timeStr}</span>
                 `}
@@ -960,7 +1068,7 @@ export class FixtureCard {
                                     <span class="text-slate-500 font-bold text-xs">:</span>
                                     <span class="text-lg font-outfit font-black text-brand-cyan ${isLive ? 'pulse-live' : ''}">${match.awayScore}</span>
                                 </div>
-                                <span class="text-[10px] text-red-400 font-black uppercase mt-1.5 tracking-widest animate-pulse">${isLive ? 'Canlı Maç' : 'Maç Sonucu'}</span>
+                                <span class="text-[10px] text-red-400 font-black uppercase mt-1.5 tracking-widest animate-pulse">${isLive ? `Canlı Maç ${match.elapsedTime ? `(${match.elapsedTime})` : ''}` : 'Maç Sonucu'}</span>
                             ` : `
                                 <span class="text-xs font-outfit font-black text-slate-400 tracking-wider bg-black/50 px-3 py-1 rounded-lg border border-white/5">VS</span>
                                 <span class="text-xs font-outfit font-bold text-slate-200 mt-2 tracking-wide whitespace-nowrap">${this.formatDate(match.date)}</span>
