@@ -1026,7 +1026,7 @@ export class FixtureCard {
         // Open detailed drawer page
         this.modal.innerHTML = `
             ${sabotageOverlay}
-            <div class="flex flex-col w-full h-full relative z-20 pb-6">
+            <div class="flex flex-col w-full h-full min-h-0 relative z-20 pb-6">
                 
                 <!-- TOP HEADER BAR -->
                 <div class="flex justify-between items-center px-4 py-3 bg-brand-dark border-b border-white/5 shrink-0">
