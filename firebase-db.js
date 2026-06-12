@@ -61,8 +61,8 @@ const INITIAL_MOCK_DATA = {
             awayFlag: "https://flagcdn.com/cz.svg",
             sportDbEventId: "CGdvIm6K",
             sportDbLinks: {
-                details: "/api/flashscore/football/match/CGdvIm6K/details",
-                stats: "/api/flashscore/football/match/CGdvIm6K/stats"
+                details: "/api/flashscore/match/CGdvIm6K/details",
+                stats: "/api/flashscore/match/CGdvIm6K/stats"
             }
         },
         {
@@ -80,8 +80,8 @@ const INITIAL_MOCK_DATA = {
             awayFlag: "https://flagcdn.com/ba.svg",
             sportDbEventId: "OxkQ8qT6",
             sportDbLinks: {
-                details: "/api/flashscore/football/match/OxkQ8qT6/details",
-                stats: "/api/flashscore/football/match/OxkQ8qT6/stats"
+                details: "/api/flashscore/match/OxkQ8qT6/details",
+                stats: "/api/flashscore/match/OxkQ8qT6/stats"
             }
         },
         {
@@ -1579,13 +1579,14 @@ async function migrateMatchesEventIds() {
         const doc2 = await fStore.getDoc(match2Ref);
         if (doc2.exists()) {
             const data2 = doc2.data();
-            if (!data2.sportDbEventId) {
-                console.log("Migrating match-wc2 SportDB ID to CGdvIm6K...");
+            const hasBadLinks = data2.sportDbLinks && data2.sportDbLinks.details && data2.sportDbLinks.details.includes('/football/');
+            if (!data2.sportDbEventId || hasBadLinks) {
+                console.log("Migrating match-wc2 SportDB ID to CGdvIm6K (correcting links)...");
                 await fStore.updateDoc(match2Ref, {
                     sportDbEventId: "CGdvIm6K",
                     sportDbLinks: {
-                        details: "/api/flashscore/football/match/CGdvIm6K/details",
-                        stats: "/api/flashscore/football/match/CGdvIm6K/stats"
+                        details: "/api/flashscore/match/CGdvIm6K/details",
+                        stats: "/api/flashscore/match/CGdvIm6K/stats"
                     }
                 });
             }
@@ -1595,13 +1596,14 @@ async function migrateMatchesEventIds() {
         const doc3 = await fStore.getDoc(match3Ref);
         if (doc3.exists()) {
             const data3 = doc3.data();
-            if (!data3.sportDbEventId) {
-                console.log("Migrating match-wc3 SportDB ID to OxkQ8qT6...");
+            const hasBadLinks = data3.sportDbLinks && data3.sportDbLinks.details && data3.sportDbLinks.details.includes('/football/');
+            if (!data3.sportDbEventId || hasBadLinks) {
+                console.log("Migrating match-wc3 SportDB ID to OxkQ8qT6 (correcting links)...");
                 await fStore.updateDoc(match3Ref, {
                     sportDbEventId: "OxkQ8qT6",
                     sportDbLinks: {
-                        details: "/api/flashscore/football/match/OxkQ8qT6/details",
-                        stats: "/api/flashscore/football/match/OxkQ8qT6/stats"
+                        details: "/api/flashscore/match/OxkQ8qT6/details",
+                        stats: "/api/flashscore/match/OxkQ8qT6/stats"
                     }
                 });
             }
@@ -3458,8 +3460,8 @@ export async function fetchMatchStatsFromApi(matchId) {
 
     if (eventId && (!links || !links.details || !links.stats)) {
         links = {
-            details: `/api/flashscore/football/match/${eventId}/details`,
-            stats: `/api/flashscore/football/match/${eventId}/stats`
+            details: `/api/flashscore/match/${eventId}/details`,
+            stats: `/api/flashscore/match/${eventId}/stats`
         };
     }
 
