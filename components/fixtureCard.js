@@ -1,4 +1,5 @@
 import { savePrediction, getPredictions, getUsers, getPlayers, syncLiveScoresFromSportDb, getLiveScoresCache, translateCommentaryToTurkish } from '../firebase-db.js';
+import { CONFIG } from '../config.js';
 
 // Helper to get real match preview details (H2H, Stadiums, Star Players) dynamically
 // Helper to get real match preview details (H2H, Stadiums, Star Players) dynamically
@@ -1105,7 +1106,7 @@ export class FixtureCard {
                 </div>
 
                 <!-- DYNAMIC TAB CONTENT -->
-                <div id="detail-tab-content" class="flex-grow p-4 flex flex-col gap-4 overflow-y-auto">
+                <div id="detail-tab-content" class="flex-grow p-4 flex flex-col gap-4 overflow-y-auto min-h-0">
                     <!-- Loaded dynamically based on selected tab -->
                 </div>
 
@@ -1919,7 +1920,7 @@ export class FixtureCard {
                     
                     <div class="flex items-center justify-between mb-5 relative z-10">
                         <span class="text-[11px] font-black text-brand-cyan uppercase tracking-widest flex items-center gap-2 drop-shadow-[0_0_10px_rgba(6,182,212,0.4)]">
-                            <i data-lucide="bar-chart-3" class="w-4 h-4 text-brand-cyan animate-pulse"></i> CANLI MAÇ İSTATİSTİKLERİ
+                            <i data-lucide="bar-chart-3" class="w-4 h-4 text-brand-cyan ${match.status === 'LIVE' ? 'animate-pulse' : ''}"></i> ${match.status === 'LIVE' ? 'CANLI MAÇ İSTATİSTİKLERİ' : 'MAÇ İSTATİSTİKLERİ'}
                         </span>
                         <span class="text-[8px] font-black text-slate-400 bg-slate-900 border border-white/5 px-2 py-0.5 rounded-full uppercase tracking-wider">Detaylı Rapor</span>
                     </div>
