@@ -1106,7 +1106,7 @@ export class FixtureCard {
                 </div>
 
                 <!-- DYNAMIC TAB CONTENT -->
-                <div id="detail-tab-content" class="flex-grow p-4 flex flex-col gap-4 overflow-y-auto min-h-0">
+                <div id="detail-tab-content" class="flex-grow p-4 flex flex-col gap-4 overflow-y-auto min-h-0 scrollbar-thin">
                     <!-- Loaded dynamically based on selected tab -->
                 </div>
 
@@ -1635,7 +1635,7 @@ export class FixtureCard {
                     <!-- USER PREDICTIONS LIST -->
                     <div class="flex flex-col gap-2 text-left mt-2">
                         <span class="text-[8px] font-bold text-slate-400 uppercase tracking-widest pl-1">Diğer Kahinlerin Tahminleri</span>
-                        <div class="flex flex-col gap-2 max-h-48 overflow-y-auto pr-1">
+                        <div class="flex flex-col gap-2 max-h-48 overflow-y-auto pr-1 scrollbar-thin">
                             ${usersPredsHtml}
                         </div>
                     </div>

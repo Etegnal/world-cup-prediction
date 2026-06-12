@@ -34,6 +34,8 @@ class App {
         this.initTheme();
 
         window.addEventListener('popstate', (e) => this.handlePopState(e));
+
+        this.setupModalScrollLock();
     }
 
     async init() {
@@ -282,6 +284,31 @@ class App {
         }
 
         this.syncModalsWithState(state);
+    }
+
+    setupModalScrollLock() {
+        const observer = new MutationObserver(() => {
+            const isDetailActive = document.getElementById('match-detail-modal')?.classList.contains('active');
+            const isTeamsActive = document.getElementById('teams-modal')?.classList.contains('active');
+            const isJokerActive = document.getElementById('joker-drawer')?.classList.contains('active');
+            
+            if (isDetailActive || isTeamsActive || isJokerActive) {
+                document.body.classList.add('overflow-hidden');
+                document.documentElement.classList.add('overflow-hidden');
+            } else {
+                document.body.classList.remove('overflow-hidden');
+                document.documentElement.classList.remove('overflow-hidden');
+            }
+        });
+
+        const config = { attributes: true, attributeFilter: ['class'] };
+        const detailModal = document.getElementById('match-detail-modal');
+        const teamsModal = document.getElementById('teams-modal');
+        const jokerDrawer = document.getElementById('joker-drawer');
+
+        if (detailModal) observer.observe(detailModal, config);
+        if (teamsModal) observer.observe(teamsModal, config);
+        if (jokerDrawer) observer.observe(jokerDrawer, config);
     }
 
     closeAllModals() {
