@@ -58,7 +58,12 @@ const INITIAL_MOCK_DATA = {
             analysis: "12 Haziran 05:00 • Hızlı hücumlarıyla bilinen Güney Kore'de gözler Son Heung-min ve Lee Kang-in üzerinde olacak. Çekya ise Patrik Schick ve Souček önderliğinde disiplinli takım savunması ve duran toplardaki fizik avantajıyla gol arayacak.",
             sideQuestions: {"htResult":"draw","firstScorer":"Diğer","redCard":false,"cornersOverUnder":"under"},
             homeFlag: "https://flagcdn.com/kr.svg",
-            awayFlag: "https://flagcdn.com/cz.svg"
+            awayFlag: "https://flagcdn.com/cz.svg",
+            sportDbEventId: "CGdvIm6K",
+            sportDbLinks: {
+                details: "/api/flashscore/football/match/CGdvIm6K/details",
+                stats: "/api/flashscore/football/match/CGdvIm6K/stats"
+            }
         },
         {
             id: "match-wc3",
@@ -72,7 +77,12 @@ const INITIAL_MOCK_DATA = {
             analysis: "12 Haziran 22:00 • Ev sahibi Kanada, Alphonso Davies ve Jonathan David'in hızıyla gruptan çıkmanın peşinde. Bosna-Hersek ise tecrübeli golcüsü Edin Džeko ve orta sahadaki Krunić gibi isimlerle direnç göstermeyi hedefliyor.",
             sideQuestions: {"htResult":"home","firstScorer":"Diğer","redCard":false,"cornersOverUnder":"over"},
             homeFlag: "https://flagcdn.com/ca.svg",
-            awayFlag: "https://flagcdn.com/ba.svg"
+            awayFlag: "https://flagcdn.com/ba.svg",
+            sportDbEventId: "OxkQ8qT6",
+            sportDbLinks: {
+                details: "/api/flashscore/football/match/OxkQ8qT6/details",
+                stats: "/api/flashscore/football/match/OxkQ8qT6/stats"
+            }
         },
         {
             id: "match-wc4",
@@ -1561,6 +1571,46 @@ async function seedMatchesIfEmpty() {
     }
 }
 
+// Migration helper to ensure active matches have their SportDB Event IDs
+async function migrateMatchesEventIds() {
+    if (!db || !fStore) return;
+    try {
+        const match2Ref = fStore.doc(db, "matches", "match-wc2");
+        const doc2 = await fStore.getDoc(match2Ref);
+        if (doc2.exists()) {
+            const data2 = doc2.data();
+            if (!data2.sportDbEventId) {
+                console.log("Migrating match-wc2 SportDB ID to CGdvIm6K...");
+                await fStore.updateDoc(match2Ref, {
+                    sportDbEventId: "CGdvIm6K",
+                    sportDbLinks: {
+                        details: "/api/flashscore/football/match/CGdvIm6K/details",
+                        stats: "/api/flashscore/football/match/CGdvIm6K/stats"
+                    }
+                });
+            }
+        }
+        
+        const match3Ref = fStore.doc(db, "matches", "match-wc3");
+        const doc3 = await fStore.getDoc(match3Ref);
+        if (doc3.exists()) {
+            const data3 = doc3.data();
+            if (!data3.sportDbEventId) {
+                console.log("Migrating match-wc3 SportDB ID to OxkQ8qT6...");
+                await fStore.updateDoc(match3Ref, {
+                    sportDbEventId: "OxkQ8qT6",
+                    sportDbLinks: {
+                        details: "/api/flashscore/football/match/OxkQ8qT6/details",
+                        stats: "/api/flashscore/football/match/OxkQ8qT6/stats"
+                    }
+                });
+            }
+        }
+    } catch (err) {
+        console.error("Failed to migrate Firestore matches event IDs:", err);
+    }
+}
+
 // Helper to seed players to Firestore or Mock DB from scraped JSON if empty
 export function calculateRealisticPrice(p, teamName) {
     let teamStrength = 75; // varsayılan
@@ -1685,6 +1735,7 @@ async function initDb() {
             
             // Seed matches if database is blank
             await seedMatchesIfEmpty();
+            await migrateMatchesEventIds();
             await seedPlayersIfEmpty();
         } catch (e) {
             console.error("Firebase connection failed. Falling back to local Demo Mode...", e);
@@ -3403,6 +3454,13 @@ export async function fetchMatchStatsFromApi(matchId) {
         } catch (e) {
             console.error("Failed to lookup eventId:", e);
         }
+    }
+
+    if (eventId && (!links || !links.details || !links.stats)) {
+        links = {
+            details: `/api/flashscore/football/match/${eventId}/details`,
+            stats: `/api/flashscore/football/match/${eventId}/stats`
+        };
     }
 
     if (!eventId || !links) {

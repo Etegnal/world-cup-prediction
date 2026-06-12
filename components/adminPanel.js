@@ -94,7 +94,7 @@ export class AdminPanel {
                         </h3>
                         <div class="flex flex-col gap-2.5">
                             <select id="admin-complete-match-select" class="bg-slate-900 border border-white/10 rounded-xl px-3 py-2 text-xs text-slate-200 outline-none">
-                                ${matches.filter(m => m.status !== 'FINISHED').map(m => `<option value="${m.id}">${m.homeTeam} vs ${m.awayTeam}</option>`).join('')}
+                                ${matches.map(m => `<option value="${m.id}">${m.homeTeam} vs ${m.awayTeam} ${m.status === 'FINISHED' ? '🏁 (BİTTİ)' : ''}</option>`).join('')}
                             </select>
                             
                             <div class="flex gap-3">
@@ -214,9 +214,16 @@ export class AdminPanel {
                                     <label class="text-[9px] font-bold text-slate-400 uppercase tracking-widest block mb-1">Maç Tarihi & Saati</label>
                                     <input type="text" id="admin-edit-match-date" class="w-full bg-slate-900 border border-white/10 rounded-xl px-3 py-2 text-xs text-white outline-none" placeholder="Örn: 2026-07-19T22:00:00">
                                 </div>
+                            </div>
+                            
+                            <div class="flex gap-3">
                                 <div class="flex-1">
                                     <label class="text-[9px] font-bold text-slate-400 uppercase tracking-widest block mb-1">SofaScore ID</label>
                                     <input type="text" id="admin-edit-sofa-id" class="w-full bg-slate-900 border border-white/10 rounded-xl px-3 py-2 text-xs text-white outline-none" placeholder="Örn: 123456">
+                                </div>
+                                <div class="flex-1">
+                                    <label class="text-[9px] font-bold text-slate-400 uppercase tracking-widest block mb-1">SportDB Event ID</label>
+                                    <input type="text" id="admin-edit-sportdb-id" class="w-full bg-slate-900 border border-white/10 rounded-xl px-3 py-2 text-xs text-white outline-none" placeholder="Örn: zXyW1234">
                                 </div>
                             </div>
 
@@ -1219,6 +1226,42 @@ export class AdminPanel {
         const compHomeScore = document.getElementById('admin-comp-home-score');
         const compAwayScore = document.getElementById('admin-comp-away-score');
 
+        if (compMatchSelect) {
+            const populateForm = () => {
+                const matchId = compMatchSelect.value;
+                if (!matchId) return;
+                const matchObj = this.appState.matches.find(m => m.id === matchId);
+                if (matchObj) {
+                    if (compHomeScore) compHomeScore.value = matchObj.homeScore !== undefined ? matchObj.homeScore : 0;
+                    if (compAwayScore) compAwayScore.value = matchObj.awayScore !== undefined ? matchObj.awayScore : 0;
+                    
+                    const compHtResult = document.getElementById('admin-comp-ht-result');
+                    if (compHtResult && matchObj.sideQuestions?.htResult) {
+                        compHtResult.value = matchObj.sideQuestions.htResult;
+                    }
+                    
+                    const compFirstScorer = document.getElementById('admin-comp-first-scorer');
+                    if (compFirstScorer && matchObj.sideQuestions?.firstScorer) {
+                        compFirstScorer.value = matchObj.sideQuestions.firstScorer;
+                    }
+                    
+                    const compRedCard = document.getElementById('admin-comp-red-card');
+                    if (compRedCard && matchObj.sideQuestions?.redCard !== undefined) {
+                        compRedCard.value = String(matchObj.sideQuestions.redCard);
+                    }
+                    
+                    const compCorners = document.getElementById('admin-comp-corners');
+                    if (compCorners && matchObj.sideQuestions?.cornersOverUnder) {
+                        compCorners.value = matchObj.sideQuestions.cornersOverUnder;
+                    }
+                    
+                    this.compExtraData = null; // reset
+                }
+            };
+            compMatchSelect.addEventListener('change', populateForm);
+            populateForm();
+        }
+
         if (fetchApiBtn) {
             fetchApiBtn.addEventListener('click', async () => {
                 const matchId = compMatchSelect.value;
@@ -1406,10 +1449,11 @@ export class AdminPanel {
         const editAwayFlag = document.getElementById('admin-edit-away-flag');
         const editMatchDate = document.getElementById('admin-edit-match-date');
         const editSofaId = document.getElementById('admin-edit-sofa-id');
+        const editSportDbId = document.getElementById('admin-edit-sportdb-id');
         const editMatchAnalysis = document.getElementById('admin-edit-match-analysis');
         const editMatchSaveBtn = document.getElementById('admin-edit-match-save-btn');
 
-        if (editMatchSelect && editHomeTeam && editAwayTeam && editMatchStatus && editMatchGroup && editHomeFlag && editAwayFlag && editMatchDate && editSofaId && editMatchAnalysis) {
+        if (editMatchSelect && editHomeTeam && editAwayTeam && editMatchStatus && editMatchGroup && editHomeFlag && editAwayFlag && editMatchDate && editSofaId && editSportDbId && editMatchAnalysis) {
             const updateMatchForm = () => {
                 const matchId = editMatchSelect.value;
                 const match = this.appState.matches.find(m => m.id === matchId);
@@ -1422,6 +1466,7 @@ export class AdminPanel {
                     editAwayFlag.value = match.awayFlag || '';
                     editMatchDate.value = match.date || '';
                     editSofaId.value = match.sofaScoreId || '';
+                    editSportDbId.value = match.sportDbEventId || '';
                     editMatchAnalysis.value = match.analysis || '';
                 }
             };
@@ -1441,6 +1486,7 @@ export class AdminPanel {
                     awayFlag: editAwayFlag.value,
                     date: editMatchDate.value.trim(),
                     sofaScoreId: editSofaId.value.trim(),
+                    sportDbEventId: editSportDbId.value.trim(),
                     analysis: editMatchAnalysis.value.trim()
                 };
 
