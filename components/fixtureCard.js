@@ -1,4 +1,4 @@
-import { savePrediction, getPredictions, getUsers, getPlayers, syncLiveScoresFromSportDb, getLiveScoresCache } from '../firebase-db.js';
+import { savePrediction, getPredictions, getUsers, getPlayers, syncLiveScoresFromSportDb, getLiveScoresCache, translateCommentaryToTurkish } from '../firebase-db.js';
 
 // Helper to get real match preview details (H2H, Stadiums, Star Players) dynamically
 // Helper to get real match preview details (H2H, Stadiums, Star Players) dynamically
@@ -1902,7 +1902,7 @@ export class FixtureCard {
                         eventColor = 'text-brand-green';
                         eventLabel = `${inc.homeScore} - ${inc.awayScore}`;
                         playerName = inc.player?.name || 'Bilinmeyen';
-                        detail = inc.description || '';
+                        detail = translateCommentaryToTurkish(inc.description || '');
                         nodeBorder = 'border-brand-green/60';
                         nodeGlow = 'shadow-[0_0_14px_rgba(34,197,94,0.4)]';
                     } else if (inc.incidentType === 'card') {

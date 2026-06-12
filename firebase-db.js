@@ -3395,6 +3395,90 @@ export async function syncLiveScoresFromFreeApi() {
     return syncLiveScoresFromSportDb();
 }
 
+// Helper to translate event commentary / descriptions to Turkish
+export function translateCommentaryToTurkish(text) {
+    if (!text) return "";
+    let t = text;
+    
+    // Temel Ülke Çevirileri
+    const countries = {
+        "Czech Republic": "Çekya",
+        "South Korea": "Güney Kore",
+        "Mexico": "Meksika",
+        "South Africa": "Güney Afrika",
+        "Canada": "Kanada",
+        "Bosnia & Herzegovina": "Bosna-Hersek",
+        "Bosna and Herzegovina": "Bosna-Hersek",
+        "Germany": "Almanya",
+        "Scotland": "İskoçya",
+        "Hungary": "Macaristan",
+        "Switzerland": "İsviçre",
+        "Spain": "İspanya",
+        "Croatia": "Hırvatistan",
+        "Italy": "İtalya",
+        "Albania": "Arnavutluk",
+        "Netherlands": "Hollanda",
+        "France": "Fransa",
+        "England": "İngiltere",
+        "Brazil": "Brezilya",
+        "Argentina": "Arjantin",
+        "Portugal": "Portekiz",
+        "Belgium": "Belçika",
+        "Austria": "Avusturya",
+        "Turkey": "Türkiye",
+        "Georgia": "Gürcistan",
+        "Slovakia": "Slovakya",
+        "Romania": "Romanya",
+        "Ukraine": "Ukrayna",
+        "Denmark": "Danimarka",
+        "Slovenia": "Slovenya",
+        "Serbia": "Sırbistan",
+        "Poland": "Polonya"
+    };
+
+    for (const [en, tr] of Object.entries(countries)) {
+        t = t.replace(new RegExp(en, 'g'), tr);
+    }
+
+    // Şablon Çevirileri (Regex ile)
+    
+    // 1. Kendi kalesine gol: "Own Goal! [Player] ([Country]) has scored an own goal!"
+    t = t.replace(/(?:Own Goal|OWN GOAL)!\s+([^(\n]+)\s*\(([^)]+)\)\s+has scored an own goal!/i, 
+        "KENDİ KALESİNE GOL! $1 ($2) topu kendi ağlarına gönderiyor!");
+
+    // 2. Penaltı golü: "GOAL! [Player] ([Country]) scores from the penalty spot!"
+    t = t.replace(/(?:GOAL)!\s+([^(\n]+)\s*\(([^)]+)\)\s+scores from the penalty spot!/i, 
+        "GOL! $1 ($2) penaltı noktasından topu ağlara yolluyor!");
+
+    // 3. Şablon A: "GOAL! [Player] ([Country]) rises to meet a long throw in and plants a glorious header past [Goalkeeper] from close range. The score changes to [Score]."
+    t = t.replace(/(?:GOAL)!\s+([^(\n]+)\s*\(([^)]+)\)\s+rises to meet a long throw in and plants a glorious header past\s+([^(\n]+)\s+from close range\.\s+(?:The score changes to|Score changes to)\s+([\d:-]+)\.?/i,
+        "GOL! $1 ($2), ceza sahasına atılan uzun taç atışına harika yükseliyor ve yakın mesafeden yaptığı şık kafa vuruşuyla kaleci $3'yi mağlup ediyor. Skor: $4.");
+
+    // 4. Şablon B: "GOAL! [Player] ([Country]) collects a pass and from inside the box he lifts the ball over [Goalkeeper], who was off his line. What a finish that is! [Score]."
+    t = t.replace(/(?:GOAL)!\s+([^(\n]+)\s*\(([^)]+)\)\s+collects a pass and from inside the box he lifts the ball over\s+([^,\n]+),\s+who was off his line\.\s+What a finish that is!\s+([\d:-]+)\.?/i,
+        "GOL! $1 ($2) aldığı pasla ceza sahasına giriyor, kalesinden açılan kaleci $3'nin üzerinden klas bir aşırtma vuruşla topu ağlara gönderiyor. Harika bir gol! Skor: $4.");
+
+    // 5. Şablon C: "Goal! [Player] puts a cross into the box and finds [Player] ([Country]), who latches on to it and strikes the ball into the middle of the net. He makes it [Score]."
+    t = t.replace(/(?:GOAL)!\s+([^(\n]+)\s+puts a cross into the box and finds\s+([^(\n]+)\s*\(([^)]+)\),\s+who latches on to it and strikes the ball into the middle of the net\.\s+He makes it\s+([\d:-]+)\.?/i,
+        "GOL! $1 ceza sahasına harika bir orta kesiyor, topu kontrol eden $2 ($3) düzgün bir vuruşla topu ağların ortasına yolluyor ve skoru yapıyor: $4.");
+
+    // Genel Kalıp Değişimleri (Eğer tam şablon eşleşmezse)
+    t = t.replace(/GOAL!/gi, "GOL!");
+    t = t.replace(/Goal!/gi, "Gol!");
+    t = t.replace(/Own Goal!/gi, "Kendi Kalesine Gol!");
+    t = t.replace(/The score changes to/gi, "Skor şuna değişti:");
+    t = t.replace(/rises to meet a long throw in and plants a glorious header past/gi, "uzun taç atışına yükselerek harika bir kafa vuruşuyla kaleciyi geçiyor:");
+    t = t.replace(/collects a pass and from inside the box he lifts the ball over/gi, "pası alıp ceza sahası içinden topu aşırtıyor:");
+    t = t.replace(/who was off his line\. What a finish that is!/gi, "kalesinden açılmıştı. Nefis bir bitiriş!");
+    t = t.replace(/puts a cross into the box and finds/gi, "ceza sahasına orta açıp buluşturuyor:");
+    t = t.replace(/who latches on to it and strikes the ball into the middle of the net/gi, "topu kontrol edip ağların ortasına gönderiyor");
+    t = t.replace(/He makes it/gi, "Skoru yapıyor:");
+    t = t.replace(/from close range/gi, "yakın mesafeden");
+    t = t.replace(/scores from the penalty spot/gi, "penaltı noktasından golü atıyor");
+
+    return t;
+}
+
 // Admin panelinin API'den istatistik, olay ve ilk golcü verilerini çekmesini sağlayan yardımcı fonksiyon
 export async function fetchMatchStatsFromApi(matchId) {
     await initDb();
@@ -3559,7 +3643,7 @@ export async function fetchMatchStatsFromApi(matchId) {
                 assist,
                 homeScore: e.homeScore || "0",
                 awayScore: e.awayScore || "0",
-                description: e.incidentCommentary && e.incidentCommentary[0] ? e.incidentCommentary[0] : ''
+                description: e.incidentCommentary && e.incidentCommentary[0] ? translateCommentaryToTurkish(e.incidentCommentary[0]) : ''
             });
         });
 
