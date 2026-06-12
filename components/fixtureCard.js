@@ -1751,6 +1751,54 @@ export class FixtureCard {
             // ====== MATCH REPORT TAB - STATISTICS ONLY ======
             const stats = match.statistics || [];
 
+            const statIconMap = {
+                'expected goals (xg)': '🎯',
+                'xg on target (xgot)': '🎯',
+                'ball possession': '⚽',
+                'possession': '⚽',
+                'total shots': '🚀',
+                'shots on target': '🎯',
+                'shots off target': '📤',
+                'blocked shots': '🛡️',
+                'shots inside the box': '📦',
+                'shots outside the box': '☄️',
+                'hit woodwork': '🪵',
+                'hit the woodwork': '🪵',
+                'big chances': '💎',
+                'big chances missed': '❌',
+                'corners': '🚩',
+                'corner kicks': '🚩',
+                'passes': '👟',
+                'total passes': '👟',
+                'accurate passes': '✅',
+                'long balls': '✈️',
+                'long passes': '✈️',
+                'crosses': '🔄',
+                'passes in final third': '⚔️',
+                'accurate through passes': '🪄',
+                'tackles': '🛡️',
+                'interceptions': '⚡',
+                'clearances': '🧹',
+                'fouls': '⚠️',
+                'offsides': '🏁',
+                'yellow cards': '🟨',
+                'red cards': '🟥',
+                'free kicks': '🎯',
+                'goal kicks': '🥅',
+                'throw-ins': '👐',
+                'throw ins': '👐',
+                'counter attacks': '⚡',
+                'saves': '🧤',
+                'goalkeeper saves': '🧤',
+                'expected assists (xa)': '🪄',
+                'duels won': '💪',
+                'errors leading to shot': '🚨',
+                'errors leading to goal': '🚨',
+                'xgot faced': '🧤',
+                'goals prevented': '🛡️',
+                'touches in opposition box': '👣'
+            };
+
             // === STATISTICS SECTION ===
             let statsHtml = '';
             if (stats && stats.length > 0) {
@@ -1819,21 +1867,40 @@ export class FixtureCard {
                         const awayPct = (awayVal / maxVal) * 100;
                         const homeWin = homeVal > awayVal;
                         const awayWin = awayVal > homeVal;
+                        const icon = statIconMap[cleanName] || '📊';
 
                         statsHtml += `
-                            <div class="stat-row-item flex flex-col gap-2 py-3 border-b border-white/[0.03] last:border-b-0">
-                                <div class="flex justify-between items-center">
-                                    <span class="text-sm font-outfit font-black ${homeWin ? 'text-brand-cyan' : 'text-slate-400'} tabular-nums min-w-[40px]">${item.home || homeVal}</span>
-                                    <span class="text-[9px] font-black text-slate-500 uppercase tracking-widest text-center flex-1">${label}</span>
-                                    <span class="text-sm font-outfit font-black ${awayWin ? 'text-brand-neonPink' : 'text-slate-400'} tabular-nums min-w-[40px] text-right">${item.away || awayVal}</span>
-                                </div>
-                                <div class="flex items-center gap-1.5 h-3.5">
-                                    <div class="flex-1 flex justify-end">
-                                        <div class="h-full rounded-l-full neon-bar-animate ${homeWin ? 'neon-bar-home-win' : 'neon-bar-neutral'}" style="width: ${homePct}%; min-width: 6px;"></div>
+                            <div class="stat-row-item flex flex-col gap-2 py-3 px-4 rounded-xl border border-white/[0.04] bg-slate-900/30 hover:bg-slate-900/60 hover:border-white/[0.12] hover:shadow-[0_0_15px_rgba(255,255,255,0.03)] transition-all duration-300 mb-3 relative overflow-hidden group">
+                                <div class="absolute inset-0 bg-gradient-to-r ${homeWin ? 'from-brand-cyan/5 to-transparent' : awayWin ? 'from-transparent to-brand-neonPink/5' : 'from-transparent to-transparent'} opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+                                
+                                <div class="flex justify-between items-center relative z-10">
+                                    <div class="flex items-center gap-1.5 min-w-[50px]">
+                                        <span class="text-base font-outfit font-black ${homeWin ? 'text-brand-cyan drop-shadow-[0_0_8px_rgba(6,182,212,0.6)] text-[17px]' : 'text-slate-300 font-bold'} tabular-nums">
+                                            ${item.home || homeVal}
+                                        </span>
                                     </div>
-                                    <div class="w-0.5 h-5 rounded-full bg-slate-500/30"></div>
-                                    <div class="flex-1">
-                                        <div class="h-full rounded-r-full neon-bar-animate ${awayWin ? 'neon-bar-away-win' : 'neon-bar-neutral'}" style="width: ${awayPct}%; min-width: 6px;"></div>
+                                    
+                                    <div class="flex items-center justify-center gap-1.5 flex-1 mx-2">
+                                        <span class="text-[10px] shrink-0 filter drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)]">${icon}</span>
+                                        <span class="text-[10px] font-black text-slate-100 uppercase tracking-widest text-center drop-shadow-[0_1px_2px_rgba(0,0,0,0.6)]">
+                                            ${label}
+                                        </span>
+                                    </div>
+                                    
+                                    <div class="flex items-center justify-end gap-1.5 min-w-[50px] text-right">
+                                        <span class="text-base font-outfit font-black ${awayWin ? 'text-brand-neonPink drop-shadow-[0_0_8px_rgba(236,72,153,0.6)] text-[17px]' : 'text-slate-300 font-bold'} tabular-nums">
+                                            ${item.away || awayVal}
+                                        </span>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-center gap-1 h-1.5 relative z-10 bg-black/40 rounded-full p-[1px] border border-white/[0.05]">
+                                    <div class="flex-1 flex justify-end h-full overflow-hidden rounded-l-full">
+                                        <div class="h-full rounded-l-full neon-bar-animate ${homeWin ? 'bg-gradient-to-r from-brand-cyan/30 to-brand-cyan shadow-[0_0_8px_rgba(6,182,212,0.5)]' : 'bg-slate-700/50'}" style="width: ${homePct}%; min-width: 4px;"></div>
+                                    </div>
+                                    <div class="w-[2px] h-2 bg-slate-500/30 shrink-0 rounded-full"></div>
+                                    <div class="flex-1 flex justify-start h-full overflow-hidden rounded-r-full">
+                                        <div class="h-full rounded-r-full neon-bar-animate ${awayWin ? 'bg-gradient-to-l from-brand-neonPink/30 to-brand-neonPink shadow-[0_0_8px_rgba(236,72,153,0.5)]' : 'bg-slate-700/50'}" style="width: ${awayPct}%; min-width: 4px;"></div>
                                     </div>
                                 </div>
                             </div>
@@ -1841,28 +1908,35 @@ export class FixtureCard {
                     });
                 }
             } else {
-                statsHtml = '<div class="text-center py-6 text-[10px] text-slate-500 italic uppercase font-black tracking-widest">Bu maç için istatistik verisi bulunmamaktadır.</div>';
+                statsHtml = '<div class="text-center py-8 text-[10px] text-slate-500 italic uppercase font-black tracking-widest bg-slate-950/40 border border-white/5 rounded-2xl p-5">Bu maç için istatistik verisi bulunmamaktadır.</div>';
             }
 
             contentContainer.innerHTML = `
                 <!-- MATCH STATISTICS -->
-                <div class="flex flex-col bg-slate-950/60 border border-white/[0.06] rounded-2xl p-5 backdrop-blur-sm">
-                    <div class="flex items-center justify-between mb-3">
-                        <span class="text-[9px] font-black text-brand-cyan uppercase tracking-widest flex items-center gap-1.5">
-                            <i data-lucide="bar-chart-3" class="w-3.5 h-3.5"></i> Maç İstatistikleri
+                <div class="flex flex-col bg-slate-950/65 border border-white/[0.08] rounded-2xl p-5 backdrop-blur-md shadow-[0_10px_30px_rgba(0,0,0,0.5)] relative overflow-hidden">
+                    <div class="absolute -top-20 -left-20 w-40 h-40 bg-brand-cyan/10 blur-[80px] rounded-full pointer-events-none"></div>
+                    <div class="absolute -bottom-20 -right-20 w-40 h-40 bg-brand-neonPink/10 blur-[80px] rounded-full pointer-events-none"></div>
+                    
+                    <div class="flex items-center justify-between mb-5 relative z-10">
+                        <span class="text-[11px] font-black text-brand-cyan uppercase tracking-widest flex items-center gap-2 drop-shadow-[0_0_10px_rgba(6,182,212,0.4)]">
+                            <i data-lucide="bar-chart-3" class="w-4 h-4 text-brand-cyan animate-pulse"></i> CANLI MAÇ İSTATİSTİKLERİ
                         </span>
+                        <span class="text-[8px] font-black text-slate-400 bg-slate-900 border border-white/5 px-2 py-0.5 rounded-full uppercase tracking-wider">Detaylı Rapor</span>
                     </div>
-                    <div class="flex justify-between items-center pb-3 mb-2 border-b border-white/[0.06]">
-                        <div class="flex items-center gap-2.5">
-                            <img src="${match.homeFlag}" class="w-6 h-4 object-cover rounded shadow-md border border-white/10" alt="">
-                            <span class="text-[11px] font-outfit font-black text-slate-200 uppercase tracking-wide">${match.homeTeam}</span>
+                    
+                    <div class="flex justify-between items-center pb-4 mb-5 border-b border-white/[0.08] relative z-10">
+                        <div class="flex items-center gap-3">
+                            <img src="${match.homeFlag}" class="w-8 h-5.5 object-cover rounded shadow-[0_0_8px_rgba(255,255,255,0.1)] border border-white/15" alt="">
+                            <span class="text-[13px] font-outfit font-black text-white uppercase tracking-wider">${match.homeTeam}</span>
                         </div>
-                        <div class="flex items-center gap-2.5">
-                            <span class="text-[11px] font-outfit font-black text-slate-200 uppercase tracking-wide">${match.awayTeam}</span>
-                            <img src="${match.awayFlag}" class="w-6 h-4 object-cover rounded shadow-md border border-white/10" alt="">
+                        <div class="text-[10px] font-black text-slate-500 uppercase tracking-widest font-outfit bg-white/5 px-2.5 py-1 rounded border border-white/5">VS</div>
+                        <div class="flex items-center gap-3">
+                            <span class="text-[13px] font-outfit font-black text-white uppercase tracking-wider text-right">${match.awayTeam}</span>
+                            <img src="${match.awayFlag}" class="w-8 h-5.5 object-cover rounded shadow-[0_0_8px_rgba(255,255,255,0.1)] border border-white/15" alt="">
                         </div>
                     </div>
-                    ${statsHtml}
+                    
+                    <div class="flex flex-col relative z-10 gap-1">${statsHtml}</div>
                 </div>
             `;
         } else if (this.activeTab === 'ratings') {
@@ -1977,26 +2051,267 @@ export class FixtureCard {
 
             contentContainer.innerHTML = `
                 <!-- MATCH TIMELINE -->
-                <div class="flex flex-col gap-0 bg-slate-950/60 border border-white/[0.06] rounded-2xl p-5 backdrop-blur-sm">
-                    <div class="flex items-center justify-between mb-4">
-                        <span class="text-[9px] font-black text-brand-gold uppercase tracking-widest flex items-center gap-1.5">
+                <div class="flex flex-col gap-0 bg-slate-950/60 border border-white/[0.06] rounded-2xl p-5 backdrop-blur-sm shadow-[0_4px_20px_rgba(0,0,0,0.3)]">
+                    <div class="flex items-center justify-between mb-5">
+                        <span class="text-[10px] font-black text-brand-gold uppercase tracking-widest flex items-center gap-1.5 drop-shadow-[0_0_6px_rgba(212,175,55,0.25)]">
                             <i data-lucide="clock" class="w-3.5 h-3.5"></i> Maç Zaman Tüneli
                         </span>
                         <div class="flex items-center gap-4">
                             <div class="flex items-center gap-1.5">
-                                <img src="${match.homeFlag}" class="w-4 h-3 object-cover rounded border border-white/10" alt="">
-                                <span class="text-[8px] text-slate-400 font-bold uppercase">Sol</span>
+                                <img src="${match.homeFlag}" class="w-5 h-3.5 object-cover rounded border border-white/10 shadow-sm" alt="">
+                                <span class="text-[9px] text-slate-300 font-bold uppercase tracking-wider">Sol</span>
                             </div>
-                            <div class="w-px h-3 bg-slate-600/40"></div>
+                            <div class="w-px h-3.5 bg-slate-700/40"></div>
                             <div class="flex items-center gap-1.5">
-                                <span class="text-[8px] text-slate-400 font-bold uppercase">Sağ</span>
-                                <img src="${match.awayFlag}" class="w-4 h-3 object-cover rounded border border-white/10" alt="">
+                                <span class="text-[9px] text-slate-300 font-bold uppercase tracking-wider">Sağ</span>
+                                <img src="${match.awayFlag}" class="w-5 h-3.5 object-cover rounded border border-white/10 shadow-sm" alt="">
                             </div>
                         </div>
                     </div>
                     ${timelineHtml}
                 </div>
+                <!-- LINEUPS CONTAINER (LOADED DYNAMICALLY) -->
+                <div id="lineups-loading-placeholder" class="text-center py-6 text-[10px] text-slate-500 italic uppercase font-black tracking-widest bg-slate-950/40 border border-white/5 rounded-2xl p-5 mt-4">
+                    <span class="inline-block animate-pulse">⏳ Resmî Kadrolar Yükleniyor...</span>
+                </div>
             `;
+
+            // Load lineups asynchronously
+            if (match.sportDbEventId) {
+                try {
+                    const apiKey = CONFIG.SPORTDB_API_KEY || "cHQZm8aayC8IxAYZoFLLAYkV58xUiED928pp1fif";
+                    const targetUrl = `https://api.sportdb.dev/api/flashscore/match/${match.sportDbEventId}/lineups`;
+                    const proxyUrl = `https://corsproxy.io/?url=${encodeURIComponent(targetUrl)}&reqHeaders=x-api-key:${apiKey}`;
+                    
+                    const res = await fetch(proxyUrl);
+                    if (res.ok) {
+                        const lineupsData = await res.json();
+                        if (Array.isArray(lineupsData) && lineupsData.length > 0) {
+                            const starters = lineupsData[0];
+                            const substitutes = lineupsData[1] || { home: [], away: [] };
+                            
+                            // Render Starting 11
+                            let homeStartersHtml = '';
+                            let awayStartersHtml = '';
+                            
+                            if (starters.home) {
+                                starters.home.forEach(p => {
+                                    const ratingBadge = p.participantRating ? `<span class="px-1.5 py-0.5 rounded text-[8px] font-black ${parseFloat(p.participantRating) >= 7.0 ? 'bg-brand-green/20 text-brand-green border border-brand-green/30' : 'bg-slate-800 text-slate-400 border border-white/5'}">${p.participantRating}</span>` : '';
+                                    
+                                    const subIncident = incidents.find(inc => inc.incidentType === 'substitution' && inc.playerOut && (inc.playerOut.name === p.participantName || p.participantName.includes(inc.playerOut.name) || inc.playerOut.name.includes(p.participantName)));
+                                    
+                                    let subDetails = '';
+                                    if (subIncident) {
+                                        const replacementName = subIncident.playerIn?.name || 'Yedek';
+                                        subDetails = `<div class="flex items-center gap-1 mt-0.5 text-[8px] text-red-400/90 font-medium"><span>🔻 ${subIncident.time}'</span> <span class="truncate max-w-[80px] opacity-75">(${replacementName})</span></div>`;
+                                    }
+                                    
+                                    homeStartersHtml += `
+                                        <div class="flex items-center justify-between py-2 border-b border-white/[0.03] last:border-0 hover:bg-white/[0.03] px-1.5 rounded-lg transition-all duration-200">
+                                            <div class="flex items-center gap-2 min-w-0">
+                                                <span class="w-4 text-[9px] font-mono text-slate-500 font-black text-center shrink-0">${p.participantNumber || ''}</span>
+                                                <div class="flex flex-col min-w-0">
+                                                    <span class="text-[10px] text-slate-100 font-bold truncate leading-tight">${p.participantName}</span>
+                                                    ${subDetails}
+                                                </div>
+                                            </div>
+                                            ${ratingBadge}
+                                        </div>
+                                    `;
+                                });
+                            }
+                            
+                            if (starters.away) {
+                                starters.away.forEach(p => {
+                                    const ratingBadge = p.participantRating ? `<span class="px-1.5 py-0.5 rounded text-[8px] font-black ${parseFloat(p.participantRating) >= 7.0 ? 'bg-brand-green/20 text-brand-green border border-brand-green/30' : 'bg-slate-800 text-slate-400 border border-white/5'}">${p.participantRating}</span>` : '';
+                                    
+                                    const subIncident = incidents.find(inc => inc.incidentType === 'substitution' && inc.playerOut && (inc.playerOut.name === p.participantName || p.participantName.includes(inc.playerOut.name) || inc.playerOut.name.includes(p.participantName)));
+                                    
+                                    let subDetails = '';
+                                    if (subIncident) {
+                                        const replacementName = subIncident.playerIn?.name || 'Yedek';
+                                        subDetails = `<div class="flex items-center gap-1 mt-0.5 text-[8px] text-red-400/90 font-medium justify-end"><span>🔻 ${subIncident.time}'</span> <span class="truncate max-w-[80px] opacity-75">(${replacementName})</span></div>`;
+                                    }
+                                    
+                                    awayStartersHtml += `
+                                        <div class="flex items-center justify-between py-2 border-b border-white/[0.03] last:border-0 hover:bg-white/[0.03] px-1.5 rounded-lg transition-all duration-200">
+                                            ${ratingBadge}
+                                            <div class="flex items-center gap-2 min-w-0 flex-row-reverse">
+                                                <span class="w-4 text-[9px] font-mono text-slate-500 font-black text-center shrink-0">${p.participantNumber || ''}</span>
+                                                <div class="flex flex-col min-w-0 items-end">
+                                                    <span class="text-[10px] text-slate-100 font-bold truncate text-right leading-tight">${p.participantName}</span>
+                                                    ${subDetails}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    `;
+                                });
+                            }
+                            
+                            // Render Substitutes
+                            let homeSubsHtml = '';
+                            let awaySubsHtml = '';
+                            
+                            if (substitutes.home) {
+                                substitutes.home.forEach(p => {
+                                    const ratingBadge = p.participantRating ? `<span class="px-1 py-0.5 rounded text-[7px] font-black ${parseFloat(p.participantRating) >= 7.0 ? 'bg-brand-green/20 text-brand-green' : 'bg-slate-800 text-slate-400'}">${p.participantRating}</span>` : '';
+                                    
+                                    const subIncident = incidents.find(inc => inc.incidentType === 'substitution' && inc.playerIn && (inc.playerIn.name === p.participantName || p.participantName.includes(inc.playerIn.name) || inc.playerIn.name.includes(p.participantName)));
+                                    
+                                    let subDetails = '';
+                                    let hasPlayed = false;
+                                    if (subIncident) {
+                                        hasPlayed = true;
+                                        const subbedOutPlayer = subIncident.playerOut?.name || 'Oyuncu';
+                                        subDetails = `<div class="flex items-center gap-1 mt-0.5 text-[8px] text-green-400/90 font-medium"><span>🔺 ${subIncident.time}'</span> <span class="truncate max-w-[80px] opacity-75">(${subbedOutPlayer})</span></div>`;
+                                    }
+                                    
+                                    homeSubsHtml += `
+                                        <div class="flex items-center justify-between py-1.5 border-b border-white/[0.02] last:border-0 ${hasPlayed ? 'bg-white/[0.02] opacity-100' : 'opacity-40'} hover:opacity-100 px-1.5 rounded-lg transition-all duration-200">
+                                            <div class="flex items-center gap-1.5 min-w-0">
+                                                <span class="w-3.5 text-[8px] font-mono text-slate-600 text-center shrink-0">${p.participantNumber || ''}</span>
+                                                <div class="flex flex-col min-w-0">
+                                                    <span class="text-[9px] text-slate-200 font-medium truncate leading-tight">${p.participantName}</span>
+                                                    ${subDetails}
+                                                </div>
+                                            </div>
+                                            ${ratingBadge || (hasPlayed ? '<span class="text-[7px] bg-slate-800/60 border border-white/5 px-1 py-0.5 rounded text-slate-400 font-black">Oynadı</span>' : '')}
+                                        </div>
+                                    `;
+                                });
+                            }
+                            
+                            if (substitutes.away) {
+                                substitutes.away.forEach(p => {
+                                    const ratingBadge = p.participantRating ? `<span class="px-1 py-0.5 rounded text-[7px] font-black ${parseFloat(p.participantRating) >= 7.0 ? 'bg-brand-green/20 text-brand-green' : 'bg-slate-800 text-slate-400'}">${p.participantRating}</span>` : '';
+                                    
+                                    const subIncident = incidents.find(inc => inc.incidentType === 'substitution' && inc.playerIn && (inc.playerIn.name === p.participantName || p.participantName.includes(inc.playerIn.name) || inc.playerIn.name.includes(p.participantName)));
+                                    
+                                    let subDetails = '';
+                                    let hasPlayed = false;
+                                    if (subIncident) {
+                                        hasPlayed = true;
+                                        const subbedOutPlayer = subIncident.playerOut?.name || 'Oyuncu';
+                                        subDetails = `<div class="flex items-center gap-1 mt-0.5 text-[8px] text-green-400/90 font-medium justify-end"><span>🔺 ${subIncident.time}'</span> <span class="truncate max-w-[80px] opacity-75">(${subbedOutPlayer})</span></div>`;
+                                    }
+                                    
+                                    awaySubsHtml += `
+                                        <div class="flex items-center justify-between py-1.5 border-b border-white/[0.02] last:border-0 ${hasPlayed ? 'bg-white/[0.02] opacity-100' : 'opacity-40'} hover:opacity-100 px-1.5 rounded-lg transition-all duration-200">
+                                            ${ratingBadge || (hasPlayed ? '<span class="text-[7px] bg-slate-800/60 border border-white/5 px-1 py-0.5 rounded text-slate-400 font-black">Oynadı</span>' : '')}
+                                            <div class="flex items-center gap-1.5 min-w-0 flex-row-reverse">
+                                                <span class="w-3.5 text-[8px] font-mono text-slate-600 text-center shrink-0">${p.participantNumber || ''}</span>
+                                                <div class="flex flex-col min-w-0 items-end">
+                                                    <span class="text-[9px] text-slate-200 font-medium truncate text-right leading-tight">${p.participantName}</span>
+                                                    ${subDetails}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    `;
+                                });
+                            }
+
+                            // Render Coaches
+                            let homeCoachHtml = '';
+                            let awayCoachHtml = '';
+                            if (lineupsData[2]) {
+                                const coachData = lineupsData[2];
+                                if (coachData.home && coachData.home[0]) {
+                                    homeCoachHtml = `<div class="text-[10px] text-brand-gold font-bold truncate">👔 ${coachData.home[0].participantName}</div>`;
+                                }
+                                if (coachData.away && coachData.away[0]) {
+                                    awayCoachHtml = `<div class="text-[10px] text-brand-gold font-bold truncate text-right">👔 ${coachData.away[0].participantName}</div>`;
+                                }
+                            }
+
+                            let coachHtml = '';
+                            if (homeCoachHtml || awayCoachHtml) {
+                                coachHtml = `
+                                    <div class="grid grid-cols-2 gap-5 pt-3 border-t border-white/[0.04] mt-2 relative z-10">
+                                        <div>
+                                            <div class="text-[8px] font-black text-slate-500 uppercase tracking-widest mb-0.5">Teknik Direktör</div>
+                                            ${homeCoachHtml || '<span class="text-[9px] text-slate-550 italic">Bilinmiyor</span>'}
+                                        </div>
+                                        <div>
+                                            <div class="text-[8px] font-black text-slate-500 uppercase tracking-widest mb-0.5 text-right">Teknik Direktör</div>
+                                            ${awayCoachHtml || '<span class="text-[9px] text-slate-550 italic text-right">Bilinmiyor</span>'}
+                                        </div>
+                                    </div>
+                                `;
+                            }
+
+                            const placeholderEl = document.getElementById('lineups-loading-placeholder');
+                            if (placeholderEl) {
+                                placeholderEl.outerHTML = `
+                                    <div class="flex flex-col gap-4 bg-slate-950/65 border border-white/[0.08] rounded-2xl p-5 backdrop-blur-md mt-4 shadow-[0_10px_30px_rgba(0,0,0,0.5)] relative overflow-hidden">
+                                        <div class="absolute -top-20 -left-20 w-45 h-45 bg-brand-gold/5 blur-[80px] rounded-full pointer-events-none"></div>
+                                        
+                                        <span class="text-[10px] font-black text-brand-gold uppercase tracking-widest flex items-center gap-1.5 drop-shadow-[0_0_8px_rgba(212,175,55,0.3)] relative z-10">
+                                            <i data-lucide="users" class="w-4 h-4 text-brand-gold animate-pulse"></i> RESMÎ KADROLAR & REYTINGLER
+                                        </span>
+                                        
+                                        <!-- Starters Grid -->
+                                        <div class="grid grid-cols-2 gap-5 mt-2 pb-4 border-b border-white/[0.08] relative z-10">
+                                            <div>
+                                                <div class="text-[9px] font-black text-brand-cyan uppercase tracking-wider mb-3 border-b border-white/5 pb-1.5 flex items-center gap-1.5">
+                                                    <img src="${match.homeFlag}" class="w-3.5 h-2.5 object-cover rounded border border-white/10" alt="">
+                                                    ${match.homeTeam} İlk 11
+                                                </div>
+                                                <div class="flex flex-col gap-1">${homeStartersHtml || '<div class="text-[9px] text-slate-500 italic">Veri Yok</div>'}</div>
+                                            </div>
+                                            <div>
+                                                <div class="text-[9px] font-black text-brand-neonPink uppercase tracking-wider mb-3 border-b border-white/5 pb-1.5 flex items-center gap-1.5 justify-end">
+                                                    ${match.awayTeam} İlk 11
+                                                    <img src="${match.awayFlag}" class="w-3.5 h-2.5 object-cover rounded border border-white/10" alt="">
+                                                </div>
+                                                <div class="flex flex-col gap-1">${awayStartersHtml || '<div class="text-[9px] text-slate-500 italic text-right">Veri Yok</div>'}</div>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Substitutes Grid -->
+                                        <div class="grid grid-cols-2 gap-5 pb-1 relative z-10">
+                                            <div>
+                                                <div class="text-[9px] font-black text-slate-400 uppercase tracking-wider mb-2.5 flex items-center gap-1">
+                                                    <span>👥</span> Yedek Kulübesi
+                                                </div>
+                                                <div class="flex flex-col gap-1">${homeSubsHtml || '<div class="text-[8px] text-slate-650 italic">Veri Yok</div>'}</div>
+                                            </div>
+                                            <div>
+                                                <div class="text-[9px] font-black text-slate-400 uppercase tracking-wider mb-2.5 text-right flex items-center gap-1 justify-end">
+                                                    Yedek Kulübesi <span>👥</span>
+                                                </div>
+                                                <div class="flex flex-col gap-1">${awaySubsHtml || '<div class="text-[8px] text-slate-650 italic text-right">Veri Yok</div>'}</div>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Coaches Section -->
+                                        ${coachHtml}
+                                    </div>
+                                `;
+                                
+                                if (window.lucide) {
+                                    window.lucide.createIcons();
+                                }
+                            }
+                        } else {
+                            const placeholderEl = document.getElementById('lineups-loading-placeholder');
+                            if (placeholderEl) {
+                                placeholderEl.outerHTML = '<div class="text-center py-6 text-[10px] text-slate-500 italic uppercase font-black tracking-widest bg-slate-950/40 border border-white/5 rounded-2xl p-5 mt-4">Resmî kadro verisi henüz açıklanmadı.</div>';
+                            }
+                        }
+                    } else {
+                        const placeholderEl = document.getElementById('lineups-loading-placeholder');
+                        if (placeholderEl) {
+                            placeholderEl.outerHTML = '<div class="text-center py-6 text-[10px] text-slate-500 italic uppercase font-black tracking-widest bg-slate-950/40 border border-white/5 rounded-2xl p-5 mt-4">Resmî kadro verisi bulunamadı.</div>';
+                        }
+                    }
+                } catch(e) {
+                    console.error("Failed to load lineups:", e);
+                    const placeholderEl = document.getElementById('lineups-loading-placeholder');
+                    if (placeholderEl) {
+                        placeholderEl.outerHTML = '<div class="text-center py-6 text-[10px] text-red-400 italic uppercase font-black tracking-widest bg-slate-950/40 border border-red-500/10 rounded-2xl p-5 mt-4">Kadrolar yüklenirken hata oluştu.</div>';
+                    }
+                }
+            }
         }
 
         // Trigger lucide inside modal
