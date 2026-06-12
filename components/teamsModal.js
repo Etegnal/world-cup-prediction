@@ -73,7 +73,7 @@ export class TeamsModal {
             </div>
 
             <!-- Scrollable Body -->
-            <div class="flex-grow p-4 overflow-y-auto pb-12 space-y-5 scrollbar-thin">
+            <div class="flex-grow p-4 overflow-y-auto pb-12 space-y-5">
                 <!-- Turkey (Bizim Çocuklar) Special Section -->
                 ${turkeyTeam ? `
                 <div class="flex flex-col gap-2">
@@ -159,7 +159,7 @@ export class TeamsModal {
             </div>
 
             <!-- Scrollable Content -->
-            <div class="flex-grow p-4 overflow-y-auto pb-16 relative space-y-5 scrollbar-thin">
+            <div class="flex-grow p-4 overflow-y-auto pb-16 relative space-y-5">
                 <!-- Inline style for custom waving animation -->
                 <style>
                     @keyframes flagWave {
