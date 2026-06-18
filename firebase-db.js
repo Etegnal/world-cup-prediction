@@ -30634,22 +30634,48 @@ export async function deletePlayer(playerId) {
 }
 
 // Save user's fantasy squad for a match (matchId parameter is actually the round key e.g. "round_1")
-export async function saveFantasySquad(userId, matchId, squadData) {
+export async function saveFantasySquad(userId, matchId, squadData, isAdminBypass = false) {
     await initDb();
     
     // Server-side/DB-side Lock validation
-    const matches = await getMatches();
-    const roundMatches = matches.filter(m => getMatchFantasyRound(m, matches) === matchId);
-    if (roundMatches.length > 0) {
-        let earliestMatchTime = Infinity;
-        roundMatches.forEach(m => {
-            const time = new Date(m.date).getTime();
-            if (time < earliestMatchTime) earliestMatchTime = time;
-        });
-        const lockTime = earliestMatchTime - 15 * 60 * 1000;
-        if (Date.now() >= lockTime) {
-            console.error("Failed to save fantasy squad: Round is locked");
-            return false;
+    if (!isAdminBypass) {
+        let isUserUnlocked = false;
+        if (CONFIG.IS_DEMO_MODE) {
+            const data = getMockData();
+            const user = data.users.find(u => u.id === userId);
+            if (user && user.unlockedFantasyRounds && user.unlockedFantasyRounds.includes(matchId)) {
+                isUserUnlocked = true;
+            }
+        } else {
+            try {
+                const userDocRef = fStore.doc(db, "users", userId);
+                const userSnap = await fStore.getDoc(userDocRef);
+                if (userSnap.exists()) {
+                    const userData = userSnap.data();
+                    if (userData.unlockedFantasyRounds && userData.unlockedFantasyRounds.includes(matchId)) {
+                        isUserUnlocked = true;
+                    }
+                }
+            } catch (err) {
+                console.error("Error checking user unlocked fantasy rounds:", err);
+            }
+        }
+
+        if (!isUserUnlocked) {
+            const matches = await getMatches();
+            const roundMatches = matches.filter(m => getMatchFantasyRound(m, matches) === matchId);
+            if (roundMatches.length > 0) {
+                let earliestMatchTime = Infinity;
+                roundMatches.forEach(m => {
+                    const time = new Date(m.date).getTime();
+                    if (time < earliestMatchTime) earliestMatchTime = time;
+                });
+                const lockTime = earliestMatchTime - 15 * 60 * 1000;
+                if (Date.now() >= lockTime) {
+                    console.error("Failed to save fantasy squad: Round is locked");
+                    return false;
+                }
+            }
         }
     }
 

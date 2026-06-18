@@ -1,6 +1,6 @@
 // Admin Panel Component (passcode authorization + match completions + live simulators + analyses updates)
 import { CONFIG } from '../config.js';
-import { getMatches, completeMatch, updateLiveScore, resetMockDb, updateAdminAnalysis, getApiStats, saveApiStats, resetAllUsersJokers, getUsers, getPredictions, updateUserJokers, savePrediction, updateUserDetails, deleteUser, getPlayers, savePlayer, deletePlayer, savePlayerRatings, hashPassword, updateMatchDetails, getAllGroupPredictions, getAllBracketPredictions, updateMatchSofaScoreId, calculateRealisticPrice, saveGroupPredictions, saveBracketPredictions, fetchMatchStatsFromApi } from '../firebase-db.js';
+import { getMatches, completeMatch, updateLiveScore, resetMockDb, updateAdminAnalysis, getApiStats, saveApiStats, resetAllUsersJokers, getUsers, getPredictions, updateUserJokers, savePrediction, updateUserDetails, deleteUser, getPlayers, savePlayer, deletePlayer, savePlayerRatings, hashPassword, updateMatchDetails, getAllGroupPredictions, getAllBracketPredictions, updateMatchSofaScoreId, calculateRealisticPrice, saveGroupPredictions, saveBracketPredictions, fetchMatchStatsFromApi, getFantasySquad, saveFantasySquad } from '../firebase-db.js';
 import { TEAMS_DATA } from './teamsData.js';
 
 export class AdminPanel {
@@ -23,6 +23,10 @@ export class AdminPanel {
 
         if (!this.localStats) {
             this.localStats = await getApiStats();
+        }
+
+        if (!this.allPlayers) {
+            this.allPlayers = await getPlayers();
         }
 
         const matches = await getMatches();
@@ -736,6 +740,37 @@ export class AdminPanel {
                                 </div>
                             </div>
 
+                            <!-- Fantasy Squad Management -->
+                            <div class="flex flex-col gap-2.5 bg-black/20 p-3.5 rounded-xl border border-white/5">
+                                <span class="text-[8px] font-bold text-slate-400 uppercase tracking-widest pl-0.5">Fantezi Kadrosu & Kilit Yönetimi</span>
+                                
+                                <div class="flex items-center gap-3 flex-wrap">
+                                    <div class="flex-grow">
+                                        <label class="text-[8px] font-bold text-slate-500 uppercase block mb-0.5">Fantezi Turu Seç</label>
+                                        <select class="admin-fantasy-round-select bg-slate-900 border border-white/10 rounded px-2.5 py-1.5 text-xs text-slate-200 outline-none w-full cursor-pointer" data-user-id="${u.id}">
+                                            <option value="round_1">1. Maç</option>
+                                            <option value="round_2">2. Maç</option>
+                                            <option value="round_3">3. Maç</option>
+                                            <option value="round_32">Son 32</option>
+                                            <option value="round_16">Son 16</option>
+                                            <option value="quarter">Çeyrek</option>
+                                            <option value="semi">Yarı F.</option>
+                                            <option value="final">Final</option>
+                                        </select>
+                                    </div>
+                                    <div class="shrink-0 flex flex-col justify-end">
+                                        <span class="text-[8px] font-bold text-slate-500 uppercase block mb-0.5">Özel Tur Kilidi</span>
+                                        <button class="admin-fantasy-lock-toggle-btn px-3 py-1.5 bg-white/5 hover:bg-white/10 border border-white/10 rounded text-xs font-bold text-slate-300 transition-all cursor-pointer flex items-center gap-1.5" data-user-id="${u.id}" type="button">
+                                            Yükleniyor...
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="admin-fantasy-squad-editor-container mt-2 flex flex-col gap-2.5" data-user-id="${u.id}">
+                                    <div class="text-center py-4 text-[10px] text-slate-500 italic">Yükleniyor...</div>
+                                </div>
+                            </div>
+
                             <!-- Group Standings Predictions -->
                             ${groupPredsHtml}
 
@@ -892,6 +927,14 @@ export class AdminPanel {
                         details.classList.remove('hidden');
                         icon.classList.add('rotate-180');
                         card.classList.add('border-brand-green/30', 'shadow-lg');
+                        
+                        // Dynamically load the user's fantasy squad editor when details open
+                        const roundSelect = details.querySelector('.admin-fantasy-round-select');
+                        if (roundSelect) {
+                            const userId = roundSelect.dataset.userId;
+                            const defaultRound = roundSelect.value || 'round_1';
+                            this.loadUserFantasySquadEditor(userId, defaultRound);
+                        }
                     } else {
                         details.classList.add('hidden');
                         icon.classList.remove('rotate-180');
@@ -3660,6 +3703,291 @@ export class AdminPanel {
                 editViewEl.classList.add('hidden');
             });
         }
+    }
+
+    async loadUserFantasySquadEditor(userId, roundKey) {
+        const container = this.container.querySelector(`.admin-fantasy-squad-editor-container[data-user-id="${userId}"]`);
+        const lockBtn = this.container.querySelector(`.admin-fantasy-lock-toggle-btn[data-user-id="${userId}"]`);
+        if (!container) return;
+
+        container.innerHTML = `<div class="text-center py-4 text-[10px] text-slate-500 italic">Kadro yükleniyor...</div>`;
+
+        // Fetch user object to see unlockedFantasyRounds
+        const users = await getUsers();
+        const user = users.find(u => u.id === userId);
+        if (!user) {
+            container.innerHTML = `<div class="text-center py-4 text-[10px] text-red-500 italic">Kullanıcı bulunamadı.</div>`;
+            return;
+        }
+
+        // Setup lock button state
+        const unlockedRounds = user.unlockedFantasyRounds || [];
+        const isUnlocked = unlockedRounds.includes(roundKey);
+        if (lockBtn) {
+            lockBtn.dataset.unlocked = isUnlocked ? "true" : "false";
+            lockBtn.innerHTML = isUnlocked 
+                ? `<span class="text-brand-green font-bold">🔓 Kilit Açık (Kapat)</span>` 
+                : `<span class="text-slate-400 font-bold">🔐 Kilitli (Aç)</span>`;
+
+            // Replace lock button event listener to avoid duplicates
+            const newLockBtn = lockBtn.cloneNode(true);
+            lockBtn.parentNode.replaceChild(newLockBtn, lockBtn);
+            
+            newLockBtn.addEventListener('click', async () => {
+                newLockBtn.disabled = true;
+                
+                // Fetch latest user data
+                const latestUsers = await getUsers();
+                const latestUser = latestUsers.find(usr => usr.id === userId);
+                if (!latestUser) {
+                    alert('Kullanıcı bulunamadı.');
+                    newLockBtn.disabled = false;
+                    return;
+                }
+                
+                let curUnlocked = latestUser.unlockedFantasyRounds || [];
+                const alreadyUnlocked = curUnlocked.includes(roundKey);
+                
+                if (alreadyUnlocked) {
+                    curUnlocked = curUnlocked.filter(r => r !== roundKey);
+                } else {
+                    curUnlocked = [...curUnlocked, roundKey];
+                }
+                
+                const updated = await updateUserDetails(userId, { unlockedFantasyRounds: curUnlocked });
+                newLockBtn.disabled = false;
+                if (updated) {
+                    alert(alreadyUnlocked ? 'Fantezi tur kilidi kapatıldı!' : 'Fantezi tur kilidi açıldı!');
+                    // Reload the editor to reflect the new state
+                    this.loadUserFantasySquadEditor(userId, roundKey);
+                } else {
+                    alert('Tur kilidi güncellenirken bir hata oluştu.');
+                }
+            });
+        }
+
+        // Bind round select change (if not already bound)
+        const roundSelect = this.container.querySelector(`.admin-fantasy-round-select[data-user-id="${userId}"]`);
+        if (roundSelect) {
+            if (!roundSelect.dataset.listenerBound) {
+                roundSelect.dataset.listenerBound = "true";
+                roundSelect.addEventListener('change', () => {
+                    const newRound = roundSelect.value;
+                    this.loadUserFantasySquadEditor(userId, newRound);
+                });
+            }
+        }
+
+        // Fetch squad
+        const squadData = await getFantasySquad(userId, roundKey);
+        
+        // Match player IDs back to player objects
+        const selectedPlayerIds = squadData ? (squadData.players || []) : [];
+        const captainId = squadData ? squadData.captain : null;
+
+        // Group all players by position
+        if (!this.allPlayers) {
+            this.allPlayers = await getPlayers();
+        }
+        const playersByPos = {
+            'KL': this.allPlayers.filter(p => p.pos === 'KL').sort((a,b) => a.name.localeCompare(b.name)),
+            'DEF': this.allPlayers.filter(p => p.pos === 'DEF').sort((a,b) => a.name.localeCompare(b.name)),
+            'ORT': this.allPlayers.filter(p => p.pos === 'ORT').sort((a,b) => a.name.localeCompare(b.name)),
+            'FOR': this.allPlayers.filter(p => p.pos === 'FOR').sort((a,b) => a.name.localeCompare(b.name))
+        };
+
+        const slots = [
+            { index: 0, pos: 'KL', label: 'Kaleci' },
+            { index: 1, pos: 'DEF', label: 'Sol Bek' },
+            { index: 2, pos: 'DEF', label: 'Stoper 1' },
+            { index: 3, pos: 'DEF', label: 'Stoper 2' },
+            { index: 4, pos: 'DEF', label: 'Sağ Bek' },
+            { index: 5, pos: 'ORT', label: 'Sol Orta Saha' },
+            { index: 6, pos: 'ORT', label: 'Merkez Orta Saha' },
+            { index: 7, pos: 'ORT', label: 'Sağ Orta Saha' },
+            { index: 8, pos: 'FOR', label: 'Sol Kanat' },
+            { index: 9, pos: 'FOR', label: 'Santrfor' },
+            { index: 10, pos: 'FOR', label: 'Sağ Kanat' }
+        ];
+
+        let html = `
+            <div class="flex flex-col gap-2 max-h-[350px] overflow-y-auto pr-1">
+        `;
+
+        slots.forEach(slot => {
+            const currentVal = selectedPlayerIds[slot.index] || '';
+            const isCaptain = captainId && currentVal === captainId;
+            const options = playersByPos[slot.pos].map(p => {
+                const isSelected = p.id === currentVal;
+                return `<option value="${p.id}" ${isSelected ? 'selected' : ''}>${p.name} (${p.team}) - ${p.price}M</option>`;
+            }).join('');
+
+            html += `
+                <div class="admin-fantasy-slot-row flex items-center gap-2 bg-black/40 border border-white/5 rounded-xl p-2.5 text-xs" data-slot-index="${slot.index}" data-pos="${slot.pos}">
+                    <div class="flex-grow min-w-0">
+                        <label class="text-[8px] font-bold text-brand-cyan uppercase block mb-0.5">${slot.pos} • ${slot.label}</label>
+                        <select class="admin-fantasy-player-select bg-slate-900 border border-white/10 rounded px-2 py-1 text-xs text-white outline-none w-full cursor-pointer focus:border-brand-green">
+                            <option value="">-- Boş --</option>
+                            ${options}
+                        </select>
+                    </div>
+                    
+                    <div class="flex flex-col items-center justify-center shrink-0 w-8">
+                        <span class="text-[7px] font-bold text-slate-500 uppercase block mb-0.5">Kaptan</span>
+                        <input type="radio" name="admin-fantasy-captain-${userId}" class="admin-fantasy-captain-radio cursor-pointer w-4 h-4 accent-brand-gold" value="${slot.index}" ${isCaptain ? 'checked' : ''} ${!currentVal ? 'disabled' : ''}>
+                    </div>
+                </div>
+            `;
+        });
+
+        html += `
+            </div>
+            
+            <!-- Price Info and Actions -->
+            <div class="flex items-center justify-between border-t border-white/5 pt-2.5 mt-1 flex-wrap gap-2">
+                <div class="text-xs">
+                    <span class="text-slate-400">Toplam Bütçe:</span>
+                    <span class="font-extrabold text-brand-green ml-1 admin-fantasy-budget-info">0M / 100M</span>
+                </div>
+                <div class="flex gap-2">
+                    <button class="admin-fantasy-clear-btn px-3 py-1.5 bg-red-950/30 hover:bg-red-900 border border-red-500/20 text-red-400 rounded font-bold text-[10px] uppercase tracking-wider transition-all cursor-pointer" type="button">
+                        Kadro Sıfırla 🗑
+                    </button>
+                    <button class="admin-fantasy-save-btn px-4 py-1.5 bg-brand-green hover:bg-brand-green/90 text-black rounded font-black text-[10px] uppercase tracking-widest transition-all cursor-pointer" type="button">
+                        Kaydet 💾
+                    </button>
+                </div>
+            </div>
+        `;
+
+        container.innerHTML = html;
+
+        // Bind events on the newly rendered squad editor elements
+        this.bindFantasySquadEditorEvents(userId, roundKey, container);
+    }
+
+    bindFantasySquadEditorEvents(userId, roundKey, container) {
+        const selects = container.querySelectorAll('.admin-fantasy-player-select');
+        const budgetInfo = container.querySelector('.admin-fantasy-budget-info');
+        const saveBtn = container.querySelector('.admin-fantasy-save-btn');
+        const clearBtn = container.querySelector('.admin-fantasy-clear-btn');
+
+        const calculateBudget = () => {
+            let total = 0;
+            selects.forEach(sel => {
+                const val = sel.value;
+                if (val) {
+                    const p = this.allPlayers.find(pl => pl.id === val);
+                    if (p) {
+                        total += parseFloat(p.price) || 0;
+                    }
+                }
+            });
+            budgetInfo.textContent = `${total.toFixed(1)}M / 100M`;
+            if (total > 100) {
+                budgetInfo.classList.remove('text-brand-green');
+                budgetInfo.classList.add('text-red-500');
+            } else {
+                budgetInfo.classList.remove('text-red-500');
+                budgetInfo.classList.add('text-brand-green');
+            }
+            return total;
+        };
+
+        // Initialize budget
+        calculateBudget();
+
+        // Dropdown changes
+        selects.forEach(sel => {
+            sel.addEventListener('change', () => {
+                const row = sel.closest('.admin-fantasy-slot-row');
+                const radio = row.querySelector('.admin-fantasy-captain-radio');
+                if (!sel.value) {
+                    radio.disabled = true;
+                    radio.checked = false;
+                } else {
+                    radio.disabled = false;
+                }
+                calculateBudget();
+            });
+        });
+
+        // Clear button
+        clearBtn.addEventListener('click', () => {
+            if (confirm('Tüm kadroyu sıfırlamak istediğinize emin misiniz?')) {
+                selects.forEach(sel => {
+                    sel.value = '';
+                    const row = sel.closest('.admin-fantasy-slot-row');
+                    const radio = row.querySelector('.admin-fantasy-captain-radio');
+                    radio.disabled = true;
+                    radio.checked = false;
+                });
+                calculateBudget();
+            }
+        });
+
+        // Save button
+        saveBtn.addEventListener('click', async () => {
+            const players = Array(11).fill(null);
+            let captainId = null;
+            let checkedCaptainIndex = -1;
+
+            selects.forEach(sel => {
+                const row = sel.closest('.admin-fantasy-slot-row');
+                const idx = parseInt(row.dataset.slotIndex);
+                const radio = row.querySelector('.admin-fantasy-captain-radio');
+                players[idx] = sel.value || null;
+                if (radio.checked) {
+                    checkedCaptainIndex = idx;
+                    captainId = sel.value || null;
+                }
+            });
+
+            // Count filled and empty
+            const filledCount = players.filter(p => p !== null).length;
+            if (filledCount === 0) {
+                if (!confirm('Kadro tamamen boş kaydedilecek. Devam etmek istiyor musunuz?')) {
+                    return;
+                }
+            } else {
+                if (filledCount < 11) {
+                    if (!confirm(`Kadro eksik (${filledCount}/11 oyuncu seçili). Yine de kaydetmek istiyor musunuz?`)) {
+                        return;
+                    }
+                }
+                if (checkedCaptainIndex === -1 || !captainId) {
+                    alert('Lütfen bir kaptan seçin!');
+                    return;
+                }
+            }
+
+            const budget = calculateBudget();
+            if (budget > 100) {
+                if (!confirm(`Bütçe aşıldı (${budget.toFixed(1)}M / 100M). Yine de kaydetmek istiyor musunuz?`)) {
+                    return;
+                }
+            }
+
+            saveBtn.disabled = true;
+            const origText = saveBtn.textContent;
+            saveBtn.textContent = 'Kaydediliyor...';
+
+            const squadData = {
+                players,
+                captain: captainId
+            };
+
+            const success = await saveFantasySquad(userId, roundKey, squadData, true);
+            saveBtn.disabled = false;
+            saveBtn.textContent = origText;
+
+            if (success) {
+                alert('Fantezi 11 kadrosu başarıyla güncellendi!');
+                this.appState.refreshDashboard();
+            } else {
+                alert('Kadro güncellenirken hata oluştu.');
+            }
+        });
     }
 }
 

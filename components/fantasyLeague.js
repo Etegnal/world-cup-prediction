@@ -54,13 +54,15 @@ export class FantasyLeague {
     }
 
     isRoundLocked() {
+        const activeUser = this.appState.activeUser;
+        if (activeUser && activeUser.unlockedFantasyRounds && activeUser.unlockedFantasyRounds.includes(this.activeRound)) {
+            return false;
+        }
         if (!this.dayMatches || this.dayMatches.length === 0) return false;
         let earliestMatchTime = Infinity;
         this.dayMatches.forEach(m => {
             const time = new Date(m.date).getTime();
-            if (time < earliestMatchTime) {
-                earliestMatchTime = time;
-            }
+            if (time < earliestMatchTime) earliestMatchTime = time;
         });
         const lockTime = earliestMatchTime - 15 * 60 * 1000;
         return Date.now() >= lockTime;

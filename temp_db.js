@@ -3242,7 +3242,7 @@ export async function deletePlayer(playerId) {
 }
 
 // Save user's fantasy squad for a match
-export async function saveFantasySquad(userId, matchId, squadData) {
+export async function saveFantasySquad(userId, matchId, squadData, isAdminBypass = false) {
     await initDb();
     if (CONFIG.IS_DEMO_MODE) {
         const data = getMockData();
