@@ -670,17 +670,13 @@ export class AdminPanel {
                             <div class="flex flex-col gap-2">
                                 <span class="text-[8px] font-bold text-slate-400 uppercase tracking-widest pl-0.5">Tahminleri Düzenle & Kilit Aç</span>
                                 <div class="flex flex-col gap-2 max-h-[300px] overflow-y-auto pr-1">
-                                    ${userPreds.length === 0 ? `
-                                        <div class="text-center py-4 text-[10px] text-slate-500 italic">Henüz hiç tahmin yapmamış.</div>
-                                    ` : userPreds.map(p => {
-                                        const match = matches.find(m => m.id === p.matchId);
-                                        if (!match) return '';
-
+                                    ${matches.map(match => {
+                                        const p = userPreds.find(pred => pred.matchId === match.id);
                                         const isFinished = match.status === 'FINISHED';
                                         
                                         // Format joker string
                                         let jokerInfo = '';
-                                        if (p.appliedJoker) {
+                                        if (p && p.appliedJoker) {
                                             const jMap = {
                                                 ciftesans: 'Çifte Şans ⚡',
                                                 doublepuan: '2x Kat ⚡',
@@ -690,7 +686,13 @@ export class AdminPanel {
                                                 sabotaj: 'Sabotaj ⚡'
                                             };
                                             jokerInfo = `<span class="text-[8px] bg-brand-gold/15 text-brand-gold px-1.5 py-0.2 rounded border border-brand-gold/25 font-bold ml-1.5">${jMap[p.appliedJoker] || p.appliedJoker}</span>`;
+                                        } else if (!p) {
+                                            jokerInfo = `<span class="text-[8px] bg-slate-500/10 text-slate-400 px-1.5 py-0.2 rounded border border-white/5 font-mono ml-1.5 uppercase">Tahmin Yok</span>`;
                                         }
+
+                                        const homeVal = p ? p.homeScorePred : '';
+                                        const awayVal = p ? p.awayScorePred : '';
+                                        const isLocked = p ? p.isLocked : false;
 
                                         return `
                                             <div class="admin-pred-row flex flex-col gap-2 bg-black/35 border border-white/5 rounded-xl p-3 text-xs text-slate-200" data-user-id="${u.id}" data-match-id="${match.id}">
@@ -704,14 +706,14 @@ export class AdminPanel {
                                                 <div class="flex items-center gap-2 mt-1 flex-wrap">
                                                     <div class="flex items-center gap-1">
                                                         <span class="text-[10px] text-slate-500 font-bold uppercase">${match.homeTeam.substring(0,3)}:</span>
-                                                        <input type="number" class="admin-pred-score-home bg-slate-900 border border-white/10 rounded w-10 text-center font-bold text-white text-xs px-1 py-0.5 outline-none focus:border-brand-green" value="${p.homeScorePred}" min="0" max="9" ${isFinished ? 'disabled' : ''}>
+                                                        <input type="number" class="admin-pred-score-home bg-slate-900 border border-white/10 rounded w-10 text-center font-bold text-white text-xs px-1 py-0.5 outline-none focus:border-brand-green" value="${homeVal}" placeholder="-" min="0" max="9" ${isFinished ? 'disabled' : ''}>
                                                         <span class="text-slate-500 font-bold">:</span>
-                                                        <input type="number" class="admin-pred-score-away bg-slate-900 border border-white/10 rounded w-10 text-center font-bold text-white text-xs px-1 py-0.5 outline-none focus:border-brand-green" value="${p.awayScorePred}" min="0" max="9" ${isFinished ? 'disabled' : ''}>
+                                                        <input type="number" class="admin-pred-score-away bg-slate-900 border border-white/10 rounded w-10 text-center font-bold text-white text-xs px-1 py-0.5 outline-none focus:border-brand-green" value="${awayVal}" placeholder="-" min="0" max="9" ${isFinished ? 'disabled' : ''}>
                                                         <span class="text-[10px] text-slate-500 font-bold uppercase">${match.awayTeam.substring(0,3)}</span>
                                                     </div>
 
                                                     <!-- Alternative scores for Double Chance if applied -->
-                                                    ${p.appliedJoker === 'ciftesans' && p.homeScorePredAlt !== undefined ? `
+                                                    ${p && p.appliedJoker === 'ciftesans' && p.homeScorePredAlt !== undefined ? `
                                                         <div class="flex items-center gap-1 border-l border-white/5 pl-2">
                                                             <span class="text-[9px] text-brand-cyan font-bold uppercase">2. Skor:</span>
                                                             <input type="number" class="admin-pred-score-home-alt bg-slate-900 border border-brand-cyan/20 rounded w-10 text-center font-bold text-brand-cyan text-xs px-1 py-0.5 outline-none focus:border-brand-green" value="${p.homeScorePredAlt}" min="0" max="9" ${isFinished ? 'disabled' : ''}>
@@ -722,8 +724,8 @@ export class AdminPanel {
 
                                                     <div class="flex items-center gap-1.5 ml-auto">
                                                         <!-- Lock Toggle Button -->
-                                                        <button class="admin-pred-lock-toggle-btn px-2 py-1 bg-white/5 border border-white/10 hover:bg-white/10 rounded flex items-center gap-1 text-[9px] font-bold text-slate-300 transition-all cursor-pointer ${p.isLocked ? 'animate-pulse' : ''}" data-locked="${p.isLocked}" ${isFinished ? 'disabled' : ''} type="button">
-                                                            ${p.isLocked ? '🔐 Kilitli' : '🔓 Açık'}
+                                                        <button class="admin-pred-lock-toggle-btn px-2 py-1 bg-white/5 border border-white/10 hover:bg-white/10 rounded flex items-center gap-1 text-[9px] font-bold text-slate-300 transition-all cursor-pointer ${isLocked ? 'animate-pulse' : ''}" data-locked="${isLocked}" ${isFinished ? 'disabled' : ''} type="button">
+                                                            ${isLocked ? '🔐 Kilitli' : '🔓 Açık'}
                                                         </button>
 
                                                         <!-- Save Prediction Button -->
@@ -733,7 +735,7 @@ export class AdminPanel {
                                                     </div>
                                                 </div>
 
-                                                ${isFinished ? `
+                                                ${isFinished && p ? `
                                                     <div class="flex items-center justify-between border-t border-white/5 pt-1.5 mt-1 text-[10px] text-slate-400">
                                                         <span>Skor: <span class="font-bold text-brand-cyan">${match.homeScore} - ${match.awayScore}</span></span>
                                                         <span class="font-extrabold text-brand-green">+${p.pointsGained || 0} Puan</span>
@@ -1016,7 +1018,6 @@ export class AdminPanel {
                     const matchId = row.dataset.matchId;
                     
                     const origPred = allPredictions.find(pr => pr.userId === userId && pr.matchId === matchId);
-                    if (!origPred) return;
 
                     const homeScoreInput = row.querySelector('.admin-pred-score-home');
                     const awayScoreInput = row.querySelector('.admin-pred-score-away');
@@ -1028,12 +1029,30 @@ export class AdminPanel {
                     const awayScorePred = parseInt(awayScoreInput.value) || 0;
                     const isLocked = lockBtn.dataset.locked === 'true';
 
-                    const updatedPred = {
-                        ...origPred,
-                        homeScorePred,
-                        awayScorePred,
-                        isLocked
-                    };
+                    let updatedPred;
+                    if (origPred) {
+                        updatedPred = {
+                            ...origPred,
+                            homeScorePred,
+                            awayScorePred,
+                            isLocked
+                        };
+                    } else {
+                        updatedPred = {
+                            userId,
+                            matchId,
+                            homeScorePred,
+                            awayScorePred,
+                            sideAnswers: {
+                                htResult: "draw",
+                                firstScorer: "Diğer",
+                                redCard: false,
+                                cornersOverUnder: "under"
+                            },
+                            appliedJoker: null,
+                            isLocked
+                        };
+                    }
 
                     if (homeScoreAltInput && awayScoreAltInput) {
                         updatedPred.homeScorePredAlt = parseInt(homeScoreAltInput.value) || 0;
@@ -1055,6 +1074,8 @@ export class AdminPanel {
                         const predIdx = allPredictions.findIndex(pr => pr.userId === userId && pr.matchId === matchId);
                         if (predIdx >= 0) {
                             allPredictions[predIdx] = saved;
+                        } else {
+                            allPredictions.push(saved);
                         }
                         this.appState.refreshDashboard();
                     } else {
