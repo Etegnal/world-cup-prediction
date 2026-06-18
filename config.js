@@ -9,13 +9,13 @@ export const CONFIG = {
 
     // Firebase Settings (Set IS_DEMO_MODE to false once you put your real config)
     FIREBASE_CONFIG: {
-        apiKey: "AIzaSyA5GKU4IRyShj59x46ZoqdgYt3ATF5pRiM",
-        authDomain: "world-cup-prediction-b1064.firebaseapp.com",
-        projectId: "world-cup-prediction-b1064",
-        storageBucket: "world-cup-prediction-b1064.firebasestorage.app",
-        messagingSenderId: "588963871664",
-        appId: "1:588963871664:web:2596d990b102bdb0993475",
-        measurementId: "G-QMX9S10Y6T"
+        apiKey: "AIzaSyCkzzutHM63lY3TWH4q0-nooDPR5YTaXwI",
+        authDomain: "world-cup-2-c3c9e.firebaseapp.com",
+        projectId: "world-cup-2-c3c9e",
+        storageBucket: "world-cup-2-c3c9e.firebasestorage.app",
+        messagingSenderId: "408225149428",
+        appId: "1:408225149428:web:d5584f6858337695c489a1",
+        measurementId: "G-0BQ7JXX3MY"
     },
 
 

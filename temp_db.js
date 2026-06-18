@@ -2912,17 +2912,22 @@ export async function recalculateAllUsersPoints() {
             let fantasyPts = 0;
             if (data.fantasySquads && data.fantasySquads[user.id]) {
                 const userSquads = data.fantasySquads[user.id];
-                for (const [matchId, squad] of Object.entries(userSquads)) {
-                    const match = data.matches.find(m => m.id === matchId);
-                    if (match && match.status === 'FINISHED' && match.playerRatings) {
-                        squad.players.forEach(pId => {
-                            let r = parseFloat(match.playerRatings[pId]) || 0;
-                            if (pId === squad.captain) {
-                                r = r * 2;
-                            }
-                            fantasyPts += r;
-                        });
-                    }
+                const validRoundKeys = ['round_1', 'round_2', 'round_3', 'round_32', 'round_16', 'quarter', 'semi', 'final'];
+                for (const [squadKey, squad] of Object.entries(userSquads)) {
+                    if (!validRoundKeys.includes(squadKey)) continue;
+                    
+                    const dayMatches = data.matches.filter(m => getMatchFantasyRound(m, data.matches) === squadKey);
+                    dayMatches.forEach(match => {
+                        if (match.status === 'FINISHED' && match.playerRatings) {
+                            squad.players.forEach(pId => {
+                                let r = parseFloat(match.playerRatings[pId]) || 0;
+                                if (pId === squad.captain) {
+                                    r = r * 2;
+                                }
+                                fantasyPts += r;
+                            });
+                        }
+                    });
                 }
             }
 
@@ -3039,15 +3044,21 @@ export async function recalculateAllUsersPoints() {
                 // Add Fantasy points
                 let fantasyPts = 0;
                 const userSquads = fantasySquads.filter(s => s.userId === user.id);
+                const validRoundKeys = ['round_1', 'round_2', 'round_3', 'round_32', 'round_16', 'quarter', 'semi', 'final'];
                 userSquads.forEach(squad => {
-                    const match = matches.find(m => m.id === squad.matchId);
-                    if (match && match.status === 'FINISHED' && match.playerRatings) {
-                        squad.players.forEach(pId => {
-                            let r = parseFloat(match.playerRatings[pId]) || 0;
-                            if (pId === squad.captain) {
-                                r = r * 2;
+                    const squadKey = squad.matchId; // squadKey can be a roundKey or match ID or date key
+                    if (validRoundKeys.includes(squadKey)) {
+                        const dayMatches = matches.filter(m => getMatchFantasyRound(m, matches) === squadKey);
+                        dayMatches.forEach(match => {
+                            if (match.status === 'FINISHED' && match.playerRatings) {
+                                squad.players.forEach(pId => {
+                                    let r = parseFloat(match.playerRatings[pId]) || 0;
+                                    if (pId === squad.captain) {
+                                        r = r * 2;
+                                    }
+                                    fantasyPts += r;
+                                });
                             }
-                            fantasyPts += r;
                         });
                     }
                 });
@@ -3388,3 +3399,27 @@ export async function updateMatchTeamsAndDate(matchId, homeTeam, awayTeam, date)
         }
     }
 }
+
+export function getMatchFantasyRound(match, matches = []) {
+    if (!match || !match.group) return null;
+    
+    // Knockout matches
+    if (match.group === 'Son 32') return 'round_32';
+    if (match.group === 'Son 16') return 'round_16';
+    if (match.group === 'Çeyrek Final') return 'quarter';
+    if (match.group === 'Yarı Final') return 'semi';
+    if (match.group === 'Final' || match.group === 'Üçüncülük') return 'final';
+    
+    // Group stage matches
+    if (match.group.length === 1) {
+        const groupMatches = matches.filter(m => m.group === match.group);
+        groupMatches.sort((a, b) => new Date(a.date) - new Date(b.date));
+        const idx = groupMatches.findIndex(m => m.id === match.id);
+        if (idx >= 0) {
+            const matchday = Math.floor(idx / 2) + 1;
+            return `round_${matchday}`;
+        }
+    }
+    return null;
+}
+

@@ -4788,11 +4788,11 @@ const COMPLETED_MATCH_RESULTS = {
         ]
     },
     "match-wc4": {
-        "homeScore": 0,
-        "awayScore": 0,
+        "homeScore": 1,
+        "awayScore": 1,
         "sideQuestions": {
-            "htResult": "draw",
-            "firstScorer": "Diğer",
+            "htResult": "away",
+            "firstScorer": "Embolo B.",
             "redCard": false,
             "cornersOverUnder": "over"
         },
@@ -15250,7 +15250,7 @@ const COMPLETED_MATCH_RESULTS = {
         ]
     },
     "match-wc14": {
-        "homeScore": 0,
+        "homeScore": 1,
         "awayScore": 1,
         "sideQuestions": {
             "htResult": "away",
@@ -21406,7 +21406,7 @@ const COMPLETED_MATCH_RESULTS = {
         ]
     },
     "match-wc20": {
-        "homeScore": 1,
+        "homeScore": 3,
         "awayScore": 1,
         "sideQuestions": {
             "htResult": "home",
@@ -26653,7 +26653,7 @@ const COMPLETED_MATCH_RESULTS = {
     },
     "match-wc25": {
         "homeScore": 1,
-        "awayScore": 0,
+        "awayScore": 1,
         "sideQuestions": {
             "htResult": "home",
             "firstScorer": "Sadilek M.",
@@ -30239,13 +30239,11 @@ export async function recalculateAllUsersPoints() {
             let fantasyPts = 0;
             if (data.fantasySquads && data.fantasySquads[user.id]) {
                 const userSquads = data.fantasySquads[user.id];
+                const validRoundKeys = ['round_1', 'round_2', 'round_3', 'round_32', 'round_16', 'quarter', 'semi', 'final'];
                 for (const [squadKey, squad] of Object.entries(userSquads)) {
-                    // squadKey can be a roundKey (e.g. "round_1", "round_32") or matchId or date key
-                    const dayMatches = data.matches.filter(m => {
-                        return m.id === squadKey || 
-                               getDateKey(m.date) === squadKey || 
-                               getMatchFantasyRound(m, data.matches) === squadKey;
-                    });
+                    if (!validRoundKeys.includes(squadKey)) continue;
+                    
+                    const dayMatches = data.matches.filter(m => getMatchFantasyRound(m, data.matches) === squadKey);
                     dayMatches.forEach(match => {
                         if (match.status === 'FINISHED' && match.playerRatings) {
                             squad.players.forEach(pId => {
@@ -30373,24 +30371,23 @@ export async function recalculateAllUsersPoints() {
                 // Add Fantasy points
                 let fantasyPts = 0;
                 const userSquads = fantasySquads.filter(s => s.userId === user.id);
+                const validRoundKeys = ['round_1', 'round_2', 'round_3', 'round_32', 'round_16', 'quarter', 'semi', 'final'];
                 userSquads.forEach(squad => {
                     const squadKey = squad.matchId; // squadKey can be a roundKey or match ID or date key
-                    const dayMatches = matches.filter(m => {
-                        return m.id === squadKey || 
-                               getDateKey(m.date) === squadKey || 
-                               getMatchFantasyRound(m, matches) === squadKey;
-                    });
-                    dayMatches.forEach(match => {
-                        if (match.status === 'FINISHED' && match.playerRatings) {
-                            squad.players.forEach(pId => {
-                                let r = parseFloat(match.playerRatings[pId]) || 0;
-                                if (pId === squad.captain) {
-                                    r = r * 2;
-                                }
-                                fantasyPts += r;
-                            });
-                        }
-                    });
+                    if (validRoundKeys.includes(squadKey)) {
+                        const dayMatches = matches.filter(m => getMatchFantasyRound(m, matches) === squadKey);
+                        dayMatches.forEach(match => {
+                            if (match.status === 'FINISHED' && match.playerRatings) {
+                                squad.players.forEach(pId => {
+                                    let r = parseFloat(match.playerRatings[pId]) || 0;
+                                    if (pId === squad.captain) {
+                                        r = r * 2;
+                                    }
+                                    fantasyPts += r;
+                                });
+                            }
+                        });
+                    }
                 });
 
                 user.points = Math.max(0, Math.round((basePts + bracketPts + fantasyPts) * 10) / 10);
