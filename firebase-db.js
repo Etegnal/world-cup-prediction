@@ -1539,6 +1539,47 @@ INITIAL_MOCK_DATA.matches.forEach((m, idx) => {
 });
 INITIAL_MOCK_DATA.predictions = mockPredictions;
 
+const HISTORIC_MATCH_SPORTDB_MAPPINGS = {
+    "match-wc1": "h4EoUB7T",
+    "match-wc2": "CGdvIm6K",
+    "match-wc3": "OxkQ8qT6",
+    "match-wc4": "C8oCpXiA",
+    "match-wc5": "b5JayTEd",
+    "match-wc6": "QBBoaW63",
+    "match-wc7": "bo9vy2zK",
+    "match-wc8": "nLNXPs35",
+    "match-wc9": "dtiRRcc6",
+    "match-wc10": "4SV9xFBO",
+    "match-wc11": "h8pzQySI",
+    "match-wc12": "UaJKzaHN",
+    "match-wc13": "Iiqjm5Pq",
+    "match-wc14": "dG7zgzd5",
+    "match-wc15": "Olnboqfd",
+    "match-wc16": "4tBriEQH",
+    "match-wc17": "ALxYcMw2",
+    "match-wc18": "n9TEVLhA",
+    "match-wc19": "UP9bEsOr",
+    "match-wc20": "OO27CLhe",
+    "match-wc21": "4zTHJLbM",
+    "match-wc22": "b5qGuKMs",
+    "match-wc23": "jD1Nwbif",
+    "match-wc24": "jaMlPbx1",
+    "match-wc25": "8nrACRTs",
+    "match-wc27": "67vLrBMM"
+};
+
+// Apply mappings to INITIAL_MOCK_DATA.matches programmatically on load
+INITIAL_MOCK_DATA.matches.forEach(m => {
+    const targetEventId = HISTORIC_MATCH_SPORTDB_MAPPINGS[m.id];
+    if (targetEventId) {
+        m.sportDbEventId = targetEventId;
+        m.sportDbLinks = {
+            details: `/api/flashscore/match/${targetEventId}/details`,
+            stats: `/api/flashscore/match/${targetEventId}/stats`
+        };
+    }
+});
+
 // Real Firebase variables
 let db = null;
 let fStore = null;
@@ -1575,37 +1616,22 @@ async function seedMatchesIfEmpty() {
 async function migrateMatchesEventIds() {
     if (!db || !fStore) return;
     try {
-        const match2Ref = fStore.doc(db, "matches", "match-wc2");
-        const doc2 = await fStore.getDoc(match2Ref);
-        if (doc2.exists()) {
-            const data2 = doc2.data();
-            const hasBadLinks = data2.sportDbLinks && data2.sportDbLinks.details && data2.sportDbLinks.details.includes('/football/');
-            if (!data2.sportDbEventId || hasBadLinks) {
-                console.log("Migrating match-wc2 SportDB ID to CGdvIm6K (correcting links)...");
-                await fStore.updateDoc(match2Ref, {
-                    sportDbEventId: "CGdvIm6K",
-                    sportDbLinks: {
-                        details: "/api/flashscore/match/CGdvIm6K/details",
-                        stats: "/api/flashscore/match/CGdvIm6K/stats"
-                    }
-                });
-            }
-        }
-        
-        const match3Ref = fStore.doc(db, "matches", "match-wc3");
-        const doc3 = await fStore.getDoc(match3Ref);
-        if (doc3.exists()) {
-            const data3 = doc3.data();
-            const hasBadLinks = data3.sportDbLinks && data3.sportDbLinks.details && data3.sportDbLinks.details.includes('/football/');
-            if (!data3.sportDbEventId || hasBadLinks) {
-                console.log("Migrating match-wc3 SportDB ID to OxkQ8qT6 (correcting links)...");
-                await fStore.updateDoc(match3Ref, {
-                    sportDbEventId: "OxkQ8qT6",
-                    sportDbLinks: {
-                        details: "/api/flashscore/match/OxkQ8qT6/details",
-                        stats: "/api/flashscore/match/OxkQ8qT6/stats"
-                    }
-                });
+        for (const [matchId, eventId] of Object.entries(HISTORIC_MATCH_SPORTDB_MAPPINGS)) {
+            const matchRef = fStore.doc(db, "matches", matchId);
+            const docSnap = await fStore.getDoc(matchRef);
+            if (docSnap.exists()) {
+                const matchData = docSnap.data();
+                const hasBadLinks = matchData.sportDbLinks && matchData.sportDbLinks.details && matchData.sportDbLinks.details.includes('/football/');
+                if (!matchData.sportDbEventId || hasBadLinks) {
+                    console.log(`Migrating ${matchId} SportDB ID to ${eventId} (correcting links)...`);
+                    await fStore.updateDoc(matchRef, {
+                        sportDbEventId: eventId,
+                        sportDbLinks: {
+                            details: `/api/flashscore/match/${eventId}/details`,
+                            stats: `/api/flashscore/match/${eventId}/stats`
+                        }
+                    });
+                }
             }
         }
     } catch (err) {
@@ -1764,6 +1790,23 @@ async function initDb() {
                 data.matches.push(...missingMatches);
                 needsSave = true;
             }
+
+            // Auto-migrate SportDB Event IDs in existing matches (Demo Mode)
+            data.matches.forEach(m => {
+                const targetEventId = HISTORIC_MATCH_SPORTDB_MAPPINGS[m.id];
+                if (targetEventId) {
+                    const hasBadLinks = m.sportDbLinks && m.sportDbLinks.details && m.sportDbLinks.details.includes('/football/');
+                    if (!m.sportDbEventId || hasBadLinks) {
+                        console.log(`Demo Mode: Migrating ${m.id} SportDB ID to ${targetEventId} (correcting links)...`);
+                        m.sportDbEventId = targetEventId;
+                        m.sportDbLinks = {
+                            details: `/api/flashscore/match/${targetEventId}/details`,
+                            stats: `/api/flashscore/match/${targetEventId}/stats`
+                        };
+                        needsSave = true;
+                    }
+                }
+            });
             
             // Auto-migrate jokers to 3 for existing users (Demo Mode)
             if (data.users && Array.isArray(data.users)) {

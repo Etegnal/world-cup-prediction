@@ -46,8 +46,21 @@ export class AdminPanel {
             // Main Admin View (Live simulator removed per user request)
             const teams = [...new Set(matches.flatMap(m => [m.homeTeam, m.awayTeam]))].sort();
             
+            const demoWarning = CONFIG.IS_DEMO_MODE ? `
+                <div class="bg-amber-500/10 border border-amber-500/30 rounded-2xl p-4 flex gap-3 items-center mb-4">
+                    <div class="w-8 h-8 rounded-full bg-amber-500/20 flex items-center justify-center text-amber-400 shrink-0 text-sm">
+                        ⚠️
+                    </div>
+                    <div>
+                        <h4 class="text-xs font-bold text-amber-400 font-outfit uppercase">Demo Modu (Yerel Depolama) Aktif!</h4>
+                        <p class="text-[9px] text-slate-400 mt-0.5 leading-snug">Firebase Firestore bağlantısı kurulamadığı için yerel tarayıcı hafızasını kullanıyorsunuz. Kaydedilen veriler başka cihazda görünmez ve tarayıcı temizlenirse sıfırlanabilir.</p>
+                    </div>
+                </div>
+            ` : '';
+
             this.container.innerHTML = `
                 ${tabHeaderHtml}
+                ${demoWarning}
                 <div class="flex flex-col gap-5">
                     
                     <!-- 1. Database Operations & Simulator Warning -->

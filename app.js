@@ -1,4 +1,5 @@
 // SPA Core Application - Coordination, Router and overall State Management
+import { CONFIG } from './config.js';
 import { getUsers, getMatches, getPredictions, savePrediction, loginUser, registerUser, getMatchFantasyRound } from './firebase-db.js';
 import { FixtureCard } from './components/fixtureCard.js';
 import { JokerWallet } from './components/jokerWallet.js';
@@ -38,6 +39,13 @@ class App {
 
     async init() {
         console.log("Ultimate World Cup Tahmin Platformu Loading...");
+        
+        // Show Demo Mode warning badge if active
+        const demoBadge = document.getElementById('demo-mode-badge');
+        if (demoBadge && CONFIG.IS_DEMO_MODE) {
+            demoBadge.classList.remove('hidden');
+            demoBadge.classList.add('inline-flex');
+        }
         
         if (!window.history.state) {
             window.history.replaceState({ screen: 'matches', modal: null }, '');
