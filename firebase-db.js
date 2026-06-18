@@ -29563,7 +29563,8 @@ export async function savePrediction(prediction, bypassLockCheck = false) {
         const match = data.matches.find(m => m.id === prediction.matchId);
         if (match && !bypassLockCheck) {
             const matchTime = new Date(match.date).getTime();
-            if (Date.now() >= matchTime - 15 * 60 * 1000) {
+            const isTimeLocked = (Date.now() >= matchTime - 15 * 60 * 1000) && !match.adminUnlocked;
+            if (isTimeLocked) {
                 console.error("Match is locked for predictions");
                 return null;
             }
@@ -29613,7 +29614,8 @@ export async function savePrediction(prediction, bypassLockCheck = false) {
                 if (matchSnap.exists()) {
                     const matchData = matchSnap.data();
                     const matchTime = new Date(matchData.date).getTime();
-                    if (Date.now() >= matchTime - 15 * 60 * 1000) {
+                    const isTimeLocked = (Date.now() >= matchTime - 15 * 60 * 1000) && !matchData.adminUnlocked;
+                    if (isTimeLocked) {
                         console.error("Match is locked for predictions");
                         return null;
                     }

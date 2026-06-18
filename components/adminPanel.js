@@ -249,6 +249,11 @@ export class AdminPanel {
                                 <textarea id="admin-edit-match-analysis" class="w-full bg-slate-900 border border-white/10 rounded-xl p-3 text-xs text-slate-200 outline-none min-h-[60px] resize-none" placeholder="Analiz yazısı..."></textarea>
                             </div>
 
+                            <div class="flex items-center gap-2 my-1">
+                                <input type="checkbox" id="admin-edit-match-admin-unlocked" class="rounded border-white/10 bg-slate-900 text-brand-cyan focus:ring-brand-cyan">
+                                <label for="admin-edit-match-admin-unlocked" class="text-[10px] font-bold text-slate-300 select-none cursor-pointer">Maçın Tahmin Kilidini Aç (Süre dolsa bile tahmin edilebilsin)</label>
+                            </div>
+
                             <button id="admin-edit-match-save-btn" class="w-full py-2.5 bg-brand-cyan hover:bg-brand-cyan/80 text-black text-xs font-black uppercase tracking-wider rounded-xl transition-all active:scale-95 shadow-md shadow-cyan-950/40">
                                 Maç Detaylarını Kaydet 💾
                             </button>
@@ -1507,9 +1512,10 @@ export class AdminPanel {
         const editSofaId = document.getElementById('admin-edit-sofa-id');
         const editSportDbId = document.getElementById('admin-edit-sportdb-id');
         const editMatchAnalysis = document.getElementById('admin-edit-match-analysis');
+        const editMatchAdminUnlocked = document.getElementById('admin-edit-match-admin-unlocked');
         const editMatchSaveBtn = document.getElementById('admin-edit-match-save-btn');
 
-        if (editMatchSelect && editHomeTeam && editAwayTeam && editMatchStatus && editMatchGroup && editHomeFlag && editAwayFlag && editMatchDate && editSofaId && editSportDbId && editMatchAnalysis) {
+        if (editMatchSelect && editHomeTeam && editAwayTeam && editMatchStatus && editMatchGroup && editHomeFlag && editAwayFlag && editMatchDate && editSofaId && editSportDbId && editMatchAnalysis && editMatchAdminUnlocked) {
             const updateMatchForm = () => {
                 const matchId = editMatchSelect.value;
                 const match = this.appState.matches.find(m => m.id === matchId);
@@ -1524,6 +1530,7 @@ export class AdminPanel {
                     editSofaId.value = match.sofaScoreId || '';
                     editSportDbId.value = match.sportDbEventId || '';
                     editMatchAnalysis.value = match.analysis || '';
+                    editMatchAdminUnlocked.checked = !!match.adminUnlocked;
                 }
             };
             editMatchSelect.addEventListener('change', updateMatchForm);
@@ -1543,7 +1550,8 @@ export class AdminPanel {
                     date: editMatchDate.value.trim(),
                     sofaScoreId: editSofaId.value.trim(),
                     sportDbEventId: editSportDbId.value.trim(),
-                    analysis: editMatchAnalysis.value.trim()
+                    analysis: editMatchAnalysis.value.trim(),
+                    adminUnlocked: editMatchAdminUnlocked.checked
                 };
 
                 editMatchSaveBtn.disabled = true;

@@ -774,7 +774,7 @@ export class FixtureCard {
         const isLive = match.status === 'LIVE';
         const matchTime = new Date(match.date).getTime();
         const lockTime = matchTime - 15 * 60 * 1000;
-        const isClosed = Date.now() >= lockTime;
+        const isClosed = (Date.now() >= lockTime) && !match.adminUnlocked;
 
         // Format Date
         const matchDate = new Date(match.date);
@@ -890,7 +890,7 @@ export class FixtureCard {
         const isLive = match.status === 'LIVE';
         const matchTime = new Date(match.date).getTime();
         const lockTime = matchTime - 15 * 60 * 1000;
-        const isClosed = Date.now() >= lockTime;
+        const isClosed = (Date.now() >= lockTime) && !match.adminUnlocked;
 
         // Format Date
         const matchDate = new Date(match.date);
@@ -1016,7 +1016,7 @@ export class FixtureCard {
         const isLive = match.status === 'LIVE';
         const matchTime = new Date(match.date).getTime();
         const lockTime = matchTime - 15 * 60 * 1000;
-        const isTimeLocked = Date.now() >= lockTime;
+        const isTimeLocked = (Date.now() >= lockTime) && !match.adminUnlocked;
         const isInputDisabled = isLocked || isFinished || isTimeLocked;
 
         // Check if sabotaged
@@ -1243,7 +1243,7 @@ export class FixtureCard {
 
         const matchTime = new Date(match.date).getTime();
         const lockTime = matchTime - 15 * 60 * 1000;
-        const isTimeLocked = Date.now() >= lockTime;
+        const isTimeLocked = (Date.now() >= lockTime) && !match.adminUnlocked;
         const isInputDisabled = isLocked || isFinished || isTimeLocked;
 
         if (this.activeTab === 'predictions') {
