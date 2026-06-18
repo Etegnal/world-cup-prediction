@@ -279,7 +279,8 @@ export class FixtureCard {
         this.modal = document.getElementById('match-detail-modal');
         this.activeTab = 'predictions'; // predictions, opinion, admin
         this.activeMatchId = null;
-        this.startLivePolling();
+        // Live polling disabled as per user request
+        // this.startLivePolling();
     }
 
     startLivePolling() {
@@ -452,7 +453,7 @@ export class FixtureCard {
         listHeaderContainer.appendChild(listHeader);
 
         const hasActiveMatches = this.hasActiveMatchWindow(matches);
-        if (hasActiveMatches) {
+        if (false && hasActiveMatches) { // Hide refresh button per user request
             const refreshBtn = document.createElement('button');
             refreshBtn.id = 'user-refresh-live-scores-btn';
             refreshBtn.className = 'text-[9px] font-black text-brand-green bg-brand-green/10 border border-brand-green/20 px-2.5 py-1 rounded-full uppercase tracking-wider hover:bg-brand-green/20 transition-all flex items-center gap-1 cursor-pointer';

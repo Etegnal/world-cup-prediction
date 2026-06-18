@@ -1568,7 +1568,25688 @@ const HISTORIC_MATCH_SPORTDB_MAPPINGS = {
     "match-wc27": "67vLrBMM"
 };
 
-// Apply mappings to INITIAL_MOCK_DATA.matches programmatically on load
+const COMPLETED_MATCH_RESULTS = {
+    "match-wc1": {
+        "homeScore": 2,
+        "awayScore": 0,
+        "sideQuestions": {
+            "htResult": "home",
+            "firstScorer": "Quinones J.",
+            "redCard": true,
+            "cornersOverUnder": "under"
+        },
+        "statistics": [
+            {
+                "period": "Match",
+                "statisticsItems": [
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "1.46",
+                        "away": "0.08",
+                        "homeValue": 1.46,
+                        "awayValue": 0.08
+                    },
+                    {
+                        "name": "Ball possession",
+                        "home": "61%",
+                        "away": "39%",
+                        "homeValue": 61,
+                        "awayValue": 39
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "16",
+                        "away": "3",
+                        "homeValue": 16,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "4",
+                        "away": "2",
+                        "homeValue": 4,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "2",
+                        "away": "0",
+                        "homeValue": 2,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "3",
+                        "away": "1",
+                        "homeValue": 3,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "90% (467/520)",
+                        "away": "81% (272/334)",
+                        "homeValue": 90,
+                        "awayValue": 81
+                    },
+                    {
+                        "name": "Yellow cards",
+                        "home": "1",
+                        "away": "2",
+                        "homeValue": 1,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Red cards",
+                        "home": "1",
+                        "away": "2",
+                        "homeValue": 1,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "1.46",
+                        "away": "0.08",
+                        "homeValue": 1.46,
+                        "awayValue": 0.08
+                    },
+                    {
+                        "name": "xG on target (xGOT)",
+                        "home": "1.28",
+                        "away": "0.13",
+                        "homeValue": 1.28,
+                        "awayValue": 0.13
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "16",
+                        "away": "3",
+                        "homeValue": 16,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "4",
+                        "away": "2",
+                        "homeValue": 4,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Shots off target",
+                        "home": "7",
+                        "away": "1",
+                        "homeValue": 7,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Blocked shots",
+                        "home": "5",
+                        "away": "0",
+                        "homeValue": 5,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Shots inside the box",
+                        "home": "9",
+                        "away": "1",
+                        "homeValue": 9,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Shots outside the box",
+                        "home": "7",
+                        "away": "2",
+                        "homeValue": 7,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Hit the woodwork",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Headed goals",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "2",
+                        "away": "0",
+                        "homeValue": 2,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "3",
+                        "away": "1",
+                        "homeValue": 3,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Touches in opposition box",
+                        "home": "20",
+                        "away": "2",
+                        "homeValue": 20,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Accurate through passes",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Offsides",
+                        "home": "1",
+                        "away": "1",
+                        "homeValue": 1,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Free kicks",
+                        "home": "11",
+                        "away": "12",
+                        "homeValue": 11,
+                        "awayValue": 12
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "90% (467/520)",
+                        "away": "81% (272/334)",
+                        "homeValue": 90,
+                        "awayValue": 81
+                    },
+                    {
+                        "name": "Long passes",
+                        "home": "65% (31/48)",
+                        "away": "37% (17/46)",
+                        "homeValue": 65,
+                        "awayValue": 37
+                    },
+                    {
+                        "name": "Passes in final third",
+                        "home": "78% (83/107)",
+                        "away": "45% (25/56)",
+                        "homeValue": 78,
+                        "awayValue": 45
+                    },
+                    {
+                        "name": "Crosses",
+                        "home": "33% (4/12)",
+                        "away": "13% (1/8)",
+                        "homeValue": 33,
+                        "awayValue": 13
+                    },
+                    {
+                        "name": "Expected assists (xA)",
+                        "home": "1.20",
+                        "away": "0.16",
+                        "homeValue": 1.2,
+                        "awayValue": 0.16
+                    },
+                    {
+                        "name": "Throw ins",
+                        "home": "21",
+                        "away": "11",
+                        "homeValue": 21,
+                        "awayValue": 11
+                    },
+                    {
+                        "name": "Fouls",
+                        "home": "12",
+                        "away": "11",
+                        "homeValue": 12,
+                        "awayValue": 11
+                    },
+                    {
+                        "name": "Tackles",
+                        "home": "50% (6/12)",
+                        "away": "50% (7/14)",
+                        "homeValue": 50,
+                        "awayValue": 50
+                    },
+                    {
+                        "name": "Duels won",
+                        "home": "47",
+                        "away": "33",
+                        "homeValue": 47,
+                        "awayValue": 33
+                    },
+                    {
+                        "name": "Clearances",
+                        "home": "15",
+                        "away": "17",
+                        "homeValue": 15,
+                        "awayValue": 17
+                    },
+                    {
+                        "name": "Interceptions",
+                        "home": "8",
+                        "away": "7",
+                        "homeValue": 8,
+                        "awayValue": 7
+                    },
+                    {
+                        "name": "Errors leading to shot",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Errors leading to goal",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Goalkeeper saves",
+                        "home": "2",
+                        "away": "2",
+                        "homeValue": 2,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "xGOT faced",
+                        "home": "0.13",
+                        "away": "1.28",
+                        "homeValue": 0.13,
+                        "awayValue": 1.28
+                    },
+                    {
+                        "name": "Goals prevented",
+                        "home": "0.13",
+                        "away": "-0.72",
+                        "homeValue": 0.13,
+                        "awayValue": -0.72
+                    }
+                ]
+            },
+            {
+                "period": "1st Half",
+                "statisticsItems": [
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.69",
+                        "away": "0.06",
+                        "homeValue": 0.69,
+                        "awayValue": 0.06
+                    },
+                    {
+                        "name": "Ball possession",
+                        "home": "57%",
+                        "away": "43%",
+                        "homeValue": 57,
+                        "awayValue": 43
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "10",
+                        "away": "2",
+                        "homeValue": 10,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "2",
+                        "away": "1",
+                        "homeValue": 2,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "2",
+                        "away": "1",
+                        "homeValue": 2,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "89% (237/266)",
+                        "away": "85% (164/193)",
+                        "homeValue": 89,
+                        "awayValue": 85
+                    },
+                    {
+                        "name": "Yellow cards",
+                        "home": "1",
+                        "away": "1",
+                        "homeValue": 1,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.69",
+                        "away": "0.06",
+                        "homeValue": 0.69,
+                        "awayValue": 0.06
+                    },
+                    {
+                        "name": "xG on target (xGOT)",
+                        "home": "0.27",
+                        "away": "0.08",
+                        "homeValue": 0.27,
+                        "awayValue": 0.08
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "10",
+                        "away": "2",
+                        "homeValue": 10,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "2",
+                        "away": "1",
+                        "homeValue": 2,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Shots off target",
+                        "home": "4",
+                        "away": "1",
+                        "homeValue": 4,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Blocked shots",
+                        "home": "4",
+                        "away": "0",
+                        "homeValue": 4,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Shots inside the box",
+                        "home": "6",
+                        "away": "1",
+                        "homeValue": 6,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Shots outside the box",
+                        "home": "4",
+                        "away": "1",
+                        "homeValue": 4,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Hit the woodwork",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "2",
+                        "away": "1",
+                        "homeValue": 2,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Touches in opposition box",
+                        "home": "11",
+                        "away": "2",
+                        "homeValue": 11,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Accurate through passes",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Offsides",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Free kicks",
+                        "home": "6",
+                        "away": "5",
+                        "homeValue": 6,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "89% (237/266)",
+                        "away": "85% (164/193)",
+                        "homeValue": 89,
+                        "awayValue": 85
+                    },
+                    {
+                        "name": "Long passes",
+                        "home": "72% (21/29)",
+                        "away": "38% (9/24)",
+                        "homeValue": 72,
+                        "awayValue": 38
+                    },
+                    {
+                        "name": "Passes in final third",
+                        "home": "73% (40/55)",
+                        "away": "44% (12/27)",
+                        "homeValue": 73,
+                        "awayValue": 44
+                    },
+                    {
+                        "name": "Crosses",
+                        "home": "33% (2/6)",
+                        "away": "17% (1/6)",
+                        "homeValue": 33,
+                        "awayValue": 17
+                    },
+                    {
+                        "name": "Expected assists (xA)",
+                        "home": "0.32",
+                        "away": "0.13",
+                        "homeValue": 0.32,
+                        "awayValue": 0.13
+                    },
+                    {
+                        "name": "Throw ins",
+                        "home": "10",
+                        "away": "4",
+                        "homeValue": 10,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Fouls",
+                        "home": "5",
+                        "away": "6",
+                        "homeValue": 5,
+                        "awayValue": 6
+                    },
+                    {
+                        "name": "Tackles",
+                        "home": "50% (4/8)",
+                        "away": "50% (2/4)",
+                        "homeValue": 50,
+                        "awayValue": 50
+                    },
+                    {
+                        "name": "Duels won",
+                        "home": "28",
+                        "away": "12",
+                        "homeValue": 28,
+                        "awayValue": 12
+                    },
+                    {
+                        "name": "Clearances",
+                        "home": "11",
+                        "away": "11",
+                        "homeValue": 11,
+                        "awayValue": 11
+                    },
+                    {
+                        "name": "Interceptions",
+                        "home": "2",
+                        "away": "5",
+                        "homeValue": 2,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Errors leading to shot",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Errors leading to goal",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Goalkeeper saves",
+                        "home": "1",
+                        "away": "1",
+                        "homeValue": 1,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "xGOT faced",
+                        "home": "0.08",
+                        "away": "0.27",
+                        "homeValue": 0.08,
+                        "awayValue": 0.27
+                    },
+                    {
+                        "name": "Goals prevented",
+                        "home": "0.08",
+                        "away": "-0.73",
+                        "homeValue": 0.08,
+                        "awayValue": -0.73
+                    }
+                ]
+            },
+            {
+                "period": "2nd Half",
+                "statisticsItems": [
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.77",
+                        "away": "0.02",
+                        "homeValue": 0.77,
+                        "awayValue": 0.02
+                    },
+                    {
+                        "name": "Ball possession",
+                        "home": "64%",
+                        "away": "36%",
+                        "homeValue": 64,
+                        "awayValue": 36
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "6",
+                        "away": "1",
+                        "homeValue": 6,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "2",
+                        "away": "1",
+                        "homeValue": 2,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "91% (230/254)",
+                        "away": "77% (108/141)",
+                        "homeValue": 91,
+                        "awayValue": 77
+                    },
+                    {
+                        "name": "Yellow cards",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Red cards",
+                        "home": "1",
+                        "away": "2",
+                        "homeValue": 1,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.77",
+                        "away": "0.02",
+                        "homeValue": 0.77,
+                        "awayValue": 0.02
+                    },
+                    {
+                        "name": "xG on target (xGOT)",
+                        "home": "1.01",
+                        "away": "0.05",
+                        "homeValue": 1.01,
+                        "awayValue": 0.05
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "6",
+                        "away": "1",
+                        "homeValue": 6,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "2",
+                        "away": "1",
+                        "homeValue": 2,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Shots off target",
+                        "home": "3",
+                        "away": "0",
+                        "homeValue": 3,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Blocked shots",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Shots inside the box",
+                        "home": "3",
+                        "away": "0",
+                        "homeValue": 3,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Shots outside the box",
+                        "home": "3",
+                        "away": "1",
+                        "homeValue": 3,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Hit the woodwork",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Headed goals",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Touches in opposition box",
+                        "home": "9",
+                        "away": "0",
+                        "homeValue": 9,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Accurate through passes",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Offsides",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Free kicks",
+                        "home": "5",
+                        "away": "7",
+                        "homeValue": 5,
+                        "awayValue": 7
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "91% (230/254)",
+                        "away": "77% (108/141)",
+                        "homeValue": 91,
+                        "awayValue": 77
+                    },
+                    {
+                        "name": "Long passes",
+                        "home": "53% (10/19)",
+                        "away": "36% (8/22)",
+                        "homeValue": 53,
+                        "awayValue": 36
+                    },
+                    {
+                        "name": "Passes in final third",
+                        "home": "83% (43/52)",
+                        "away": "45% (13/29)",
+                        "homeValue": 83,
+                        "awayValue": 45
+                    },
+                    {
+                        "name": "Crosses",
+                        "home": "33% (2/6)",
+                        "away": "0% (0/2)",
+                        "homeValue": 33,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Expected assists (xA)",
+                        "home": "0.88",
+                        "away": "0.03",
+                        "homeValue": 0.88,
+                        "awayValue": 0.03
+                    },
+                    {
+                        "name": "Throw ins",
+                        "home": "11",
+                        "away": "7",
+                        "homeValue": 11,
+                        "awayValue": 7
+                    },
+                    {
+                        "name": "Fouls",
+                        "home": "7",
+                        "away": "5",
+                        "homeValue": 7,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Tackles",
+                        "home": "50% (2/4)",
+                        "away": "50% (5/10)",
+                        "homeValue": 50,
+                        "awayValue": 50
+                    },
+                    {
+                        "name": "Duels won",
+                        "home": "19",
+                        "away": "21",
+                        "homeValue": 19,
+                        "awayValue": 21
+                    },
+                    {
+                        "name": "Clearances",
+                        "home": "4",
+                        "away": "6",
+                        "homeValue": 4,
+                        "awayValue": 6
+                    },
+                    {
+                        "name": "Interceptions",
+                        "home": "6",
+                        "away": "2",
+                        "homeValue": 6,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Errors leading to shot",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Errors leading to goal",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Goalkeeper saves",
+                        "home": "1",
+                        "away": "1",
+                        "homeValue": 1,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "xGOT faced",
+                        "home": "0.05",
+                        "away": "1.01",
+                        "homeValue": 0.05,
+                        "awayValue": 1.01
+                    },
+                    {
+                        "name": "Goals prevented",
+                        "home": "0.05",
+                        "away": "0.01",
+                        "homeValue": 0.05,
+                        "awayValue": 0.01
+                    }
+                ]
+            }
+        ],
+        "incidents": [
+            {
+                "time": 9,
+                "incidentType": "goal",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Quinones J."
+                },
+                "assist": {
+                    "name": "Lira E."
+                },
+                "homeScore": "1",
+                "awayScore": "0",
+                "description": "GOAL! Julian Quinones (Mexico) gets to the ball on the edge of the box after a huge mistake by an opponent and slams it into the back of the net. He makes it 1:0."
+            },
+            {
+                "time": 17,
+                "incidentType": "card",
+                "incidentClass": "yellow",
+                "isHome": false,
+                "player": {
+                    "name": "Mokoena T."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": "I"
+            },
+            {
+                "time": 23,
+                "incidentType": "card",
+                "incidentClass": "yellow",
+                "isHome": true,
+                "player": {
+                    "name": "Gutierrez B."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": "B"
+            },
+            {
+                "time": 49,
+                "incidentType": "card",
+                "incidentClass": "red",
+                "isHome": false,
+                "player": {
+                    "name": "Sithole Y."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": "Y"
+            },
+            {
+                "time": 56,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Foster L."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 61,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Adams J."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 66,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Gutierrez B."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 66,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Fidalgo A."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 67,
+                "incidentType": "goal",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Jimenez R."
+                },
+                "assist": {
+                    "name": "Alvarado R."
+                },
+                "homeScore": "2",
+                "awayScore": "0",
+                "description": "Roberto Alvarado showcases his great technique and produces a beautiful lofted cross into the box. Raul Jimenez (Mexico) meets the cross and gets himself onto the scoresheet with a header into the bottom left corner. It's 2:0."
+            },
+            {
+                "time": 74,
+                "incidentType": "card",
+                "incidentClass": "yellow",
+                "isHome": false,
+                "player": {
+                    "name": "Sibisi N."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": "W"
+            },
+            {
+                "time": 76,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Lira E."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 76,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Jimenez R."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 76,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Rayners I."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 77,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Modiba A."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 79,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Quinones J."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 84,
+                "incidentType": "card",
+                "incidentClass": "red",
+                "isHome": false,
+                "player": {
+                    "name": "Zwane T."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 90,
+                "incidentType": "card",
+                "incidentClass": "red",
+                "isHome": true,
+                "player": {
+                    "name": "Montes C."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": "C"
+            }
+        ]
+    },
+    "match-wc2": {
+        "homeScore": 2,
+        "awayScore": 1,
+        "sideQuestions": {
+            "htResult": "draw",
+            "firstScorer": "Krejci L.",
+            "redCard": false,
+            "cornersOverUnder": "over"
+        },
+        "statistics": [
+            {
+                "period": "Match",
+                "statisticsItems": [
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "2.30",
+                        "away": "0.83",
+                        "homeValue": 2.3,
+                        "awayValue": 0.83
+                    },
+                    {
+                        "name": "Ball possession",
+                        "home": "61%",
+                        "away": "39%",
+                        "homeValue": 61,
+                        "awayValue": 39
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "15",
+                        "away": "7",
+                        "homeValue": 15,
+                        "awayValue": 7
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "6",
+                        "away": "4",
+                        "homeValue": 6,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "4",
+                        "away": "1",
+                        "homeValue": 4,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "4",
+                        "away": "5",
+                        "homeValue": 4,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "87% (469/541)",
+                        "away": "70% (230/327)",
+                        "homeValue": 87,
+                        "awayValue": 70
+                    },
+                    {
+                        "name": "Yellow cards",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "2.30",
+                        "away": "0.83",
+                        "homeValue": 2.3,
+                        "awayValue": 0.83
+                    },
+                    {
+                        "name": "xG on target (xGOT)",
+                        "home": "2.06",
+                        "away": "2.07",
+                        "homeValue": 2.06,
+                        "awayValue": 2.07
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "15",
+                        "away": "7",
+                        "homeValue": 15,
+                        "awayValue": 7
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "6",
+                        "away": "4",
+                        "homeValue": 6,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Shots off target",
+                        "home": "5",
+                        "away": "3",
+                        "homeValue": 5,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Blocked shots",
+                        "home": "4",
+                        "away": "0",
+                        "homeValue": 4,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Shots inside the box",
+                        "home": "10",
+                        "away": "5",
+                        "homeValue": 10,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Shots outside the box",
+                        "home": "5",
+                        "away": "2",
+                        "homeValue": 5,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Hit the woodwork",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Headed goals",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "4",
+                        "away": "1",
+                        "homeValue": 4,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "4",
+                        "away": "5",
+                        "homeValue": 4,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Touches in opposition box",
+                        "home": "24",
+                        "away": "12",
+                        "homeValue": 24,
+                        "awayValue": 12
+                    },
+                    {
+                        "name": "Accurate through passes",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Offsides",
+                        "home": "2",
+                        "away": "2",
+                        "homeValue": 2,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Free kicks",
+                        "home": "16",
+                        "away": "9",
+                        "homeValue": 16,
+                        "awayValue": 9
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "87% (469/541)",
+                        "away": "70% (230/327)",
+                        "homeValue": 87,
+                        "awayValue": 70
+                    },
+                    {
+                        "name": "Long passes",
+                        "home": "49% (30/61)",
+                        "away": "33% (23/69)",
+                        "homeValue": 49,
+                        "awayValue": 33
+                    },
+                    {
+                        "name": "Passes in final third",
+                        "home": "76% (106/140)",
+                        "away": "51% (54/105)",
+                        "homeValue": 76,
+                        "awayValue": 51
+                    },
+                    {
+                        "name": "Crosses",
+                        "home": "25% (3/12)",
+                        "away": "20% (3/15)",
+                        "homeValue": 25,
+                        "awayValue": 20
+                    },
+                    {
+                        "name": "Expected assists (xA)",
+                        "home": "1.37",
+                        "away": "0.44",
+                        "homeValue": 1.37,
+                        "awayValue": 0.44
+                    },
+                    {
+                        "name": "Throw ins",
+                        "home": "26",
+                        "away": "16",
+                        "homeValue": 26,
+                        "awayValue": 16
+                    },
+                    {
+                        "name": "Fouls",
+                        "home": "9",
+                        "away": "16",
+                        "homeValue": 9,
+                        "awayValue": 16
+                    },
+                    {
+                        "name": "Tackles",
+                        "home": "57% (4/7)",
+                        "away": "78% (7/9)",
+                        "homeValue": 57,
+                        "awayValue": 78
+                    },
+                    {
+                        "name": "Duels won",
+                        "home": "56",
+                        "away": "38",
+                        "homeValue": 56,
+                        "awayValue": 38
+                    },
+                    {
+                        "name": "Clearances",
+                        "home": "32",
+                        "away": "21",
+                        "homeValue": 32,
+                        "awayValue": 21
+                    },
+                    {
+                        "name": "Interceptions",
+                        "home": "9",
+                        "away": "6",
+                        "homeValue": 9,
+                        "awayValue": 6
+                    },
+                    {
+                        "name": "Errors leading to shot",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Errors leading to goal",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Goalkeeper saves",
+                        "home": "3",
+                        "away": "4",
+                        "homeValue": 3,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "xGOT faced",
+                        "home": "2.07",
+                        "away": "2.06",
+                        "homeValue": 2.07,
+                        "awayValue": 2.06
+                    },
+                    {
+                        "name": "Goals prevented",
+                        "home": "1.07",
+                        "away": "0.06",
+                        "homeValue": 1.07,
+                        "awayValue": 0.06
+                    }
+                ]
+            },
+            {
+                "period": "1st Half",
+                "statisticsItems": [
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.77",
+                        "away": "0.29",
+                        "homeValue": 0.77,
+                        "awayValue": 0.29
+                    },
+                    {
+                        "name": "Ball possession",
+                        "home": "55%",
+                        "away": "45%",
+                        "homeValue": 55,
+                        "awayValue": 45
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "8",
+                        "away": "2",
+                        "homeValue": 8,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "3",
+                        "away": "3",
+                        "homeValue": 3,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "84% (205/243)",
+                        "away": "69% (135/195)",
+                        "homeValue": 84,
+                        "awayValue": 69
+                    },
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.77",
+                        "away": "0.29",
+                        "homeValue": 0.77,
+                        "awayValue": 0.29
+                    },
+                    {
+                        "name": "xG on target (xGOT)",
+                        "home": "0.04",
+                        "away": "0.00",
+                        "homeValue": 0.04,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "8",
+                        "away": "2",
+                        "homeValue": 8,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Shots off target",
+                        "home": "4",
+                        "away": "2",
+                        "homeValue": 4,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Blocked shots",
+                        "home": "3",
+                        "away": "0",
+                        "homeValue": 3,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Shots inside the box",
+                        "home": "4",
+                        "away": "1",
+                        "homeValue": 4,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Shots outside the box",
+                        "home": "4",
+                        "away": "1",
+                        "homeValue": 4,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Hit the woodwork",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "3",
+                        "away": "3",
+                        "homeValue": 3,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Touches in opposition box",
+                        "home": "9",
+                        "away": "4",
+                        "homeValue": 9,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Accurate through passes",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Offsides",
+                        "home": "2",
+                        "away": "1",
+                        "homeValue": 2,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Free kicks",
+                        "home": "7",
+                        "away": "4",
+                        "homeValue": 7,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "84% (205/243)",
+                        "away": "69% (135/195)",
+                        "homeValue": 84,
+                        "awayValue": 69
+                    },
+                    {
+                        "name": "Long passes",
+                        "home": "45% (15/33)",
+                        "away": "31% (11/36)",
+                        "homeValue": 45,
+                        "awayValue": 31
+                    },
+                    {
+                        "name": "Passes in final third",
+                        "home": "71% (41/58)",
+                        "away": "46% (32/69)",
+                        "homeValue": 71,
+                        "awayValue": 46
+                    },
+                    {
+                        "name": "Crosses",
+                        "home": "14% (1/7)",
+                        "away": "30% (3/10)",
+                        "homeValue": 14,
+                        "awayValue": 30
+                    },
+                    {
+                        "name": "Expected assists (xA)",
+                        "home": "0.65",
+                        "away": "0.24",
+                        "homeValue": 0.65,
+                        "awayValue": 0.24
+                    },
+                    {
+                        "name": "Throw ins",
+                        "home": "14",
+                        "away": "7",
+                        "homeValue": 14,
+                        "awayValue": 7
+                    },
+                    {
+                        "name": "Fouls",
+                        "home": "4",
+                        "away": "7",
+                        "homeValue": 4,
+                        "awayValue": 7
+                    },
+                    {
+                        "name": "Tackles",
+                        "home": "0% (0/1)",
+                        "away": "100% (3/3)",
+                        "homeValue": 0,
+                        "awayValue": 100
+                    },
+                    {
+                        "name": "Duels won",
+                        "home": "24",
+                        "away": "16",
+                        "homeValue": 24,
+                        "awayValue": 16
+                    },
+                    {
+                        "name": "Clearances",
+                        "home": "19",
+                        "away": "12",
+                        "homeValue": 19,
+                        "awayValue": 12
+                    },
+                    {
+                        "name": "Interceptions",
+                        "home": "4",
+                        "away": "5",
+                        "homeValue": 4,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Errors leading to shot",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Errors leading to goal",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Goalkeeper saves",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "xGOT faced",
+                        "home": "0.00",
+                        "away": "0.04",
+                        "homeValue": 0,
+                        "awayValue": 0.04
+                    },
+                    {
+                        "name": "Goals prevented",
+                        "home": "0.00",
+                        "away": "0.04",
+                        "homeValue": 0,
+                        "awayValue": 0.04
+                    }
+                ]
+            },
+            {
+                "period": "2nd Half",
+                "statisticsItems": [
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "1.53",
+                        "away": "0.54",
+                        "homeValue": 1.53,
+                        "awayValue": 0.54
+                    },
+                    {
+                        "name": "Ball possession",
+                        "home": "69%",
+                        "away": "31%",
+                        "homeValue": 69,
+                        "awayValue": 31
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "7",
+                        "away": "5",
+                        "homeValue": 7,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "5",
+                        "away": "4",
+                        "homeValue": 5,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "4",
+                        "away": "1",
+                        "homeValue": 4,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "1",
+                        "away": "2",
+                        "homeValue": 1,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "89% (264/298)",
+                        "away": "72% (95/132)",
+                        "homeValue": 89,
+                        "awayValue": 72
+                    },
+                    {
+                        "name": "Yellow cards",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "1.53",
+                        "away": "0.54",
+                        "homeValue": 1.53,
+                        "awayValue": 0.54
+                    },
+                    {
+                        "name": "xG on target (xGOT)",
+                        "home": "2.02",
+                        "away": "2.07",
+                        "homeValue": 2.02,
+                        "awayValue": 2.07
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "7",
+                        "away": "5",
+                        "homeValue": 7,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "5",
+                        "away": "4",
+                        "homeValue": 5,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Shots off target",
+                        "home": "1",
+                        "away": "1",
+                        "homeValue": 1,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Blocked shots",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Shots inside the box",
+                        "home": "6",
+                        "away": "4",
+                        "homeValue": 6,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Shots outside the box",
+                        "home": "1",
+                        "away": "1",
+                        "homeValue": 1,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Hit the woodwork",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Headed goals",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "4",
+                        "away": "1",
+                        "homeValue": 4,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "1",
+                        "away": "2",
+                        "homeValue": 1,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Touches in opposition box",
+                        "home": "15",
+                        "away": "8",
+                        "homeValue": 15,
+                        "awayValue": 8
+                    },
+                    {
+                        "name": "Accurate through passes",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Offsides",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Free kicks",
+                        "home": "9",
+                        "away": "5",
+                        "homeValue": 9,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "89% (264/298)",
+                        "away": "72% (95/132)",
+                        "homeValue": 89,
+                        "awayValue": 72
+                    },
+                    {
+                        "name": "Long passes",
+                        "home": "54% (15/28)",
+                        "away": "36% (12/33)",
+                        "homeValue": 54,
+                        "awayValue": 36
+                    },
+                    {
+                        "name": "Passes in final third",
+                        "home": "79% (65/82)",
+                        "away": "61% (22/36)",
+                        "homeValue": 79,
+                        "awayValue": 61
+                    },
+                    {
+                        "name": "Crosses",
+                        "home": "40% (2/5)",
+                        "away": "0% (0/5)",
+                        "homeValue": 40,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Expected assists (xA)",
+                        "home": "0.72",
+                        "away": "0.20",
+                        "homeValue": 0.72,
+                        "awayValue": 0.2
+                    },
+                    {
+                        "name": "Throw ins",
+                        "home": "12",
+                        "away": "9",
+                        "homeValue": 12,
+                        "awayValue": 9
+                    },
+                    {
+                        "name": "Fouls",
+                        "home": "5",
+                        "away": "9",
+                        "homeValue": 5,
+                        "awayValue": 9
+                    },
+                    {
+                        "name": "Tackles",
+                        "home": "67% (4/6)",
+                        "away": "67% (4/6)",
+                        "homeValue": 67,
+                        "awayValue": 67
+                    },
+                    {
+                        "name": "Duels won",
+                        "home": "32",
+                        "away": "22",
+                        "homeValue": 32,
+                        "awayValue": 22
+                    },
+                    {
+                        "name": "Clearances",
+                        "home": "13",
+                        "away": "9",
+                        "homeValue": 13,
+                        "awayValue": 9
+                    },
+                    {
+                        "name": "Interceptions",
+                        "home": "5",
+                        "away": "1",
+                        "homeValue": 5,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Errors leading to shot",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Errors leading to goal",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Goalkeeper saves",
+                        "home": "3",
+                        "away": "3",
+                        "homeValue": 3,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "xGOT faced",
+                        "home": "2.07",
+                        "away": "2.02",
+                        "homeValue": 2.07,
+                        "awayValue": 2.02
+                    },
+                    {
+                        "name": "Goals prevented",
+                        "home": "1.07",
+                        "away": "0.02",
+                        "homeValue": 1.07,
+                        "awayValue": 0.02
+                    }
+                ]
+            }
+        ],
+        "incidents": [
+            {
+                "time": 59,
+                "incidentType": "goal",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Krejci L."
+                },
+                "assist": {
+                    "name": "Coufal V."
+                },
+                "homeScore": "0",
+                "awayScore": "1",
+                "description": "GOAL! Ladislav Krejci (Czech Republic) rises to meet a long throw in and plants a glorious header past Seung-Gyu Kim from close range. The score changes to 0:1."
+            },
+            {
+                "time": 62,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Lee Jae-Sung"
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 64,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Sulc P."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 64,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Schick P."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 64,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Provod L."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 67,
+                "incidentType": "goal",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Hwang In-Beom"
+                },
+                "assist": {
+                    "name": "Lee Kang-In"
+                },
+                "homeScore": "1",
+                "awayScore": "1",
+                "description": "GOAL! In-Beom Hwang (South Korea) collects a pass and from inside the box he lifts the ball over Matej Kovar, who was off his line. What a finish that is! 1:1."
+            },
+            {
+                "time": 69,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Lee Tae-Seok"
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 69,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Son Heung-Min"
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 80,
+                "incidentType": "goal",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Oh Hyeon-Gyu"
+                },
+                "assist": {
+                    "name": "Hwang In-Beom"
+                },
+                "homeScore": "2",
+                "awayScore": "1",
+                "description": "Goal! In-Beom Hwang puts a cross into the box and finds Hyeon-Gyu Oh (South Korea), who latches on to it and strikes the ball into the middle of the net. He makes it 2:1."
+            },
+            {
+                "time": 84,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Hwang In-Beom"
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 84,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Paik Seung-Ho"
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 84,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Sojka A."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 90,
+                "incidentType": "card",
+                "incidentClass": "yellow",
+                "isHome": true,
+                "player": {
+                    "name": "Lee Gi-Hyuk"
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": "G"
+            }
+        ]
+    },
+    "match-wc3": {
+        "homeScore": 1,
+        "awayScore": 1,
+        "sideQuestions": {
+            "htResult": "away",
+            "firstScorer": "Lukic J.",
+            "redCard": false,
+            "cornersOverUnder": "over"
+        },
+        "statistics": [
+            {
+                "period": "Match",
+                "statisticsItems": [
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "1.23",
+                        "away": "0.98",
+                        "homeValue": 1.23,
+                        "awayValue": 0.98
+                    },
+                    {
+                        "name": "Ball possession",
+                        "home": "61%",
+                        "away": "39%",
+                        "homeValue": 61,
+                        "awayValue": 39
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "13",
+                        "away": "8",
+                        "homeValue": 13,
+                        "awayValue": 8
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "4",
+                        "away": "3",
+                        "homeValue": 4,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "2",
+                        "away": "2",
+                        "homeValue": 2,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "9",
+                        "away": "4",
+                        "homeValue": 9,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "74% (310/421)",
+                        "away": "63% (172/271)",
+                        "homeValue": 74,
+                        "awayValue": 63
+                    },
+                    {
+                        "name": "Yellow cards",
+                        "home": "2",
+                        "away": "3",
+                        "homeValue": 2,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "1.23",
+                        "away": "0.98",
+                        "homeValue": 1.23,
+                        "awayValue": 0.98
+                    },
+                    {
+                        "name": "xG on target (xGOT)",
+                        "home": "0.75",
+                        "away": "1.00",
+                        "homeValue": 0.75,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "13",
+                        "away": "8",
+                        "homeValue": 13,
+                        "awayValue": 8
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "4",
+                        "away": "3",
+                        "homeValue": 4,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Shots off target",
+                        "home": "5",
+                        "away": "4",
+                        "homeValue": 5,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Blocked shots",
+                        "home": "4",
+                        "away": "1",
+                        "homeValue": 4,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Shots inside the box",
+                        "home": "10",
+                        "away": "5",
+                        "homeValue": 10,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Shots outside the box",
+                        "home": "3",
+                        "away": "3",
+                        "homeValue": 3,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Hit the woodwork",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Headed goals",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "2",
+                        "away": "2",
+                        "homeValue": 2,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "9",
+                        "away": "4",
+                        "homeValue": 9,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Touches in opposition box",
+                        "home": "37",
+                        "away": "14",
+                        "homeValue": 37,
+                        "awayValue": 14
+                    },
+                    {
+                        "name": "Accurate through passes",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Offsides",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Free kicks",
+                        "home": "20",
+                        "away": "10",
+                        "homeValue": 20,
+                        "awayValue": 10
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "74% (310/421)",
+                        "away": "63% (172/271)",
+                        "homeValue": 74,
+                        "awayValue": 63
+                    },
+                    {
+                        "name": "Long passes",
+                        "home": "44% (19/43)",
+                        "away": "29% (18/62)",
+                        "homeValue": 44,
+                        "awayValue": 29
+                    },
+                    {
+                        "name": "Passes in final third",
+                        "home": "64% (106/166)",
+                        "away": "44% (34/77)",
+                        "homeValue": 64,
+                        "awayValue": 44
+                    },
+                    {
+                        "name": "Crosses",
+                        "home": "21% (5/24)",
+                        "away": "60% (6/10)",
+                        "homeValue": 21,
+                        "awayValue": 60
+                    },
+                    {
+                        "name": "Expected assists (xA)",
+                        "home": "1.29",
+                        "away": "0.71",
+                        "homeValue": 1.29,
+                        "awayValue": 0.71
+                    },
+                    {
+                        "name": "Throw ins",
+                        "home": "32",
+                        "away": "26",
+                        "homeValue": 32,
+                        "awayValue": 26
+                    },
+                    {
+                        "name": "Fouls",
+                        "home": "10",
+                        "away": "20",
+                        "homeValue": 10,
+                        "awayValue": 20
+                    },
+                    {
+                        "name": "Tackles",
+                        "home": "65% (15/23)",
+                        "away": "60% (12/20)",
+                        "homeValue": 65,
+                        "awayValue": 60
+                    },
+                    {
+                        "name": "Duels won",
+                        "home": "70",
+                        "away": "79",
+                        "homeValue": 70,
+                        "awayValue": 79
+                    },
+                    {
+                        "name": "Clearances",
+                        "home": "21",
+                        "away": "71",
+                        "homeValue": 21,
+                        "awayValue": 71
+                    },
+                    {
+                        "name": "Interceptions",
+                        "home": "4",
+                        "away": "11",
+                        "homeValue": 4,
+                        "awayValue": 11
+                    },
+                    {
+                        "name": "Errors leading to shot",
+                        "home": "0",
+                        "away": "2",
+                        "homeValue": 0,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Errors leading to goal",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Goalkeeper saves",
+                        "home": "2",
+                        "away": "1",
+                        "homeValue": 2,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "xGOT faced",
+                        "home": "1.00",
+                        "away": "0.74",
+                        "homeValue": 1,
+                        "awayValue": 0.74
+                    },
+                    {
+                        "name": "Goals prevented",
+                        "home": "0.00",
+                        "away": "-0.26",
+                        "homeValue": 0,
+                        "awayValue": -0.26
+                    }
+                ]
+            },
+            {
+                "period": "1st Half",
+                "statisticsItems": [
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.58",
+                        "away": "0.77",
+                        "homeValue": 0.58,
+                        "awayValue": 0.77
+                    },
+                    {
+                        "name": "Ball possession",
+                        "home": "66%",
+                        "away": "34%",
+                        "homeValue": 66,
+                        "awayValue": 34
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "7",
+                        "away": "5",
+                        "homeValue": 7,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "1",
+                        "away": "2",
+                        "homeValue": 1,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "1",
+                        "away": "1",
+                        "homeValue": 1,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "9",
+                        "away": "1",
+                        "homeValue": 9,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "75% (164/220)",
+                        "away": "67% (79/118)",
+                        "homeValue": 75,
+                        "awayValue": 67
+                    },
+                    {
+                        "name": "Yellow cards",
+                        "home": "1",
+                        "away": "2",
+                        "homeValue": 1,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.58",
+                        "away": "0.77",
+                        "homeValue": 0.58,
+                        "awayValue": 0.77
+                    },
+                    {
+                        "name": "xG on target (xGOT)",
+                        "home": "0.11",
+                        "away": "0.99",
+                        "homeValue": 0.11,
+                        "awayValue": 0.99
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "7",
+                        "away": "5",
+                        "homeValue": 7,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "1",
+                        "away": "2",
+                        "homeValue": 1,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Shots off target",
+                        "home": "3",
+                        "away": "3",
+                        "homeValue": 3,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Blocked shots",
+                        "home": "3",
+                        "away": "0",
+                        "homeValue": 3,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Shots inside the box",
+                        "home": "6",
+                        "away": "4",
+                        "homeValue": 6,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Shots outside the box",
+                        "home": "1",
+                        "away": "1",
+                        "homeValue": 1,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Hit the woodwork",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Headed goals",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "1",
+                        "away": "1",
+                        "homeValue": 1,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "9",
+                        "away": "1",
+                        "homeValue": 9,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Touches in opposition box",
+                        "home": "21",
+                        "away": "7",
+                        "homeValue": 21,
+                        "awayValue": 7
+                    },
+                    {
+                        "name": "Accurate through passes",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Offsides",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Free kicks",
+                        "home": "8",
+                        "away": "4",
+                        "homeValue": 8,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "75% (164/220)",
+                        "away": "67% (79/118)",
+                        "homeValue": 75,
+                        "awayValue": 67
+                    },
+                    {
+                        "name": "Long passes",
+                        "home": "54% (13/24)",
+                        "away": "35% (9/26)",
+                        "homeValue": 54,
+                        "awayValue": 35
+                    },
+                    {
+                        "name": "Passes in final third",
+                        "home": "58% (51/88)",
+                        "away": "52% (15/29)",
+                        "homeValue": 58,
+                        "awayValue": 52
+                    },
+                    {
+                        "name": "Crosses",
+                        "home": "25% (4/16)",
+                        "away": "80% (4/5)",
+                        "homeValue": 25,
+                        "awayValue": 80
+                    },
+                    {
+                        "name": "Expected assists (xA)",
+                        "home": "0.44",
+                        "away": "0.49",
+                        "homeValue": 0.44,
+                        "awayValue": 0.49
+                    },
+                    {
+                        "name": "Throw ins",
+                        "home": "16",
+                        "away": "17",
+                        "homeValue": 16,
+                        "awayValue": 17
+                    },
+                    {
+                        "name": "Fouls",
+                        "home": "4",
+                        "away": "8",
+                        "homeValue": 4,
+                        "awayValue": 8
+                    },
+                    {
+                        "name": "Tackles",
+                        "home": "80% (8/10)",
+                        "away": "44% (4/9)",
+                        "homeValue": 80,
+                        "awayValue": 44
+                    },
+                    {
+                        "name": "Duels won",
+                        "home": "28",
+                        "away": "41",
+                        "homeValue": 28,
+                        "awayValue": 41
+                    },
+                    {
+                        "name": "Clearances",
+                        "home": "10",
+                        "away": "42",
+                        "homeValue": 10,
+                        "awayValue": 42
+                    },
+                    {
+                        "name": "Interceptions",
+                        "home": "2",
+                        "away": "7",
+                        "homeValue": 2,
+                        "awayValue": 7
+                    },
+                    {
+                        "name": "Errors leading to shot",
+                        "home": "0",
+                        "away": "2",
+                        "homeValue": 0,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Errors leading to goal",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Goalkeeper saves",
+                        "home": "1",
+                        "away": "1",
+                        "homeValue": 1,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "xGOT faced",
+                        "home": "0.99",
+                        "away": "0.10",
+                        "homeValue": 0.99,
+                        "awayValue": 0.1
+                    },
+                    {
+                        "name": "Goals prevented",
+                        "home": "-0.01",
+                        "away": "0.10",
+                        "homeValue": -0.01,
+                        "awayValue": 0.1
+                    }
+                ]
+            },
+            {
+                "period": "2nd Half",
+                "statisticsItems": [
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.65",
+                        "away": "0.21",
+                        "homeValue": 0.65,
+                        "awayValue": 0.21
+                    },
+                    {
+                        "name": "Ball possession",
+                        "home": "57%",
+                        "away": "43%",
+                        "homeValue": 57,
+                        "awayValue": 43
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "6",
+                        "away": "3",
+                        "homeValue": 6,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "3",
+                        "away": "1",
+                        "homeValue": 3,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "1",
+                        "away": "1",
+                        "homeValue": 1,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "0",
+                        "away": "3",
+                        "homeValue": 0,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "73% (146/201)",
+                        "away": "61% (93/153)",
+                        "homeValue": 73,
+                        "awayValue": 61
+                    },
+                    {
+                        "name": "Yellow cards",
+                        "home": "1",
+                        "away": "1",
+                        "homeValue": 1,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.65",
+                        "away": "0.21",
+                        "homeValue": 0.65,
+                        "awayValue": 0.21
+                    },
+                    {
+                        "name": "xG on target (xGOT)",
+                        "home": "0.64",
+                        "away": "0.01",
+                        "homeValue": 0.64,
+                        "awayValue": 0.01
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "6",
+                        "away": "3",
+                        "homeValue": 6,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "3",
+                        "away": "1",
+                        "homeValue": 3,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Shots off target",
+                        "home": "2",
+                        "away": "1",
+                        "homeValue": 2,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Blocked shots",
+                        "home": "1",
+                        "away": "1",
+                        "homeValue": 1,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Shots inside the box",
+                        "home": "4",
+                        "away": "1",
+                        "homeValue": 4,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Shots outside the box",
+                        "home": "2",
+                        "away": "2",
+                        "homeValue": 2,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Hit the woodwork",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "1",
+                        "away": "1",
+                        "homeValue": 1,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "0",
+                        "away": "3",
+                        "homeValue": 0,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Touches in opposition box",
+                        "home": "16",
+                        "away": "7",
+                        "homeValue": 16,
+                        "awayValue": 7
+                    },
+                    {
+                        "name": "Accurate through passes",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Offsides",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Free kicks",
+                        "home": "12",
+                        "away": "6",
+                        "homeValue": 12,
+                        "awayValue": 6
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "73% (146/201)",
+                        "away": "61% (93/153)",
+                        "homeValue": 73,
+                        "awayValue": 61
+                    },
+                    {
+                        "name": "Long passes",
+                        "home": "32% (6/19)",
+                        "away": "25% (9/36)",
+                        "homeValue": 32,
+                        "awayValue": 25
+                    },
+                    {
+                        "name": "Passes in final third",
+                        "home": "71% (55/78)",
+                        "away": "40% (19/48)",
+                        "homeValue": 71,
+                        "awayValue": 40
+                    },
+                    {
+                        "name": "Crosses",
+                        "home": "13% (1/8)",
+                        "away": "40% (2/5)",
+                        "homeValue": 13,
+                        "awayValue": 40
+                    },
+                    {
+                        "name": "Expected assists (xA)",
+                        "home": "0.85",
+                        "away": "0.22",
+                        "homeValue": 0.85,
+                        "awayValue": 0.22
+                    },
+                    {
+                        "name": "Throw ins",
+                        "home": "16",
+                        "away": "9",
+                        "homeValue": 16,
+                        "awayValue": 9
+                    },
+                    {
+                        "name": "Fouls",
+                        "home": "6",
+                        "away": "12",
+                        "homeValue": 6,
+                        "awayValue": 12
+                    },
+                    {
+                        "name": "Tackles",
+                        "home": "54% (7/13)",
+                        "away": "73% (8/11)",
+                        "homeValue": 54,
+                        "awayValue": 73
+                    },
+                    {
+                        "name": "Duels won",
+                        "home": "42",
+                        "away": "38",
+                        "homeValue": 42,
+                        "awayValue": 38
+                    },
+                    {
+                        "name": "Clearances",
+                        "home": "11",
+                        "away": "29",
+                        "homeValue": 11,
+                        "awayValue": 29
+                    },
+                    {
+                        "name": "Interceptions",
+                        "home": "2",
+                        "away": "4",
+                        "homeValue": 2,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Errors leading to shot",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Errors leading to goal",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Goalkeeper saves",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "xGOT faced",
+                        "home": "0.01",
+                        "away": "0.64",
+                        "homeValue": 0.01,
+                        "awayValue": 0.64
+                    },
+                    {
+                        "name": "Goals prevented",
+                        "home": "0.01",
+                        "away": "-0.36",
+                        "homeValue": 0.01,
+                        "awayValue": -0.36
+                    }
+                ]
+            }
+        ],
+        "incidents": [
+            {
+                "time": 11,
+                "incidentType": "card",
+                "incidentClass": "yellow",
+                "isHome": true,
+                "player": {
+                    "name": "Johnston A."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": "A"
+            },
+            {
+                "time": 21,
+                "incidentType": "goal",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Lukic J."
+                },
+                "assist": {
+                    "name": "Kolasinac S."
+                },
+                "homeScore": "0",
+                "awayScore": "1",
+                "description": "Goal! Sead Kolasinac gets up really well from the corner and heads the ball into the six-yard box where Jovo Lukic (Bosnia & Herzegovina) glances a header into the net. 0:1."
+            },
+            {
+                "time": 45,
+                "incidentType": "card",
+                "incidentClass": "yellow",
+                "isHome": false,
+                "player": {
+                    "name": "Demirovic E."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": "E"
+            },
+            {
+                "time": 45,
+                "incidentType": "card",
+                "incidentClass": "yellow",
+                "isHome": false,
+                "player": {
+                    "name": "Lukic J."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": "F"
+            },
+            {
+                "time": 53,
+                "incidentType": "card",
+                "incidentClass": "yellow",
+                "isHome": true,
+                "player": {
+                    "name": "De Fougerolles L."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": "L"
+            },
+            {
+                "time": 61,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Millar L."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 61,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "David J."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 61,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Buchanan T."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 62,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Lukic J."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 62,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Basic I."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 74,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Bajraktarevic E."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 74,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Memic A."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 76,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Oluwaseyi T."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 78,
+                "incidentType": "goal",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Larin C."
+                },
+                "assist": {
+                    "name": "David P."
+                },
+                "homeScore": "1",
+                "awayScore": "1",
+                "description": "Goal! Promise David plays it to Cyle Larin (Canada), whose deflected shot from inside the box goes past the helpless Nikola Vasilj. 1:1."
+            },
+            {
+                "time": 84,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Kolasinac S."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 90,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Eustaquio S."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 90,
+                "incidentType": "card",
+                "incidentClass": "yellow",
+                "isHome": false,
+                "player": {
+                    "name": "Katic N."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": "N"
+            }
+        ]
+    },
+    "match-wc4": {
+        "homeScore": 0,
+        "awayScore": 0,
+        "sideQuestions": {
+            "htResult": "draw",
+            "firstScorer": "Diğer",
+            "redCard": false,
+            "cornersOverUnder": "over"
+        },
+        "statistics": [
+            {
+                "period": "Match",
+                "statisticsItems": [
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.60",
+                        "away": "3.20",
+                        "homeValue": 0.6,
+                        "awayValue": 3.2
+                    },
+                    {
+                        "name": "Ball possession",
+                        "home": "32%",
+                        "away": "68%",
+                        "homeValue": 32,
+                        "awayValue": 68
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "6",
+                        "away": "26",
+                        "homeValue": 6,
+                        "awayValue": 26
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "3",
+                        "away": "7",
+                        "homeValue": 3,
+                        "awayValue": 7
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "1",
+                        "away": "6",
+                        "homeValue": 1,
+                        "awayValue": 6
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "3",
+                        "away": "10",
+                        "homeValue": 3,
+                        "awayValue": 10
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "72% (200/278)",
+                        "away": "91% (527/576)",
+                        "homeValue": 72,
+                        "awayValue": 91
+                    },
+                    {
+                        "name": "Yellow cards",
+                        "home": "2",
+                        "away": "1",
+                        "homeValue": 2,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.60",
+                        "away": "3.20",
+                        "homeValue": 0.6,
+                        "awayValue": 3.2
+                    },
+                    {
+                        "name": "xG on target (xGOT)",
+                        "home": "0.46",
+                        "away": "1.78",
+                        "homeValue": 0.46,
+                        "awayValue": 1.78
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "6",
+                        "away": "26",
+                        "homeValue": 6,
+                        "awayValue": 26
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "3",
+                        "away": "7",
+                        "homeValue": 3,
+                        "awayValue": 7
+                    },
+                    {
+                        "name": "Shots off target",
+                        "home": "3",
+                        "away": "10",
+                        "homeValue": 3,
+                        "awayValue": 10
+                    },
+                    {
+                        "name": "Blocked shots",
+                        "home": "0",
+                        "away": "9",
+                        "homeValue": 0,
+                        "awayValue": 9
+                    },
+                    {
+                        "name": "Shots inside the box",
+                        "home": "4",
+                        "away": "18",
+                        "homeValue": 4,
+                        "awayValue": 18
+                    },
+                    {
+                        "name": "Shots outside the box",
+                        "home": "2",
+                        "away": "8",
+                        "homeValue": 2,
+                        "awayValue": 8
+                    },
+                    {
+                        "name": "Hit the woodwork",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "1",
+                        "away": "6",
+                        "homeValue": 1,
+                        "awayValue": 6
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "3",
+                        "away": "10",
+                        "homeValue": 3,
+                        "awayValue": 10
+                    },
+                    {
+                        "name": "Touches in opposition box",
+                        "home": "8",
+                        "away": "42",
+                        "homeValue": 8,
+                        "awayValue": 42
+                    },
+                    {
+                        "name": "Accurate through passes",
+                        "home": "0",
+                        "away": "5",
+                        "homeValue": 0,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Offsides",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Free kicks",
+                        "home": "11",
+                        "away": "12",
+                        "homeValue": 11,
+                        "awayValue": 12
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "72% (200/278)",
+                        "away": "91% (527/576)",
+                        "homeValue": 72,
+                        "awayValue": 91
+                    },
+                    {
+                        "name": "Long passes",
+                        "home": "30% (19/64)",
+                        "away": "77% (27/35)",
+                        "homeValue": 30,
+                        "awayValue": 77
+                    },
+                    {
+                        "name": "Passes in final third",
+                        "home": "44% (24/54)",
+                        "away": "87% (199/230)",
+                        "homeValue": 44,
+                        "awayValue": 87
+                    },
+                    {
+                        "name": "Crosses",
+                        "home": "11% (1/9)",
+                        "away": "17% (6/35)",
+                        "homeValue": 11,
+                        "awayValue": 17
+                    },
+                    {
+                        "name": "Expected assists (xA)",
+                        "home": "0.25",
+                        "away": "3.20",
+                        "homeValue": 0.25,
+                        "awayValue": 3.2
+                    },
+                    {
+                        "name": "Throw ins",
+                        "home": "14",
+                        "away": "17",
+                        "homeValue": 14,
+                        "awayValue": 17
+                    },
+                    {
+                        "name": "Fouls",
+                        "home": "12",
+                        "away": "11",
+                        "homeValue": 12,
+                        "awayValue": 11
+                    },
+                    {
+                        "name": "Tackles",
+                        "home": "64% (9/14)",
+                        "away": "75% (6/8)",
+                        "homeValue": 64,
+                        "awayValue": 75
+                    },
+                    {
+                        "name": "Duels won",
+                        "home": "36",
+                        "away": "37",
+                        "homeValue": 36,
+                        "awayValue": 37
+                    },
+                    {
+                        "name": "Clearances",
+                        "home": "31",
+                        "away": "13",
+                        "homeValue": 31,
+                        "awayValue": 13
+                    },
+                    {
+                        "name": "Interceptions",
+                        "home": "11",
+                        "away": "7",
+                        "homeValue": 11,
+                        "awayValue": 7
+                    },
+                    {
+                        "name": "Errors leading to shot",
+                        "home": "1",
+                        "away": "1",
+                        "homeValue": 1,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Errors leading to goal",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Goalkeeper saves",
+                        "home": "5",
+                        "away": "3",
+                        "homeValue": 5,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "xGOT faced",
+                        "home": "1.78",
+                        "away": "0.46",
+                        "homeValue": 1.78,
+                        "awayValue": 0.46
+                    },
+                    {
+                        "name": "Goals prevented",
+                        "home": "0.78",
+                        "away": "0.46",
+                        "homeValue": 0.78,
+                        "awayValue": 0.46
+                    }
+                ]
+            },
+            {
+                "period": "1st Half",
+                "statisticsItems": [
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.47",
+                        "away": "2.33",
+                        "homeValue": 0.47,
+                        "awayValue": 2.33
+                    },
+                    {
+                        "name": "Ball possession",
+                        "home": "25%",
+                        "away": "75%",
+                        "homeValue": 25,
+                        "awayValue": 75
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "4",
+                        "away": "14",
+                        "homeValue": 4,
+                        "awayValue": 14
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "2",
+                        "away": "6",
+                        "homeValue": 2,
+                        "awayValue": 6
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "1",
+                        "away": "4",
+                        "homeValue": 1,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "3",
+                        "away": "4",
+                        "homeValue": 3,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "60% (58/97)",
+                        "away": "90% (264/294)",
+                        "homeValue": 60,
+                        "awayValue": 90
+                    },
+                    {
+                        "name": "Yellow cards",
+                        "home": "2",
+                        "away": "1",
+                        "homeValue": 2,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.47",
+                        "away": "2.33",
+                        "homeValue": 0.47,
+                        "awayValue": 2.33
+                    },
+                    {
+                        "name": "xG on target (xGOT)",
+                        "home": "0.38",
+                        "away": "1.71",
+                        "homeValue": 0.38,
+                        "awayValue": 1.71
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "4",
+                        "away": "14",
+                        "homeValue": 4,
+                        "awayValue": 14
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "2",
+                        "away": "6",
+                        "homeValue": 2,
+                        "awayValue": 6
+                    },
+                    {
+                        "name": "Shots off target",
+                        "home": "2",
+                        "away": "3",
+                        "homeValue": 2,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Blocked shots",
+                        "home": "0",
+                        "away": "5",
+                        "homeValue": 0,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Shots inside the box",
+                        "home": "3",
+                        "away": "12",
+                        "homeValue": 3,
+                        "awayValue": 12
+                    },
+                    {
+                        "name": "Shots outside the box",
+                        "home": "1",
+                        "away": "2",
+                        "homeValue": 1,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Hit the woodwork",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "1",
+                        "away": "4",
+                        "homeValue": 1,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "3",
+                        "away": "4",
+                        "homeValue": 3,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Touches in opposition box",
+                        "home": "5",
+                        "away": "28",
+                        "homeValue": 5,
+                        "awayValue": 28
+                    },
+                    {
+                        "name": "Accurate through passes",
+                        "home": "0",
+                        "away": "4",
+                        "homeValue": 0,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Offsides",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Free kicks",
+                        "home": "8",
+                        "away": "6",
+                        "homeValue": 8,
+                        "awayValue": 6
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "60% (58/97)",
+                        "away": "90% (264/294)",
+                        "homeValue": 60,
+                        "awayValue": 90
+                    },
+                    {
+                        "name": "Long passes",
+                        "home": "32% (11/34)",
+                        "away": "74% (17/23)",
+                        "homeValue": 32,
+                        "awayValue": 74
+                    },
+                    {
+                        "name": "Passes in final third",
+                        "home": "36% (10/28)",
+                        "away": "87% (116/133)",
+                        "homeValue": 36,
+                        "awayValue": 87
+                    },
+                    {
+                        "name": "Crosses",
+                        "home": "20% (1/5)",
+                        "away": "25% (4/16)",
+                        "homeValue": 20,
+                        "awayValue": 25
+                    },
+                    {
+                        "name": "Expected assists (xA)",
+                        "home": "0.19",
+                        "away": "2.14",
+                        "homeValue": 0.19,
+                        "awayValue": 2.14
+                    },
+                    {
+                        "name": "Throw ins",
+                        "home": "8",
+                        "away": "7",
+                        "homeValue": 8,
+                        "awayValue": 7
+                    },
+                    {
+                        "name": "Fouls",
+                        "home": "6",
+                        "away": "8",
+                        "homeValue": 6,
+                        "awayValue": 8
+                    },
+                    {
+                        "name": "Tackles",
+                        "home": "50% (2/4)",
+                        "away": "50% (1/2)",
+                        "homeValue": 50,
+                        "awayValue": 50
+                    },
+                    {
+                        "name": "Duels won",
+                        "home": "17",
+                        "away": "18",
+                        "homeValue": 17,
+                        "awayValue": 18
+                    },
+                    {
+                        "name": "Clearances",
+                        "home": "18",
+                        "away": "12",
+                        "homeValue": 18,
+                        "awayValue": 12
+                    },
+                    {
+                        "name": "Interceptions",
+                        "home": "7",
+                        "away": "2",
+                        "homeValue": 7,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Errors leading to shot",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Errors leading to goal",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Goalkeeper saves",
+                        "home": "4",
+                        "away": "2",
+                        "homeValue": 4,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "xGOT faced",
+                        "home": "1.71",
+                        "away": "0.38",
+                        "homeValue": 1.71,
+                        "awayValue": 0.38
+                    },
+                    {
+                        "name": "Goals prevented",
+                        "home": "0.71",
+                        "away": "0.38",
+                        "homeValue": 0.71,
+                        "awayValue": 0.38
+                    }
+                ]
+            },
+            {
+                "period": "2nd Half",
+                "statisticsItems": [
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.13",
+                        "away": "0.87",
+                        "homeValue": 0.13,
+                        "awayValue": 0.87
+                    },
+                    {
+                        "name": "Ball possession",
+                        "home": "38%",
+                        "away": "62%",
+                        "homeValue": 38,
+                        "awayValue": 62
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "2",
+                        "away": "12",
+                        "homeValue": 2,
+                        "awayValue": 12
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "1",
+                        "away": "1",
+                        "homeValue": 1,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "0",
+                        "away": "2",
+                        "homeValue": 0,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "0",
+                        "away": "6",
+                        "homeValue": 0,
+                        "awayValue": 6
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "78% (142/181)",
+                        "away": "93% (263/282)",
+                        "homeValue": 78,
+                        "awayValue": 93
+                    },
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.13",
+                        "away": "0.87",
+                        "homeValue": 0.13,
+                        "awayValue": 0.87
+                    },
+                    {
+                        "name": "xG on target (xGOT)",
+                        "home": "0.08",
+                        "away": "0.07",
+                        "homeValue": 0.08,
+                        "awayValue": 0.07
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "2",
+                        "away": "12",
+                        "homeValue": 2,
+                        "awayValue": 12
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "1",
+                        "away": "1",
+                        "homeValue": 1,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Shots off target",
+                        "home": "1",
+                        "away": "7",
+                        "homeValue": 1,
+                        "awayValue": 7
+                    },
+                    {
+                        "name": "Blocked shots",
+                        "home": "0",
+                        "away": "4",
+                        "homeValue": 0,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Shots inside the box",
+                        "home": "1",
+                        "away": "6",
+                        "homeValue": 1,
+                        "awayValue": 6
+                    },
+                    {
+                        "name": "Shots outside the box",
+                        "home": "1",
+                        "away": "6",
+                        "homeValue": 1,
+                        "awayValue": 6
+                    },
+                    {
+                        "name": "Hit the woodwork",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "0",
+                        "away": "2",
+                        "homeValue": 0,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "0",
+                        "away": "6",
+                        "homeValue": 0,
+                        "awayValue": 6
+                    },
+                    {
+                        "name": "Touches in opposition box",
+                        "home": "3",
+                        "away": "14",
+                        "homeValue": 3,
+                        "awayValue": 14
+                    },
+                    {
+                        "name": "Accurate through passes",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Offsides",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Free kicks",
+                        "home": "3",
+                        "away": "6",
+                        "homeValue": 3,
+                        "awayValue": 6
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "78% (142/181)",
+                        "away": "93% (263/282)",
+                        "homeValue": 78,
+                        "awayValue": 93
+                    },
+                    {
+                        "name": "Long passes",
+                        "home": "27% (8/30)",
+                        "away": "83% (10/12)",
+                        "homeValue": 27,
+                        "awayValue": 83
+                    },
+                    {
+                        "name": "Passes in final third",
+                        "home": "54% (14/26)",
+                        "away": "86% (83/97)",
+                        "homeValue": 54,
+                        "awayValue": 86
+                    },
+                    {
+                        "name": "Crosses",
+                        "home": "0% (0/4)",
+                        "away": "11% (2/19)",
+                        "homeValue": 0,
+                        "awayValue": 11
+                    },
+                    {
+                        "name": "Expected assists (xA)",
+                        "home": "0.06",
+                        "away": "1.06",
+                        "homeValue": 0.06,
+                        "awayValue": 1.06
+                    },
+                    {
+                        "name": "Throw ins",
+                        "home": "6",
+                        "away": "10",
+                        "homeValue": 6,
+                        "awayValue": 10
+                    },
+                    {
+                        "name": "Fouls",
+                        "home": "6",
+                        "away": "3",
+                        "homeValue": 6,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Tackles",
+                        "home": "70% (7/10)",
+                        "away": "83% (5/6)",
+                        "homeValue": 70,
+                        "awayValue": 83
+                    },
+                    {
+                        "name": "Duels won",
+                        "home": "19",
+                        "away": "19",
+                        "homeValue": 19,
+                        "awayValue": 19
+                    },
+                    {
+                        "name": "Clearances",
+                        "home": "13",
+                        "away": "1",
+                        "homeValue": 13,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Interceptions",
+                        "home": "4",
+                        "away": "5",
+                        "homeValue": 4,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Errors leading to shot",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Errors leading to goal",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Goalkeeper saves",
+                        "home": "1",
+                        "away": "1",
+                        "homeValue": 1,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "xGOT faced",
+                        "home": "0.07",
+                        "away": "0.08",
+                        "homeValue": 0.07,
+                        "awayValue": 0.08
+                    },
+                    {
+                        "name": "Goals prevented",
+                        "home": "0.07",
+                        "away": "0.08",
+                        "homeValue": 0.07,
+                        "awayValue": 0.08
+                    }
+                ]
+            }
+        ],
+        "incidents": [
+            {
+                "time": 16,
+                "incidentType": "card",
+                "incidentClass": "yellow",
+                "isHome": true,
+                "player": {
+                    "name": "Abunada M."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": "M"
+            },
+            {
+                "time": 17,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Embolo B."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "1",
+                "description": "Breel Embolo (Switzerland) will take the responsibility and he is already preparing the ball."
+            },
+            {
+                "time": 23,
+                "incidentType": "card",
+                "incidentClass": "yellow",
+                "isHome": true,
+                "player": {
+                    "name": "Gaber J."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": "T"
+            },
+            {
+                "time": 42,
+                "incidentType": "card",
+                "incidentClass": "yellow",
+                "isHome": false,
+                "player": {
+                    "name": "Zakaria D."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": "D"
+            },
+            {
+                "time": 60,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Al Oui A."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 60,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Gaber J."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 60,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Abdurisag Y."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 65,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Ndoye D."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 65,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Aebischer M."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 79,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Madibo A. O."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 79,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Vargas R."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 88,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Edmilson Junior"
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 89,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Rodriguez R."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 89,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Freuler R."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 90,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Muheim M."
+                },
+                "assist": null,
+                "homeScore": "1",
+                "awayScore": "1",
+                "description": "I"
+            }
+        ]
+    },
+    "match-wc5": {
+        "homeScore": 1,
+        "awayScore": 1,
+        "sideQuestions": {
+            "htResult": "draw",
+            "firstScorer": "Saibari I.",
+            "redCard": false,
+            "cornersOverUnder": "under"
+        },
+        "statistics": [
+            {
+                "period": "Match",
+                "statisticsItems": [
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "1.26",
+                        "away": "1.36",
+                        "homeValue": 1.26,
+                        "awayValue": 1.36
+                    },
+                    {
+                        "name": "Ball possession",
+                        "home": "51%",
+                        "away": "49%",
+                        "homeValue": 51,
+                        "awayValue": 49
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "12",
+                        "away": "14",
+                        "homeValue": 12,
+                        "awayValue": 14
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "5",
+                        "away": "3",
+                        "homeValue": 5,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "1",
+                        "away": "2",
+                        "homeValue": 1,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "6",
+                        "away": "2",
+                        "homeValue": 6,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "87% (449/514)",
+                        "away": "86% (419/486)",
+                        "homeValue": 87,
+                        "awayValue": 86
+                    },
+                    {
+                        "name": "Yellow cards",
+                        "home": "2",
+                        "away": "0",
+                        "homeValue": 2,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "1.26",
+                        "away": "1.36",
+                        "homeValue": 1.26,
+                        "awayValue": 1.36
+                    },
+                    {
+                        "name": "xG on target (xGOT)",
+                        "home": "1.37",
+                        "away": "0.74",
+                        "homeValue": 1.37,
+                        "awayValue": 0.74
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "12",
+                        "away": "14",
+                        "homeValue": 12,
+                        "awayValue": 14
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "5",
+                        "away": "3",
+                        "homeValue": 5,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Shots off target",
+                        "home": "4",
+                        "away": "5",
+                        "homeValue": 4,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Blocked shots",
+                        "home": "3",
+                        "away": "6",
+                        "homeValue": 3,
+                        "awayValue": 6
+                    },
+                    {
+                        "name": "Shots inside the box",
+                        "home": "9",
+                        "away": "7",
+                        "homeValue": 9,
+                        "awayValue": 7
+                    },
+                    {
+                        "name": "Shots outside the box",
+                        "home": "3",
+                        "away": "7",
+                        "homeValue": 3,
+                        "awayValue": 7
+                    },
+                    {
+                        "name": "Hit the woodwork",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "1",
+                        "away": "2",
+                        "homeValue": 1,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "6",
+                        "away": "2",
+                        "homeValue": 6,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Touches in opposition box",
+                        "home": "22",
+                        "away": "13",
+                        "homeValue": 22,
+                        "awayValue": 13
+                    },
+                    {
+                        "name": "Accurate through passes",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Offsides",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Free kicks",
+                        "home": "14",
+                        "away": "16",
+                        "homeValue": 14,
+                        "awayValue": 16
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "87% (449/514)",
+                        "away": "86% (419/486)",
+                        "homeValue": 87,
+                        "awayValue": 86
+                    },
+                    {
+                        "name": "Long passes",
+                        "home": "50% (18/36)",
+                        "away": "33% (17/52)",
+                        "homeValue": 50,
+                        "awayValue": 33
+                    },
+                    {
+                        "name": "Passes in final third",
+                        "home": "69% (69/100)",
+                        "away": "78% (123/157)",
+                        "homeValue": 69,
+                        "awayValue": 78
+                    },
+                    {
+                        "name": "Crosses",
+                        "home": "25% (4/16)",
+                        "away": "13% (2/15)",
+                        "homeValue": 25,
+                        "awayValue": 13
+                    },
+                    {
+                        "name": "Expected assists (xA)",
+                        "home": "0.64",
+                        "away": "0.60",
+                        "homeValue": 0.64,
+                        "awayValue": 0.6
+                    },
+                    {
+                        "name": "Throw ins",
+                        "home": "17",
+                        "away": "13",
+                        "homeValue": 17,
+                        "awayValue": 13
+                    },
+                    {
+                        "name": "Fouls",
+                        "home": "16",
+                        "away": "14",
+                        "homeValue": 16,
+                        "awayValue": 14
+                    },
+                    {
+                        "name": "Tackles",
+                        "home": "57% (13/23)",
+                        "away": "69% (18/26)",
+                        "homeValue": 57,
+                        "awayValue": 69
+                    },
+                    {
+                        "name": "Duels won",
+                        "home": "53",
+                        "away": "62",
+                        "homeValue": 53,
+                        "awayValue": 62
+                    },
+                    {
+                        "name": "Clearances",
+                        "home": "23",
+                        "away": "17",
+                        "homeValue": 23,
+                        "awayValue": 17
+                    },
+                    {
+                        "name": "Interceptions",
+                        "home": "5",
+                        "away": "5",
+                        "homeValue": 5,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Errors leading to shot",
+                        "home": "3",
+                        "away": "0",
+                        "homeValue": 3,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Errors leading to goal",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Goalkeeper saves",
+                        "home": "2",
+                        "away": "4",
+                        "homeValue": 2,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "xGOT faced",
+                        "home": "0.74",
+                        "away": "1.37",
+                        "homeValue": 0.74,
+                        "awayValue": 1.37
+                    },
+                    {
+                        "name": "Goals prevented",
+                        "home": "-0.26",
+                        "away": "0.37",
+                        "homeValue": -0.26,
+                        "awayValue": 0.37
+                    }
+                ]
+            },
+            {
+                "period": "1st Half",
+                "statisticsItems": [
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.91",
+                        "away": "1.20",
+                        "homeValue": 0.91,
+                        "awayValue": 1.2
+                    },
+                    {
+                        "name": "Ball possession",
+                        "home": "54%",
+                        "away": "46%",
+                        "homeValue": 54,
+                        "awayValue": 46
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "6",
+                        "away": "12",
+                        "homeValue": 6,
+                        "awayValue": 12
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "2",
+                        "away": "2",
+                        "homeValue": 2,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "1",
+                        "away": "1",
+                        "homeValue": 1,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "2",
+                        "away": "0",
+                        "homeValue": 2,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "87% (224/257)",
+                        "away": "86% (186/217)",
+                        "homeValue": 87,
+                        "awayValue": 86
+                    },
+                    {
+                        "name": "Yellow cards",
+                        "home": "2",
+                        "away": "0",
+                        "homeValue": 2,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.91",
+                        "away": "1.20",
+                        "homeValue": 0.91,
+                        "awayValue": 1.2
+                    },
+                    {
+                        "name": "xG on target (xGOT)",
+                        "home": "1.08",
+                        "away": "0.47",
+                        "homeValue": 1.08,
+                        "awayValue": 0.47
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "6",
+                        "away": "12",
+                        "homeValue": 6,
+                        "awayValue": 12
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "2",
+                        "away": "2",
+                        "homeValue": 2,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Shots off target",
+                        "home": "2",
+                        "away": "4",
+                        "homeValue": 2,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Blocked shots",
+                        "home": "2",
+                        "away": "6",
+                        "homeValue": 2,
+                        "awayValue": 6
+                    },
+                    {
+                        "name": "Shots inside the box",
+                        "home": "4",
+                        "away": "6",
+                        "homeValue": 4,
+                        "awayValue": 6
+                    },
+                    {
+                        "name": "Shots outside the box",
+                        "home": "2",
+                        "away": "6",
+                        "homeValue": 2,
+                        "awayValue": 6
+                    },
+                    {
+                        "name": "Hit the woodwork",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "1",
+                        "away": "1",
+                        "homeValue": 1,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "2",
+                        "away": "0",
+                        "homeValue": 2,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Touches in opposition box",
+                        "home": "9",
+                        "away": "11",
+                        "homeValue": 9,
+                        "awayValue": 11
+                    },
+                    {
+                        "name": "Accurate through passes",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Offsides",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Free kicks",
+                        "home": "8",
+                        "away": "8",
+                        "homeValue": 8,
+                        "awayValue": 8
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "87% (224/257)",
+                        "away": "86% (186/217)",
+                        "homeValue": 87,
+                        "awayValue": 86
+                    },
+                    {
+                        "name": "Long passes",
+                        "home": "35% (6/17)",
+                        "away": "32% (7/22)",
+                        "homeValue": 35,
+                        "awayValue": 32
+                    },
+                    {
+                        "name": "Passes in final third",
+                        "home": "64% (29/45)",
+                        "away": "86% (66/77)",
+                        "homeValue": 64,
+                        "awayValue": 86
+                    },
+                    {
+                        "name": "Crosses",
+                        "home": "43% (3/7)",
+                        "away": "17% (1/6)",
+                        "homeValue": 43,
+                        "awayValue": 17
+                    },
+                    {
+                        "name": "Expected assists (xA)",
+                        "home": "0.24",
+                        "away": "0.50",
+                        "homeValue": 0.24,
+                        "awayValue": 0.5
+                    },
+                    {
+                        "name": "Throw ins",
+                        "home": "11",
+                        "away": "7",
+                        "homeValue": 11,
+                        "awayValue": 7
+                    },
+                    {
+                        "name": "Fouls",
+                        "home": "8",
+                        "away": "8",
+                        "homeValue": 8,
+                        "awayValue": 8
+                    },
+                    {
+                        "name": "Tackles",
+                        "home": "50% (7/14)",
+                        "away": "65% (11/17)",
+                        "homeValue": 50,
+                        "awayValue": 65
+                    },
+                    {
+                        "name": "Duels won",
+                        "home": "32",
+                        "away": "39",
+                        "homeValue": 32,
+                        "awayValue": 39
+                    },
+                    {
+                        "name": "Clearances",
+                        "home": "9",
+                        "away": "5",
+                        "homeValue": 9,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Interceptions",
+                        "home": "3",
+                        "away": "3",
+                        "homeValue": 3,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Errors leading to shot",
+                        "home": "3",
+                        "away": "0",
+                        "homeValue": 3,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Errors leading to goal",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Goalkeeper saves",
+                        "home": "1",
+                        "away": "1",
+                        "homeValue": 1,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "xGOT faced",
+                        "home": "0.47",
+                        "away": "1.08",
+                        "homeValue": 0.47,
+                        "awayValue": 1.08
+                    },
+                    {
+                        "name": "Goals prevented",
+                        "home": "-0.53",
+                        "away": "0.08",
+                        "homeValue": -0.53,
+                        "awayValue": 0.08
+                    }
+                ]
+            },
+            {
+                "period": "2nd Half",
+                "statisticsItems": [
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.35",
+                        "away": "0.16",
+                        "homeValue": 0.35,
+                        "awayValue": 0.16
+                    },
+                    {
+                        "name": "Ball possession",
+                        "home": "49%",
+                        "away": "51%",
+                        "homeValue": 49,
+                        "awayValue": 51
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "6",
+                        "away": "2",
+                        "homeValue": 6,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "3",
+                        "away": "1",
+                        "homeValue": 3,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "4",
+                        "away": "2",
+                        "homeValue": 4,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "88% (225/257)",
+                        "away": "87% (233/269)",
+                        "homeValue": 88,
+                        "awayValue": 87
+                    },
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.35",
+                        "away": "0.16",
+                        "homeValue": 0.35,
+                        "awayValue": 0.16
+                    },
+                    {
+                        "name": "xG on target (xGOT)",
+                        "home": "0.29",
+                        "away": "0.27",
+                        "homeValue": 0.29,
+                        "awayValue": 0.27
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "6",
+                        "away": "2",
+                        "homeValue": 6,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "3",
+                        "away": "1",
+                        "homeValue": 3,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Shots off target",
+                        "home": "2",
+                        "away": "1",
+                        "homeValue": 2,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Blocked shots",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Shots inside the box",
+                        "home": "5",
+                        "away": "1",
+                        "homeValue": 5,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Shots outside the box",
+                        "home": "1",
+                        "away": "1",
+                        "homeValue": 1,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Hit the woodwork",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "4",
+                        "away": "2",
+                        "homeValue": 4,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Touches in opposition box",
+                        "home": "13",
+                        "away": "2",
+                        "homeValue": 13,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Accurate through passes",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Offsides",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Free kicks",
+                        "home": "6",
+                        "away": "8",
+                        "homeValue": 6,
+                        "awayValue": 8
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "88% (225/257)",
+                        "away": "87% (233/269)",
+                        "homeValue": 88,
+                        "awayValue": 87
+                    },
+                    {
+                        "name": "Long passes",
+                        "home": "63% (12/19)",
+                        "away": "33% (10/30)",
+                        "homeValue": 63,
+                        "awayValue": 33
+                    },
+                    {
+                        "name": "Passes in final third",
+                        "home": "73% (40/55)",
+                        "away": "71% (57/80)",
+                        "homeValue": 73,
+                        "awayValue": 71
+                    },
+                    {
+                        "name": "Crosses",
+                        "home": "11% (1/9)",
+                        "away": "11% (1/9)",
+                        "homeValue": 11,
+                        "awayValue": 11
+                    },
+                    {
+                        "name": "Expected assists (xA)",
+                        "home": "0.40",
+                        "away": "0.10",
+                        "homeValue": 0.4,
+                        "awayValue": 0.1
+                    },
+                    {
+                        "name": "Throw ins",
+                        "home": "6",
+                        "away": "6",
+                        "homeValue": 6,
+                        "awayValue": 6
+                    },
+                    {
+                        "name": "Fouls",
+                        "home": "8",
+                        "away": "6",
+                        "homeValue": 8,
+                        "awayValue": 6
+                    },
+                    {
+                        "name": "Tackles",
+                        "home": "67% (6/9)",
+                        "away": "78% (7/9)",
+                        "homeValue": 67,
+                        "awayValue": 78
+                    },
+                    {
+                        "name": "Duels won",
+                        "home": "21",
+                        "away": "23",
+                        "homeValue": 21,
+                        "awayValue": 23
+                    },
+                    {
+                        "name": "Clearances",
+                        "home": "14",
+                        "away": "12",
+                        "homeValue": 14,
+                        "awayValue": 12
+                    },
+                    {
+                        "name": "Interceptions",
+                        "home": "2",
+                        "away": "2",
+                        "homeValue": 2,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Errors leading to shot",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Errors leading to goal",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Goalkeeper saves",
+                        "home": "1",
+                        "away": "3",
+                        "homeValue": 1,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "xGOT faced",
+                        "home": "0.27",
+                        "away": "0.29",
+                        "homeValue": 0.27,
+                        "awayValue": 0.29
+                    },
+                    {
+                        "name": "Goals prevented",
+                        "home": "0.27",
+                        "away": "0.29",
+                        "homeValue": 0.27,
+                        "awayValue": 0.29
+                    }
+                ]
+            }
+        ],
+        "incidents": [
+            {
+                "time": 21,
+                "incidentType": "goal",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Saibari I."
+                },
+                "assist": {
+                    "name": "Diaz B."
+                },
+                "homeScore": "0",
+                "awayScore": "1",
+                "description": "What a goal that is! Ismael Saibari (Morocco) received the ball on the edge of the 18-yard box and spotted the goalkeeper off his line. He set himself up perfectly and lobbed the ball over Alisson and into the net. Brahim Diaz provided the assistance. 0:1."
+            },
+            {
+                "time": 32,
+                "incidentType": "goal",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Vinicius Junior"
+                },
+                "assist": {
+                    "name": "Bruno Guimaraes"
+                },
+                "homeScore": "1",
+                "awayScore": "1",
+                "description": "Vinicius Junior (Brazil) finishes his beautiful individual effort with a superb strike from inside the box. Bono is just a bystander as the ball flies into the top right corner. The score is 1:1."
+            },
+            {
+                "time": 37,
+                "incidentType": "card",
+                "incidentClass": "yellow",
+                "isHome": true,
+                "player": {
+                    "name": "Casemiro"
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": "C"
+            },
+            {
+                "time": 43,
+                "incidentType": "card",
+                "incidentClass": "yellow",
+                "isHome": true,
+                "player": {
+                    "name": "Ibanez"
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": "T"
+            },
+            {
+                "time": 46,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Ibanez"
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 46,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Casemiro"
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 61,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Lucas Paqueta"
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 62,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Thiago I."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 65,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Diaz B."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 65,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Ounahi A."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 80,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Mazraoui N."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 80,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "El Khannouss B."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 80,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Bruno Guimaraes"
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 89,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Saibari I."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            }
+        ]
+    },
+    "match-wc6": {
+        "homeScore": 0,
+        "awayScore": 1,
+        "sideQuestions": {
+            "htResult": "away",
+            "firstScorer": "McGinn J.",
+            "redCard": false,
+            "cornersOverUnder": "under"
+        },
+        "statistics": [
+            {
+                "period": "Match",
+                "statisticsItems": [
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "1.04",
+                        "away": "1.05",
+                        "homeValue": 1.04,
+                        "awayValue": 1.05
+                    },
+                    {
+                        "name": "Ball possession",
+                        "home": "54%",
+                        "away": "46%",
+                        "homeValue": 54,
+                        "awayValue": 46
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "15",
+                        "away": "9",
+                        "homeValue": 15,
+                        "awayValue": 9
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "2",
+                        "away": "2",
+                        "homeValue": 2,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "1",
+                        "away": "2",
+                        "homeValue": 1,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "4",
+                        "away": "3",
+                        "homeValue": 4,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "85% (367/431)",
+                        "away": "82% (307/374)",
+                        "homeValue": 85,
+                        "awayValue": 82
+                    },
+                    {
+                        "name": "Yellow cards",
+                        "home": "1",
+                        "away": "3",
+                        "homeValue": 1,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "1.04",
+                        "away": "1.05",
+                        "homeValue": 1.04,
+                        "awayValue": 1.05
+                    },
+                    {
+                        "name": "xG on target (xGOT)",
+                        "home": "0.22",
+                        "away": "1.18",
+                        "homeValue": 0.22,
+                        "awayValue": 1.18
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "15",
+                        "away": "9",
+                        "homeValue": 15,
+                        "awayValue": 9
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "2",
+                        "away": "2",
+                        "homeValue": 2,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Shots off target",
+                        "home": "9",
+                        "away": "5",
+                        "homeValue": 9,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Blocked shots",
+                        "home": "4",
+                        "away": "2",
+                        "homeValue": 4,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Shots inside the box",
+                        "home": "8",
+                        "away": "8",
+                        "homeValue": 8,
+                        "awayValue": 8
+                    },
+                    {
+                        "name": "Shots outside the box",
+                        "home": "7",
+                        "away": "1",
+                        "homeValue": 7,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Hit the woodwork",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "1",
+                        "away": "2",
+                        "homeValue": 1,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "4",
+                        "away": "3",
+                        "homeValue": 4,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Touches in opposition box",
+                        "home": "22",
+                        "away": "21",
+                        "homeValue": 22,
+                        "awayValue": 21
+                    },
+                    {
+                        "name": "Accurate through passes",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Offsides",
+                        "home": "3",
+                        "away": "1",
+                        "homeValue": 3,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Free kicks",
+                        "home": "21",
+                        "away": "23",
+                        "homeValue": 21,
+                        "awayValue": 23
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "85% (367/431)",
+                        "away": "82% (307/374)",
+                        "homeValue": 85,
+                        "awayValue": 82
+                    },
+                    {
+                        "name": "Long passes",
+                        "home": "44% (26/59)",
+                        "away": "52% (30/58)",
+                        "homeValue": 44,
+                        "awayValue": 52
+                    },
+                    {
+                        "name": "Passes in final third",
+                        "home": "71% (83/117)",
+                        "away": "57% (48/84)",
+                        "homeValue": 71,
+                        "awayValue": 57
+                    },
+                    {
+                        "name": "Crosses",
+                        "home": "22% (5/23)",
+                        "away": "36% (5/14)",
+                        "homeValue": 22,
+                        "awayValue": 36
+                    },
+                    {
+                        "name": "Expected assists (xA)",
+                        "home": "0.98",
+                        "away": "0.40",
+                        "homeValue": 0.98,
+                        "awayValue": 0.4
+                    },
+                    {
+                        "name": "Throw ins",
+                        "home": "14",
+                        "away": "23",
+                        "homeValue": 14,
+                        "awayValue": 23
+                    },
+                    {
+                        "name": "Fouls",
+                        "home": "23",
+                        "away": "21",
+                        "homeValue": 23,
+                        "awayValue": 21
+                    },
+                    {
+                        "name": "Tackles",
+                        "home": "58% (7/12)",
+                        "away": "42% (5/12)",
+                        "homeValue": 58,
+                        "awayValue": 42
+                    },
+                    {
+                        "name": "Duels won",
+                        "home": "51",
+                        "away": "59",
+                        "homeValue": 51,
+                        "awayValue": 59
+                    },
+                    {
+                        "name": "Clearances",
+                        "home": "20",
+                        "away": "17",
+                        "homeValue": 20,
+                        "awayValue": 17
+                    },
+                    {
+                        "name": "Interceptions",
+                        "home": "6",
+                        "away": "6",
+                        "homeValue": 6,
+                        "awayValue": 6
+                    },
+                    {
+                        "name": "Errors leading to shot",
+                        "home": "0",
+                        "away": "3",
+                        "homeValue": 0,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Errors leading to goal",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Goalkeeper saves",
+                        "home": "1",
+                        "away": "2",
+                        "homeValue": 1,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "xGOT faced",
+                        "home": "1.18",
+                        "away": "0.22",
+                        "homeValue": 1.18,
+                        "awayValue": 0.22
+                    },
+                    {
+                        "name": "Goals prevented",
+                        "home": "0.18",
+                        "away": "0.22",
+                        "homeValue": 0.18,
+                        "awayValue": 0.22
+                    }
+                ]
+            },
+            {
+                "period": "1st Half",
+                "statisticsItems": [
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.52",
+                        "away": "0.92",
+                        "homeValue": 0.52,
+                        "awayValue": 0.92
+                    },
+                    {
+                        "name": "Ball possession",
+                        "home": "45%",
+                        "away": "55%",
+                        "homeValue": 45,
+                        "awayValue": 55
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "8",
+                        "away": "7",
+                        "homeValue": 8,
+                        "awayValue": 7
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "1",
+                        "away": "2",
+                        "homeValue": 1,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "1",
+                        "away": "1",
+                        "homeValue": 1,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "86% (165/191)",
+                        "away": "84% (203/241)",
+                        "homeValue": 86,
+                        "awayValue": 84
+                    },
+                    {
+                        "name": "Yellow cards",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.52",
+                        "away": "0.92",
+                        "homeValue": 0.52,
+                        "awayValue": 0.92
+                    },
+                    {
+                        "name": "xG on target (xGOT)",
+                        "home": "0.12",
+                        "away": "1.18",
+                        "homeValue": 0.12,
+                        "awayValue": 1.18
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "8",
+                        "away": "7",
+                        "homeValue": 8,
+                        "awayValue": 7
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "1",
+                        "away": "2",
+                        "homeValue": 1,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Shots off target",
+                        "home": "5",
+                        "away": "4",
+                        "homeValue": 5,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Blocked shots",
+                        "home": "2",
+                        "away": "1",
+                        "homeValue": 2,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Shots inside the box",
+                        "home": "4",
+                        "away": "6",
+                        "homeValue": 4,
+                        "awayValue": 6
+                    },
+                    {
+                        "name": "Shots outside the box",
+                        "home": "4",
+                        "away": "1",
+                        "homeValue": 4,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Hit the woodwork",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "1",
+                        "away": "1",
+                        "homeValue": 1,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Touches in opposition box",
+                        "home": "12",
+                        "away": "13",
+                        "homeValue": 12,
+                        "awayValue": 13
+                    },
+                    {
+                        "name": "Accurate through passes",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Offsides",
+                        "home": "3",
+                        "away": "0",
+                        "homeValue": 3,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Free kicks",
+                        "home": "9",
+                        "away": "13",
+                        "homeValue": 9,
+                        "awayValue": 13
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "86% (165/191)",
+                        "away": "84% (203/241)",
+                        "homeValue": 86,
+                        "awayValue": 84
+                    },
+                    {
+                        "name": "Long passes",
+                        "home": "44% (12/27)",
+                        "away": "56% (19/34)",
+                        "homeValue": 44,
+                        "awayValue": 56
+                    },
+                    {
+                        "name": "Passes in final third",
+                        "home": "73% (36/49)",
+                        "away": "61% (36/59)",
+                        "homeValue": 73,
+                        "awayValue": 61
+                    },
+                    {
+                        "name": "Crosses",
+                        "home": "43% (3/7)",
+                        "away": "50% (2/4)",
+                        "homeValue": 43,
+                        "awayValue": 50
+                    },
+                    {
+                        "name": "Expected assists (xA)",
+                        "home": "0.69",
+                        "away": "0.29",
+                        "homeValue": 0.69,
+                        "awayValue": 0.29
+                    },
+                    {
+                        "name": "Throw ins",
+                        "home": "4",
+                        "away": "11",
+                        "homeValue": 4,
+                        "awayValue": 11
+                    },
+                    {
+                        "name": "Fouls",
+                        "home": "13",
+                        "away": "9",
+                        "homeValue": 13,
+                        "awayValue": 9
+                    },
+                    {
+                        "name": "Tackles",
+                        "home": "83% (5/6)",
+                        "away": "25% (1/4)",
+                        "homeValue": 83,
+                        "awayValue": 25
+                    },
+                    {
+                        "name": "Duels won",
+                        "home": "24",
+                        "away": "30",
+                        "homeValue": 24,
+                        "awayValue": 30
+                    },
+                    {
+                        "name": "Clearances",
+                        "home": "8",
+                        "away": "4",
+                        "homeValue": 8,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Interceptions",
+                        "home": "5",
+                        "away": "2",
+                        "homeValue": 5,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Errors leading to shot",
+                        "home": "0",
+                        "away": "2",
+                        "homeValue": 0,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Errors leading to goal",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Goalkeeper saves",
+                        "home": "1",
+                        "away": "1",
+                        "homeValue": 1,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "xGOT faced",
+                        "home": "1.18",
+                        "away": "0.12",
+                        "homeValue": 1.18,
+                        "awayValue": 0.12
+                    },
+                    {
+                        "name": "Goals prevented",
+                        "home": "0.18",
+                        "away": "0.12",
+                        "homeValue": 0.18,
+                        "awayValue": 0.12
+                    }
+                ]
+            },
+            {
+                "period": "2nd Half",
+                "statisticsItems": [
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.52",
+                        "away": "0.13",
+                        "homeValue": 0.52,
+                        "awayValue": 0.13
+                    },
+                    {
+                        "name": "Ball possession",
+                        "home": "64%",
+                        "away": "36%",
+                        "homeValue": 64,
+                        "awayValue": 36
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "7",
+                        "away": "2",
+                        "homeValue": 7,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "4",
+                        "away": "3",
+                        "homeValue": 4,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "84% (202/240)",
+                        "away": "78% (104/133)",
+                        "homeValue": 84,
+                        "awayValue": 78
+                    },
+                    {
+                        "name": "Yellow cards",
+                        "home": "0",
+                        "away": "3",
+                        "homeValue": 0,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.52",
+                        "away": "0.13",
+                        "homeValue": 0.52,
+                        "awayValue": 0.13
+                    },
+                    {
+                        "name": "xG on target (xGOT)",
+                        "home": "0.10",
+                        "away": "0.00",
+                        "homeValue": 0.1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "7",
+                        "away": "2",
+                        "homeValue": 7,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Shots off target",
+                        "home": "4",
+                        "away": "1",
+                        "homeValue": 4,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Blocked shots",
+                        "home": "2",
+                        "away": "1",
+                        "homeValue": 2,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Shots inside the box",
+                        "home": "4",
+                        "away": "2",
+                        "homeValue": 4,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Shots outside the box",
+                        "home": "3",
+                        "away": "0",
+                        "homeValue": 3,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Hit the woodwork",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "4",
+                        "away": "3",
+                        "homeValue": 4,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Touches in opposition box",
+                        "home": "10",
+                        "away": "8",
+                        "homeValue": 10,
+                        "awayValue": 8
+                    },
+                    {
+                        "name": "Accurate through passes",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Offsides",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Free kicks",
+                        "home": "12",
+                        "away": "10",
+                        "homeValue": 12,
+                        "awayValue": 10
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "84% (202/240)",
+                        "away": "78% (104/133)",
+                        "homeValue": 84,
+                        "awayValue": 78
+                    },
+                    {
+                        "name": "Long passes",
+                        "home": "44% (14/32)",
+                        "away": "46% (11/24)",
+                        "homeValue": 44,
+                        "awayValue": 46
+                    },
+                    {
+                        "name": "Passes in final third",
+                        "home": "69% (47/68)",
+                        "away": "48% (12/25)",
+                        "homeValue": 69,
+                        "awayValue": 48
+                    },
+                    {
+                        "name": "Crosses",
+                        "home": "13% (2/16)",
+                        "away": "30% (3/10)",
+                        "homeValue": 13,
+                        "awayValue": 30
+                    },
+                    {
+                        "name": "Expected assists (xA)",
+                        "home": "0.29",
+                        "away": "0.11",
+                        "homeValue": 0.29,
+                        "awayValue": 0.11
+                    },
+                    {
+                        "name": "Throw ins",
+                        "home": "10",
+                        "away": "12",
+                        "homeValue": 10,
+                        "awayValue": 12
+                    },
+                    {
+                        "name": "Fouls",
+                        "home": "10",
+                        "away": "12",
+                        "homeValue": 10,
+                        "awayValue": 12
+                    },
+                    {
+                        "name": "Tackles",
+                        "home": "33% (2/6)",
+                        "away": "50% (4/8)",
+                        "homeValue": 33,
+                        "awayValue": 50
+                    },
+                    {
+                        "name": "Duels won",
+                        "home": "27",
+                        "away": "29",
+                        "homeValue": 27,
+                        "awayValue": 29
+                    },
+                    {
+                        "name": "Clearances",
+                        "home": "12",
+                        "away": "13",
+                        "homeValue": 12,
+                        "awayValue": 13
+                    },
+                    {
+                        "name": "Interceptions",
+                        "home": "1",
+                        "away": "4",
+                        "homeValue": 1,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Errors leading to shot",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Errors leading to goal",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Goalkeeper saves",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "xGOT faced",
+                        "home": "0.00",
+                        "away": "0.10",
+                        "homeValue": 0,
+                        "awayValue": 0.1
+                    },
+                    {
+                        "name": "Goals prevented",
+                        "home": "0.00",
+                        "away": "0.10",
+                        "homeValue": 0,
+                        "awayValue": 0.1
+                    }
+                ]
+            }
+        ],
+        "incidents": [
+            {
+                "time": 28,
+                "incidentType": "goal",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "McGinn J."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "1",
+                "description": "J"
+            },
+            {
+                "time": 39,
+                "incidentType": "card",
+                "incidentClass": "yellow",
+                "isHome": true,
+                "player": {
+                    "name": "Bellegarde J."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": "J"
+            },
+            {
+                "time": 46,
+                "incidentType": "card",
+                "incidentClass": "yellow",
+                "isHome": false,
+                "player": {
+                    "name": "Hickey A."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": "T"
+            },
+            {
+                "time": 61,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Deedson L."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 75,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Gannon-Doak B."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 75,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Hickey A."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 75,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Adams C."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 76,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Isidor W."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 83,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "McGinn J."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 83,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Shankland L."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 85,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Providence R."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 90,
+                "incidentType": "card",
+                "incidentClass": "yellow",
+                "isHome": false,
+                "player": {
+                    "name": "Curtis F."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": "F"
+            },
+            {
+                "time": 90,
+                "incidentType": "card",
+                "incidentClass": "yellow",
+                "isHome": false,
+                "player": {
+                    "name": "McLean K."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": "M"
+            }
+        ]
+    },
+    "match-wc7": {
+        "homeScore": 4,
+        "awayScore": 1,
+        "sideQuestions": {
+            "htResult": "home",
+            "firstScorer": "Balogun F.",
+            "redCard": false,
+            "cornersOverUnder": "under"
+        },
+        "statistics": [
+            {
+                "period": "Match",
+                "statisticsItems": [
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "1.34",
+                        "away": "0.47",
+                        "homeValue": 1.34,
+                        "awayValue": 0.47
+                    },
+                    {
+                        "name": "Ball possession",
+                        "home": "65%",
+                        "away": "35%",
+                        "homeValue": 65,
+                        "awayValue": 35
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "16",
+                        "away": "9",
+                        "homeValue": 16,
+                        "awayValue": 9
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "6",
+                        "away": "1",
+                        "homeValue": 6,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "4",
+                        "away": "1",
+                        "homeValue": 4,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "3",
+                        "away": "1",
+                        "homeValue": 3,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "85% (509/598)",
+                        "away": "73% (232/319)",
+                        "homeValue": 85,
+                        "awayValue": 73
+                    },
+                    {
+                        "name": "Yellow cards",
+                        "home": "1",
+                        "away": "5",
+                        "homeValue": 1,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "1.34",
+                        "away": "0.47",
+                        "homeValue": 1.34,
+                        "awayValue": 0.47
+                    },
+                    {
+                        "name": "xG on target (xGOT)",
+                        "home": "2.43",
+                        "away": "0.42",
+                        "homeValue": 2.43,
+                        "awayValue": 0.42
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "16",
+                        "away": "9",
+                        "homeValue": 16,
+                        "awayValue": 9
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "6",
+                        "away": "1",
+                        "homeValue": 6,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Shots off target",
+                        "home": "6",
+                        "away": "3",
+                        "homeValue": 6,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Blocked shots",
+                        "home": "4",
+                        "away": "5",
+                        "homeValue": 4,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Shots inside the box",
+                        "home": "13",
+                        "away": "4",
+                        "homeValue": 13,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Shots outside the box",
+                        "home": "3",
+                        "away": "5",
+                        "homeValue": 3,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Hit the woodwork",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "4",
+                        "away": "1",
+                        "homeValue": 4,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "3",
+                        "away": "1",
+                        "homeValue": 3,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Touches in opposition box",
+                        "home": "53",
+                        "away": "11",
+                        "homeValue": 53,
+                        "awayValue": 11
+                    },
+                    {
+                        "name": "Accurate through passes",
+                        "home": "2",
+                        "away": "0",
+                        "homeValue": 2,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Offsides",
+                        "home": "2",
+                        "away": "1",
+                        "homeValue": 2,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Free kicks",
+                        "home": "17",
+                        "away": "13",
+                        "homeValue": 17,
+                        "awayValue": 13
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "85% (509/598)",
+                        "away": "73% (232/319)",
+                        "homeValue": 85,
+                        "awayValue": 73
+                    },
+                    {
+                        "name": "Long passes",
+                        "home": "54% (26/48)",
+                        "away": "34% (20/59)",
+                        "homeValue": 54,
+                        "awayValue": 34
+                    },
+                    {
+                        "name": "Passes in final third",
+                        "home": "72% (142/197)",
+                        "away": "37% (17/46)",
+                        "homeValue": 72,
+                        "awayValue": 37
+                    },
+                    {
+                        "name": "Crosses",
+                        "home": "16% (3/19)",
+                        "away": "0% (0/5)",
+                        "homeValue": 16,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Expected assists (xA)",
+                        "home": "0.96",
+                        "away": "0.26",
+                        "homeValue": 0.96,
+                        "awayValue": 0.26
+                    },
+                    {
+                        "name": "Throw ins",
+                        "home": "23",
+                        "away": "17",
+                        "homeValue": 23,
+                        "awayValue": 17
+                    },
+                    {
+                        "name": "Fouls",
+                        "home": "13",
+                        "away": "17",
+                        "homeValue": 13,
+                        "awayValue": 17
+                    },
+                    {
+                        "name": "Tackles",
+                        "home": "78% (7/9)",
+                        "away": "76% (16/21)",
+                        "homeValue": 78,
+                        "awayValue": 76
+                    },
+                    {
+                        "name": "Duels won",
+                        "home": "65",
+                        "away": "55",
+                        "homeValue": 65,
+                        "awayValue": 55
+                    },
+                    {
+                        "name": "Clearances",
+                        "home": "15",
+                        "away": "33",
+                        "homeValue": 15,
+                        "awayValue": 33
+                    },
+                    {
+                        "name": "Interceptions",
+                        "home": "9",
+                        "away": "10",
+                        "homeValue": 9,
+                        "awayValue": 10
+                    },
+                    {
+                        "name": "Errors leading to shot",
+                        "home": "3",
+                        "away": "2",
+                        "homeValue": 3,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Errors leading to goal",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Goalkeeper saves",
+                        "home": "0",
+                        "away": "3",
+                        "homeValue": 0,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "xGOT faced",
+                        "home": "0.42",
+                        "away": "2.43",
+                        "homeValue": 0.42,
+                        "awayValue": 2.43
+                    },
+                    {
+                        "name": "Goals prevented",
+                        "home": "-0.58",
+                        "away": "-0.57",
+                        "homeValue": -0.58,
+                        "awayValue": -0.57
+                    }
+                ]
+            },
+            {
+                "period": "1st Half",
+                "statisticsItems": [
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.80",
+                        "away": "0.09",
+                        "homeValue": 0.8,
+                        "awayValue": 0.09
+                    },
+                    {
+                        "name": "Ball possession",
+                        "home": "72%",
+                        "away": "28%",
+                        "homeValue": 72,
+                        "awayValue": 28
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "7",
+                        "away": "2",
+                        "homeValue": 7,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "4",
+                        "away": "0",
+                        "homeValue": 4,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "4",
+                        "away": "0",
+                        "homeValue": 4,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "2",
+                        "away": "0",
+                        "homeValue": 2,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "89% (293/330)",
+                        "away": "72% (91/127)",
+                        "homeValue": 89,
+                        "awayValue": 72
+                    },
+                    {
+                        "name": "Yellow cards",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.80",
+                        "away": "0.09",
+                        "homeValue": 0.8,
+                        "awayValue": 0.09
+                    },
+                    {
+                        "name": "xG on target (xGOT)",
+                        "home": "1.70",
+                        "away": "0.00",
+                        "homeValue": 1.7,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "7",
+                        "away": "2",
+                        "homeValue": 7,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "4",
+                        "away": "0",
+                        "homeValue": 4,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Shots off target",
+                        "home": "2",
+                        "away": "2",
+                        "homeValue": 2,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Blocked shots",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Shots inside the box",
+                        "home": "6",
+                        "away": "1",
+                        "homeValue": 6,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Shots outside the box",
+                        "home": "1",
+                        "away": "1",
+                        "homeValue": 1,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Hit the woodwork",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "4",
+                        "away": "0",
+                        "homeValue": 4,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "2",
+                        "away": "0",
+                        "homeValue": 2,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Touches in opposition box",
+                        "home": "27",
+                        "away": "3",
+                        "homeValue": 27,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Accurate through passes",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Offsides",
+                        "home": "2",
+                        "away": "0",
+                        "homeValue": 2,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Free kicks",
+                        "home": "6",
+                        "away": "5",
+                        "homeValue": 6,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "89% (293/330)",
+                        "away": "72% (91/127)",
+                        "homeValue": 89,
+                        "awayValue": 72
+                    },
+                    {
+                        "name": "Long passes",
+                        "home": "83% (15/18)",
+                        "away": "41% (11/27)",
+                        "homeValue": 83,
+                        "awayValue": 41
+                    },
+                    {
+                        "name": "Passes in final third",
+                        "home": "78% (77/99)",
+                        "away": "32% (7/22)",
+                        "homeValue": 78,
+                        "awayValue": 32
+                    },
+                    {
+                        "name": "Crosses",
+                        "home": "17% (2/12)",
+                        "away": "0% (0/3)",
+                        "homeValue": 17,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Expected assists (xA)",
+                        "home": "0.43",
+                        "away": "0.12",
+                        "homeValue": 0.43,
+                        "awayValue": 0.12
+                    },
+                    {
+                        "name": "Throw ins",
+                        "home": "11",
+                        "away": "10",
+                        "homeValue": 11,
+                        "awayValue": 10
+                    },
+                    {
+                        "name": "Fouls",
+                        "home": "5",
+                        "away": "6",
+                        "homeValue": 5,
+                        "awayValue": 6
+                    },
+                    {
+                        "name": "Tackles",
+                        "home": "86% (6/7)",
+                        "away": "67% (8/12)",
+                        "homeValue": 86,
+                        "awayValue": 67
+                    },
+                    {
+                        "name": "Duels won",
+                        "home": "36",
+                        "away": "27",
+                        "homeValue": 36,
+                        "awayValue": 27
+                    },
+                    {
+                        "name": "Clearances",
+                        "home": "9",
+                        "away": "13",
+                        "homeValue": 9,
+                        "awayValue": 13
+                    },
+                    {
+                        "name": "Interceptions",
+                        "home": "6",
+                        "away": "6",
+                        "homeValue": 6,
+                        "awayValue": 6
+                    },
+                    {
+                        "name": "Errors leading to shot",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Errors leading to goal",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Goalkeeper saves",
+                        "home": "0",
+                        "away": "2",
+                        "homeValue": 0,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "xGOT faced",
+                        "home": "0.00",
+                        "away": "1.70",
+                        "homeValue": 0,
+                        "awayValue": 1.7
+                    },
+                    {
+                        "name": "Goals prevented",
+                        "home": "0.00",
+                        "away": "-0.30",
+                        "homeValue": 0,
+                        "awayValue": -0.3
+                    }
+                ]
+            },
+            {
+                "period": "2nd Half",
+                "statisticsItems": [
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.54",
+                        "away": "0.38",
+                        "homeValue": 0.54,
+                        "awayValue": 0.38
+                    },
+                    {
+                        "name": "Ball possession",
+                        "home": "58%",
+                        "away": "42%",
+                        "homeValue": 58,
+                        "awayValue": 42
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "9",
+                        "away": "7",
+                        "homeValue": 9,
+                        "awayValue": 7
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "2",
+                        "away": "1",
+                        "homeValue": 2,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "1",
+                        "away": "1",
+                        "homeValue": 1,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "81% (216/268)",
+                        "away": "73% (141/192)",
+                        "homeValue": 81,
+                        "awayValue": 73
+                    },
+                    {
+                        "name": "Yellow cards",
+                        "home": "1",
+                        "away": "4",
+                        "homeValue": 1,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.54",
+                        "away": "0.38",
+                        "homeValue": 0.54,
+                        "awayValue": 0.38
+                    },
+                    {
+                        "name": "xG on target (xGOT)",
+                        "home": "0.73",
+                        "away": "0.42",
+                        "homeValue": 0.73,
+                        "awayValue": 0.42
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "9",
+                        "away": "7",
+                        "homeValue": 9,
+                        "awayValue": 7
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "2",
+                        "away": "1",
+                        "homeValue": 2,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Shots off target",
+                        "home": "4",
+                        "away": "1",
+                        "homeValue": 4,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Blocked shots",
+                        "home": "3",
+                        "away": "5",
+                        "homeValue": 3,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Shots inside the box",
+                        "home": "7",
+                        "away": "3",
+                        "homeValue": 7,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Shots outside the box",
+                        "home": "2",
+                        "away": "4",
+                        "homeValue": 2,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Hit the woodwork",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "1",
+                        "away": "1",
+                        "homeValue": 1,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Touches in opposition box",
+                        "home": "26",
+                        "away": "8",
+                        "homeValue": 26,
+                        "awayValue": 8
+                    },
+                    {
+                        "name": "Accurate through passes",
+                        "home": "2",
+                        "away": "0",
+                        "homeValue": 2,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Offsides",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Free kicks",
+                        "home": "11",
+                        "away": "8",
+                        "homeValue": 11,
+                        "awayValue": 8
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "81% (216/268)",
+                        "away": "73% (141/192)",
+                        "homeValue": 81,
+                        "awayValue": 73
+                    },
+                    {
+                        "name": "Long passes",
+                        "home": "37% (11/30)",
+                        "away": "28% (9/32)",
+                        "homeValue": 37,
+                        "awayValue": 28
+                    },
+                    {
+                        "name": "Passes in final third",
+                        "home": "66% (65/98)",
+                        "away": "42% (10/24)",
+                        "homeValue": 66,
+                        "awayValue": 42
+                    },
+                    {
+                        "name": "Crosses",
+                        "home": "14% (1/7)",
+                        "away": "0% (0/2)",
+                        "homeValue": 14,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Expected assists (xA)",
+                        "home": "0.53",
+                        "away": "0.14",
+                        "homeValue": 0.53,
+                        "awayValue": 0.14
+                    },
+                    {
+                        "name": "Throw ins",
+                        "home": "12",
+                        "away": "7",
+                        "homeValue": 12,
+                        "awayValue": 7
+                    },
+                    {
+                        "name": "Fouls",
+                        "home": "8",
+                        "away": "11",
+                        "homeValue": 8,
+                        "awayValue": 11
+                    },
+                    {
+                        "name": "Tackles",
+                        "home": "50% (1/2)",
+                        "away": "89% (8/9)",
+                        "homeValue": 50,
+                        "awayValue": 89
+                    },
+                    {
+                        "name": "Duels won",
+                        "home": "29",
+                        "away": "28",
+                        "homeValue": 29,
+                        "awayValue": 28
+                    },
+                    {
+                        "name": "Clearances",
+                        "home": "6",
+                        "away": "20",
+                        "homeValue": 6,
+                        "awayValue": 20
+                    },
+                    {
+                        "name": "Interceptions",
+                        "home": "3",
+                        "away": "4",
+                        "homeValue": 3,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Errors leading to shot",
+                        "home": "3",
+                        "away": "2",
+                        "homeValue": 3,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Errors leading to goal",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Goalkeeper saves",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "xGOT faced",
+                        "home": "0.42",
+                        "away": "0.73",
+                        "homeValue": 0.42,
+                        "awayValue": 0.73
+                    },
+                    {
+                        "name": "Goals prevented",
+                        "home": "-0.58",
+                        "away": "-0.27",
+                        "homeValue": -0.58,
+                        "awayValue": -0.27
+                    }
+                ]
+            }
+        ],
+        "incidents": [
+            {
+                "time": 7,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Bobadilla D."
+                },
+                "assist": null,
+                "homeScore": "1",
+                "awayScore": "0",
+                "description": "W"
+            },
+            {
+                "time": 10,
+                "incidentType": "card",
+                "incidentClass": "yellow",
+                "isHome": false,
+                "player": {
+                    "name": "Caceres J."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": "D"
+            },
+            {
+                "time": 31,
+                "incidentType": "goal",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Balogun F."
+                },
+                "assist": {
+                    "name": "Pulisic C."
+                },
+                "homeScore": "2",
+                "awayScore": "0",
+                "description": "What a goal! Christian Pulisic plays it to Folarin Balogun (USA), who finds himself unmarked inside the box and slots a first-time shot past Orlando Gill into the bottom right corner. 2:0."
+            },
+            {
+                "time": 45,
+                "incidentType": "goal",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Balogun F."
+                },
+                "assist": {
+                    "name": "Tillman M."
+                },
+                "homeScore": "3",
+                "awayScore": "0",
+                "description": "Goal - 3:0! Malik Tillman laid the ball off to Folarin Balogun (USA), who shot from close range into the top left corner, leaving the goalkeeper helpless."
+            },
+            {
+                "time": 46,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Bobadilla D."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 46,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Pulisic C."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 53,
+                "incidentType": "card",
+                "incidentClass": "yellow",
+                "isHome": false,
+                "player": {
+                    "name": "Almiron M."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 59,
+                "incidentType": "card",
+                "incidentClass": "yellow",
+                "isHome": true,
+                "player": {
+                    "name": "Adams T."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": "D"
+            },
+            {
+                "time": 62,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Sanabria A."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 72,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Dest S."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 72,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Balogun F."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 73,
+                "incidentType": "goal",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Mauricio"
+                },
+                "assist": {
+                    "name": "Enciso J."
+                },
+                "homeScore": "3",
+                "awayScore": "1",
+                "description": "It's a goal! Mauricio (Paraguay) shows off his superb ability as he volleys the ball from inside the box into the bottom right corner. The assist goes to Julio Enciso and the score changes to 3:1."
+            },
+            {
+                "time": 79,
+                "incidentType": "card",
+                "incidentClass": "yellow",
+                "isHome": false,
+                "player": {
+                    "name": "Gomez D."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": "D"
+            },
+            {
+                "time": 79,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Almiron M."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 79,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Caceres J."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 80,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Gomez D."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 82,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Tillman M."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 88,
+                "incidentType": "card",
+                "incidentClass": "yellow",
+                "isHome": false,
+                "player": {
+                    "name": "Arce A."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": "A"
+            },
+            {
+                "time": 90,
+                "incidentType": "card",
+                "incidentClass": "yellow",
+                "isHome": false,
+                "player": {
+                    "name": "Alonso J."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": "J"
+            },
+            {
+                "time": 90,
+                "incidentType": "goal",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Reyna G."
+                },
+                "assist": {
+                    "name": "Freeman A."
+                },
+                "homeScore": "4",
+                "awayScore": "1",
+                "description": "Goal! Giovanni Reyna (USA) takes a short pass from Alex Freeman in his stride in the box, jinks inside his man and unleashes an unstoppable shot inside the left post. 4:1."
+            }
+        ]
+    },
+    "match-wc8": {
+        "homeScore": 2,
+        "awayScore": 0,
+        "sideQuestions": {
+            "htResult": "home",
+            "firstScorer": "Irankunda N.",
+            "redCard": false,
+            "cornersOverUnder": "over"
+        },
+        "statistics": [
+            {
+                "period": "Match",
+                "statisticsItems": [
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "1.18",
+                        "away": "1.36",
+                        "homeValue": 1.18,
+                        "awayValue": 1.36
+                    },
+                    {
+                        "name": "Ball possession",
+                        "home": "28%",
+                        "away": "72%",
+                        "homeValue": 28,
+                        "awayValue": 72
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "9",
+                        "away": "30",
+                        "homeValue": 9,
+                        "awayValue": 30
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "4",
+                        "away": "8",
+                        "homeValue": 4,
+                        "awayValue": 8
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "1",
+                        "away": "2",
+                        "homeValue": 1,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "5",
+                        "away": "8",
+                        "homeValue": 5,
+                        "awayValue": 8
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "74% (201/271)",
+                        "away": "90% (635/704)",
+                        "homeValue": 74,
+                        "awayValue": 90
+                    },
+                    {
+                        "name": "Yellow cards",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "1.18",
+                        "away": "1.36",
+                        "homeValue": 1.18,
+                        "awayValue": 1.36
+                    },
+                    {
+                        "name": "xG on target (xGOT)",
+                        "home": "1.08",
+                        "away": "1.46",
+                        "homeValue": 1.08,
+                        "awayValue": 1.46
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "9",
+                        "away": "30",
+                        "homeValue": 9,
+                        "awayValue": 30
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "4",
+                        "away": "8",
+                        "homeValue": 4,
+                        "awayValue": 8
+                    },
+                    {
+                        "name": "Shots off target",
+                        "home": "4",
+                        "away": "10",
+                        "homeValue": 4,
+                        "awayValue": 10
+                    },
+                    {
+                        "name": "Blocked shots",
+                        "home": "1",
+                        "away": "12",
+                        "homeValue": 1,
+                        "awayValue": 12
+                    },
+                    {
+                        "name": "Shots inside the box",
+                        "home": "6",
+                        "away": "14",
+                        "homeValue": 6,
+                        "awayValue": 14
+                    },
+                    {
+                        "name": "Shots outside the box",
+                        "home": "3",
+                        "away": "16",
+                        "homeValue": 3,
+                        "awayValue": 16
+                    },
+                    {
+                        "name": "Hit the woodwork",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "1",
+                        "away": "2",
+                        "homeValue": 1,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "5",
+                        "away": "8",
+                        "homeValue": 5,
+                        "awayValue": 8
+                    },
+                    {
+                        "name": "Touches in opposition box",
+                        "home": "18",
+                        "away": "51",
+                        "homeValue": 18,
+                        "awayValue": 51
+                    },
+                    {
+                        "name": "Accurate through passes",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Offsides",
+                        "home": "1",
+                        "away": "3",
+                        "homeValue": 1,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Free kicks",
+                        "home": "4",
+                        "away": "12",
+                        "homeValue": 4,
+                        "awayValue": 12
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "74% (201/271)",
+                        "away": "90% (635/704)",
+                        "homeValue": 74,
+                        "awayValue": 90
+                    },
+                    {
+                        "name": "Long passes",
+                        "home": "28% (16/57)",
+                        "away": "68% (19/28)",
+                        "homeValue": 28,
+                        "awayValue": 68
+                    },
+                    {
+                        "name": "Passes in final third",
+                        "home": "60% (43/72)",
+                        "away": "87% (285/329)",
+                        "homeValue": 60,
+                        "awayValue": 87
+                    },
+                    {
+                        "name": "Crosses",
+                        "home": "29% (4/14)",
+                        "away": "8% (2/26)",
+                        "homeValue": 29,
+                        "awayValue": 8
+                    },
+                    {
+                        "name": "Expected assists (xA)",
+                        "home": "0.35",
+                        "away": "1.44",
+                        "homeValue": 0.35,
+                        "awayValue": 1.44
+                    },
+                    {
+                        "name": "Throw ins",
+                        "home": "14",
+                        "away": "24",
+                        "homeValue": 14,
+                        "awayValue": 24
+                    },
+                    {
+                        "name": "Fouls",
+                        "home": "12",
+                        "away": "4",
+                        "homeValue": 12,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Tackles",
+                        "home": "33% (5/15)",
+                        "away": "67% (8/12)",
+                        "homeValue": 33,
+                        "awayValue": 67
+                    },
+                    {
+                        "name": "Duels won",
+                        "home": "42",
+                        "away": "46",
+                        "homeValue": 42,
+                        "awayValue": 46
+                    },
+                    {
+                        "name": "Clearances",
+                        "home": "55",
+                        "away": "29",
+                        "homeValue": 55,
+                        "awayValue": 29
+                    },
+                    {
+                        "name": "Interceptions",
+                        "home": "7",
+                        "away": "4",
+                        "homeValue": 7,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Errors leading to shot",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Errors leading to goal",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Goalkeeper saves",
+                        "home": "8",
+                        "away": "2",
+                        "homeValue": 8,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "xGOT faced",
+                        "home": "1.46",
+                        "away": "1.08",
+                        "homeValue": 1.46,
+                        "awayValue": 1.08
+                    },
+                    {
+                        "name": "Goals prevented",
+                        "home": "1.46",
+                        "away": "-0.92",
+                        "homeValue": 1.46,
+                        "awayValue": -0.92
+                    }
+                ]
+            },
+            {
+                "period": "1st Half",
+                "statisticsItems": [
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.99",
+                        "away": "0.44",
+                        "homeValue": 0.99,
+                        "awayValue": 0.44
+                    },
+                    {
+                        "name": "Ball possession",
+                        "home": "31%",
+                        "away": "69%",
+                        "homeValue": 31,
+                        "awayValue": 69
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "4",
+                        "away": "10",
+                        "homeValue": 4,
+                        "awayValue": 10
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "2",
+                        "away": "2",
+                        "homeValue": 2,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "2",
+                        "away": "2",
+                        "homeValue": 2,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "79% (123/156)",
+                        "away": "91% (330/362)",
+                        "homeValue": 79,
+                        "awayValue": 91
+                    },
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.99",
+                        "away": "0.44",
+                        "homeValue": 0.99,
+                        "awayValue": 0.44
+                    },
+                    {
+                        "name": "xG on target (xGOT)",
+                        "home": "0.85",
+                        "away": "0.33",
+                        "homeValue": 0.85,
+                        "awayValue": 0.33
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "4",
+                        "away": "10",
+                        "homeValue": 4,
+                        "awayValue": 10
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "2",
+                        "away": "2",
+                        "homeValue": 2,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Shots off target",
+                        "home": "2",
+                        "away": "5",
+                        "homeValue": 2,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Blocked shots",
+                        "home": "0",
+                        "away": "3",
+                        "homeValue": 0,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Shots inside the box",
+                        "home": "3",
+                        "away": "5",
+                        "homeValue": 3,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Shots outside the box",
+                        "home": "1",
+                        "away": "5",
+                        "homeValue": 1,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Hit the woodwork",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "2",
+                        "away": "2",
+                        "homeValue": 2,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Touches in opposition box",
+                        "home": "7",
+                        "away": "10",
+                        "homeValue": 7,
+                        "awayValue": 10
+                    },
+                    {
+                        "name": "Accurate through passes",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Offsides",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Free kicks",
+                        "home": "1",
+                        "away": "5",
+                        "homeValue": 1,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "79% (123/156)",
+                        "away": "91% (330/362)",
+                        "homeValue": 79,
+                        "awayValue": 91
+                    },
+                    {
+                        "name": "Long passes",
+                        "home": "38% (12/32)",
+                        "away": "62% (13/21)",
+                        "homeValue": 38,
+                        "awayValue": 62
+                    },
+                    {
+                        "name": "Passes in final third",
+                        "home": "65% (28/43)",
+                        "away": "87% (109/125)",
+                        "homeValue": 65,
+                        "awayValue": 87
+                    },
+                    {
+                        "name": "Crosses",
+                        "home": "17% (1/6)",
+                        "away": "9% (1/11)",
+                        "homeValue": 17,
+                        "awayValue": 9
+                    },
+                    {
+                        "name": "Expected assists (xA)",
+                        "home": "0.16",
+                        "away": "0.38",
+                        "homeValue": 0.16,
+                        "awayValue": 0.38
+                    },
+                    {
+                        "name": "Throw ins",
+                        "home": "5",
+                        "away": "12",
+                        "homeValue": 5,
+                        "awayValue": 12
+                    },
+                    {
+                        "name": "Fouls",
+                        "home": "5",
+                        "away": "1",
+                        "homeValue": 5,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Tackles",
+                        "home": "33% (3/9)",
+                        "away": "71% (5/7)",
+                        "homeValue": 33,
+                        "awayValue": 71
+                    },
+                    {
+                        "name": "Duels won",
+                        "home": "17",
+                        "away": "24",
+                        "homeValue": 17,
+                        "awayValue": 24
+                    },
+                    {
+                        "name": "Clearances",
+                        "home": "22",
+                        "away": "17",
+                        "homeValue": 22,
+                        "awayValue": 17
+                    },
+                    {
+                        "name": "Interceptions",
+                        "home": "2",
+                        "away": "1",
+                        "homeValue": 2,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Errors leading to shot",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Errors leading to goal",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Goalkeeper saves",
+                        "home": "2",
+                        "away": "1",
+                        "homeValue": 2,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "xGOT faced",
+                        "home": "0.33",
+                        "away": "0.85",
+                        "homeValue": 0.33,
+                        "awayValue": 0.85
+                    },
+                    {
+                        "name": "Goals prevented",
+                        "home": "0.33",
+                        "away": "-0.15",
+                        "homeValue": 0.33,
+                        "awayValue": -0.15
+                    }
+                ]
+            },
+            {
+                "period": "2nd Half",
+                "statisticsItems": [
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.19",
+                        "away": "0.92",
+                        "homeValue": 0.19,
+                        "awayValue": 0.92
+                    },
+                    {
+                        "name": "Ball possession",
+                        "home": "26%",
+                        "away": "74%",
+                        "homeValue": 26,
+                        "awayValue": 74
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "5",
+                        "away": "20",
+                        "homeValue": 5,
+                        "awayValue": 20
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "2",
+                        "away": "6",
+                        "homeValue": 2,
+                        "awayValue": 6
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "0",
+                        "away": "2",
+                        "homeValue": 0,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "3",
+                        "away": "6",
+                        "homeValue": 3,
+                        "awayValue": 6
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "68% (78/115)",
+                        "away": "89% (305/342)",
+                        "homeValue": 68,
+                        "awayValue": 89
+                    },
+                    {
+                        "name": "Yellow cards",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.19",
+                        "away": "0.92",
+                        "homeValue": 0.19,
+                        "awayValue": 0.92
+                    },
+                    {
+                        "name": "xG on target (xGOT)",
+                        "home": "0.23",
+                        "away": "1.13",
+                        "homeValue": 0.23,
+                        "awayValue": 1.13
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "5",
+                        "away": "20",
+                        "homeValue": 5,
+                        "awayValue": 20
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "2",
+                        "away": "6",
+                        "homeValue": 2,
+                        "awayValue": 6
+                    },
+                    {
+                        "name": "Shots off target",
+                        "home": "2",
+                        "away": "5",
+                        "homeValue": 2,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Blocked shots",
+                        "home": "1",
+                        "away": "9",
+                        "homeValue": 1,
+                        "awayValue": 9
+                    },
+                    {
+                        "name": "Shots inside the box",
+                        "home": "3",
+                        "away": "9",
+                        "homeValue": 3,
+                        "awayValue": 9
+                    },
+                    {
+                        "name": "Shots outside the box",
+                        "home": "2",
+                        "away": "11",
+                        "homeValue": 2,
+                        "awayValue": 11
+                    },
+                    {
+                        "name": "Hit the woodwork",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "0",
+                        "away": "2",
+                        "homeValue": 0,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "3",
+                        "away": "6",
+                        "homeValue": 3,
+                        "awayValue": 6
+                    },
+                    {
+                        "name": "Touches in opposition box",
+                        "home": "11",
+                        "away": "41",
+                        "homeValue": 11,
+                        "awayValue": 41
+                    },
+                    {
+                        "name": "Accurate through passes",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Offsides",
+                        "home": "1",
+                        "away": "2",
+                        "homeValue": 1,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Free kicks",
+                        "home": "3",
+                        "away": "7",
+                        "homeValue": 3,
+                        "awayValue": 7
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "68% (78/115)",
+                        "away": "89% (305/342)",
+                        "homeValue": 68,
+                        "awayValue": 89
+                    },
+                    {
+                        "name": "Long passes",
+                        "home": "16% (4/25)",
+                        "away": "86% (6/7)",
+                        "homeValue": 16,
+                        "awayValue": 86
+                    },
+                    {
+                        "name": "Passes in final third",
+                        "home": "52% (15/29)",
+                        "away": "86% (176/204)",
+                        "homeValue": 52,
+                        "awayValue": 86
+                    },
+                    {
+                        "name": "Crosses",
+                        "home": "38% (3/8)",
+                        "away": "7% (1/15)",
+                        "homeValue": 38,
+                        "awayValue": 7
+                    },
+                    {
+                        "name": "Expected assists (xA)",
+                        "home": "0.19",
+                        "away": "1.06",
+                        "homeValue": 0.19,
+                        "awayValue": 1.06
+                    },
+                    {
+                        "name": "Throw ins",
+                        "home": "9",
+                        "away": "12",
+                        "homeValue": 9,
+                        "awayValue": 12
+                    },
+                    {
+                        "name": "Fouls",
+                        "home": "7",
+                        "away": "3",
+                        "homeValue": 7,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Tackles",
+                        "home": "33% (2/6)",
+                        "away": "60% (3/5)",
+                        "homeValue": 33,
+                        "awayValue": 60
+                    },
+                    {
+                        "name": "Duels won",
+                        "home": "25",
+                        "away": "22",
+                        "homeValue": 25,
+                        "awayValue": 22
+                    },
+                    {
+                        "name": "Clearances",
+                        "home": "33",
+                        "away": "12",
+                        "homeValue": 33,
+                        "awayValue": 12
+                    },
+                    {
+                        "name": "Interceptions",
+                        "home": "5",
+                        "away": "3",
+                        "homeValue": 5,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Errors leading to shot",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Errors leading to goal",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Goalkeeper saves",
+                        "home": "6",
+                        "away": "1",
+                        "homeValue": 6,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "xGOT faced",
+                        "home": "1.13",
+                        "away": "0.23",
+                        "homeValue": 1.13,
+                        "awayValue": 0.23
+                    },
+                    {
+                        "name": "Goals prevented",
+                        "home": "1.13",
+                        "away": "-0.77",
+                        "homeValue": 1.13,
+                        "awayValue": -0.77
+                    }
+                ]
+            }
+        ],
+        "incidents": [
+            {
+                "time": 27,
+                "incidentType": "goal",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Irankunda N."
+                },
+                "assist": {
+                    "name": "Okon-Engstler P."
+                },
+                "homeScore": "1",
+                "awayScore": "0",
+                "description": "Nestory Irankunda (Australia) receives a killer pass, finds himself one-on-one with the goalkeeper and drills the ball into the bottom left corner. Magnificent finish!"
+            },
+            {
+                "time": 46,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Yilmaz B."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 61,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Irankunda N."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 62,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Kokcu O."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 74,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Toure M."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 74,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Italiano J."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 75,
+                "incidentType": "goal",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Metcalfe C."
+                },
+                "assist": null,
+                "homeScore": "2",
+                "awayScore": "0",
+                "description": "G"
+            },
+            {
+                "time": 81,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Yuksek I."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 81,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Celik Z."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 84,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Bos J."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 84,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Okon-Engstler P."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 85,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Akturkoglu K."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 86,
+                "incidentType": "card",
+                "incidentClass": "yellow",
+                "isHome": false,
+                "player": {
+                    "name": "Akgun Y."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": "Y"
+            }
+        ]
+    },
+    "match-wc9": {
+        "homeScore": 7,
+        "awayScore": 1,
+        "sideQuestions": {
+            "htResult": "home",
+            "firstScorer": "Nmecha F.",
+            "redCard": false,
+            "cornersOverUnder": "over"
+        },
+        "statistics": [
+            {
+                "period": "Match",
+                "statisticsItems": [
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "4.22",
+                        "away": "0.41",
+                        "homeValue": 4.22,
+                        "awayValue": 0.41
+                    },
+                    {
+                        "name": "Ball possession",
+                        "home": "65%",
+                        "away": "35%",
+                        "homeValue": 65,
+                        "awayValue": 35
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "26",
+                        "away": "8",
+                        "homeValue": 26,
+                        "awayValue": 8
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "12",
+                        "away": "2",
+                        "homeValue": 12,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "6",
+                        "away": "0",
+                        "homeValue": 6,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "8",
+                        "away": "1",
+                        "homeValue": 8,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "87% (554/637)",
+                        "away": "82% (282/343)",
+                        "homeValue": 87,
+                        "awayValue": 82
+                    },
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "4.22",
+                        "away": "0.41",
+                        "homeValue": 4.22,
+                        "awayValue": 0.41
+                    },
+                    {
+                        "name": "xG on target (xGOT)",
+                        "home": "5.23",
+                        "away": "0.50",
+                        "homeValue": 5.23,
+                        "awayValue": 0.5
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "26",
+                        "away": "8",
+                        "homeValue": 26,
+                        "awayValue": 8
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "12",
+                        "away": "2",
+                        "homeValue": 12,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Shots off target",
+                        "home": "6",
+                        "away": "6",
+                        "homeValue": 6,
+                        "awayValue": 6
+                    },
+                    {
+                        "name": "Blocked shots",
+                        "home": "8",
+                        "away": "0",
+                        "homeValue": 8,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Shots inside the box",
+                        "home": "21",
+                        "away": "4",
+                        "homeValue": 21,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Shots outside the box",
+                        "home": "5",
+                        "away": "4",
+                        "homeValue": 5,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Hit the woodwork",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Headed goals",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "6",
+                        "away": "0",
+                        "homeValue": 6,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "8",
+                        "away": "1",
+                        "homeValue": 8,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Touches in opposition box",
+                        "home": "63",
+                        "away": "10",
+                        "homeValue": 63,
+                        "awayValue": 10
+                    },
+                    {
+                        "name": "Accurate through passes",
+                        "home": "6",
+                        "away": "0",
+                        "homeValue": 6,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Offsides",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Free kicks",
+                        "home": "11",
+                        "away": "18",
+                        "homeValue": 11,
+                        "awayValue": 18
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "87% (554/637)",
+                        "away": "82% (282/343)",
+                        "homeValue": 87,
+                        "awayValue": 82
+                    },
+                    {
+                        "name": "Long passes",
+                        "home": "48% (12/25)",
+                        "away": "39% (17/44)",
+                        "homeValue": 48,
+                        "awayValue": 39
+                    },
+                    {
+                        "name": "Passes in final third",
+                        "home": "76% (182/238)",
+                        "away": "72% (46/64)",
+                        "homeValue": 76,
+                        "awayValue": 72
+                    },
+                    {
+                        "name": "Crosses",
+                        "home": "42% (5/12)",
+                        "away": "29% (2/7)",
+                        "homeValue": 42,
+                        "awayValue": 29
+                    },
+                    {
+                        "name": "Expected assists (xA)",
+                        "home": "3.48",
+                        "away": "0.28",
+                        "homeValue": 3.48,
+                        "awayValue": 0.28
+                    },
+                    {
+                        "name": "Throw ins",
+                        "home": "17",
+                        "away": "9",
+                        "homeValue": 17,
+                        "awayValue": 9
+                    },
+                    {
+                        "name": "Fouls",
+                        "home": "18",
+                        "away": "11",
+                        "homeValue": 18,
+                        "awayValue": 11
+                    },
+                    {
+                        "name": "Tackles",
+                        "home": "68% (13/19)",
+                        "away": "50% (8/16)",
+                        "homeValue": 68,
+                        "awayValue": 50
+                    },
+                    {
+                        "name": "Duels won",
+                        "home": "46",
+                        "away": "50",
+                        "homeValue": 46,
+                        "awayValue": 50
+                    },
+                    {
+                        "name": "Clearances",
+                        "home": "8",
+                        "away": "25",
+                        "homeValue": 8,
+                        "awayValue": 25
+                    },
+                    {
+                        "name": "Interceptions",
+                        "home": "12",
+                        "away": "16",
+                        "homeValue": 12,
+                        "awayValue": 16
+                    },
+                    {
+                        "name": "Errors leading to shot",
+                        "home": "1",
+                        "away": "2",
+                        "homeValue": 1,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Errors leading to goal",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Goalkeeper saves",
+                        "home": "1",
+                        "away": "4",
+                        "homeValue": 1,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "xGOT faced",
+                        "home": "0.50",
+                        "away": "5.23",
+                        "homeValue": 0.5,
+                        "awayValue": 5.23
+                    },
+                    {
+                        "name": "Goals prevented",
+                        "home": "-0.50",
+                        "away": "-1.77",
+                        "homeValue": -0.5,
+                        "awayValue": -1.77
+                    }
+                ]
+            },
+            {
+                "period": "1st Half",
+                "statisticsItems": [
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "2.45",
+                        "away": "0.15",
+                        "homeValue": 2.45,
+                        "awayValue": 0.15
+                    },
+                    {
+                        "name": "Ball possession",
+                        "home": "70%",
+                        "away": "30%",
+                        "homeValue": 70,
+                        "awayValue": 30
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "16",
+                        "away": "4",
+                        "homeValue": 16,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "6",
+                        "away": "2",
+                        "homeValue": 6,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "2",
+                        "away": "0",
+                        "homeValue": 2,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "6",
+                        "away": "0",
+                        "homeValue": 6,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "88% (288/326)",
+                        "away": "81% (113/139)",
+                        "homeValue": 88,
+                        "awayValue": 81
+                    },
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "2.45",
+                        "away": "0.15",
+                        "homeValue": 2.45,
+                        "awayValue": 0.15
+                    },
+                    {
+                        "name": "xG on target (xGOT)",
+                        "home": "2.55",
+                        "away": "0.50",
+                        "homeValue": 2.55,
+                        "awayValue": 0.5
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "16",
+                        "away": "4",
+                        "homeValue": 16,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "6",
+                        "away": "2",
+                        "homeValue": 6,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Shots off target",
+                        "home": "4",
+                        "away": "2",
+                        "homeValue": 4,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Blocked shots",
+                        "home": "6",
+                        "away": "0",
+                        "homeValue": 6,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Shots inside the box",
+                        "home": "12",
+                        "away": "1",
+                        "homeValue": 12,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Shots outside the box",
+                        "home": "4",
+                        "away": "3",
+                        "homeValue": 4,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Hit the woodwork",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Headed goals",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "2",
+                        "away": "0",
+                        "homeValue": 2,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "6",
+                        "away": "0",
+                        "homeValue": 6,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Touches in opposition box",
+                        "home": "36",
+                        "away": "5",
+                        "homeValue": 36,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Accurate through passes",
+                        "home": "3",
+                        "away": "0",
+                        "homeValue": 3,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Offsides",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Free kicks",
+                        "home": "5",
+                        "away": "7",
+                        "homeValue": 5,
+                        "awayValue": 7
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "88% (288/326)",
+                        "away": "81% (113/139)",
+                        "homeValue": 88,
+                        "awayValue": 81
+                    },
+                    {
+                        "name": "Long passes",
+                        "home": "60% (6/10)",
+                        "away": "52% (12/23)",
+                        "homeValue": 60,
+                        "awayValue": 52
+                    },
+                    {
+                        "name": "Passes in final third",
+                        "home": "77% (96/124)",
+                        "away": "72% (13/18)",
+                        "homeValue": 77,
+                        "awayValue": 72
+                    },
+                    {
+                        "name": "Crosses",
+                        "home": "44% (4/9)",
+                        "away": "100% (1/1)",
+                        "homeValue": 44,
+                        "awayValue": 100
+                    },
+                    {
+                        "name": "Expected assists (xA)",
+                        "home": "1.65",
+                        "away": "0.10",
+                        "homeValue": 1.65,
+                        "awayValue": 0.1
+                    },
+                    {
+                        "name": "Throw ins",
+                        "home": "8",
+                        "away": "3",
+                        "homeValue": 8,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Fouls",
+                        "home": "7",
+                        "away": "5",
+                        "homeValue": 7,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Tackles",
+                        "home": "63% (5/8)",
+                        "away": "44% (4/9)",
+                        "homeValue": 63,
+                        "awayValue": 44
+                    },
+                    {
+                        "name": "Duels won",
+                        "home": "23",
+                        "away": "25",
+                        "homeValue": 23,
+                        "awayValue": 25
+                    },
+                    {
+                        "name": "Clearances",
+                        "home": "2",
+                        "away": "15",
+                        "homeValue": 2,
+                        "awayValue": 15
+                    },
+                    {
+                        "name": "Interceptions",
+                        "home": "5",
+                        "away": "8",
+                        "homeValue": 5,
+                        "awayValue": 8
+                    },
+                    {
+                        "name": "Errors leading to shot",
+                        "home": "0",
+                        "away": "2",
+                        "homeValue": 0,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Errors leading to goal",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Goalkeeper saves",
+                        "home": "1",
+                        "away": "2",
+                        "homeValue": 1,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "xGOT faced",
+                        "home": "0.50",
+                        "away": "2.55",
+                        "homeValue": 0.5,
+                        "awayValue": 2.55
+                    },
+                    {
+                        "name": "Goals prevented",
+                        "home": "-0.50",
+                        "away": "-0.45",
+                        "homeValue": -0.5,
+                        "awayValue": -0.45
+                    }
+                ]
+            },
+            {
+                "period": "2nd Half",
+                "statisticsItems": [
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "1.77",
+                        "away": "0.26",
+                        "homeValue": 1.77,
+                        "awayValue": 0.26
+                    },
+                    {
+                        "name": "Ball possession",
+                        "home": "59%",
+                        "away": "41%",
+                        "homeValue": 59,
+                        "awayValue": 41
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "10",
+                        "away": "4",
+                        "homeValue": 10,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "6",
+                        "away": "0",
+                        "homeValue": 6,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "4",
+                        "away": "0",
+                        "homeValue": 4,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "2",
+                        "away": "1",
+                        "homeValue": 2,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "86% (266/311)",
+                        "away": "83% (169/204)",
+                        "homeValue": 86,
+                        "awayValue": 83
+                    },
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "1.77",
+                        "away": "0.26",
+                        "homeValue": 1.77,
+                        "awayValue": 0.26
+                    },
+                    {
+                        "name": "xG on target (xGOT)",
+                        "home": "2.68",
+                        "away": "0.00",
+                        "homeValue": 2.68,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "10",
+                        "away": "4",
+                        "homeValue": 10,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "6",
+                        "away": "0",
+                        "homeValue": 6,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Shots off target",
+                        "home": "2",
+                        "away": "4",
+                        "homeValue": 2,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Blocked shots",
+                        "home": "2",
+                        "away": "0",
+                        "homeValue": 2,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Shots inside the box",
+                        "home": "9",
+                        "away": "3",
+                        "homeValue": 9,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Shots outside the box",
+                        "home": "1",
+                        "away": "1",
+                        "homeValue": 1,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Hit the woodwork",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "4",
+                        "away": "0",
+                        "homeValue": 4,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "2",
+                        "away": "1",
+                        "homeValue": 2,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Touches in opposition box",
+                        "home": "27",
+                        "away": "5",
+                        "homeValue": 27,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Accurate through passes",
+                        "home": "3",
+                        "away": "0",
+                        "homeValue": 3,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Offsides",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Free kicks",
+                        "home": "6",
+                        "away": "11",
+                        "homeValue": 6,
+                        "awayValue": 11
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "86% (266/311)",
+                        "away": "83% (169/204)",
+                        "homeValue": 86,
+                        "awayValue": 83
+                    },
+                    {
+                        "name": "Long passes",
+                        "home": "40% (6/15)",
+                        "away": "24% (5/21)",
+                        "homeValue": 40,
+                        "awayValue": 24
+                    },
+                    {
+                        "name": "Passes in final third",
+                        "home": "75% (86/114)",
+                        "away": "72% (33/46)",
+                        "homeValue": 75,
+                        "awayValue": 72
+                    },
+                    {
+                        "name": "Crosses",
+                        "home": "33% (1/3)",
+                        "away": "17% (1/6)",
+                        "homeValue": 33,
+                        "awayValue": 17
+                    },
+                    {
+                        "name": "Expected assists (xA)",
+                        "home": "1.83",
+                        "away": "0.18",
+                        "homeValue": 1.83,
+                        "awayValue": 0.18
+                    },
+                    {
+                        "name": "Throw ins",
+                        "home": "9",
+                        "away": "6",
+                        "homeValue": 9,
+                        "awayValue": 6
+                    },
+                    {
+                        "name": "Fouls",
+                        "home": "11",
+                        "away": "6",
+                        "homeValue": 11,
+                        "awayValue": 6
+                    },
+                    {
+                        "name": "Tackles",
+                        "home": "73% (8/11)",
+                        "away": "57% (4/7)",
+                        "homeValue": 73,
+                        "awayValue": 57
+                    },
+                    {
+                        "name": "Duels won",
+                        "home": "23",
+                        "away": "25",
+                        "homeValue": 23,
+                        "awayValue": 25
+                    },
+                    {
+                        "name": "Clearances",
+                        "home": "6",
+                        "away": "10",
+                        "homeValue": 6,
+                        "awayValue": 10
+                    },
+                    {
+                        "name": "Interceptions",
+                        "home": "7",
+                        "away": "8",
+                        "homeValue": 7,
+                        "awayValue": 8
+                    },
+                    {
+                        "name": "Errors leading to shot",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Errors leading to goal",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Goalkeeper saves",
+                        "home": "0",
+                        "away": "2",
+                        "homeValue": 0,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "xGOT faced",
+                        "home": "0.00",
+                        "away": "2.68",
+                        "homeValue": 0,
+                        "awayValue": 2.68
+                    },
+                    {
+                        "name": "Goals prevented",
+                        "home": "0.00",
+                        "away": "-1.32",
+                        "homeValue": 0,
+                        "awayValue": -1.32
+                    }
+                ]
+            }
+        ],
+        "incidents": [
+            {
+                "time": 6,
+                "incidentType": "goal",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Nmecha F."
+                },
+                "assist": {
+                    "name": "Wirtz F."
+                },
+                "homeScore": "1",
+                "awayScore": "0",
+                "description": "It's a goal! Felix Nmecha (Germany) shows off his superb ability as he volleys the ball from inside the box into the right side of the target. The assist goes to Florian Wirtz and the score changes to 1:0."
+            },
+            {
+                "time": 21,
+                "incidentType": "goal",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Comenencia L."
+                },
+                "assist": null,
+                "homeScore": "1",
+                "awayScore": "1",
+                "description": "G"
+            },
+            {
+                "time": 38,
+                "incidentType": "goal",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Schlotterbeck N."
+                },
+                "assist": {
+                    "name": "Brown N."
+                },
+                "homeScore": "2",
+                "awayScore": "1",
+                "description": "Gooal! Nathaniel Brown takes over corner duties. Nico Schlotterbeck (Germany) gets his head on the ball from the corner and puts it into the bottom left corner. 2:1."
+            },
+            {
+                "time": 45,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Havertz K."
+                },
+                "assist": null,
+                "homeScore": "3",
+                "awayScore": "1",
+                "description": "Kai Havertz (Germany) will take the responsibility and he is already preparing the ball."
+            },
+            {
+                "time": 46,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Hansen S."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 47,
+                "incidentType": "goal",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Musiala J."
+                },
+                "assist": {
+                    "name": "Kimmich J."
+                },
+                "homeScore": "4",
+                "awayScore": "1",
+                "description": "Goal - 4:1! Joshua Kimmich laid the ball off to Jamal Musiala (Germany), who shot from close range into the bottom left corner, leaving the goalkeeper helpless."
+            },
+            {
+                "time": 64,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Musiala J."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 65,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Locadia J."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 68,
+                "incidentType": "goal",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Brown N."
+                },
+                "assist": {
+                    "name": "Undav D."
+                },
+                "homeScore": "5",
+                "awayScore": "1",
+                "description": "What a goal! Deniz Undav plays it to Nathaniel Brown (Germany), who finds himself unmarked inside the box and slots a first-time shot past Eloy Room into the bottom right corner. 5:1."
+            },
+            {
+                "time": 73,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Tah J."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 73,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Nmecha F."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 73,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Brown N."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 78,
+                "incidentType": "goal",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Undav D."
+                },
+                "assist": {
+                    "name": "Kimmich J."
+                },
+                "homeScore": "6",
+                "awayScore": "1",
+                "description": "What a goal! Joshua Kimmich plays it to Deniz Undav (Germany), who finds himself unmarked inside the box and slots a first-time shot past Eloy Room into the left side of the goal. 6:1."
+            },
+            {
+                "time": 83,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Chong T."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 83,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Kimmich J."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 88,
+                "incidentType": "goal",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Havertz K."
+                },
+                "assist": {
+                    "name": "Undav D."
+                },
+                "homeScore": "7",
+                "awayScore": "1",
+                "description": "GOAL - 7:1! Deniz Undav found Kai Havertz (Germany) inside the box, he spotted goalkeeper Eloy Room off his line and chipped the ball into the net. What a cheeky lob!"
+            }
+        ]
+    },
+    "match-wc10": {
+        "homeScore": 2,
+        "awayScore": 2,
+        "sideQuestions": {
+            "htResult": "draw",
+            "firstScorer": "van Dijk V.",
+            "redCard": false,
+            "cornersOverUnder": "over"
+        },
+        "statistics": [
+            {
+                "period": "Match",
+                "statisticsItems": [
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.79",
+                        "away": "0.59",
+                        "homeValue": 0.79,
+                        "awayValue": 0.59
+                    },
+                    {
+                        "name": "Ball possession",
+                        "home": "60%",
+                        "away": "40%",
+                        "homeValue": 60,
+                        "awayValue": 40
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "10",
+                        "away": "10",
+                        "homeValue": 10,
+                        "awayValue": 10
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "6",
+                        "away": "3",
+                        "homeValue": 6,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "5",
+                        "away": "4",
+                        "homeValue": 5,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "88% (463/524)",
+                        "away": "84% (286/341)",
+                        "homeValue": 88,
+                        "awayValue": 84
+                    },
+                    {
+                        "name": "Yellow cards",
+                        "home": "3",
+                        "away": "0",
+                        "homeValue": 3,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.79",
+                        "away": "0.59",
+                        "homeValue": 0.79,
+                        "awayValue": 0.59
+                    },
+                    {
+                        "name": "xG on target (xGOT)",
+                        "home": "2.16",
+                        "away": "1.32",
+                        "homeValue": 2.16,
+                        "awayValue": 1.32
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "10",
+                        "away": "10",
+                        "homeValue": 10,
+                        "awayValue": 10
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "6",
+                        "away": "3",
+                        "homeValue": 6,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Shots off target",
+                        "home": "3",
+                        "away": "6",
+                        "homeValue": 3,
+                        "awayValue": 6
+                    },
+                    {
+                        "name": "Blocked shots",
+                        "home": "1",
+                        "away": "1",
+                        "homeValue": 1,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Shots inside the box",
+                        "home": "10",
+                        "away": "6",
+                        "homeValue": 10,
+                        "awayValue": 6
+                    },
+                    {
+                        "name": "Shots outside the box",
+                        "home": "0",
+                        "away": "4",
+                        "homeValue": 0,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Hit the woodwork",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Headed goals",
+                        "home": "1",
+                        "away": "1",
+                        "homeValue": 1,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "5",
+                        "away": "4",
+                        "homeValue": 5,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Touches in opposition box",
+                        "home": "33",
+                        "away": "19",
+                        "homeValue": 33,
+                        "awayValue": 19
+                    },
+                    {
+                        "name": "Accurate through passes",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Offsides",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Free kicks",
+                        "home": "7",
+                        "away": "7",
+                        "homeValue": 7,
+                        "awayValue": 7
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "88% (463/524)",
+                        "away": "84% (286/341)",
+                        "homeValue": 88,
+                        "awayValue": 84
+                    },
+                    {
+                        "name": "Long passes",
+                        "home": "46% (16/35)",
+                        "away": "35% (13/37)",
+                        "homeValue": 46,
+                        "awayValue": 35
+                    },
+                    {
+                        "name": "Passes in final third",
+                        "home": "82% (134/164)",
+                        "away": "71% (81/114)",
+                        "homeValue": 82,
+                        "awayValue": 71
+                    },
+                    {
+                        "name": "Crosses",
+                        "home": "38% (8/21)",
+                        "away": "26% (6/23)",
+                        "homeValue": 38,
+                        "awayValue": 26
+                    },
+                    {
+                        "name": "Expected assists (xA)",
+                        "home": "1.29",
+                        "away": "0.58",
+                        "homeValue": 1.29,
+                        "awayValue": 0.58
+                    },
+                    {
+                        "name": "Throw ins",
+                        "home": "21",
+                        "away": "19",
+                        "homeValue": 21,
+                        "awayValue": 19
+                    },
+                    {
+                        "name": "Fouls",
+                        "home": "7",
+                        "away": "7",
+                        "homeValue": 7,
+                        "awayValue": 7
+                    },
+                    {
+                        "name": "Tackles",
+                        "home": "45% (5/11)",
+                        "away": "91% (10/11)",
+                        "homeValue": 45,
+                        "awayValue": 91
+                    },
+                    {
+                        "name": "Duels won",
+                        "home": "44",
+                        "away": "29",
+                        "homeValue": 44,
+                        "awayValue": 29
+                    },
+                    {
+                        "name": "Clearances",
+                        "home": "23",
+                        "away": "33",
+                        "homeValue": 23,
+                        "awayValue": 33
+                    },
+                    {
+                        "name": "Interceptions",
+                        "home": "7",
+                        "away": "4",
+                        "homeValue": 7,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Errors leading to shot",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Errors leading to goal",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Goalkeeper saves",
+                        "home": "1",
+                        "away": "4",
+                        "homeValue": 1,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "xGOT faced",
+                        "home": "1.32",
+                        "away": "2.16",
+                        "homeValue": 1.32,
+                        "awayValue": 2.16
+                    },
+                    {
+                        "name": "Goals prevented",
+                        "home": "-0.68",
+                        "away": "0.16",
+                        "homeValue": -0.68,
+                        "awayValue": 0.16
+                    }
+                ]
+            },
+            {
+                "period": "1st Half",
+                "statisticsItems": [
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.41",
+                        "away": "0.18",
+                        "homeValue": 0.41,
+                        "awayValue": 0.18
+                    },
+                    {
+                        "name": "Ball possession",
+                        "home": "69%",
+                        "away": "31%",
+                        "homeValue": 69,
+                        "awayValue": 31
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "4",
+                        "away": "3",
+                        "homeValue": 4,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "2",
+                        "away": "0",
+                        "homeValue": 2,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "3",
+                        "away": "1",
+                        "homeValue": 3,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "90% (307/340)",
+                        "away": "88% (130/147)",
+                        "homeValue": 90,
+                        "awayValue": 88
+                    },
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.41",
+                        "away": "0.18",
+                        "homeValue": 0.41,
+                        "awayValue": 0.18
+                    },
+                    {
+                        "name": "xG on target (xGOT)",
+                        "home": "0.34",
+                        "away": "0.00",
+                        "homeValue": 0.34,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "4",
+                        "away": "3",
+                        "homeValue": 4,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "2",
+                        "away": "0",
+                        "homeValue": 2,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Shots off target",
+                        "home": "2",
+                        "away": "3",
+                        "homeValue": 2,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Blocked shots",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Shots inside the box",
+                        "home": "4",
+                        "away": "2",
+                        "homeValue": 4,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Shots outside the box",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Hit the woodwork",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "3",
+                        "away": "1",
+                        "homeValue": 3,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Touches in opposition box",
+                        "home": "14",
+                        "away": "7",
+                        "homeValue": 14,
+                        "awayValue": 7
+                    },
+                    {
+                        "name": "Accurate through passes",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Offsides",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Free kicks",
+                        "home": "3",
+                        "away": "3",
+                        "homeValue": 3,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "90% (307/340)",
+                        "away": "88% (130/147)",
+                        "homeValue": 90,
+                        "awayValue": 88
+                    },
+                    {
+                        "name": "Long passes",
+                        "home": "50% (9/18)",
+                        "away": "67% (8/12)",
+                        "homeValue": 50,
+                        "awayValue": 67
+                    },
+                    {
+                        "name": "Passes in final third",
+                        "home": "84% (92/110)",
+                        "away": "83% (45/54)",
+                        "homeValue": 84,
+                        "awayValue": 83
+                    },
+                    {
+                        "name": "Crosses",
+                        "home": "27% (3/11)",
+                        "away": "13% (1/8)",
+                        "homeValue": 27,
+                        "awayValue": 13
+                    },
+                    {
+                        "name": "Expected assists (xA)",
+                        "home": "0.35",
+                        "away": "0.38",
+                        "homeValue": 0.35,
+                        "awayValue": 0.38
+                    },
+                    {
+                        "name": "Throw ins",
+                        "home": "12",
+                        "away": "7",
+                        "homeValue": 12,
+                        "awayValue": 7
+                    },
+                    {
+                        "name": "Fouls",
+                        "home": "3",
+                        "away": "3",
+                        "homeValue": 3,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Tackles",
+                        "home": "50% (2/4)",
+                        "away": "80% (4/5)",
+                        "homeValue": 50,
+                        "awayValue": 80
+                    },
+                    {
+                        "name": "Duels won",
+                        "home": "20",
+                        "away": "14",
+                        "homeValue": 20,
+                        "awayValue": 14
+                    },
+                    {
+                        "name": "Clearances",
+                        "home": "6",
+                        "away": "21",
+                        "homeValue": 6,
+                        "awayValue": 21
+                    },
+                    {
+                        "name": "Interceptions",
+                        "home": "3",
+                        "away": "3",
+                        "homeValue": 3,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Errors leading to shot",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Errors leading to goal",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Goalkeeper saves",
+                        "home": "0",
+                        "away": "2",
+                        "homeValue": 0,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "xGOT faced",
+                        "home": "0.00",
+                        "away": "0.34",
+                        "homeValue": 0,
+                        "awayValue": 0.34
+                    },
+                    {
+                        "name": "Goals prevented",
+                        "home": "0.00",
+                        "away": "0.34",
+                        "homeValue": 0,
+                        "awayValue": 0.34
+                    }
+                ]
+            },
+            {
+                "period": "2nd Half",
+                "statisticsItems": [
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.38",
+                        "away": "0.41",
+                        "homeValue": 0.38,
+                        "awayValue": 0.41
+                    },
+                    {
+                        "name": "Ball possession",
+                        "home": "48%",
+                        "away": "52%",
+                        "homeValue": 48,
+                        "awayValue": 52
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "6",
+                        "away": "7",
+                        "homeValue": 6,
+                        "awayValue": 7
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "4",
+                        "away": "3",
+                        "homeValue": 4,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "2",
+                        "away": "3",
+                        "homeValue": 2,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "85% (156/184)",
+                        "away": "80% (156/194)",
+                        "homeValue": 85,
+                        "awayValue": 80
+                    },
+                    {
+                        "name": "Yellow cards",
+                        "home": "3",
+                        "away": "0",
+                        "homeValue": 3,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.38",
+                        "away": "0.41",
+                        "homeValue": 0.38,
+                        "awayValue": 0.41
+                    },
+                    {
+                        "name": "xG on target (xGOT)",
+                        "home": "1.82",
+                        "away": "1.32",
+                        "homeValue": 1.82,
+                        "awayValue": 1.32
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "6",
+                        "away": "7",
+                        "homeValue": 6,
+                        "awayValue": 7
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "4",
+                        "away": "3",
+                        "homeValue": 4,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Shots off target",
+                        "home": "1",
+                        "away": "3",
+                        "homeValue": 1,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Blocked shots",
+                        "home": "1",
+                        "away": "1",
+                        "homeValue": 1,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Shots inside the box",
+                        "home": "6",
+                        "away": "4",
+                        "homeValue": 6,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Shots outside the box",
+                        "home": "0",
+                        "away": "3",
+                        "homeValue": 0,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Hit the woodwork",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Headed goals",
+                        "home": "1",
+                        "away": "1",
+                        "homeValue": 1,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "2",
+                        "away": "3",
+                        "homeValue": 2,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Touches in opposition box",
+                        "home": "19",
+                        "away": "12",
+                        "homeValue": 19,
+                        "awayValue": 12
+                    },
+                    {
+                        "name": "Accurate through passes",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Offsides",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Free kicks",
+                        "home": "4",
+                        "away": "4",
+                        "homeValue": 4,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "85% (156/184)",
+                        "away": "80% (156/194)",
+                        "homeValue": 85,
+                        "awayValue": 80
+                    },
+                    {
+                        "name": "Long passes",
+                        "home": "41% (7/17)",
+                        "away": "20% (5/25)",
+                        "homeValue": 41,
+                        "awayValue": 20
+                    },
+                    {
+                        "name": "Passes in final third",
+                        "home": "78% (42/54)",
+                        "away": "60% (36/60)",
+                        "homeValue": 78,
+                        "awayValue": 60
+                    },
+                    {
+                        "name": "Crosses",
+                        "home": "50% (5/10)",
+                        "away": "33% (5/15)",
+                        "homeValue": 50,
+                        "awayValue": 33
+                    },
+                    {
+                        "name": "Expected assists (xA)",
+                        "home": "0.94",
+                        "away": "0.20",
+                        "homeValue": 0.94,
+                        "awayValue": 0.2
+                    },
+                    {
+                        "name": "Throw ins",
+                        "home": "9",
+                        "away": "12",
+                        "homeValue": 9,
+                        "awayValue": 12
+                    },
+                    {
+                        "name": "Fouls",
+                        "home": "4",
+                        "away": "4",
+                        "homeValue": 4,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Tackles",
+                        "home": "43% (3/7)",
+                        "away": "100% (6/6)",
+                        "homeValue": 43,
+                        "awayValue": 100
+                    },
+                    {
+                        "name": "Duels won",
+                        "home": "24",
+                        "away": "15",
+                        "homeValue": 24,
+                        "awayValue": 15
+                    },
+                    {
+                        "name": "Clearances",
+                        "home": "17",
+                        "away": "12",
+                        "homeValue": 17,
+                        "awayValue": 12
+                    },
+                    {
+                        "name": "Interceptions",
+                        "home": "4",
+                        "away": "1",
+                        "homeValue": 4,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Errors leading to shot",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Errors leading to goal",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Goalkeeper saves",
+                        "home": "1",
+                        "away": "2",
+                        "homeValue": 1,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "xGOT faced",
+                        "home": "1.32",
+                        "away": "1.82",
+                        "homeValue": 1.32,
+                        "awayValue": 1.82
+                    },
+                    {
+                        "name": "Goals prevented",
+                        "home": "-0.68",
+                        "away": "-0.18",
+                        "homeValue": -0.68,
+                        "awayValue": -0.18
+                    }
+                ]
+            }
+        ],
+        "incidents": [
+            {
+                "time": 51,
+                "incidentType": "goal",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "van Dijk V."
+                },
+                "assist": {
+                    "name": "Gravenberch R."
+                },
+                "homeScore": "1",
+                "awayScore": "0",
+                "description": "Ryan Gravenberch sends a superb cross into the box. Virgil van Dijk (Netherlands) latches on to it and from close range plants a header in off the right post, leaving Zion Suzuki beaten. He displayed his eye for goal there - excellent finish. The score is 1:0."
+            },
+            {
+                "time": 57,
+                "incidentType": "goal",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Nakamura K."
+                },
+                "assist": {
+                    "name": "Kubo T."
+                },
+                "homeScore": "1",
+                "awayScore": "1",
+                "description": "It's in the back of the net! Keito Nakamura (Japan) tries his luck from the edge of the box and his shot takes a deflection and goes past the stranded Bart Verbruggen. He makes it 1:1."
+            },
+            {
+                "time": 61,
+                "incidentType": "card",
+                "incidentClass": "yellow",
+                "isHome": true,
+                "player": {
+                    "name": "Summerville C."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": "I"
+            },
+            {
+                "time": 64,
+                "incidentType": "goal",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Summerville C."
+                },
+                "assist": {
+                    "name": "Gravenberch R."
+                },
+                "homeScore": "2",
+                "awayScore": "1",
+                "description": "Goal! Crysencio Summerville (Netherlands) neatly controls a decent pass from Ryan Gravenberch. He looks up and smashes an unstoppable drive into the bottom left corner from the edge of the box. 2:1."
+            },
+            {
+                "time": 66,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Maeda D."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 70,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Malen D."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 70,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Summerville C."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 70,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Reijnders T."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 75,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Watanabe T."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 75,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Kubo T."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 75,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Doan R."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 81,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Gravenberch R."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 83,
+                "incidentType": "card",
+                "incidentClass": "yellow",
+                "isHome": true,
+                "player": {
+                    "name": "Depay M."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": "I"
+            },
+            {
+                "time": 84,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Ueda A."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 85,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Gakpo C."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 89,
+                "incidentType": "goal",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Kamada D."
+                },
+                "assist": {
+                    "name": "Ogawa K."
+                },
+                "homeScore": "2",
+                "awayScore": "2",
+                "description": "Goal! Koki Ogawa gets up really well from the corner and heads the ball into the six-yard box where Daichi Kamada (Japan) glances a header into the net. 2:2."
+            },
+            {
+                "time": 90,
+                "incidentType": "card",
+                "incidentClass": "yellow",
+                "isHome": true,
+                "player": {
+                    "name": "van de Ven M."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": "A"
+            }
+        ]
+    },
+    "match-wc11": {
+        "homeScore": 1,
+        "awayScore": 0,
+        "sideQuestions": {
+            "htResult": "draw",
+            "firstScorer": "Diallo A.",
+            "redCard": false,
+            "cornersOverUnder": "under"
+        },
+        "statistics": [
+            {
+                "period": "Match",
+                "statisticsItems": [
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "1.52",
+                        "away": "1.02",
+                        "homeValue": 1.52,
+                        "awayValue": 1.02
+                    },
+                    {
+                        "name": "Ball possession",
+                        "home": "48%",
+                        "away": "52%",
+                        "homeValue": 48,
+                        "awayValue": 52
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "15",
+                        "away": "12",
+                        "homeValue": 15,
+                        "awayValue": 12
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "4",
+                        "away": "1",
+                        "homeValue": 4,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "2",
+                        "away": "1",
+                        "homeValue": 2,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "3",
+                        "away": "5",
+                        "homeValue": 3,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "84% (397/470)",
+                        "away": "85% (419/492)",
+                        "homeValue": 84,
+                        "awayValue": 85
+                    },
+                    {
+                        "name": "Yellow cards",
+                        "home": "3",
+                        "away": "1",
+                        "homeValue": 3,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "1.52",
+                        "away": "1.02",
+                        "homeValue": 1.52,
+                        "awayValue": 1.02
+                    },
+                    {
+                        "name": "xG on target (xGOT)",
+                        "home": "1.22",
+                        "away": "0.03",
+                        "homeValue": 1.22,
+                        "awayValue": 0.03
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "15",
+                        "away": "12",
+                        "homeValue": 15,
+                        "awayValue": 12
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "4",
+                        "away": "1",
+                        "homeValue": 4,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Shots off target",
+                        "home": "8",
+                        "away": "8",
+                        "homeValue": 8,
+                        "awayValue": 8
+                    },
+                    {
+                        "name": "Blocked shots",
+                        "home": "3",
+                        "away": "3",
+                        "homeValue": 3,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Shots inside the box",
+                        "home": "8",
+                        "away": "5",
+                        "homeValue": 8,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Shots outside the box",
+                        "home": "7",
+                        "away": "7",
+                        "homeValue": 7,
+                        "awayValue": 7
+                    },
+                    {
+                        "name": "Hit the woodwork",
+                        "home": "1",
+                        "away": "3",
+                        "homeValue": 1,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "2",
+                        "away": "1",
+                        "homeValue": 2,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "3",
+                        "away": "5",
+                        "homeValue": 3,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Touches in opposition box",
+                        "home": "39",
+                        "away": "16",
+                        "homeValue": 39,
+                        "awayValue": 16
+                    },
+                    {
+                        "name": "Accurate through passes",
+                        "home": "0",
+                        "away": "2",
+                        "homeValue": 0,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Offsides",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Free kicks",
+                        "home": "13",
+                        "away": "10",
+                        "homeValue": 13,
+                        "awayValue": 10
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "84% (397/470)",
+                        "away": "85% (419/492)",
+                        "homeValue": 84,
+                        "awayValue": 85
+                    },
+                    {
+                        "name": "Long passes",
+                        "home": "45% (18/40)",
+                        "away": "31% (11/36)",
+                        "homeValue": 45,
+                        "awayValue": 31
+                    },
+                    {
+                        "name": "Passes in final third",
+                        "home": "80% (91/114)",
+                        "away": "65% (72/110)",
+                        "homeValue": 80,
+                        "awayValue": 65
+                    },
+                    {
+                        "name": "Crosses",
+                        "home": "25% (2/8)",
+                        "away": "29% (4/14)",
+                        "homeValue": 25,
+                        "awayValue": 29
+                    },
+                    {
+                        "name": "Expected assists (xA)",
+                        "home": "0.96",
+                        "away": "1.27",
+                        "homeValue": 0.96,
+                        "awayValue": 1.27
+                    },
+                    {
+                        "name": "Throw ins",
+                        "home": "14",
+                        "away": "14",
+                        "homeValue": 14,
+                        "awayValue": 14
+                    },
+                    {
+                        "name": "Fouls",
+                        "home": "10",
+                        "away": "13",
+                        "homeValue": 10,
+                        "awayValue": 13
+                    },
+                    {
+                        "name": "Tackles",
+                        "home": "64% (9/14)",
+                        "away": "71% (15/21)",
+                        "homeValue": 64,
+                        "awayValue": 71
+                    },
+                    {
+                        "name": "Duels won",
+                        "home": "58",
+                        "away": "44",
+                        "homeValue": 58,
+                        "awayValue": 44
+                    },
+                    {
+                        "name": "Clearances",
+                        "home": "29",
+                        "away": "18",
+                        "homeValue": 29,
+                        "awayValue": 18
+                    },
+                    {
+                        "name": "Interceptions",
+                        "home": "11",
+                        "away": "13",
+                        "homeValue": 11,
+                        "awayValue": 13
+                    },
+                    {
+                        "name": "Errors leading to shot",
+                        "home": "1",
+                        "away": "2",
+                        "homeValue": 1,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Errors leading to goal",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Goalkeeper saves",
+                        "home": "1",
+                        "away": "3",
+                        "homeValue": 1,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "xGOT faced",
+                        "home": "0.03",
+                        "away": "1.22",
+                        "homeValue": 0.03,
+                        "awayValue": 1.22
+                    },
+                    {
+                        "name": "Goals prevented",
+                        "home": "0.03",
+                        "away": "0.22",
+                        "homeValue": 0.03,
+                        "awayValue": 0.22
+                    }
+                ]
+            },
+            {
+                "period": "1st Half",
+                "statisticsItems": [
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.70",
+                        "away": "0.53",
+                        "homeValue": 0.7,
+                        "awayValue": 0.53
+                    },
+                    {
+                        "name": "Ball possession",
+                        "home": "45%",
+                        "away": "55%",
+                        "homeValue": 45,
+                        "awayValue": 55
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "6",
+                        "away": "6",
+                        "homeValue": 6,
+                        "awayValue": 6
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "1",
+                        "away": "1",
+                        "homeValue": 1,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "2",
+                        "away": "0",
+                        "homeValue": 2,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "83% (192/232)",
+                        "away": "87% (247/285)",
+                        "homeValue": 83,
+                        "awayValue": 87
+                    },
+                    {
+                        "name": "Yellow cards",
+                        "home": "3",
+                        "away": "0",
+                        "homeValue": 3,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.70",
+                        "away": "0.53",
+                        "homeValue": 0.7,
+                        "awayValue": 0.53
+                    },
+                    {
+                        "name": "xG on target (xGOT)",
+                        "home": "0.27",
+                        "away": "0.00",
+                        "homeValue": 0.27,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "6",
+                        "away": "6",
+                        "homeValue": 6,
+                        "awayValue": 6
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Shots off target",
+                        "home": "2",
+                        "away": "6",
+                        "homeValue": 2,
+                        "awayValue": 6
+                    },
+                    {
+                        "name": "Blocked shots",
+                        "home": "3",
+                        "away": "0",
+                        "homeValue": 3,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Shots inside the box",
+                        "home": "3",
+                        "away": "1",
+                        "homeValue": 3,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Shots outside the box",
+                        "home": "3",
+                        "away": "5",
+                        "homeValue": 3,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Hit the woodwork",
+                        "home": "0",
+                        "away": "2",
+                        "homeValue": 0,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "1",
+                        "away": "1",
+                        "homeValue": 1,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "2",
+                        "away": "0",
+                        "homeValue": 2,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Touches in opposition box",
+                        "home": "15",
+                        "away": "6",
+                        "homeValue": 15,
+                        "awayValue": 6
+                    },
+                    {
+                        "name": "Accurate through passes",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Offsides",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Free kicks",
+                        "home": "3",
+                        "away": "8",
+                        "homeValue": 3,
+                        "awayValue": 8
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "83% (192/232)",
+                        "away": "87% (247/285)",
+                        "homeValue": 83,
+                        "awayValue": 87
+                    },
+                    {
+                        "name": "Long passes",
+                        "home": "40% (8/20)",
+                        "away": "24% (4/17)",
+                        "homeValue": 40,
+                        "awayValue": 24
+                    },
+                    {
+                        "name": "Passes in final third",
+                        "home": "74% (37/50)",
+                        "away": "69% (45/65)",
+                        "homeValue": 74,
+                        "awayValue": 69
+                    },
+                    {
+                        "name": "Crosses",
+                        "home": "17% (1/6)",
+                        "away": "50% (1/2)",
+                        "homeValue": 17,
+                        "awayValue": 50
+                    },
+                    {
+                        "name": "Expected assists (xA)",
+                        "home": "0.28",
+                        "away": "0.77",
+                        "homeValue": 0.28,
+                        "awayValue": 0.77
+                    },
+                    {
+                        "name": "Throw ins",
+                        "home": "6",
+                        "away": "7",
+                        "homeValue": 6,
+                        "awayValue": 7
+                    },
+                    {
+                        "name": "Fouls",
+                        "home": "8",
+                        "away": "3",
+                        "homeValue": 8,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Tackles",
+                        "home": "57% (4/7)",
+                        "away": "64% (7/11)",
+                        "homeValue": 57,
+                        "awayValue": 64
+                    },
+                    {
+                        "name": "Duels won",
+                        "home": "18",
+                        "away": "22",
+                        "homeValue": 18,
+                        "awayValue": 22
+                    },
+                    {
+                        "name": "Clearances",
+                        "home": "9",
+                        "away": "11",
+                        "homeValue": 9,
+                        "awayValue": 11
+                    },
+                    {
+                        "name": "Interceptions",
+                        "home": "5",
+                        "away": "6",
+                        "homeValue": 5,
+                        "awayValue": 6
+                    },
+                    {
+                        "name": "Errors leading to shot",
+                        "home": "1",
+                        "away": "1",
+                        "homeValue": 1,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Errors leading to goal",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Goalkeeper saves",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "xGOT faced",
+                        "home": "0.00",
+                        "away": "0.27",
+                        "homeValue": 0,
+                        "awayValue": 0.27
+                    },
+                    {
+                        "name": "Goals prevented",
+                        "home": "0.00",
+                        "away": "0.27",
+                        "homeValue": 0,
+                        "awayValue": 0.27
+                    }
+                ]
+            },
+            {
+                "period": "2nd Half",
+                "statisticsItems": [
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.82",
+                        "away": "0.49",
+                        "homeValue": 0.82,
+                        "awayValue": 0.49
+                    },
+                    {
+                        "name": "Ball possession",
+                        "home": "52%",
+                        "away": "48%",
+                        "homeValue": 52,
+                        "awayValue": 48
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "9",
+                        "away": "6",
+                        "homeValue": 9,
+                        "awayValue": 6
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "3",
+                        "away": "1",
+                        "homeValue": 3,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "1",
+                        "away": "5",
+                        "homeValue": 1,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "86% (205/238)",
+                        "away": "83% (172/207)",
+                        "homeValue": 86,
+                        "awayValue": 83
+                    },
+                    {
+                        "name": "Yellow cards",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.82",
+                        "away": "0.49",
+                        "homeValue": 0.82,
+                        "awayValue": 0.49
+                    },
+                    {
+                        "name": "xG on target (xGOT)",
+                        "home": "0.95",
+                        "away": "0.03",
+                        "homeValue": 0.95,
+                        "awayValue": 0.03
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "9",
+                        "away": "6",
+                        "homeValue": 9,
+                        "awayValue": 6
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "3",
+                        "away": "1",
+                        "homeValue": 3,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Shots off target",
+                        "home": "6",
+                        "away": "2",
+                        "homeValue": 6,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Blocked shots",
+                        "home": "0",
+                        "away": "3",
+                        "homeValue": 0,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Shots inside the box",
+                        "home": "5",
+                        "away": "4",
+                        "homeValue": 5,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Shots outside the box",
+                        "home": "4",
+                        "away": "2",
+                        "homeValue": 4,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Hit the woodwork",
+                        "home": "1",
+                        "away": "1",
+                        "homeValue": 1,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "1",
+                        "away": "5",
+                        "homeValue": 1,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Touches in opposition box",
+                        "home": "24",
+                        "away": "10",
+                        "homeValue": 24,
+                        "awayValue": 10
+                    },
+                    {
+                        "name": "Accurate through passes",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Offsides",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Free kicks",
+                        "home": "10",
+                        "away": "2",
+                        "homeValue": 10,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "86% (205/238)",
+                        "away": "83% (172/207)",
+                        "homeValue": 86,
+                        "awayValue": 83
+                    },
+                    {
+                        "name": "Long passes",
+                        "home": "50% (10/20)",
+                        "away": "37% (7/19)",
+                        "homeValue": 50,
+                        "awayValue": 37
+                    },
+                    {
+                        "name": "Passes in final third",
+                        "home": "84% (54/64)",
+                        "away": "60% (27/45)",
+                        "homeValue": 84,
+                        "awayValue": 60
+                    },
+                    {
+                        "name": "Crosses",
+                        "home": "50% (1/2)",
+                        "away": "25% (3/12)",
+                        "homeValue": 50,
+                        "awayValue": 25
+                    },
+                    {
+                        "name": "Expected assists (xA)",
+                        "home": "0.68",
+                        "away": "0.50",
+                        "homeValue": 0.68,
+                        "awayValue": 0.5
+                    },
+                    {
+                        "name": "Throw ins",
+                        "home": "8",
+                        "away": "7",
+                        "homeValue": 8,
+                        "awayValue": 7
+                    },
+                    {
+                        "name": "Fouls",
+                        "home": "2",
+                        "away": "10",
+                        "homeValue": 2,
+                        "awayValue": 10
+                    },
+                    {
+                        "name": "Tackles",
+                        "home": "71% (5/7)",
+                        "away": "80% (8/10)",
+                        "homeValue": 71,
+                        "awayValue": 80
+                    },
+                    {
+                        "name": "Duels won",
+                        "home": "40",
+                        "away": "22",
+                        "homeValue": 40,
+                        "awayValue": 22
+                    },
+                    {
+                        "name": "Clearances",
+                        "home": "20",
+                        "away": "7",
+                        "homeValue": 20,
+                        "awayValue": 7
+                    },
+                    {
+                        "name": "Interceptions",
+                        "home": "6",
+                        "away": "7",
+                        "homeValue": 6,
+                        "awayValue": 7
+                    },
+                    {
+                        "name": "Errors leading to shot",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Errors leading to goal",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Goalkeeper saves",
+                        "home": "1",
+                        "away": "2",
+                        "homeValue": 1,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "xGOT faced",
+                        "home": "0.03",
+                        "away": "0.95",
+                        "homeValue": 0.03,
+                        "awayValue": 0.95
+                    },
+                    {
+                        "name": "Goals prevented",
+                        "home": "0.03",
+                        "away": "-0.05",
+                        "homeValue": 0.03,
+                        "awayValue": -0.05
+                    }
+                ]
+            }
+        ],
+        "incidents": [
+            {
+                "time": 28,
+                "incidentType": "card",
+                "incidentClass": "yellow",
+                "isHome": true,
+                "player": {
+                    "name": "Fofana S."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": "F"
+            },
+            {
+                "time": 38,
+                "incidentType": "card",
+                "incidentClass": "yellow",
+                "isHome": true,
+                "player": {
+                    "name": "Kessie F."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": "F"
+            },
+            {
+                "time": 40,
+                "incidentType": "card",
+                "incidentClass": "yellow",
+                "isHome": true,
+                "player": {
+                    "name": "Doue G."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": "G"
+            },
+            {
+                "time": 56,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Minda A."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 56,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Wahi E."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 56,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Toure B."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 62,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Yeboah J."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 62,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Franco A."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 73,
+                "incidentType": "card",
+                "incidentClass": "yellow",
+                "isHome": false,
+                "player": {
+                    "name": "Porozo J."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": "T"
+            },
+            {
+                "time": 77,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Pepe N."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 77,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Fofana S."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 77,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Valencia E."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 89,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Doue G."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 90,
+                "incidentType": "goal",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Diallo A."
+                },
+                "assist": {
+                    "name": "Singo W."
+                },
+                "homeScore": "1",
+                "awayScore": "0",
+                "description": "GOAL! Superb work from Wilfried Singo, who plays a vital role in the build-up. He squares it to Amad Diallo (Ivory Coast), who beats Hernan Galindez with a brilliant shot into the bottom left corner. 1:0."
+            }
+        ]
+    },
+    "match-wc12": {
+        "homeScore": 5,
+        "awayScore": 1,
+        "sideQuestions": {
+            "htResult": "home",
+            "firstScorer": "Ayari Y.",
+            "redCard": false,
+            "cornersOverUnder": "under"
+        },
+        "statistics": [
+            {
+                "period": "Match",
+                "statisticsItems": [
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "1.34",
+                        "away": "0.27",
+                        "homeValue": 1.34,
+                        "awayValue": 0.27
+                    },
+                    {
+                        "name": "Ball possession",
+                        "home": "49%",
+                        "away": "51%",
+                        "homeValue": 49,
+                        "awayValue": 51
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "13",
+                        "away": "6",
+                        "homeValue": 13,
+                        "awayValue": 6
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "7",
+                        "away": "2",
+                        "homeValue": 7,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "4",
+                        "away": "0",
+                        "homeValue": 4,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "4",
+                        "away": "2",
+                        "homeValue": 4,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "78% (278/356)",
+                        "away": "79% (292/371)",
+                        "homeValue": 78,
+                        "awayValue": 79
+                    },
+                    {
+                        "name": "Yellow cards",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "1.34",
+                        "away": "0.27",
+                        "homeValue": 1.34,
+                        "awayValue": 0.27
+                    },
+                    {
+                        "name": "xG on target (xGOT)",
+                        "home": "2.12",
+                        "away": "0.35",
+                        "homeValue": 2.12,
+                        "awayValue": 0.35
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "13",
+                        "away": "6",
+                        "homeValue": 13,
+                        "awayValue": 6
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "7",
+                        "away": "2",
+                        "homeValue": 7,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Shots off target",
+                        "home": "3",
+                        "away": "3",
+                        "homeValue": 3,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Blocked shots",
+                        "home": "3",
+                        "away": "1",
+                        "homeValue": 3,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Shots inside the box",
+                        "home": "9",
+                        "away": "2",
+                        "homeValue": 9,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Shots outside the box",
+                        "home": "4",
+                        "away": "4",
+                        "homeValue": 4,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Hit the woodwork",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Headed goals",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "4",
+                        "away": "0",
+                        "homeValue": 4,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "4",
+                        "away": "2",
+                        "homeValue": 4,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Touches in opposition box",
+                        "home": "22",
+                        "away": "10",
+                        "homeValue": 22,
+                        "awayValue": 10
+                    },
+                    {
+                        "name": "Accurate through passes",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Offsides",
+                        "home": "3",
+                        "away": "6",
+                        "homeValue": 3,
+                        "awayValue": 6
+                    },
+                    {
+                        "name": "Free kicks",
+                        "home": "8",
+                        "away": "10",
+                        "homeValue": 8,
+                        "awayValue": 10
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "78% (278/356)",
+                        "away": "79% (292/371)",
+                        "homeValue": 78,
+                        "awayValue": 79
+                    },
+                    {
+                        "name": "Long passes",
+                        "home": "38% (22/58)",
+                        "away": "45% (24/53)",
+                        "homeValue": 38,
+                        "awayValue": 45
+                    },
+                    {
+                        "name": "Passes in final third",
+                        "home": "64% (69/108)",
+                        "away": "61% (66/108)",
+                        "homeValue": 64,
+                        "awayValue": 61
+                    },
+                    {
+                        "name": "Crosses",
+                        "home": "25% (3/12)",
+                        "away": "23% (3/13)",
+                        "homeValue": 25,
+                        "awayValue": 23
+                    },
+                    {
+                        "name": "Expected assists (xA)",
+                        "home": "0.55",
+                        "away": "0.46",
+                        "homeValue": 0.55,
+                        "awayValue": 0.46
+                    },
+                    {
+                        "name": "Throw ins",
+                        "home": "18",
+                        "away": "17",
+                        "homeValue": 18,
+                        "awayValue": 17
+                    },
+                    {
+                        "name": "Fouls",
+                        "home": "10",
+                        "away": "8",
+                        "homeValue": 10,
+                        "awayValue": 8
+                    },
+                    {
+                        "name": "Tackles",
+                        "home": "64% (9/14)",
+                        "away": "57% (12/21)",
+                        "homeValue": 64,
+                        "awayValue": 57
+                    },
+                    {
+                        "name": "Duels won",
+                        "home": "41",
+                        "away": "51",
+                        "homeValue": 41,
+                        "awayValue": 51
+                    },
+                    {
+                        "name": "Clearances",
+                        "home": "23",
+                        "away": "13",
+                        "homeValue": 23,
+                        "awayValue": 13
+                    },
+                    {
+                        "name": "Interceptions",
+                        "home": "6",
+                        "away": "6",
+                        "homeValue": 6,
+                        "awayValue": 6
+                    },
+                    {
+                        "name": "Errors leading to shot",
+                        "home": "0",
+                        "away": "2",
+                        "homeValue": 0,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Errors leading to goal",
+                        "home": "0",
+                        "away": "4",
+                        "homeValue": 0,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Goalkeeper saves",
+                        "home": "1",
+                        "away": "1",
+                        "homeValue": 1,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "xGOT faced",
+                        "home": "0.35",
+                        "away": "2.12",
+                        "homeValue": 0.35,
+                        "awayValue": 2.12
+                    },
+                    {
+                        "name": "Goals prevented",
+                        "home": "-0.65",
+                        "away": "-2.88",
+                        "homeValue": -0.65,
+                        "awayValue": -2.88
+                    }
+                ]
+            },
+            {
+                "period": "1st Half",
+                "statisticsItems": [
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.39",
+                        "away": "0.08",
+                        "homeValue": 0.39,
+                        "awayValue": 0.08
+                    },
+                    {
+                        "name": "Ball possession",
+                        "home": "53%",
+                        "away": "47%",
+                        "homeValue": 53,
+                        "awayValue": 47
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "5",
+                        "away": "3",
+                        "homeValue": 5,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "3",
+                        "away": "1",
+                        "homeValue": 3,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "2",
+                        "away": "0",
+                        "homeValue": 2,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "80% (170/212)",
+                        "away": "73% (135/184)",
+                        "homeValue": 80,
+                        "awayValue": 73
+                    },
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.39",
+                        "away": "0.08",
+                        "homeValue": 0.39,
+                        "awayValue": 0.08
+                    },
+                    {
+                        "name": "xG on target (xGOT)",
+                        "home": "0.43",
+                        "away": "0.33",
+                        "homeValue": 0.43,
+                        "awayValue": 0.33
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "5",
+                        "away": "3",
+                        "homeValue": 5,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "3",
+                        "away": "1",
+                        "homeValue": 3,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Shots off target",
+                        "home": "2",
+                        "away": "1",
+                        "homeValue": 2,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Blocked shots",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Shots inside the box",
+                        "home": "3",
+                        "away": "1",
+                        "homeValue": 3,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Shots outside the box",
+                        "home": "2",
+                        "away": "2",
+                        "homeValue": 2,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Hit the woodwork",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Headed goals",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "2",
+                        "away": "0",
+                        "homeValue": 2,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Touches in opposition box",
+                        "home": "8",
+                        "away": "7",
+                        "homeValue": 8,
+                        "awayValue": 7
+                    },
+                    {
+                        "name": "Accurate through passes",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Offsides",
+                        "home": "0",
+                        "away": "2",
+                        "homeValue": 0,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Free kicks",
+                        "home": "3",
+                        "away": "4",
+                        "homeValue": 3,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "80% (170/212)",
+                        "away": "73% (135/184)",
+                        "homeValue": 80,
+                        "awayValue": 73
+                    },
+                    {
+                        "name": "Long passes",
+                        "home": "40% (12/30)",
+                        "away": "28% (8/29)",
+                        "homeValue": 40,
+                        "awayValue": 28
+                    },
+                    {
+                        "name": "Passes in final third",
+                        "home": "61% (35/57)",
+                        "away": "59% (39/66)",
+                        "homeValue": 61,
+                        "awayValue": 59
+                    },
+                    {
+                        "name": "Crosses",
+                        "home": "33% (2/6)",
+                        "away": "17% (1/6)",
+                        "homeValue": 33,
+                        "awayValue": 17
+                    },
+                    {
+                        "name": "Expected assists (xA)",
+                        "home": "0.34",
+                        "away": "0.14",
+                        "homeValue": 0.34,
+                        "awayValue": 0.14
+                    },
+                    {
+                        "name": "Throw ins",
+                        "home": "11",
+                        "away": "8",
+                        "homeValue": 11,
+                        "awayValue": 8
+                    },
+                    {
+                        "name": "Fouls",
+                        "home": "4",
+                        "away": "3",
+                        "homeValue": 4,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Tackles",
+                        "home": "40% (2/5)",
+                        "away": "50% (7/14)",
+                        "homeValue": 40,
+                        "awayValue": 50
+                    },
+                    {
+                        "name": "Duels won",
+                        "home": "22",
+                        "away": "27",
+                        "homeValue": 22,
+                        "awayValue": 27
+                    },
+                    {
+                        "name": "Clearances",
+                        "home": "15",
+                        "away": "9",
+                        "homeValue": 15,
+                        "awayValue": 9
+                    },
+                    {
+                        "name": "Interceptions",
+                        "home": "3",
+                        "away": "5",
+                        "homeValue": 3,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Errors leading to shot",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Errors leading to goal",
+                        "home": "0",
+                        "away": "2",
+                        "homeValue": 0,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Goalkeeper saves",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "xGOT faced",
+                        "home": "0.33",
+                        "away": "0.43",
+                        "homeValue": 0.33,
+                        "awayValue": 0.43
+                    },
+                    {
+                        "name": "Goals prevented",
+                        "home": "-0.67",
+                        "away": "-1.57",
+                        "homeValue": -0.67,
+                        "awayValue": -1.57
+                    }
+                ]
+            },
+            {
+                "period": "2nd Half",
+                "statisticsItems": [
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.95",
+                        "away": "0.19",
+                        "homeValue": 0.95,
+                        "awayValue": 0.19
+                    },
+                    {
+                        "name": "Ball possession",
+                        "home": "43%",
+                        "away": "57%",
+                        "homeValue": 43,
+                        "awayValue": 57
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "8",
+                        "away": "3",
+                        "homeValue": 8,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "4",
+                        "away": "1",
+                        "homeValue": 4,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "3",
+                        "away": "0",
+                        "homeValue": 3,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "2",
+                        "away": "2",
+                        "homeValue": 2,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "75% (108/144)",
+                        "away": "84% (157/187)",
+                        "homeValue": 75,
+                        "awayValue": 84
+                    },
+                    {
+                        "name": "Yellow cards",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.95",
+                        "away": "0.19",
+                        "homeValue": 0.95,
+                        "awayValue": 0.19
+                    },
+                    {
+                        "name": "xG on target (xGOT)",
+                        "home": "1.69",
+                        "away": "0.02",
+                        "homeValue": 1.69,
+                        "awayValue": 0.02
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "8",
+                        "away": "3",
+                        "homeValue": 8,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "4",
+                        "away": "1",
+                        "homeValue": 4,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Shots off target",
+                        "home": "1",
+                        "away": "2",
+                        "homeValue": 1,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Blocked shots",
+                        "home": "3",
+                        "away": "0",
+                        "homeValue": 3,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Shots inside the box",
+                        "home": "6",
+                        "away": "1",
+                        "homeValue": 6,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Shots outside the box",
+                        "home": "2",
+                        "away": "2",
+                        "homeValue": 2,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Hit the woodwork",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "3",
+                        "away": "0",
+                        "homeValue": 3,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "2",
+                        "away": "2",
+                        "homeValue": 2,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Touches in opposition box",
+                        "home": "14",
+                        "away": "3",
+                        "homeValue": 14,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Accurate through passes",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Offsides",
+                        "home": "3",
+                        "away": "4",
+                        "homeValue": 3,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Free kicks",
+                        "home": "5",
+                        "away": "6",
+                        "homeValue": 5,
+                        "awayValue": 6
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "75% (108/144)",
+                        "away": "84% (157/187)",
+                        "homeValue": 75,
+                        "awayValue": 84
+                    },
+                    {
+                        "name": "Long passes",
+                        "home": "36% (10/28)",
+                        "away": "67% (16/24)",
+                        "homeValue": 36,
+                        "awayValue": 67
+                    },
+                    {
+                        "name": "Passes in final third",
+                        "home": "67% (34/51)",
+                        "away": "64% (27/42)",
+                        "homeValue": 67,
+                        "awayValue": 64
+                    },
+                    {
+                        "name": "Crosses",
+                        "home": "17% (1/6)",
+                        "away": "29% (2/7)",
+                        "homeValue": 17,
+                        "awayValue": 29
+                    },
+                    {
+                        "name": "Expected assists (xA)",
+                        "home": "0.21",
+                        "away": "0.32",
+                        "homeValue": 0.21,
+                        "awayValue": 0.32
+                    },
+                    {
+                        "name": "Throw ins",
+                        "home": "7",
+                        "away": "9",
+                        "homeValue": 7,
+                        "awayValue": 9
+                    },
+                    {
+                        "name": "Fouls",
+                        "home": "6",
+                        "away": "5",
+                        "homeValue": 6,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Tackles",
+                        "home": "78% (7/9)",
+                        "away": "71% (5/7)",
+                        "homeValue": 78,
+                        "awayValue": 71
+                    },
+                    {
+                        "name": "Duels won",
+                        "home": "19",
+                        "away": "24",
+                        "homeValue": 19,
+                        "awayValue": 24
+                    },
+                    {
+                        "name": "Clearances",
+                        "home": "8",
+                        "away": "4",
+                        "homeValue": 8,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Interceptions",
+                        "home": "3",
+                        "away": "1",
+                        "homeValue": 3,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Errors leading to shot",
+                        "home": "0",
+                        "away": "2",
+                        "homeValue": 0,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Errors leading to goal",
+                        "home": "0",
+                        "away": "2",
+                        "homeValue": 0,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Goalkeeper saves",
+                        "home": "1",
+                        "away": "1",
+                        "homeValue": 1,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "xGOT faced",
+                        "home": "0.02",
+                        "away": "1.69",
+                        "homeValue": 0.02,
+                        "awayValue": 1.69
+                    },
+                    {
+                        "name": "Goals prevented",
+                        "home": "0.02",
+                        "away": "-1.31",
+                        "homeValue": 0.02,
+                        "awayValue": -1.31
+                    }
+                ]
+            }
+        ],
+        "incidents": [
+            {
+                "time": 7,
+                "incidentType": "goal",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Ayari Y."
+                },
+                "assist": null,
+                "homeScore": "1",
+                "awayScore": "0",
+                "description": "G"
+            },
+            {
+                "time": 30,
+                "incidentType": "goal",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Isak A."
+                },
+                "assist": {
+                    "name": "Gyökeres V."
+                },
+                "homeScore": "2",
+                "awayScore": "0",
+                "description": "Goal! Alexander Isak (Sweden) weaves his way past opponents, and he unleashes a low drive from the edge of the box into the middle of the net, leaving Abdelmouhib Chamakh beaten. The score is 2:0."
+            },
+            {
+                "time": 43,
+                "incidentType": "goal",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Rekik O."
+                },
+                "assist": {
+                    "name": "Mejbri H."
+                },
+                "homeScore": "2",
+                "awayScore": "1",
+                "description": "Goal! Hannibal Mejbri swings the ball deep into the box and finds Omar Rekik (Tunisia) unmarked, and his close-range header flies past the keeper into the bottom left corner. 2:1."
+            },
+            {
+                "time": 54,
+                "incidentType": "card",
+                "incidentClass": "yellow",
+                "isHome": false,
+                "player": {
+                    "name": "Khedira R."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": "T"
+            },
+            {
+                "time": 59,
+                "incidentType": "goal",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Gyökeres V."
+                },
+                "assist": {
+                    "name": "Isak A."
+                },
+                "homeScore": "3",
+                "awayScore": "1",
+                "description": "GOAL! A terrible mistake leads to a goal. The defender ends up losing possession, allowing Viktor Gyökeres (Sweden) to pick up the ball before slotting it into the back of the net to make it 3:1."
+            },
+            {
+                "time": 65,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Gudmundsson G."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 65,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Nygren B."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 72,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Saad E."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 72,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Valery Y."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 72,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Skhiri E."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 83,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Khedira R."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 84,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Slimane A."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 84,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Karlstrom J."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 84,
+                "incidentType": "goal",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Svanberg M."
+                },
+                "assist": {
+                    "name": "Isak A."
+                },
+                "homeScore": "4",
+                "awayScore": "1",
+                "description": "Goal! Mattias Svanberg (Sweden) pounced on a loose ball inside the box and beats the goalkeeper with a shot into the bottom left corner. He makes it 4:1."
+            },
+            {
+                "time": 90,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Isak A."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 90,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Bernhardsson A."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 90,
+                "incidentType": "goal",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Ayari Y."
+                },
+                "assist": {
+                    "name": "Bergvall L."
+                },
+                "homeScore": "5",
+                "awayScore": "1",
+                "description": "Yasin Ayari (Sweden) receives a great pass from his teammate and strikes a very powerful shot towards goal that goes inside of the right post!"
+            }
+        ]
+    },
+    "match-wc13": {
+        "homeScore": 0,
+        "awayScore": 0,
+        "sideQuestions": {
+            "htResult": "draw",
+            "firstScorer": "Diğer",
+            "redCard": false,
+            "cornersOverUnder": "over"
+        },
+        "statistics": [
+            {
+                "period": "Match",
+                "statisticsItems": [
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "2.10",
+                        "away": "0.21",
+                        "homeValue": 2.1,
+                        "awayValue": 0.21
+                    },
+                    {
+                        "name": "Ball possession",
+                        "home": "74%",
+                        "away": "26%",
+                        "homeValue": 74,
+                        "awayValue": 26
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "27",
+                        "away": "6",
+                        "homeValue": 27,
+                        "awayValue": 6
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "7",
+                        "away": "1",
+                        "homeValue": 7,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "2",
+                        "away": "1",
+                        "homeValue": 2,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "11",
+                        "away": "1",
+                        "homeValue": 11,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "92% (734/800)",
+                        "away": "74% (205/278)",
+                        "homeValue": 92,
+                        "awayValue": 74
+                    },
+                    {
+                        "name": "Yellow cards",
+                        "home": "1",
+                        "away": "1",
+                        "homeValue": 1,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "2.10",
+                        "away": "0.21",
+                        "homeValue": 2.1,
+                        "awayValue": 0.21
+                    },
+                    {
+                        "name": "xG on target (xGOT)",
+                        "home": "1.45",
+                        "away": "0.13",
+                        "homeValue": 1.45,
+                        "awayValue": 0.13
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "27",
+                        "away": "6",
+                        "homeValue": 27,
+                        "awayValue": 6
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "7",
+                        "away": "1",
+                        "homeValue": 7,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Shots off target",
+                        "home": "12",
+                        "away": "3",
+                        "homeValue": 12,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Blocked shots",
+                        "home": "8",
+                        "away": "2",
+                        "homeValue": 8,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Shots inside the box",
+                        "home": "16",
+                        "away": "2",
+                        "homeValue": 16,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Shots outside the box",
+                        "home": "11",
+                        "away": "4",
+                        "homeValue": 11,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Hit the woodwork",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "2",
+                        "away": "1",
+                        "homeValue": 2,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "11",
+                        "away": "1",
+                        "homeValue": 11,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Touches in opposition box",
+                        "home": "51",
+                        "away": "6",
+                        "homeValue": 51,
+                        "awayValue": 6
+                    },
+                    {
+                        "name": "Accurate through passes",
+                        "home": "3",
+                        "away": "0",
+                        "homeValue": 3,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Offsides",
+                        "home": "2",
+                        "away": "3",
+                        "homeValue": 2,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Free kicks",
+                        "home": "1",
+                        "away": "10",
+                        "homeValue": 1,
+                        "awayValue": 10
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "92% (734/800)",
+                        "away": "74% (205/278)",
+                        "homeValue": 92,
+                        "awayValue": 74
+                    },
+                    {
+                        "name": "Long passes",
+                        "home": "80% (24/30)",
+                        "away": "33% (18/55)",
+                        "homeValue": 80,
+                        "awayValue": 33
+                    },
+                    {
+                        "name": "Passes in final third",
+                        "home": "88% (388/443)",
+                        "away": "46% (16/35)",
+                        "homeValue": 88,
+                        "awayValue": 46
+                    },
+                    {
+                        "name": "Crosses",
+                        "home": "17% (6/36)",
+                        "away": "25% (1/4)",
+                        "homeValue": 17,
+                        "awayValue": 25
+                    },
+                    {
+                        "name": "Expected assists (xA)",
+                        "home": "3.63",
+                        "away": "0.12",
+                        "homeValue": 3.63,
+                        "awayValue": 0.12
+                    },
+                    {
+                        "name": "Throw ins",
+                        "home": "18",
+                        "away": "14",
+                        "homeValue": 18,
+                        "awayValue": 14
+                    },
+                    {
+                        "name": "Fouls",
+                        "home": "10",
+                        "away": "1",
+                        "homeValue": 10,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Tackles",
+                        "home": "92% (12/13)",
+                        "away": "61% (11/18)",
+                        "homeValue": 92,
+                        "awayValue": 61
+                    },
+                    {
+                        "name": "Duels won",
+                        "home": "38",
+                        "away": "39",
+                        "homeValue": 38,
+                        "awayValue": 39
+                    },
+                    {
+                        "name": "Clearances",
+                        "home": "7",
+                        "away": "45",
+                        "homeValue": 7,
+                        "awayValue": 45
+                    },
+                    {
+                        "name": "Interceptions",
+                        "home": "6",
+                        "away": "15",
+                        "homeValue": 6,
+                        "awayValue": 15
+                    },
+                    {
+                        "name": "Errors leading to shot",
+                        "home": "0",
+                        "away": "3",
+                        "homeValue": 0,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Errors leading to goal",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Goalkeeper saves",
+                        "home": "1",
+                        "away": "7",
+                        "homeValue": 1,
+                        "awayValue": 7
+                    },
+                    {
+                        "name": "xGOT faced",
+                        "home": "0.13",
+                        "away": "1.45",
+                        "homeValue": 0.13,
+                        "awayValue": 1.45
+                    },
+                    {
+                        "name": "Goals prevented",
+                        "home": "0.13",
+                        "away": "1.45",
+                        "homeValue": 0.13,
+                        "awayValue": 1.45
+                    }
+                ]
+            },
+            {
+                "period": "1st Half",
+                "statisticsItems": [
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "1.10",
+                        "away": "0.04",
+                        "homeValue": 1.1,
+                        "awayValue": 0.04
+                    },
+                    {
+                        "name": "Ball possession",
+                        "home": "70%",
+                        "away": "30%",
+                        "homeValue": 70,
+                        "awayValue": 30
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "13",
+                        "away": "3",
+                        "homeValue": 13,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "4",
+                        "away": "0",
+                        "homeValue": 4,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "4",
+                        "away": "0",
+                        "homeValue": 4,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "92% (366/398)",
+                        "away": "77% (129/167)",
+                        "homeValue": 92,
+                        "awayValue": 77
+                    },
+                    {
+                        "name": "Yellow cards",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "1.10",
+                        "away": "0.04",
+                        "homeValue": 1.1,
+                        "awayValue": 0.04
+                    },
+                    {
+                        "name": "xG on target (xGOT)",
+                        "home": "1.03",
+                        "away": "0.00",
+                        "homeValue": 1.03,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "13",
+                        "away": "3",
+                        "homeValue": 13,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "4",
+                        "away": "0",
+                        "homeValue": 4,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Shots off target",
+                        "home": "5",
+                        "away": "2",
+                        "homeValue": 5,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Blocked shots",
+                        "home": "4",
+                        "away": "1",
+                        "homeValue": 4,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Shots inside the box",
+                        "home": "9",
+                        "away": "1",
+                        "homeValue": 9,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Shots outside the box",
+                        "home": "4",
+                        "away": "2",
+                        "homeValue": 4,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Hit the woodwork",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "4",
+                        "away": "0",
+                        "homeValue": 4,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Touches in opposition box",
+                        "home": "18",
+                        "away": "4",
+                        "homeValue": 18,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Accurate through passes",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Offsides",
+                        "home": "2",
+                        "away": "3",
+                        "homeValue": 2,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Free kicks",
+                        "home": "1",
+                        "away": "5",
+                        "homeValue": 1,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "92% (366/398)",
+                        "away": "77% (129/167)",
+                        "homeValue": 92,
+                        "awayValue": 77
+                    },
+                    {
+                        "name": "Long passes",
+                        "home": "80% (12/15)",
+                        "away": "32% (9/28)",
+                        "homeValue": 80,
+                        "awayValue": 32
+                    },
+                    {
+                        "name": "Passes in final third",
+                        "home": "84% (147/174)",
+                        "away": "59% (10/17)",
+                        "homeValue": 84,
+                        "awayValue": 59
+                    },
+                    {
+                        "name": "Crosses",
+                        "home": "23% (3/13)",
+                        "away": "0% (0/3)",
+                        "homeValue": 23,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Expected assists (xA)",
+                        "home": "1.54",
+                        "away": "0.01",
+                        "homeValue": 1.54,
+                        "awayValue": 0.01
+                    },
+                    {
+                        "name": "Throw ins",
+                        "home": "6",
+                        "away": "10",
+                        "homeValue": 6,
+                        "awayValue": 10
+                    },
+                    {
+                        "name": "Fouls",
+                        "home": "5",
+                        "away": "1",
+                        "homeValue": 5,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Tackles",
+                        "home": "100% (2/2)",
+                        "away": "33% (2/6)",
+                        "homeValue": 100,
+                        "awayValue": 33
+                    },
+                    {
+                        "name": "Duels won",
+                        "home": "16",
+                        "away": "17",
+                        "homeValue": 16,
+                        "awayValue": 17
+                    },
+                    {
+                        "name": "Clearances",
+                        "home": "3",
+                        "away": "11",
+                        "homeValue": 3,
+                        "awayValue": 11
+                    },
+                    {
+                        "name": "Interceptions",
+                        "home": "4",
+                        "away": "7",
+                        "homeValue": 4,
+                        "awayValue": 7
+                    },
+                    {
+                        "name": "Errors leading to shot",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Errors leading to goal",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Goalkeeper saves",
+                        "home": "0",
+                        "away": "4",
+                        "homeValue": 0,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "xGOT faced",
+                        "home": "0.00",
+                        "away": "1.03",
+                        "homeValue": 0,
+                        "awayValue": 1.03
+                    },
+                    {
+                        "name": "Goals prevented",
+                        "home": "0.00",
+                        "away": "1.03",
+                        "homeValue": 0,
+                        "awayValue": 1.03
+                    }
+                ]
+            },
+            {
+                "period": "2nd Half",
+                "statisticsItems": [
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "1.00",
+                        "away": "0.17",
+                        "homeValue": 1,
+                        "awayValue": 0.17
+                    },
+                    {
+                        "name": "Ball possession",
+                        "home": "79%",
+                        "away": "21%",
+                        "homeValue": 79,
+                        "awayValue": 21
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "14",
+                        "away": "3",
+                        "homeValue": 14,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "3",
+                        "away": "1",
+                        "homeValue": 3,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "1",
+                        "away": "1",
+                        "homeValue": 1,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "7",
+                        "away": "1",
+                        "homeValue": 7,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "92% (368/402)",
+                        "away": "68% (76/111)",
+                        "homeValue": 92,
+                        "awayValue": 68
+                    },
+                    {
+                        "name": "Yellow cards",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "1.00",
+                        "away": "0.17",
+                        "homeValue": 1,
+                        "awayValue": 0.17
+                    },
+                    {
+                        "name": "xG on target (xGOT)",
+                        "home": "0.42",
+                        "away": "0.13",
+                        "homeValue": 0.42,
+                        "awayValue": 0.13
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "14",
+                        "away": "3",
+                        "homeValue": 14,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "3",
+                        "away": "1",
+                        "homeValue": 3,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Shots off target",
+                        "home": "7",
+                        "away": "1",
+                        "homeValue": 7,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Blocked shots",
+                        "home": "4",
+                        "away": "1",
+                        "homeValue": 4,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Shots inside the box",
+                        "home": "7",
+                        "away": "1",
+                        "homeValue": 7,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Shots outside the box",
+                        "home": "7",
+                        "away": "2",
+                        "homeValue": 7,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Hit the woodwork",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "1",
+                        "away": "1",
+                        "homeValue": 1,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "7",
+                        "away": "1",
+                        "homeValue": 7,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Touches in opposition box",
+                        "home": "33",
+                        "away": "2",
+                        "homeValue": 33,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Accurate through passes",
+                        "home": "2",
+                        "away": "0",
+                        "homeValue": 2,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Offsides",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Free kicks",
+                        "home": "0",
+                        "away": "5",
+                        "homeValue": 0,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "92% (368/402)",
+                        "away": "68% (76/111)",
+                        "homeValue": 92,
+                        "awayValue": 68
+                    },
+                    {
+                        "name": "Long passes",
+                        "home": "80% (12/15)",
+                        "away": "33% (9/27)",
+                        "homeValue": 80,
+                        "awayValue": 33
+                    },
+                    {
+                        "name": "Passes in final third",
+                        "home": "90% (241/269)",
+                        "away": "33% (6/18)",
+                        "homeValue": 90,
+                        "awayValue": 33
+                    },
+                    {
+                        "name": "Crosses",
+                        "home": "13% (3/23)",
+                        "away": "100% (1/1)",
+                        "homeValue": 13,
+                        "awayValue": 100
+                    },
+                    {
+                        "name": "Expected assists (xA)",
+                        "home": "2.09",
+                        "away": "0.11",
+                        "homeValue": 2.09,
+                        "awayValue": 0.11
+                    },
+                    {
+                        "name": "Throw ins",
+                        "home": "12",
+                        "away": "4",
+                        "homeValue": 12,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Fouls",
+                        "home": "5",
+                        "away": "0",
+                        "homeValue": 5,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Tackles",
+                        "home": "91% (10/11)",
+                        "away": "75% (9/12)",
+                        "homeValue": 91,
+                        "awayValue": 75
+                    },
+                    {
+                        "name": "Duels won",
+                        "home": "22",
+                        "away": "22",
+                        "homeValue": 22,
+                        "awayValue": 22
+                    },
+                    {
+                        "name": "Clearances",
+                        "home": "4",
+                        "away": "34",
+                        "homeValue": 4,
+                        "awayValue": 34
+                    },
+                    {
+                        "name": "Interceptions",
+                        "home": "2",
+                        "away": "8",
+                        "homeValue": 2,
+                        "awayValue": 8
+                    },
+                    {
+                        "name": "Errors leading to shot",
+                        "home": "0",
+                        "away": "2",
+                        "homeValue": 0,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Errors leading to goal",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Goalkeeper saves",
+                        "home": "1",
+                        "away": "3",
+                        "homeValue": 1,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "xGOT faced",
+                        "home": "0.13",
+                        "away": "0.42",
+                        "homeValue": 0.13,
+                        "awayValue": 0.42
+                    },
+                    {
+                        "name": "Goals prevented",
+                        "home": "0.13",
+                        "away": "0.42",
+                        "homeValue": 0.13,
+                        "awayValue": 0.42
+                    }
+                ]
+            }
+        ],
+        "incidents": [
+            {
+                "time": 16,
+                "incidentType": "card",
+                "incidentClass": "yellow",
+                "isHome": false,
+                "player": {
+                    "name": "Lopes Cabral S."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": "S"
+            },
+            {
+                "time": 61,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Cabral J."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 61,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Livramento D."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 61,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Duarte L."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 71,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Ruiz F."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 71,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Gavi"
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 76,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Lopes Cabral S."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 79,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Monteiro J."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 81,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Torres F."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 87,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Rodri"
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 90,
+                "incidentType": "card",
+                "incidentClass": "yellow",
+                "isHome": true,
+                "player": {
+                    "name": "Pedri"
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": "T"
+            }
+        ]
+    },
+    "match-wc14": {
+        "homeScore": 0,
+        "awayScore": 1,
+        "sideQuestions": {
+            "htResult": "away",
+            "firstScorer": "Ashour E.",
+            "redCard": false,
+            "cornersOverUnder": "over"
+        },
+        "statistics": [
+            {
+                "period": "Match",
+                "statisticsItems": [
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "1.35",
+                        "away": "1.08",
+                        "homeValue": 1.35,
+                        "awayValue": 1.08
+                    },
+                    {
+                        "name": "Ball possession",
+                        "home": "54%",
+                        "away": "46%",
+                        "homeValue": 54,
+                        "awayValue": 46
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "15",
+                        "away": "14",
+                        "homeValue": 15,
+                        "awayValue": 14
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "3",
+                        "away": "3",
+                        "homeValue": 3,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "2",
+                        "away": "2",
+                        "homeValue": 2,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "2",
+                        "away": "7",
+                        "homeValue": 2,
+                        "awayValue": 7
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "86% (391/455)",
+                        "away": "81% (323/398)",
+                        "homeValue": 86,
+                        "awayValue": 81
+                    },
+                    {
+                        "name": "Yellow cards",
+                        "home": "2",
+                        "away": "2",
+                        "homeValue": 2,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "1.35",
+                        "away": "1.08",
+                        "homeValue": 1.35,
+                        "awayValue": 1.08
+                    },
+                    {
+                        "name": "xG on target (xGOT)",
+                        "home": "0.64",
+                        "away": "0.61",
+                        "homeValue": 0.64,
+                        "awayValue": 0.61
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "15",
+                        "away": "14",
+                        "homeValue": 15,
+                        "awayValue": 14
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "3",
+                        "away": "3",
+                        "homeValue": 3,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Shots off target",
+                        "home": "7",
+                        "away": "4",
+                        "homeValue": 7,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Blocked shots",
+                        "home": "5",
+                        "away": "7",
+                        "homeValue": 5,
+                        "awayValue": 7
+                    },
+                    {
+                        "name": "Shots inside the box",
+                        "home": "9",
+                        "away": "10",
+                        "homeValue": 9,
+                        "awayValue": 10
+                    },
+                    {
+                        "name": "Shots outside the box",
+                        "home": "6",
+                        "away": "4",
+                        "homeValue": 6,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Hit the woodwork",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "2",
+                        "away": "2",
+                        "homeValue": 2,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "2",
+                        "away": "7",
+                        "homeValue": 2,
+                        "awayValue": 7
+                    },
+                    {
+                        "name": "Touches in opposition box",
+                        "home": "31",
+                        "away": "27",
+                        "homeValue": 31,
+                        "awayValue": 27
+                    },
+                    {
+                        "name": "Accurate through passes",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Offsides",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Free kicks",
+                        "home": "15",
+                        "away": "15",
+                        "homeValue": 15,
+                        "awayValue": 15
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "86% (391/455)",
+                        "away": "81% (323/398)",
+                        "homeValue": 86,
+                        "awayValue": 81
+                    },
+                    {
+                        "name": "Long passes",
+                        "home": "60% (18/30)",
+                        "away": "38% (20/53)",
+                        "homeValue": 60,
+                        "awayValue": 38
+                    },
+                    {
+                        "name": "Passes in final third",
+                        "home": "78% (151/193)",
+                        "away": "68% (62/91)",
+                        "homeValue": 78,
+                        "awayValue": 68
+                    },
+                    {
+                        "name": "Crosses",
+                        "home": "38% (6/16)",
+                        "away": "15% (2/13)",
+                        "homeValue": 38,
+                        "awayValue": 15
+                    },
+                    {
+                        "name": "Expected assists (xA)",
+                        "home": "1.90",
+                        "away": "0.40",
+                        "homeValue": 1.9,
+                        "awayValue": 0.4
+                    },
+                    {
+                        "name": "Throw ins",
+                        "home": "28",
+                        "away": "19",
+                        "homeValue": 28,
+                        "awayValue": 19
+                    },
+                    {
+                        "name": "Fouls",
+                        "home": "15",
+                        "away": "15",
+                        "homeValue": 15,
+                        "awayValue": 15
+                    },
+                    {
+                        "name": "Tackles",
+                        "home": "65% (11/17)",
+                        "away": "61% (17/28)",
+                        "homeValue": 65,
+                        "awayValue": 61
+                    },
+                    {
+                        "name": "Duels won",
+                        "home": "58",
+                        "away": "59",
+                        "homeValue": 58,
+                        "awayValue": 59
+                    },
+                    {
+                        "name": "Clearances",
+                        "home": "25",
+                        "away": "17",
+                        "homeValue": 25,
+                        "awayValue": 17
+                    },
+                    {
+                        "name": "Interceptions",
+                        "home": "10",
+                        "away": "16",
+                        "homeValue": 10,
+                        "awayValue": 16
+                    },
+                    {
+                        "name": "Errors leading to shot",
+                        "home": "2",
+                        "away": "0",
+                        "homeValue": 2,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Errors leading to goal",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Goalkeeper saves",
+                        "home": "2",
+                        "away": "3",
+                        "homeValue": 2,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "xGOT faced",
+                        "home": "0.61",
+                        "away": "0.64",
+                        "homeValue": 0.61,
+                        "awayValue": 0.64
+                    },
+                    {
+                        "name": "Goals prevented",
+                        "home": "-0.39",
+                        "away": "0.64",
+                        "homeValue": -0.39,
+                        "awayValue": 0.64
+                    }
+                ]
+            },
+            {
+                "period": "1st Half",
+                "statisticsItems": [
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.50",
+                        "away": "0.18",
+                        "homeValue": 0.5,
+                        "awayValue": 0.18
+                    },
+                    {
+                        "name": "Ball possession",
+                        "home": "58%",
+                        "away": "42%",
+                        "homeValue": 58,
+                        "awayValue": 42
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "7",
+                        "away": "4",
+                        "homeValue": 7,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "0",
+                        "away": "2",
+                        "homeValue": 0,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "0",
+                        "away": "4",
+                        "homeValue": 0,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "86% (225/263)",
+                        "away": "79% (154/194)",
+                        "homeValue": 86,
+                        "awayValue": 79
+                    },
+                    {
+                        "name": "Yellow cards",
+                        "home": "1",
+                        "away": "2",
+                        "homeValue": 1,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.50",
+                        "away": "0.18",
+                        "homeValue": 0.5,
+                        "awayValue": 0.18
+                    },
+                    {
+                        "name": "xG on target (xGOT)",
+                        "home": "0.00",
+                        "away": "0.23",
+                        "homeValue": 0,
+                        "awayValue": 0.23
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "7",
+                        "away": "4",
+                        "homeValue": 7,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "0",
+                        "away": "2",
+                        "homeValue": 0,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Shots off target",
+                        "home": "3",
+                        "away": "1",
+                        "homeValue": 3,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Blocked shots",
+                        "home": "4",
+                        "away": "1",
+                        "homeValue": 4,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Shots inside the box",
+                        "home": "3",
+                        "away": "2",
+                        "homeValue": 3,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Shots outside the box",
+                        "home": "4",
+                        "away": "2",
+                        "homeValue": 4,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Hit the woodwork",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "0",
+                        "away": "4",
+                        "homeValue": 0,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Touches in opposition box",
+                        "home": "14",
+                        "away": "5",
+                        "homeValue": 14,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Accurate through passes",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Offsides",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Free kicks",
+                        "home": "6",
+                        "away": "10",
+                        "homeValue": 6,
+                        "awayValue": 10
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "86% (225/263)",
+                        "away": "79% (154/194)",
+                        "homeValue": 86,
+                        "awayValue": 79
+                    },
+                    {
+                        "name": "Long passes",
+                        "home": "56% (9/16)",
+                        "away": "32% (8/25)",
+                        "homeValue": 56,
+                        "awayValue": 32
+                    },
+                    {
+                        "name": "Passes in final third",
+                        "home": "75% (83/111)",
+                        "away": "64% (25/39)",
+                        "homeValue": 75,
+                        "awayValue": 64
+                    },
+                    {
+                        "name": "Crosses",
+                        "home": "38% (3/8)",
+                        "away": "0% (0/4)",
+                        "homeValue": 38,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Expected assists (xA)",
+                        "home": "0.88",
+                        "away": "0.07",
+                        "homeValue": 0.88,
+                        "awayValue": 0.07
+                    },
+                    {
+                        "name": "Throw ins",
+                        "home": "19",
+                        "away": "7",
+                        "homeValue": 19,
+                        "awayValue": 7
+                    },
+                    {
+                        "name": "Fouls",
+                        "home": "10",
+                        "away": "6",
+                        "homeValue": 10,
+                        "awayValue": 6
+                    },
+                    {
+                        "name": "Tackles",
+                        "home": "56% (5/9)",
+                        "away": "63% (10/16)",
+                        "homeValue": 56,
+                        "awayValue": 63
+                    },
+                    {
+                        "name": "Duels won",
+                        "home": "34",
+                        "away": "31",
+                        "homeValue": 34,
+                        "awayValue": 31
+                    },
+                    {
+                        "name": "Clearances",
+                        "home": "8",
+                        "away": "12",
+                        "homeValue": 8,
+                        "awayValue": 12
+                    },
+                    {
+                        "name": "Interceptions",
+                        "home": "4",
+                        "away": "9",
+                        "homeValue": 4,
+                        "awayValue": 9
+                    },
+                    {
+                        "name": "Errors leading to shot",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Errors leading to goal",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Goalkeeper saves",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "xGOT faced",
+                        "home": "0.23",
+                        "away": "0.00",
+                        "homeValue": 0.23,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Goals prevented",
+                        "home": "-0.77",
+                        "away": "0.00",
+                        "homeValue": -0.77,
+                        "awayValue": 0
+                    }
+                ]
+            },
+            {
+                "period": "2nd Half",
+                "statisticsItems": [
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.85",
+                        "away": "0.90",
+                        "homeValue": 0.85,
+                        "awayValue": 0.9
+                    },
+                    {
+                        "name": "Ball possession",
+                        "home": "49%",
+                        "away": "51%",
+                        "homeValue": 49,
+                        "awayValue": 51
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "8",
+                        "away": "10",
+                        "homeValue": 8,
+                        "awayValue": 10
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "3",
+                        "away": "1",
+                        "homeValue": 3,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "2",
+                        "away": "2",
+                        "homeValue": 2,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "2",
+                        "away": "3",
+                        "homeValue": 2,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "86% (166/192)",
+                        "away": "83% (169/204)",
+                        "homeValue": 86,
+                        "awayValue": 83
+                    },
+                    {
+                        "name": "Yellow cards",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.85",
+                        "away": "0.90",
+                        "homeValue": 0.85,
+                        "awayValue": 0.9
+                    },
+                    {
+                        "name": "xG on target (xGOT)",
+                        "home": "0.64",
+                        "away": "0.38",
+                        "homeValue": 0.64,
+                        "awayValue": 0.38
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "8",
+                        "away": "10",
+                        "homeValue": 8,
+                        "awayValue": 10
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "3",
+                        "away": "1",
+                        "homeValue": 3,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Shots off target",
+                        "home": "4",
+                        "away": "3",
+                        "homeValue": 4,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Blocked shots",
+                        "home": "1",
+                        "away": "6",
+                        "homeValue": 1,
+                        "awayValue": 6
+                    },
+                    {
+                        "name": "Shots inside the box",
+                        "home": "6",
+                        "away": "8",
+                        "homeValue": 6,
+                        "awayValue": 8
+                    },
+                    {
+                        "name": "Shots outside the box",
+                        "home": "2",
+                        "away": "2",
+                        "homeValue": 2,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Hit the woodwork",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "2",
+                        "away": "2",
+                        "homeValue": 2,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "2",
+                        "away": "3",
+                        "homeValue": 2,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Touches in opposition box",
+                        "home": "17",
+                        "away": "22",
+                        "homeValue": 17,
+                        "awayValue": 22
+                    },
+                    {
+                        "name": "Accurate through passes",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Offsides",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Free kicks",
+                        "home": "9",
+                        "away": "5",
+                        "homeValue": 9,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "86% (166/192)",
+                        "away": "83% (169/204)",
+                        "homeValue": 86,
+                        "awayValue": 83
+                    },
+                    {
+                        "name": "Long passes",
+                        "home": "64% (9/14)",
+                        "away": "43% (12/28)",
+                        "homeValue": 64,
+                        "awayValue": 43
+                    },
+                    {
+                        "name": "Passes in final third",
+                        "home": "83% (68/82)",
+                        "away": "71% (37/52)",
+                        "homeValue": 83,
+                        "awayValue": 71
+                    },
+                    {
+                        "name": "Crosses",
+                        "home": "38% (3/8)",
+                        "away": "22% (2/9)",
+                        "homeValue": 38,
+                        "awayValue": 22
+                    },
+                    {
+                        "name": "Expected assists (xA)",
+                        "home": "1.02",
+                        "away": "0.33",
+                        "homeValue": 1.02,
+                        "awayValue": 0.33
+                    },
+                    {
+                        "name": "Throw ins",
+                        "home": "9",
+                        "away": "12",
+                        "homeValue": 9,
+                        "awayValue": 12
+                    },
+                    {
+                        "name": "Fouls",
+                        "home": "5",
+                        "away": "9",
+                        "homeValue": 5,
+                        "awayValue": 9
+                    },
+                    {
+                        "name": "Tackles",
+                        "home": "75% (6/8)",
+                        "away": "58% (7/12)",
+                        "homeValue": 75,
+                        "awayValue": 58
+                    },
+                    {
+                        "name": "Duels won",
+                        "home": "24",
+                        "away": "28",
+                        "homeValue": 24,
+                        "awayValue": 28
+                    },
+                    {
+                        "name": "Clearances",
+                        "home": "17",
+                        "away": "5",
+                        "homeValue": 17,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Interceptions",
+                        "home": "6",
+                        "away": "7",
+                        "homeValue": 6,
+                        "awayValue": 7
+                    },
+                    {
+                        "name": "Errors leading to shot",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Errors leading to goal",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Goalkeeper saves",
+                        "home": "1",
+                        "away": "3",
+                        "homeValue": 1,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "xGOT faced",
+                        "home": "0.38",
+                        "away": "0.64",
+                        "homeValue": 0.38,
+                        "awayValue": 0.64
+                    },
+                    {
+                        "name": "Goals prevented",
+                        "home": "0.38",
+                        "away": "0.64",
+                        "homeValue": 0.38,
+                        "awayValue": 0.64
+                    }
+                ]
+            }
+        ],
+        "incidents": [
+            {
+                "time": 13,
+                "incidentType": "card",
+                "incidentClass": "yellow",
+                "isHome": false,
+                "player": {
+                    "name": "Attia M."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": "T"
+            },
+            {
+                "time": 14,
+                "incidentType": "card",
+                "incidentClass": "yellow",
+                "isHome": true,
+                "player": {
+                    "name": "Castagne T."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": "T"
+            },
+            {
+                "time": 20,
+                "incidentType": "goal",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Ashour E."
+                },
+                "assist": {
+                    "name": "Salah M."
+                },
+                "homeScore": "0",
+                "awayScore": "1",
+                "description": "Goal! Emam Ashour (Egypt) neatly controls a decent pass from Mohamed Salah. He looks up and smashes an unstoppable drive into the bottom left corner from the edge of the box. 0:1."
+            },
+            {
+                "time": 34,
+                "incidentType": "card",
+                "incidentClass": "yellow",
+                "isHome": false,
+                "player": {
+                    "name": "Fatouh A."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": "A"
+            },
+            {
+                "time": 56,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Castagne T."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 56,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Onana A."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 66,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "De Ketelaere C."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 66,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Hany M."
+                },
+                "assist": null,
+                "homeScore": "1",
+                "awayScore": "1",
+                "description": "O"
+            },
+            {
+                "time": 71,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Ashour E."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 75,
+                "incidentType": "card",
+                "incidentClass": "yellow",
+                "isHome": true,
+                "player": {
+                    "name": "De Cuyper M."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": "M"
+            },
+            {
+                "time": 76,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Ziko M."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 76,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Salah M."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 86,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Doku J."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 86,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "De Bruyne K."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 88,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Fathy H."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 88,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Fatouh A."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            }
+        ]
+    },
+    "match-wc15": {
+        "homeScore": 1,
+        "awayScore": 1,
+        "sideQuestions": {
+            "htResult": "home",
+            "firstScorer": "Al Amri A.",
+            "redCard": false,
+            "cornersOverUnder": "over"
+        },
+        "statistics": [
+            {
+                "period": "Match",
+                "statisticsItems": [
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.66",
+                        "away": "1.72",
+                        "homeValue": 0.66,
+                        "awayValue": 1.72
+                    },
+                    {
+                        "name": "Ball possession",
+                        "home": "33%",
+                        "away": "67%",
+                        "homeValue": 33,
+                        "awayValue": 67
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "7",
+                        "away": "27",
+                        "homeValue": 7,
+                        "awayValue": 27
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "3",
+                        "away": "10",
+                        "homeValue": 3,
+                        "awayValue": 10
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "1",
+                        "away": "2",
+                        "homeValue": 1,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "4",
+                        "away": "14",
+                        "homeValue": 4,
+                        "awayValue": 14
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "73% (236/322)",
+                        "away": "88% (540/612)",
+                        "homeValue": 73,
+                        "awayValue": 88
+                    },
+                    {
+                        "name": "Yellow cards",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.66",
+                        "away": "1.72",
+                        "homeValue": 0.66,
+                        "awayValue": 1.72
+                    },
+                    {
+                        "name": "xG on target (xGOT)",
+                        "home": "0.65",
+                        "away": "1.69",
+                        "homeValue": 0.65,
+                        "awayValue": 1.69
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "7",
+                        "away": "27",
+                        "homeValue": 7,
+                        "awayValue": 27
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "3",
+                        "away": "10",
+                        "homeValue": 3,
+                        "awayValue": 10
+                    },
+                    {
+                        "name": "Shots off target",
+                        "home": "3",
+                        "away": "10",
+                        "homeValue": 3,
+                        "awayValue": 10
+                    },
+                    {
+                        "name": "Blocked shots",
+                        "home": "1",
+                        "away": "7",
+                        "homeValue": 1,
+                        "awayValue": 7
+                    },
+                    {
+                        "name": "Shots inside the box",
+                        "home": "4",
+                        "away": "16",
+                        "homeValue": 4,
+                        "awayValue": 16
+                    },
+                    {
+                        "name": "Shots outside the box",
+                        "home": "3",
+                        "away": "11",
+                        "homeValue": 3,
+                        "awayValue": 11
+                    },
+                    {
+                        "name": "Hit the woodwork",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "1",
+                        "away": "2",
+                        "homeValue": 1,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "4",
+                        "away": "14",
+                        "homeValue": 4,
+                        "awayValue": 14
+                    },
+                    {
+                        "name": "Touches in opposition box",
+                        "home": "10",
+                        "away": "41",
+                        "homeValue": 10,
+                        "awayValue": 41
+                    },
+                    {
+                        "name": "Accurate through passes",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Offsides",
+                        "home": "0",
+                        "away": "6",
+                        "homeValue": 0,
+                        "awayValue": 6
+                    },
+                    {
+                        "name": "Free kicks",
+                        "home": "6",
+                        "away": "11",
+                        "homeValue": 6,
+                        "awayValue": 11
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "73% (236/322)",
+                        "away": "88% (540/612)",
+                        "homeValue": 73,
+                        "awayValue": 88
+                    },
+                    {
+                        "name": "Long passes",
+                        "home": "24% (10/41)",
+                        "away": "59% (24/41)",
+                        "homeValue": 24,
+                        "awayValue": 59
+                    },
+                    {
+                        "name": "Passes in final third",
+                        "home": "53% (38/72)",
+                        "away": "83% (169/204)",
+                        "homeValue": 53,
+                        "awayValue": 83
+                    },
+                    {
+                        "name": "Crosses",
+                        "home": "50% (3/6)",
+                        "away": "34% (16/47)",
+                        "homeValue": 50,
+                        "awayValue": 34
+                    },
+                    {
+                        "name": "Expected assists (xA)",
+                        "home": "0.41",
+                        "away": "1.68",
+                        "homeValue": 0.41,
+                        "awayValue": 1.68
+                    },
+                    {
+                        "name": "Throw ins",
+                        "home": "18",
+                        "away": "20",
+                        "homeValue": 18,
+                        "awayValue": 20
+                    },
+                    {
+                        "name": "Fouls",
+                        "home": "11",
+                        "away": "6",
+                        "homeValue": 11,
+                        "awayValue": 6
+                    },
+                    {
+                        "name": "Tackles",
+                        "home": "73% (8/11)",
+                        "away": "67% (2/3)",
+                        "homeValue": 73,
+                        "awayValue": 67
+                    },
+                    {
+                        "name": "Duels won",
+                        "home": "41",
+                        "away": "42",
+                        "homeValue": 41,
+                        "awayValue": 42
+                    },
+                    {
+                        "name": "Clearances",
+                        "home": "42",
+                        "away": "18",
+                        "homeValue": 42,
+                        "awayValue": 18
+                    },
+                    {
+                        "name": "Interceptions",
+                        "home": "9",
+                        "away": "10",
+                        "homeValue": 9,
+                        "awayValue": 10
+                    },
+                    {
+                        "name": "Errors leading to shot",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Errors leading to goal",
+                        "home": "1",
+                        "away": "1",
+                        "homeValue": 1,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Goalkeeper saves",
+                        "home": "9",
+                        "away": "2",
+                        "homeValue": 9,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "xGOT faced",
+                        "home": "1.69",
+                        "away": "0.65",
+                        "homeValue": 1.69,
+                        "awayValue": 0.65
+                    },
+                    {
+                        "name": "Goals prevented",
+                        "home": "0.69",
+                        "away": "-0.35",
+                        "homeValue": 0.69,
+                        "awayValue": -0.35
+                    }
+                ]
+            },
+            {
+                "period": "1st Half",
+                "statisticsItems": [
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.60",
+                        "away": "0.57",
+                        "homeValue": 0.6,
+                        "awayValue": 0.57
+                    },
+                    {
+                        "name": "Ball possession",
+                        "home": "41%",
+                        "away": "59%",
+                        "homeValue": 41,
+                        "awayValue": 59
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "5",
+                        "away": "5",
+                        "homeValue": 5,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "3",
+                        "away": "2",
+                        "homeValue": 3,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "4",
+                        "away": "2",
+                        "homeValue": 4,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "77% (158/204)",
+                        "away": "85% (243/287)",
+                        "homeValue": 77,
+                        "awayValue": 85
+                    },
+                    {
+                        "name": "Yellow cards",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.60",
+                        "away": "0.57",
+                        "homeValue": 0.6,
+                        "awayValue": 0.57
+                    },
+                    {
+                        "name": "xG on target (xGOT)",
+                        "home": "0.65",
+                        "away": "0.39",
+                        "homeValue": 0.65,
+                        "awayValue": 0.39
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "5",
+                        "away": "5",
+                        "homeValue": 5,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "3",
+                        "away": "2",
+                        "homeValue": 3,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Shots off target",
+                        "home": "2",
+                        "away": "2",
+                        "homeValue": 2,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Blocked shots",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Shots inside the box",
+                        "home": "3",
+                        "away": "4",
+                        "homeValue": 3,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Shots outside the box",
+                        "home": "2",
+                        "away": "1",
+                        "homeValue": 2,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Hit the woodwork",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "4",
+                        "away": "2",
+                        "homeValue": 4,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Touches in opposition box",
+                        "home": "6",
+                        "away": "11",
+                        "homeValue": 6,
+                        "awayValue": 11
+                    },
+                    {
+                        "name": "Accurate through passes",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Offsides",
+                        "home": "0",
+                        "away": "3",
+                        "homeValue": 0,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Free kicks",
+                        "home": "5",
+                        "away": "5",
+                        "homeValue": 5,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "77% (158/204)",
+                        "away": "85% (243/287)",
+                        "homeValue": 77,
+                        "awayValue": 85
+                    },
+                    {
+                        "name": "Long passes",
+                        "home": "26% (5/19)",
+                        "away": "56% (14/25)",
+                        "homeValue": 26,
+                        "awayValue": 56
+                    },
+                    {
+                        "name": "Passes in final third",
+                        "home": "51% (23/45)",
+                        "away": "63% (38/60)",
+                        "homeValue": 51,
+                        "awayValue": 63
+                    },
+                    {
+                        "name": "Crosses",
+                        "home": "50% (3/6)",
+                        "away": "30% (3/10)",
+                        "homeValue": 50,
+                        "awayValue": 30
+                    },
+                    {
+                        "name": "Expected assists (xA)",
+                        "home": "0.36",
+                        "away": "0.62",
+                        "homeValue": 0.36,
+                        "awayValue": 0.62
+                    },
+                    {
+                        "name": "Throw ins",
+                        "home": "8",
+                        "away": "7",
+                        "homeValue": 8,
+                        "awayValue": 7
+                    },
+                    {
+                        "name": "Fouls",
+                        "home": "5",
+                        "away": "5",
+                        "homeValue": 5,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Tackles",
+                        "home": "67% (4/6)",
+                        "away": "50% (1/2)",
+                        "homeValue": 67,
+                        "awayValue": 50
+                    },
+                    {
+                        "name": "Duels won",
+                        "home": "22",
+                        "away": "23",
+                        "homeValue": 22,
+                        "awayValue": 23
+                    },
+                    {
+                        "name": "Clearances",
+                        "home": "10",
+                        "away": "12",
+                        "homeValue": 10,
+                        "awayValue": 12
+                    },
+                    {
+                        "name": "Interceptions",
+                        "home": "5",
+                        "away": "6",
+                        "homeValue": 5,
+                        "awayValue": 6
+                    },
+                    {
+                        "name": "Errors leading to shot",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Errors leading to goal",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Goalkeeper saves",
+                        "home": "2",
+                        "away": "2",
+                        "homeValue": 2,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "xGOT faced",
+                        "home": "0.39",
+                        "away": "0.65",
+                        "homeValue": 0.39,
+                        "awayValue": 0.65
+                    },
+                    {
+                        "name": "Goals prevented",
+                        "home": "0.39",
+                        "away": "-0.35",
+                        "homeValue": 0.39,
+                        "awayValue": -0.35
+                    }
+                ]
+            },
+            {
+                "period": "2nd Half",
+                "statisticsItems": [
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.06",
+                        "away": "1.15",
+                        "homeValue": 0.06,
+                        "awayValue": 1.15
+                    },
+                    {
+                        "name": "Ball possession",
+                        "home": "25%",
+                        "away": "75%",
+                        "homeValue": 25,
+                        "awayValue": 75
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "2",
+                        "away": "22",
+                        "homeValue": 2,
+                        "awayValue": 22
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "0",
+                        "away": "8",
+                        "homeValue": 0,
+                        "awayValue": 8
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "0",
+                        "away": "2",
+                        "homeValue": 0,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "0",
+                        "away": "12",
+                        "homeValue": 0,
+                        "awayValue": 12
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "66% (78/118)",
+                        "away": "91% (297/325)",
+                        "homeValue": 66,
+                        "awayValue": 91
+                    },
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.06",
+                        "away": "1.15",
+                        "homeValue": 0.06,
+                        "awayValue": 1.15
+                    },
+                    {
+                        "name": "xG on target (xGOT)",
+                        "home": "0.00",
+                        "away": "1.30",
+                        "homeValue": 0,
+                        "awayValue": 1.3
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "2",
+                        "away": "22",
+                        "homeValue": 2,
+                        "awayValue": 22
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "0",
+                        "away": "8",
+                        "homeValue": 0,
+                        "awayValue": 8
+                    },
+                    {
+                        "name": "Shots off target",
+                        "home": "1",
+                        "away": "8",
+                        "homeValue": 1,
+                        "awayValue": 8
+                    },
+                    {
+                        "name": "Blocked shots",
+                        "home": "1",
+                        "away": "6",
+                        "homeValue": 1,
+                        "awayValue": 6
+                    },
+                    {
+                        "name": "Shots inside the box",
+                        "home": "1",
+                        "away": "12",
+                        "homeValue": 1,
+                        "awayValue": 12
+                    },
+                    {
+                        "name": "Shots outside the box",
+                        "home": "1",
+                        "away": "10",
+                        "homeValue": 1,
+                        "awayValue": 10
+                    },
+                    {
+                        "name": "Hit the woodwork",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "0",
+                        "away": "2",
+                        "homeValue": 0,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "0",
+                        "away": "12",
+                        "homeValue": 0,
+                        "awayValue": 12
+                    },
+                    {
+                        "name": "Touches in opposition box",
+                        "home": "4",
+                        "away": "30",
+                        "homeValue": 4,
+                        "awayValue": 30
+                    },
+                    {
+                        "name": "Accurate through passes",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Offsides",
+                        "home": "0",
+                        "away": "3",
+                        "homeValue": 0,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Free kicks",
+                        "home": "1",
+                        "away": "6",
+                        "homeValue": 1,
+                        "awayValue": 6
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "66% (78/118)",
+                        "away": "91% (297/325)",
+                        "homeValue": 66,
+                        "awayValue": 91
+                    },
+                    {
+                        "name": "Long passes",
+                        "home": "23% (5/22)",
+                        "away": "63% (10/16)",
+                        "homeValue": 23,
+                        "awayValue": 63
+                    },
+                    {
+                        "name": "Passes in final third",
+                        "home": "56% (15/27)",
+                        "away": "91% (131/144)",
+                        "homeValue": 56,
+                        "awayValue": 91
+                    },
+                    {
+                        "name": "Expected assists (xA)",
+                        "home": "0.05",
+                        "away": "1.06",
+                        "homeValue": 0.05,
+                        "awayValue": 1.06
+                    },
+                    {
+                        "name": "Throw ins",
+                        "home": "10",
+                        "away": "13",
+                        "homeValue": 10,
+                        "awayValue": 13
+                    },
+                    {
+                        "name": "Fouls",
+                        "home": "6",
+                        "away": "1",
+                        "homeValue": 6,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Tackles",
+                        "home": "80% (4/5)",
+                        "away": "100% (1/1)",
+                        "homeValue": 80,
+                        "awayValue": 100
+                    },
+                    {
+                        "name": "Duels won",
+                        "home": "19",
+                        "away": "19",
+                        "homeValue": 19,
+                        "awayValue": 19
+                    },
+                    {
+                        "name": "Clearances",
+                        "home": "32",
+                        "away": "6",
+                        "homeValue": 32,
+                        "awayValue": 6
+                    },
+                    {
+                        "name": "Interceptions",
+                        "home": "4",
+                        "away": "4",
+                        "homeValue": 4,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Errors leading to shot",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Errors leading to goal",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Goalkeeper saves",
+                        "home": "7",
+                        "away": "0",
+                        "homeValue": 7,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "xGOT faced",
+                        "home": "1.30",
+                        "away": "0.00",
+                        "homeValue": 1.3,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Goals prevented",
+                        "home": "0.30",
+                        "away": "0.00",
+                        "homeValue": 0.3,
+                        "awayValue": 0
+                    }
+                ]
+            }
+        ],
+        "incidents": [
+            {
+                "time": 41,
+                "incidentType": "goal",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Al Amri A."
+                },
+                "assist": null,
+                "homeScore": "1",
+                "awayScore": "0",
+                "description": "G"
+            },
+            {
+                "time": 44,
+                "incidentType": "card",
+                "incidentClass": "yellow",
+                "isHome": true,
+                "player": {
+                    "name": "Al Amri A."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": "T"
+            },
+            {
+                "time": 46,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Vina M."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 46,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Nunez D."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 63,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Al Juwayr M."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 72,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Ugarte M."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 80,
+                "incidentType": "goal",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Araujo M."
+                },
+                "assist": null,
+                "homeScore": "1",
+                "awayScore": "1",
+                "description": "G"
+            },
+            {
+                "time": 81,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Araujo M."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 81,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Abu Al Shamat M."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 90,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Vinas F."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 90,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Abdulhamid S."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 90,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Al Harbi M."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 90,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Al Buraikan F."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            }
+        ]
+    },
+    "match-wc16": {
+        "homeScore": 2,
+        "awayScore": 2,
+        "sideQuestions": {
+            "htResult": "draw",
+            "firstScorer": "Just E.",
+            "redCard": false,
+            "cornersOverUnder": "under"
+        },
+        "statistics": [
+            {
+                "period": "Match",
+                "statisticsItems": [
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "1.50",
+                        "away": "1.24",
+                        "homeValue": 1.5,
+                        "awayValue": 1.24
+                    },
+                    {
+                        "name": "Ball possession",
+                        "home": "48%",
+                        "away": "52%",
+                        "homeValue": 48,
+                        "awayValue": 52
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "17",
+                        "away": "14",
+                        "homeValue": 17,
+                        "awayValue": 14
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "4",
+                        "away": "8",
+                        "homeValue": 4,
+                        "awayValue": 8
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "2",
+                        "away": "2",
+                        "homeValue": 2,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "4",
+                        "away": "1",
+                        "homeValue": 4,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "77% (314/409)",
+                        "away": "84% (376/446)",
+                        "homeValue": 77,
+                        "awayValue": 84
+                    },
+                    {
+                        "name": "Yellow cards",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "1.50",
+                        "away": "1.24",
+                        "homeValue": 1.5,
+                        "awayValue": 1.24
+                    },
+                    {
+                        "name": "xG on target (xGOT)",
+                        "home": "1.71",
+                        "away": "1.00",
+                        "homeValue": 1.71,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "17",
+                        "away": "14",
+                        "homeValue": 17,
+                        "awayValue": 14
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "4",
+                        "away": "8",
+                        "homeValue": 4,
+                        "awayValue": 8
+                    },
+                    {
+                        "name": "Shots off target",
+                        "home": "8",
+                        "away": "4",
+                        "homeValue": 8,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Blocked shots",
+                        "home": "5",
+                        "away": "2",
+                        "homeValue": 5,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Shots inside the box",
+                        "home": "10",
+                        "away": "10",
+                        "homeValue": 10,
+                        "awayValue": 10
+                    },
+                    {
+                        "name": "Shots outside the box",
+                        "home": "7",
+                        "away": "4",
+                        "homeValue": 7,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Hit the woodwork",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Headed goals",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "2",
+                        "away": "2",
+                        "homeValue": 2,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "4",
+                        "away": "1",
+                        "homeValue": 4,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Touches in opposition box",
+                        "home": "25",
+                        "away": "21",
+                        "homeValue": 25,
+                        "awayValue": 21
+                    },
+                    {
+                        "name": "Accurate through passes",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Offsides",
+                        "home": "2",
+                        "away": "0",
+                        "homeValue": 2,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Free kicks",
+                        "home": "8",
+                        "away": "10",
+                        "homeValue": 8,
+                        "awayValue": 10
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "77% (314/409)",
+                        "away": "84% (376/446)",
+                        "homeValue": 77,
+                        "awayValue": 84
+                    },
+                    {
+                        "name": "Long passes",
+                        "home": "44% (27/61)",
+                        "away": "53% (21/40)",
+                        "homeValue": 44,
+                        "awayValue": 53
+                    },
+                    {
+                        "name": "Passes in final third",
+                        "home": "61% (67/110)",
+                        "away": "74% (73/99)",
+                        "homeValue": 61,
+                        "awayValue": 74
+                    },
+                    {
+                        "name": "Crosses",
+                        "home": "32% (6/19)",
+                        "away": "8% (1/12)",
+                        "homeValue": 32,
+                        "awayValue": 8
+                    },
+                    {
+                        "name": "Expected assists (xA)",
+                        "home": "0.67",
+                        "away": "0.47",
+                        "homeValue": 0.67,
+                        "awayValue": 0.47
+                    },
+                    {
+                        "name": "Throw ins",
+                        "home": "25",
+                        "away": "16",
+                        "homeValue": 25,
+                        "awayValue": 16
+                    },
+                    {
+                        "name": "Fouls",
+                        "home": "10",
+                        "away": "8",
+                        "homeValue": 10,
+                        "awayValue": 8
+                    },
+                    {
+                        "name": "Tackles",
+                        "home": "59% (10/17)",
+                        "away": "77% (10/13)",
+                        "homeValue": 59,
+                        "awayValue": 77
+                    },
+                    {
+                        "name": "Duels won",
+                        "home": "54",
+                        "away": "43",
+                        "homeValue": 54,
+                        "awayValue": 43
+                    },
+                    {
+                        "name": "Clearances",
+                        "home": "27",
+                        "away": "26",
+                        "homeValue": 27,
+                        "awayValue": 26
+                    },
+                    {
+                        "name": "Interceptions",
+                        "home": "11",
+                        "away": "15",
+                        "homeValue": 11,
+                        "awayValue": 15
+                    },
+                    {
+                        "name": "Errors leading to shot",
+                        "home": "1",
+                        "away": "1",
+                        "homeValue": 1,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Errors leading to goal",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Goalkeeper saves",
+                        "home": "6",
+                        "away": "2",
+                        "homeValue": 6,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "xGOT faced",
+                        "home": "1.00",
+                        "away": "1.71",
+                        "homeValue": 1,
+                        "awayValue": 1.71
+                    },
+                    {
+                        "name": "Goals prevented",
+                        "home": "-1.00",
+                        "away": "-0.29",
+                        "homeValue": -1,
+                        "awayValue": -0.29
+                    }
+                ]
+            },
+            {
+                "period": "1st Half",
+                "statisticsItems": [
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.82",
+                        "away": "0.50",
+                        "homeValue": 0.82,
+                        "awayValue": 0.5
+                    },
+                    {
+                        "name": "Ball possession",
+                        "home": "49%",
+                        "away": "51%",
+                        "homeValue": 49,
+                        "awayValue": 51
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "7",
+                        "away": "9",
+                        "homeValue": 7,
+                        "awayValue": 9
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "2",
+                        "away": "5",
+                        "homeValue": 2,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "1",
+                        "away": "1",
+                        "homeValue": 1,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "80% (193/241)",
+                        "away": "87% (217/250)",
+                        "homeValue": 80,
+                        "awayValue": 87
+                    },
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.82",
+                        "away": "0.50",
+                        "homeValue": 0.82,
+                        "awayValue": 0.5
+                    },
+                    {
+                        "name": "xG on target (xGOT)",
+                        "home": "0.83",
+                        "away": "0.65",
+                        "homeValue": 0.83,
+                        "awayValue": 0.65
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "7",
+                        "away": "9",
+                        "homeValue": 7,
+                        "awayValue": 9
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "2",
+                        "away": "5",
+                        "homeValue": 2,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Shots off target",
+                        "home": "4",
+                        "away": "2",
+                        "homeValue": 4,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Blocked shots",
+                        "home": "1",
+                        "away": "2",
+                        "homeValue": 1,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Shots inside the box",
+                        "home": "5",
+                        "away": "6",
+                        "homeValue": 5,
+                        "awayValue": 6
+                    },
+                    {
+                        "name": "Shots outside the box",
+                        "home": "2",
+                        "away": "3",
+                        "homeValue": 2,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Hit the woodwork",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "1",
+                        "away": "1",
+                        "homeValue": 1,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Touches in opposition box",
+                        "home": "9",
+                        "away": "14",
+                        "homeValue": 9,
+                        "awayValue": 14
+                    },
+                    {
+                        "name": "Accurate through passes",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Offsides",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Free kicks",
+                        "home": "4",
+                        "away": "2",
+                        "homeValue": 4,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "80% (193/241)",
+                        "away": "87% (217/250)",
+                        "homeValue": 80,
+                        "awayValue": 87
+                    },
+                    {
+                        "name": "Long passes",
+                        "home": "44% (14/32)",
+                        "away": "56% (10/18)",
+                        "homeValue": 44,
+                        "awayValue": 56
+                    },
+                    {
+                        "name": "Passes in final third",
+                        "home": "61% (31/51)",
+                        "away": "76% (47/62)",
+                        "homeValue": 61,
+                        "awayValue": 76
+                    },
+                    {
+                        "name": "Crosses",
+                        "home": "20% (1/5)",
+                        "away": "0% (0/8)",
+                        "homeValue": 20,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Expected assists (xA)",
+                        "home": "0.15",
+                        "away": "0.18",
+                        "homeValue": 0.15,
+                        "awayValue": 0.18
+                    },
+                    {
+                        "name": "Throw ins",
+                        "home": "8",
+                        "away": "9",
+                        "homeValue": 8,
+                        "awayValue": 9
+                    },
+                    {
+                        "name": "Fouls",
+                        "home": "2",
+                        "away": "4",
+                        "homeValue": 2,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Tackles",
+                        "home": "56% (5/9)",
+                        "away": "60% (3/5)",
+                        "homeValue": 56,
+                        "awayValue": 60
+                    },
+                    {
+                        "name": "Duels won",
+                        "home": "28",
+                        "away": "16",
+                        "homeValue": 28,
+                        "awayValue": 16
+                    },
+                    {
+                        "name": "Clearances",
+                        "home": "16",
+                        "away": "10",
+                        "homeValue": 16,
+                        "awayValue": 10
+                    },
+                    {
+                        "name": "Interceptions",
+                        "home": "8",
+                        "away": "12",
+                        "homeValue": 8,
+                        "awayValue": 12
+                    },
+                    {
+                        "name": "Errors leading to shot",
+                        "home": "1",
+                        "away": "1",
+                        "homeValue": 1,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Errors leading to goal",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Goalkeeper saves",
+                        "home": "4",
+                        "away": "1",
+                        "homeValue": 4,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "xGOT faced",
+                        "home": "0.65",
+                        "away": "0.83",
+                        "homeValue": 0.65,
+                        "awayValue": 0.83
+                    },
+                    {
+                        "name": "Goals prevented",
+                        "home": "-0.35",
+                        "away": "-0.17",
+                        "homeValue": -0.35,
+                        "awayValue": -0.17
+                    }
+                ]
+            },
+            {
+                "period": "2nd Half",
+                "statisticsItems": [
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.68",
+                        "away": "0.74",
+                        "homeValue": 0.68,
+                        "awayValue": 0.74
+                    },
+                    {
+                        "name": "Ball possession",
+                        "home": "48%",
+                        "away": "52%",
+                        "homeValue": 48,
+                        "awayValue": 52
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "10",
+                        "away": "5",
+                        "homeValue": 10,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "2",
+                        "away": "3",
+                        "homeValue": 2,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "1",
+                        "away": "1",
+                        "homeValue": 1,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "4",
+                        "away": "0",
+                        "homeValue": 4,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "72% (121/168)",
+                        "away": "81% (159/196)",
+                        "homeValue": 72,
+                        "awayValue": 81
+                    },
+                    {
+                        "name": "Yellow cards",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.68",
+                        "away": "0.74",
+                        "homeValue": 0.68,
+                        "awayValue": 0.74
+                    },
+                    {
+                        "name": "xG on target (xGOT)",
+                        "home": "0.88",
+                        "away": "0.35",
+                        "homeValue": 0.88,
+                        "awayValue": 0.35
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "10",
+                        "away": "5",
+                        "homeValue": 10,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "2",
+                        "away": "3",
+                        "homeValue": 2,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Shots off target",
+                        "home": "4",
+                        "away": "2",
+                        "homeValue": 4,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Blocked shots",
+                        "home": "4",
+                        "away": "0",
+                        "homeValue": 4,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Shots inside the box",
+                        "home": "5",
+                        "away": "4",
+                        "homeValue": 5,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Shots outside the box",
+                        "home": "5",
+                        "away": "1",
+                        "homeValue": 5,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Hit the woodwork",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Headed goals",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "1",
+                        "away": "1",
+                        "homeValue": 1,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "4",
+                        "away": "0",
+                        "homeValue": 4,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Touches in opposition box",
+                        "home": "16",
+                        "away": "7",
+                        "homeValue": 16,
+                        "awayValue": 7
+                    },
+                    {
+                        "name": "Accurate through passes",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Offsides",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Free kicks",
+                        "home": "4",
+                        "away": "8",
+                        "homeValue": 4,
+                        "awayValue": 8
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "72% (121/168)",
+                        "away": "81% (159/196)",
+                        "homeValue": 72,
+                        "awayValue": 81
+                    },
+                    {
+                        "name": "Long passes",
+                        "home": "45% (13/29)",
+                        "away": "50% (11/22)",
+                        "homeValue": 45,
+                        "awayValue": 50
+                    },
+                    {
+                        "name": "Passes in final third",
+                        "home": "61% (36/59)",
+                        "away": "70% (26/37)",
+                        "homeValue": 61,
+                        "awayValue": 70
+                    },
+                    {
+                        "name": "Crosses",
+                        "home": "36% (5/14)",
+                        "away": "25% (1/4)",
+                        "homeValue": 36,
+                        "awayValue": 25
+                    },
+                    {
+                        "name": "Expected assists (xA)",
+                        "home": "0.52",
+                        "away": "0.29",
+                        "homeValue": 0.52,
+                        "awayValue": 0.29
+                    },
+                    {
+                        "name": "Throw ins",
+                        "home": "17",
+                        "away": "7",
+                        "homeValue": 17,
+                        "awayValue": 7
+                    },
+                    {
+                        "name": "Fouls",
+                        "home": "8",
+                        "away": "4",
+                        "homeValue": 8,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Tackles",
+                        "home": "63% (5/8)",
+                        "away": "88% (7/8)",
+                        "homeValue": 63,
+                        "awayValue": 88
+                    },
+                    {
+                        "name": "Duels won",
+                        "home": "26",
+                        "away": "27",
+                        "homeValue": 26,
+                        "awayValue": 27
+                    },
+                    {
+                        "name": "Clearances",
+                        "home": "11",
+                        "away": "16",
+                        "homeValue": 11,
+                        "awayValue": 16
+                    },
+                    {
+                        "name": "Interceptions",
+                        "home": "3",
+                        "away": "3",
+                        "homeValue": 3,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Errors leading to shot",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Errors leading to goal",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Goalkeeper saves",
+                        "home": "2",
+                        "away": "1",
+                        "homeValue": 2,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "xGOT faced",
+                        "home": "0.35",
+                        "away": "0.88",
+                        "homeValue": 0.35,
+                        "awayValue": 0.88
+                    },
+                    {
+                        "name": "Goals prevented",
+                        "home": "-0.65",
+                        "away": "-0.12",
+                        "homeValue": -0.65,
+                        "awayValue": -0.12
+                    }
+                ]
+            }
+        ],
+        "incidents": [
+            {
+                "time": 7,
+                "incidentType": "goal",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Just E."
+                },
+                "assist": {
+                    "name": "Wood Ch."
+                },
+                "homeScore": "0",
+                "awayScore": "1",
+                "description": "Elijah Henry Just (New Zealand) receives a brilliant pass inside the box from Chris Wood, and beats the goalkeeper with a shot into the roof of the net. He makes it 0:1."
+            },
+            {
+                "time": 32,
+                "incidentType": "goal",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Rezaeian R."
+                },
+                "assist": null,
+                "homeScore": "1",
+                "awayScore": "1",
+                "description": "G"
+            },
+            {
+                "time": 46,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Yousefi A."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 53,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Moghanlou S."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 54,
+                "incidentType": "goal",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Just E."
+                },
+                "assist": {
+                    "name": "Wood Ch."
+                },
+                "homeScore": "1",
+                "awayScore": "2",
+                "description": "Goal! Chris Wood displays great vision and sends a pass to Elijah Henry Just (New Zealand), who shows brilliant composure inside the box to bury the ball into the back of the net. The score is 1:2."
+            },
+            {
+                "time": 64,
+                "incidentType": "goal",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Mohebi M."
+                },
+                "assist": {
+                    "name": "Rezaeian R."
+                },
+                "homeScore": "2",
+                "awayScore": "2",
+                "description": "It's a goal! Mohammad Mohebi (Iran) alters the score to 2:2. He jumps highest near the penalty spot to meet a good cross from Ramin Rezaeian and steers a header in off the bottom of the left post. Max Crocombe was helpless."
+            },
+            {
+                "time": 65,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Ghoddos S."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 68,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Cacace L."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 68,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "McCowatt C."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 78,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Payne T."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 80,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Taremi M."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 89,
+                "incidentType": "card",
+                "incidentClass": "yellow",
+                "isHome": true,
+                "player": {
+                    "name": "Hajsafi E."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": "T"
+            },
+            {
+                "time": 90,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Singh S."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 90,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Stamenic M."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            }
+        ]
+    },
+    "match-wc17": {
+        "homeScore": 2,
+        "awayScore": 1,
+        "sideQuestions": {
+            "htResult": "draw",
+            "firstScorer": "Mbappe K.",
+            "redCard": false,
+            "cornersOverUnder": "over"
+        },
+        "statistics": [
+            {
+                "period": "Match",
+                "statisticsItems": [
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "1.78",
+                        "away": "0.53",
+                        "homeValue": 1.78,
+                        "awayValue": 0.53
+                    },
+                    {
+                        "name": "Ball possession",
+                        "home": "53%",
+                        "away": "47%",
+                        "homeValue": 53,
+                        "awayValue": 47
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "11",
+                        "away": "6",
+                        "homeValue": 11,
+                        "awayValue": 6
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "8",
+                        "away": "2",
+                        "homeValue": 8,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "4",
+                        "away": "2",
+                        "homeValue": 4,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "6",
+                        "away": "4",
+                        "homeValue": 6,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "88% (505/575)",
+                        "away": "86% (430/502)",
+                        "homeValue": 88,
+                        "awayValue": 86
+                    },
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "1.78",
+                        "away": "0.53",
+                        "homeValue": 1.78,
+                        "awayValue": 0.53
+                    },
+                    {
+                        "name": "xG on target (xGOT)",
+                        "home": "2.06",
+                        "away": "0.17",
+                        "homeValue": 2.06,
+                        "awayValue": 0.17
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "11",
+                        "away": "6",
+                        "homeValue": 11,
+                        "awayValue": 6
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "8",
+                        "away": "2",
+                        "homeValue": 8,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Shots off target",
+                        "home": "1",
+                        "away": "3",
+                        "homeValue": 1,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Blocked shots",
+                        "home": "2",
+                        "away": "1",
+                        "homeValue": 2,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Shots inside the box",
+                        "home": "7",
+                        "away": "4",
+                        "homeValue": 7,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Shots outside the box",
+                        "home": "4",
+                        "away": "2",
+                        "homeValue": 4,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Hit the woodwork",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "4",
+                        "away": "2",
+                        "homeValue": 4,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "6",
+                        "away": "4",
+                        "homeValue": 6,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Touches in opposition box",
+                        "home": "19",
+                        "away": "13",
+                        "homeValue": 19,
+                        "awayValue": 13
+                    },
+                    {
+                        "name": "Accurate through passes",
+                        "home": "4",
+                        "away": "0",
+                        "homeValue": 4,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Offsides",
+                        "home": "1",
+                        "away": "3",
+                        "homeValue": 1,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Free kicks",
+                        "home": "9",
+                        "away": "5",
+                        "homeValue": 9,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "88% (505/575)",
+                        "away": "86% (430/502)",
+                        "homeValue": 88,
+                        "awayValue": 86
+                    },
+                    {
+                        "name": "Long passes",
+                        "home": "46% (21/46)",
+                        "away": "52% (25/48)",
+                        "homeValue": 46,
+                        "awayValue": 52
+                    },
+                    {
+                        "name": "Passes in final third",
+                        "home": "76% (93/123)",
+                        "away": "68% (69/102)",
+                        "homeValue": 76,
+                        "awayValue": 68
+                    },
+                    {
+                        "name": "Crosses",
+                        "home": "0% (0/9)",
+                        "away": "11% (1/9)",
+                        "homeValue": 0,
+                        "awayValue": 11
+                    },
+                    {
+                        "name": "Expected assists (xA)",
+                        "home": "1.53",
+                        "away": "0.19",
+                        "homeValue": 1.53,
+                        "awayValue": 0.19
+                    },
+                    {
+                        "name": "Throw ins",
+                        "home": "9",
+                        "away": "21",
+                        "homeValue": 9,
+                        "awayValue": 21
+                    },
+                    {
+                        "name": "Fouls",
+                        "home": "5",
+                        "away": "9",
+                        "homeValue": 5,
+                        "awayValue": 9
+                    },
+                    {
+                        "name": "Tackles",
+                        "home": "74% (14/19)",
+                        "away": "71% (10/14)",
+                        "homeValue": 74,
+                        "awayValue": 71
+                    },
+                    {
+                        "name": "Duels won",
+                        "home": "43",
+                        "away": "35",
+                        "homeValue": 43,
+                        "awayValue": 35
+                    },
+                    {
+                        "name": "Clearances",
+                        "home": "14",
+                        "away": "17",
+                        "homeValue": 14,
+                        "awayValue": 17
+                    },
+                    {
+                        "name": "Interceptions",
+                        "home": "7",
+                        "away": "8",
+                        "homeValue": 7,
+                        "awayValue": 8
+                    },
+                    {
+                        "name": "Errors leading to shot",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Errors leading to goal",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Goalkeeper saves",
+                        "home": "2",
+                        "away": "5",
+                        "homeValue": 2,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "xGOT faced",
+                        "home": "0.17",
+                        "away": "2.06",
+                        "homeValue": 0.17,
+                        "awayValue": 2.06
+                    },
+                    {
+                        "name": "Goals prevented",
+                        "home": "-0.83",
+                        "away": "-0.94",
+                        "homeValue": -0.83,
+                        "awayValue": -0.94
+                    }
+                ]
+            },
+            {
+                "period": "1st Half",
+                "statisticsItems": [
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.03",
+                        "away": "0.43",
+                        "homeValue": 0.03,
+                        "awayValue": 0.43
+                    },
+                    {
+                        "name": "Ball possession",
+                        "home": "56%",
+                        "away": "44%",
+                        "homeValue": 56,
+                        "awayValue": 44
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "1",
+                        "away": "5",
+                        "homeValue": 1,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "0",
+                        "away": "2",
+                        "homeValue": 0,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "3",
+                        "away": "2",
+                        "homeValue": 3,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "87% (280/323)",
+                        "away": "84% (213/253)",
+                        "homeValue": 87,
+                        "awayValue": 84
+                    },
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.03",
+                        "away": "0.43",
+                        "homeValue": 0.03,
+                        "awayValue": 0.43
+                    },
+                    {
+                        "name": "xG on target (xGOT)",
+                        "home": "0.00",
+                        "away": "0.01",
+                        "homeValue": 0,
+                        "awayValue": 0.01
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "1",
+                        "away": "5",
+                        "homeValue": 1,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Shots off target",
+                        "home": "0",
+                        "away": "3",
+                        "homeValue": 0,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Blocked shots",
+                        "home": "1",
+                        "away": "1",
+                        "homeValue": 1,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Shots inside the box",
+                        "home": "0",
+                        "away": "3",
+                        "homeValue": 0,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Shots outside the box",
+                        "home": "1",
+                        "away": "2",
+                        "homeValue": 1,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Hit the woodwork",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "0",
+                        "away": "2",
+                        "homeValue": 0,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "3",
+                        "away": "2",
+                        "homeValue": 3,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Touches in opposition box",
+                        "home": "3",
+                        "away": "5",
+                        "homeValue": 3,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Accurate through passes",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Offsides",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Free kicks",
+                        "home": "4",
+                        "away": "3",
+                        "homeValue": 4,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "87% (280/323)",
+                        "away": "84% (213/253)",
+                        "homeValue": 87,
+                        "awayValue": 84
+                    },
+                    {
+                        "name": "Long passes",
+                        "home": "24% (5/21)",
+                        "away": "41% (12/29)",
+                        "homeValue": 24,
+                        "awayValue": 41
+                    },
+                    {
+                        "name": "Passes in final third",
+                        "home": "68% (41/60)",
+                        "away": "64% (29/45)",
+                        "homeValue": 68,
+                        "awayValue": 64
+                    },
+                    {
+                        "name": "Crosses",
+                        "home": "0% (0/6)",
+                        "away": "0% (0/3)",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Expected assists (xA)",
+                        "home": "0.25",
+                        "away": "0.09",
+                        "homeValue": 0.25,
+                        "awayValue": 0.09
+                    },
+                    {
+                        "name": "Throw ins",
+                        "home": "2",
+                        "away": "14",
+                        "homeValue": 2,
+                        "awayValue": 14
+                    },
+                    {
+                        "name": "Fouls",
+                        "home": "3",
+                        "away": "4",
+                        "homeValue": 3,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Tackles",
+                        "home": "80% (8/10)",
+                        "away": "75% (6/8)",
+                        "homeValue": 80,
+                        "awayValue": 75
+                    },
+                    {
+                        "name": "Duels won",
+                        "home": "21",
+                        "away": "18",
+                        "homeValue": 21,
+                        "awayValue": 18
+                    },
+                    {
+                        "name": "Clearances",
+                        "home": "6",
+                        "away": "11",
+                        "homeValue": 6,
+                        "awayValue": 11
+                    },
+                    {
+                        "name": "Interceptions",
+                        "home": "2",
+                        "away": "4",
+                        "homeValue": 2,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Errors leading to shot",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Errors leading to goal",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Goalkeeper saves",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "xGOT faced",
+                        "home": "0.01",
+                        "away": "0.00",
+                        "homeValue": 0.01,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Goals prevented",
+                        "home": "0.01",
+                        "away": "0.00",
+                        "homeValue": 0.01,
+                        "awayValue": 0
+                    }
+                ]
+            },
+            {
+                "period": "2nd Half",
+                "statisticsItems": [
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "1.75",
+                        "away": "0.10",
+                        "homeValue": 1.75,
+                        "awayValue": 0.1
+                    },
+                    {
+                        "name": "Ball possession",
+                        "home": "50%",
+                        "away": "50%",
+                        "homeValue": 50,
+                        "awayValue": 50
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "10",
+                        "away": "1",
+                        "homeValue": 10,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "8",
+                        "away": "1",
+                        "homeValue": 8,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "4",
+                        "away": "0",
+                        "homeValue": 4,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "3",
+                        "away": "2",
+                        "homeValue": 3,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "89% (225/252)",
+                        "away": "87% (217/249)",
+                        "homeValue": 89,
+                        "awayValue": 87
+                    },
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "1.75",
+                        "away": "0.10",
+                        "homeValue": 1.75,
+                        "awayValue": 0.1
+                    },
+                    {
+                        "name": "xG on target (xGOT)",
+                        "home": "2.06",
+                        "away": "0.16",
+                        "homeValue": 2.06,
+                        "awayValue": 0.16
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "10",
+                        "away": "1",
+                        "homeValue": 10,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "8",
+                        "away": "1",
+                        "homeValue": 8,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Shots off target",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Blocked shots",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Shots inside the box",
+                        "home": "7",
+                        "away": "1",
+                        "homeValue": 7,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Shots outside the box",
+                        "home": "3",
+                        "away": "0",
+                        "homeValue": 3,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Hit the woodwork",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "4",
+                        "away": "0",
+                        "homeValue": 4,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "3",
+                        "away": "2",
+                        "homeValue": 3,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Touches in opposition box",
+                        "home": "16",
+                        "away": "8",
+                        "homeValue": 16,
+                        "awayValue": 8
+                    },
+                    {
+                        "name": "Accurate through passes",
+                        "home": "4",
+                        "away": "0",
+                        "homeValue": 4,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Offsides",
+                        "home": "1",
+                        "away": "2",
+                        "homeValue": 1,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Free kicks",
+                        "home": "5",
+                        "away": "2",
+                        "homeValue": 5,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "89% (225/252)",
+                        "away": "87% (217/249)",
+                        "homeValue": 89,
+                        "awayValue": 87
+                    },
+                    {
+                        "name": "Long passes",
+                        "home": "64% (16/25)",
+                        "away": "68% (13/19)",
+                        "homeValue": 64,
+                        "awayValue": 68
+                    },
+                    {
+                        "name": "Passes in final third",
+                        "home": "83% (52/63)",
+                        "away": "70% (40/57)",
+                        "homeValue": 83,
+                        "awayValue": 70
+                    },
+                    {
+                        "name": "Crosses",
+                        "home": "0% (0/3)",
+                        "away": "17% (1/6)",
+                        "homeValue": 0,
+                        "awayValue": 17
+                    },
+                    {
+                        "name": "Expected assists (xA)",
+                        "home": "1.28",
+                        "away": "0.10",
+                        "homeValue": 1.28,
+                        "awayValue": 0.1
+                    },
+                    {
+                        "name": "Throw ins",
+                        "home": "7",
+                        "away": "7",
+                        "homeValue": 7,
+                        "awayValue": 7
+                    },
+                    {
+                        "name": "Fouls",
+                        "home": "2",
+                        "away": "5",
+                        "homeValue": 2,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Tackles",
+                        "home": "67% (6/9)",
+                        "away": "67% (4/6)",
+                        "homeValue": 67,
+                        "awayValue": 67
+                    },
+                    {
+                        "name": "Duels won",
+                        "home": "22",
+                        "away": "17",
+                        "homeValue": 22,
+                        "awayValue": 17
+                    },
+                    {
+                        "name": "Clearances",
+                        "home": "8",
+                        "away": "6",
+                        "homeValue": 8,
+                        "awayValue": 6
+                    },
+                    {
+                        "name": "Interceptions",
+                        "home": "5",
+                        "away": "4",
+                        "homeValue": 5,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Errors leading to shot",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Errors leading to goal",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Goalkeeper saves",
+                        "home": "1",
+                        "away": "5",
+                        "homeValue": 1,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "xGOT faced",
+                        "home": "0.16",
+                        "away": "2.06",
+                        "homeValue": 0.16,
+                        "awayValue": 2.06
+                    },
+                    {
+                        "name": "Goals prevented",
+                        "home": "-0.84",
+                        "away": "-0.94",
+                        "homeValue": -0.84,
+                        "awayValue": -0.94
+                    }
+                ]
+            }
+        ],
+        "incidents": [
+            {
+                "time": 66,
+                "incidentType": "goal",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Mbappe K."
+                },
+                "assist": {
+                    "name": "Olise M."
+                },
+                "homeScore": "1",
+                "awayScore": "0",
+                "description": "A superb goal from great team play! Kylian Mbappe (France) latches on to a perfect pass and fires an excellent low shot into the middle of the net. There is nothing a goalkeeper can do about shots like that."
+            },
+            {
+                "time": 75,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Sarr I."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 76,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Camara L."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 80,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Dembele O."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 82,
+                "incidentType": "goal",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Barcola B."
+                },
+                "assist": {
+                    "name": "Rabiot A."
+                },
+                "homeScore": "2",
+                "awayScore": "0",
+                "description": "Goal! Adrien Rabiot gets to the ball, slips Bradley Barcola (France) into the area and he scores with a delightful chipped finish to make it 2:0."
+            },
+            {
+                "time": 83,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Gueye P."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 83,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Jackson N."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 87,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Doue D."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 88,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Gueye I."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 90,
+                "incidentType": "goal",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Mbaye I."
+                },
+                "assist": {
+                    "name": "Ndiaye I."
+                },
+                "homeScore": "2",
+                "awayScore": "1",
+                "description": "Ibrahim Mbaye (Senegal) makes a great solo run and pulls the trigger from inside the box, beating Mike Maignan with a strike into the right side of the goal. He makes it 2:1."
+            },
+            {
+                "time": 90,
+                "incidentType": "goal",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Mbappe K."
+                },
+                "assist": null,
+                "homeScore": "3",
+                "awayScore": "1",
+                "description": "W"
+            }
+        ]
+    },
+    "match-wc18": {
+        "homeScore": 1,
+        "awayScore": 3,
+        "sideQuestions": {
+            "htResult": "away",
+            "firstScorer": "Haaland E.",
+            "redCard": false,
+            "cornersOverUnder": "under"
+        },
+        "statistics": [
+            {
+                "period": "Match",
+                "statisticsItems": [
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.80",
+                        "away": "2.52",
+                        "homeValue": 0.8,
+                        "awayValue": 2.52
+                    },
+                    {
+                        "name": "Ball possession",
+                        "home": "39%",
+                        "away": "61%",
+                        "homeValue": 39,
+                        "awayValue": 61
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "11",
+                        "away": "12",
+                        "homeValue": 11,
+                        "awayValue": 12
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "1",
+                        "away": "5",
+                        "homeValue": 1,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "1",
+                        "away": "5",
+                        "homeValue": 1,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "2",
+                        "away": "5",
+                        "homeValue": 2,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "81% (271/334)",
+                        "away": "89% (477/537)",
+                        "homeValue": 81,
+                        "awayValue": 89
+                    },
+                    {
+                        "name": "Yellow cards",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.80",
+                        "away": "2.52",
+                        "homeValue": 0.8,
+                        "awayValue": 2.52
+                    },
+                    {
+                        "name": "xG on target (xGOT)",
+                        "home": "0.60",
+                        "away": "2.65",
+                        "homeValue": 0.6,
+                        "awayValue": 2.65
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "11",
+                        "away": "12",
+                        "homeValue": 11,
+                        "awayValue": 12
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "1",
+                        "away": "5",
+                        "homeValue": 1,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Shots off target",
+                        "home": "8",
+                        "away": "4",
+                        "homeValue": 8,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Blocked shots",
+                        "home": "2",
+                        "away": "3",
+                        "homeValue": 2,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Shots inside the box",
+                        "home": "8",
+                        "away": "11",
+                        "homeValue": 8,
+                        "awayValue": 11
+                    },
+                    {
+                        "name": "Shots outside the box",
+                        "home": "3",
+                        "away": "1",
+                        "homeValue": 3,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Hit the woodwork",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Headed goals",
+                        "home": "1",
+                        "away": "1",
+                        "homeValue": 1,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "1",
+                        "away": "5",
+                        "homeValue": 1,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "2",
+                        "away": "5",
+                        "homeValue": 2,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Touches in opposition box",
+                        "home": "18",
+                        "away": "25",
+                        "homeValue": 18,
+                        "awayValue": 25
+                    },
+                    {
+                        "name": "Accurate through passes",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Offsides",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Free kicks",
+                        "home": "13",
+                        "away": "12",
+                        "homeValue": 13,
+                        "awayValue": 12
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "81% (271/334)",
+                        "away": "89% (477/537)",
+                        "homeValue": 81,
+                        "awayValue": 89
+                    },
+                    {
+                        "name": "Long passes",
+                        "home": "42% (22/53)",
+                        "away": "43% (18/42)",
+                        "homeValue": 42,
+                        "awayValue": 43
+                    },
+                    {
+                        "name": "Passes in final third",
+                        "home": "61% (46/75)",
+                        "away": "73% (72/99)",
+                        "homeValue": 61,
+                        "awayValue": 73
+                    },
+                    {
+                        "name": "Crosses",
+                        "home": "46% (6/13)",
+                        "away": "41% (7/17)",
+                        "homeValue": 46,
+                        "awayValue": 41
+                    },
+                    {
+                        "name": "Expected assists (xA)",
+                        "home": "0.81",
+                        "away": "1.52",
+                        "homeValue": 0.81,
+                        "awayValue": 1.52
+                    },
+                    {
+                        "name": "Throw ins",
+                        "home": "14",
+                        "away": "22",
+                        "homeValue": 14,
+                        "awayValue": 22
+                    },
+                    {
+                        "name": "Fouls",
+                        "home": "12",
+                        "away": "13",
+                        "homeValue": 12,
+                        "awayValue": 13
+                    },
+                    {
+                        "name": "Tackles",
+                        "home": "68% (13/19)",
+                        "away": "67% (10/15)",
+                        "homeValue": 68,
+                        "awayValue": 67
+                    },
+                    {
+                        "name": "Duels won",
+                        "home": "52",
+                        "away": "48",
+                        "homeValue": 52,
+                        "awayValue": 48
+                    },
+                    {
+                        "name": "Clearances",
+                        "home": "21",
+                        "away": "22",
+                        "homeValue": 21,
+                        "awayValue": 22
+                    },
+                    {
+                        "name": "Interceptions",
+                        "home": "5",
+                        "away": "2",
+                        "homeValue": 5,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Errors leading to shot",
+                        "home": "2",
+                        "away": "0",
+                        "homeValue": 2,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Errors leading to goal",
+                        "home": "2",
+                        "away": "0",
+                        "homeValue": 2,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Goalkeeper saves",
+                        "home": "2",
+                        "away": "0",
+                        "homeValue": 2,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "xGOT faced",
+                        "home": "2.65",
+                        "away": "0.60",
+                        "homeValue": 2.65,
+                        "awayValue": 0.6
+                    },
+                    {
+                        "name": "Goals prevented",
+                        "home": "-0.35",
+                        "away": "-0.40",
+                        "homeValue": -0.35,
+                        "awayValue": -0.4
+                    }
+                ]
+            },
+            {
+                "period": "1st Half",
+                "statisticsItems": [
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.74",
+                        "away": "1.82",
+                        "homeValue": 0.74,
+                        "awayValue": 1.82
+                    },
+                    {
+                        "name": "Ball possession",
+                        "home": "40%",
+                        "away": "60%",
+                        "homeValue": 40,
+                        "awayValue": 60
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "9",
+                        "away": "7",
+                        "homeValue": 9,
+                        "awayValue": 7
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "1",
+                        "away": "3",
+                        "homeValue": 1,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "1",
+                        "away": "3",
+                        "homeValue": 1,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "2",
+                        "away": "2",
+                        "homeValue": 2,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "77% (127/165)",
+                        "away": "87% (230/264)",
+                        "homeValue": 77,
+                        "awayValue": 87
+                    },
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.74",
+                        "away": "1.82",
+                        "homeValue": 0.74,
+                        "awayValue": 1.82
+                    },
+                    {
+                        "name": "xG on target (xGOT)",
+                        "home": "0.60",
+                        "away": "1.67",
+                        "homeValue": 0.6,
+                        "awayValue": 1.67
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "9",
+                        "away": "7",
+                        "homeValue": 9,
+                        "awayValue": 7
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "1",
+                        "away": "3",
+                        "homeValue": 1,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Shots off target",
+                        "home": "6",
+                        "away": "2",
+                        "homeValue": 6,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Blocked shots",
+                        "home": "2",
+                        "away": "2",
+                        "homeValue": 2,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Shots inside the box",
+                        "home": "6",
+                        "away": "6",
+                        "homeValue": 6,
+                        "awayValue": 6
+                    },
+                    {
+                        "name": "Shots outside the box",
+                        "home": "3",
+                        "away": "1",
+                        "homeValue": 3,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Hit the woodwork",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Headed goals",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "1",
+                        "away": "3",
+                        "homeValue": 1,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "2",
+                        "away": "2",
+                        "homeValue": 2,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Touches in opposition box",
+                        "home": "11",
+                        "away": "10",
+                        "homeValue": 11,
+                        "awayValue": 10
+                    },
+                    {
+                        "name": "Accurate through passes",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Offsides",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Free kicks",
+                        "home": "9",
+                        "away": "5",
+                        "homeValue": 9,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "77% (127/165)",
+                        "away": "87% (230/264)",
+                        "homeValue": 77,
+                        "awayValue": 87
+                    },
+                    {
+                        "name": "Long passes",
+                        "home": "40% (14/35)",
+                        "away": "42% (8/19)",
+                        "homeValue": 40,
+                        "awayValue": 42
+                    },
+                    {
+                        "name": "Passes in final third",
+                        "home": "59% (24/41)",
+                        "away": "68% (30/44)",
+                        "homeValue": 59,
+                        "awayValue": 68
+                    },
+                    {
+                        "name": "Crosses",
+                        "home": "30% (3/10)",
+                        "away": "43% (3/7)",
+                        "homeValue": 30,
+                        "awayValue": 43
+                    },
+                    {
+                        "name": "Expected assists (xA)",
+                        "home": "0.69",
+                        "away": "1.00",
+                        "homeValue": 0.69,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Throw ins",
+                        "home": "9",
+                        "away": "8",
+                        "homeValue": 9,
+                        "awayValue": 8
+                    },
+                    {
+                        "name": "Fouls",
+                        "home": "5",
+                        "away": "9",
+                        "homeValue": 5,
+                        "awayValue": 9
+                    },
+                    {
+                        "name": "Tackles",
+                        "home": "64% (7/11)",
+                        "away": "50% (3/6)",
+                        "homeValue": 64,
+                        "awayValue": 50
+                    },
+                    {
+                        "name": "Duels won",
+                        "home": "32",
+                        "away": "25",
+                        "homeValue": 32,
+                        "awayValue": 25
+                    },
+                    {
+                        "name": "Clearances",
+                        "home": "8",
+                        "away": "16",
+                        "homeValue": 8,
+                        "awayValue": 16
+                    },
+                    {
+                        "name": "Interceptions",
+                        "home": "2",
+                        "away": "0",
+                        "homeValue": 2,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Errors leading to shot",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Errors leading to goal",
+                        "home": "2",
+                        "away": "0",
+                        "homeValue": 2,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Goalkeeper saves",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "xGOT faced",
+                        "home": "1.67",
+                        "away": "0.60",
+                        "homeValue": 1.67,
+                        "awayValue": 0.6
+                    },
+                    {
+                        "name": "Goals prevented",
+                        "home": "-0.33",
+                        "away": "-0.40",
+                        "homeValue": -0.33,
+                        "awayValue": -0.4
+                    }
+                ]
+            },
+            {
+                "period": "2nd Half",
+                "statisticsItems": [
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.06",
+                        "away": "0.70",
+                        "homeValue": 0.06,
+                        "awayValue": 0.7
+                    },
+                    {
+                        "name": "Ball possession",
+                        "home": "38%",
+                        "away": "62%",
+                        "homeValue": 38,
+                        "awayValue": 62
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "2",
+                        "away": "5",
+                        "homeValue": 2,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "0",
+                        "away": "2",
+                        "homeValue": 0,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "0",
+                        "away": "2",
+                        "homeValue": 0,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "0",
+                        "away": "3",
+                        "homeValue": 0,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "85% (144/169)",
+                        "away": "90% (247/273)",
+                        "homeValue": 85,
+                        "awayValue": 90
+                    },
+                    {
+                        "name": "Yellow cards",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.06",
+                        "away": "0.70",
+                        "homeValue": 0.06,
+                        "awayValue": 0.7
+                    },
+                    {
+                        "name": "xG on target (xGOT)",
+                        "home": "0.00",
+                        "away": "0.98",
+                        "homeValue": 0,
+                        "awayValue": 0.98
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "2",
+                        "away": "5",
+                        "homeValue": 2,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "0",
+                        "away": "2",
+                        "homeValue": 0,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Shots off target",
+                        "home": "2",
+                        "away": "2",
+                        "homeValue": 2,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Blocked shots",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Shots inside the box",
+                        "home": "2",
+                        "away": "5",
+                        "homeValue": 2,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Shots outside the box",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Hit the woodwork",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Headed goals",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "0",
+                        "away": "2",
+                        "homeValue": 0,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "0",
+                        "away": "3",
+                        "homeValue": 0,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Touches in opposition box",
+                        "home": "7",
+                        "away": "15",
+                        "homeValue": 7,
+                        "awayValue": 15
+                    },
+                    {
+                        "name": "Accurate through passes",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Offsides",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Free kicks",
+                        "home": "4",
+                        "away": "7",
+                        "homeValue": 4,
+                        "awayValue": 7
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "85% (144/169)",
+                        "away": "90% (247/273)",
+                        "homeValue": 85,
+                        "awayValue": 90
+                    },
+                    {
+                        "name": "Long passes",
+                        "home": "44% (8/18)",
+                        "away": "43% (10/23)",
+                        "homeValue": 44,
+                        "awayValue": 43
+                    },
+                    {
+                        "name": "Passes in final third",
+                        "home": "65% (22/34)",
+                        "away": "76% (42/55)",
+                        "homeValue": 65,
+                        "awayValue": 76
+                    },
+                    {
+                        "name": "Crosses",
+                        "home": "100% (3/3)",
+                        "away": "40% (4/10)",
+                        "homeValue": 100,
+                        "awayValue": 40
+                    },
+                    {
+                        "name": "Expected assists (xA)",
+                        "home": "0.12",
+                        "away": "0.52",
+                        "homeValue": 0.12,
+                        "awayValue": 0.52
+                    },
+                    {
+                        "name": "Throw ins",
+                        "home": "5",
+                        "away": "14",
+                        "homeValue": 5,
+                        "awayValue": 14
+                    },
+                    {
+                        "name": "Fouls",
+                        "home": "7",
+                        "away": "4",
+                        "homeValue": 7,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Tackles",
+                        "home": "75% (6/8)",
+                        "away": "78% (7/9)",
+                        "homeValue": 75,
+                        "awayValue": 78
+                    },
+                    {
+                        "name": "Duels won",
+                        "home": "20",
+                        "away": "23",
+                        "homeValue": 20,
+                        "awayValue": 23
+                    },
+                    {
+                        "name": "Clearances",
+                        "home": "13",
+                        "away": "6",
+                        "homeValue": 13,
+                        "awayValue": 6
+                    },
+                    {
+                        "name": "Interceptions",
+                        "home": "3",
+                        "away": "2",
+                        "homeValue": 3,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Errors leading to shot",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Errors leading to goal",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Goalkeeper saves",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "xGOT faced",
+                        "home": "0.98",
+                        "away": "0.00",
+                        "homeValue": 0.98,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Goals prevented",
+                        "home": "-0.02",
+                        "away": "0.00",
+                        "homeValue": -0.02,
+                        "awayValue": 0
+                    }
+                ]
+            }
+        ],
+        "incidents": [
+            {
+                "time": 29,
+                "incidentType": "goal",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Haaland E."
+                },
+                "assist": {
+                    "name": "Wolfe D."
+                },
+                "homeScore": "0",
+                "awayScore": "1",
+                "description": "David Wolfe feeds the ball through to Erling Haaland (Norway), who picks up the pass inside the box and quickly sends it into the top right corner! The goalkeeper was helpless. 0:1!"
+            },
+            {
+                "time": 39,
+                "incidentType": "goal",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Hussein A."
+                },
+                "assist": {
+                    "name": "Al Ammari A."
+                },
+                "homeScore": "1",
+                "awayScore": "1",
+                "description": "Goal! Aymen Hussein (Iraq) ran onto a clever lofted pass from Amir Al Ammari and easily beat the keeper with a header into the right side of the goal from close range. 1:1."
+            },
+            {
+                "time": 43,
+                "incidentType": "goal",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Haaland E."
+                },
+                "assist": null,
+                "homeScore": "1",
+                "awayScore": "2",
+                "description": "G"
+            },
+            {
+                "time": 59,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Ismaeel Z."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 59,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Al Hamadi A."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 73,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Nusa A."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 73,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Aursnes F."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 73,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Wolfe D."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 73,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Sorloth A."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 73,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Ali H."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 73,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Jasim A."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 76,
+                "incidentType": "goal",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Ostigard L."
+                },
+                "assist": {
+                    "name": "Odegaard M."
+                },
+                "homeScore": "1",
+                "awayScore": "3",
+                "description": "Leo Ostigard (Norway) outjumps the defence inside the six-yard box to meet the resulting corner and scores with a great header into the roof of the net. The goalkeeper had no chance to react. The score is now 1:3."
+            },
+            {
+                "time": 78,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Bayesh I."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 81,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Odegaard M."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 86,
+                "incidentType": "card",
+                "incidentClass": "yellow",
+                "isHome": true,
+                "player": {
+                    "name": "Tahseen Z."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": "Z"
+            },
+            {
+                "time": 90,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Hussein A."
+                },
+                "assist": null,
+                "homeScore": "1",
+                "awayScore": "4",
+                "description": "A"
+            }
+        ]
+    },
+    "match-wc19": {
+        "homeScore": 3,
+        "awayScore": 0,
+        "sideQuestions": {
+            "htResult": "home",
+            "firstScorer": "Messi L.",
+            "redCard": false,
+            "cornersOverUnder": "under"
+        },
+        "statistics": [
+            {
+                "period": "Match",
+                "statisticsItems": [
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "1.26",
+                        "away": "0.33",
+                        "homeValue": 1.26,
+                        "awayValue": 0.33
+                    },
+                    {
+                        "name": "Ball possession",
+                        "home": "48%",
+                        "away": "52%",
+                        "homeValue": 48,
+                        "awayValue": 52
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "10",
+                        "away": "7",
+                        "homeValue": 10,
+                        "awayValue": 7
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "6",
+                        "away": "0",
+                        "homeValue": 6,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "2",
+                        "away": "2",
+                        "homeValue": 2,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "90% (504/561)",
+                        "away": "92% (563/609)",
+                        "homeValue": 90,
+                        "awayValue": 92
+                    },
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "1.26",
+                        "away": "0.33",
+                        "homeValue": 1.26,
+                        "awayValue": 0.33
+                    },
+                    {
+                        "name": "xG on target (xGOT)",
+                        "home": "2.22",
+                        "away": "0.00",
+                        "homeValue": 2.22,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "10",
+                        "away": "7",
+                        "homeValue": 10,
+                        "awayValue": 7
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "6",
+                        "away": "0",
+                        "homeValue": 6,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Shots off target",
+                        "home": "4",
+                        "away": "4",
+                        "homeValue": 4,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Blocked shots",
+                        "home": "0",
+                        "away": "3",
+                        "homeValue": 0,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Shots inside the box",
+                        "home": "4",
+                        "away": "3",
+                        "homeValue": 4,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Shots outside the box",
+                        "home": "6",
+                        "away": "4",
+                        "homeValue": 6,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Hit the woodwork",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "2",
+                        "away": "2",
+                        "homeValue": 2,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Touches in opposition box",
+                        "home": "12",
+                        "away": "14",
+                        "homeValue": 12,
+                        "awayValue": 14
+                    },
+                    {
+                        "name": "Accurate through passes",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Offsides",
+                        "home": "3",
+                        "away": "1",
+                        "homeValue": 3,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Free kicks",
+                        "home": "8",
+                        "away": "13",
+                        "homeValue": 8,
+                        "awayValue": 13
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "90% (504/561)",
+                        "away": "92% (563/609)",
+                        "homeValue": 90,
+                        "awayValue": 92
+                    },
+                    {
+                        "name": "Long passes",
+                        "home": "53% (17/32)",
+                        "away": "60% (15/25)",
+                        "homeValue": 53,
+                        "awayValue": 60
+                    },
+                    {
+                        "name": "Passes in final third",
+                        "home": "72% (56/78)",
+                        "away": "82% (118/144)",
+                        "homeValue": 72,
+                        "awayValue": 82
+                    },
+                    {
+                        "name": "Crosses",
+                        "home": "17% (1/6)",
+                        "away": "11% (1/9)",
+                        "homeValue": 17,
+                        "awayValue": 11
+                    },
+                    {
+                        "name": "Expected assists (xA)",
+                        "home": "0.53",
+                        "away": "0.39",
+                        "homeValue": 0.53,
+                        "awayValue": 0.39
+                    },
+                    {
+                        "name": "Throw ins",
+                        "home": "12",
+                        "away": "19",
+                        "homeValue": 12,
+                        "awayValue": 19
+                    },
+                    {
+                        "name": "Fouls",
+                        "home": "13",
+                        "away": "8",
+                        "homeValue": 13,
+                        "awayValue": 8
+                    },
+                    {
+                        "name": "Tackles",
+                        "home": "70% (19/27)",
+                        "away": "59% (10/17)",
+                        "homeValue": 70,
+                        "awayValue": 59
+                    },
+                    {
+                        "name": "Duels won",
+                        "home": "39",
+                        "away": "43",
+                        "homeValue": 39,
+                        "awayValue": 43
+                    },
+                    {
+                        "name": "Clearances",
+                        "home": "17",
+                        "away": "12",
+                        "homeValue": 17,
+                        "awayValue": 12
+                    },
+                    {
+                        "name": "Interceptions",
+                        "home": "10",
+                        "away": "8",
+                        "homeValue": 10,
+                        "awayValue": 8
+                    },
+                    {
+                        "name": "Errors leading to shot",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Errors leading to goal",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Goalkeeper saves",
+                        "home": "0",
+                        "away": "3",
+                        "homeValue": 0,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "xGOT faced",
+                        "home": "0.00",
+                        "away": "2.22",
+                        "homeValue": 0,
+                        "awayValue": 2.22
+                    },
+                    {
+                        "name": "Goals prevented",
+                        "home": "0.00",
+                        "away": "-0.78",
+                        "homeValue": 0,
+                        "awayValue": -0.78
+                    }
+                ]
+            },
+            {
+                "period": "1st Half",
+                "statisticsItems": [
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.20",
+                        "away": "0.12",
+                        "homeValue": 0.2,
+                        "awayValue": 0.12
+                    },
+                    {
+                        "name": "Ball possession",
+                        "home": "56%",
+                        "away": "44%",
+                        "homeValue": 56,
+                        "awayValue": 44
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "4",
+                        "away": "4",
+                        "homeValue": 4,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "0",
+                        "away": "2",
+                        "homeValue": 0,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "92% (297/322)",
+                        "away": "92% (231/250)",
+                        "homeValue": 92,
+                        "awayValue": 92
+                    },
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.20",
+                        "away": "0.12",
+                        "homeValue": 0.2,
+                        "awayValue": 0.12
+                    },
+                    {
+                        "name": "xG on target (xGOT)",
+                        "home": "0.26",
+                        "away": "0.00",
+                        "homeValue": 0.26,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "4",
+                        "away": "4",
+                        "homeValue": 4,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Shots off target",
+                        "home": "3",
+                        "away": "3",
+                        "homeValue": 3,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Blocked shots",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Shots inside the box",
+                        "home": "1",
+                        "away": "3",
+                        "homeValue": 1,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Shots outside the box",
+                        "home": "3",
+                        "away": "1",
+                        "homeValue": 3,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Hit the woodwork",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "0",
+                        "away": "2",
+                        "homeValue": 0,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Touches in opposition box",
+                        "home": "4",
+                        "away": "9",
+                        "homeValue": 4,
+                        "awayValue": 9
+                    },
+                    {
+                        "name": "Accurate through passes",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Offsides",
+                        "home": "3",
+                        "away": "1",
+                        "homeValue": 3,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Free kicks",
+                        "home": "3",
+                        "away": "7",
+                        "homeValue": 3,
+                        "awayValue": 7
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "92% (297/322)",
+                        "away": "92% (231/250)",
+                        "homeValue": 92,
+                        "awayValue": 92
+                    },
+                    {
+                        "name": "Long passes",
+                        "home": "63% (12/19)",
+                        "away": "67% (4/6)",
+                        "homeValue": 63,
+                        "awayValue": 67
+                    },
+                    {
+                        "name": "Passes in final third",
+                        "home": "71% (30/42)",
+                        "away": "77% (30/39)",
+                        "homeValue": 71,
+                        "awayValue": 77
+                    },
+                    {
+                        "name": "Crosses",
+                        "home": "33% (1/3)",
+                        "away": "33% (1/3)",
+                        "homeValue": 33,
+                        "awayValue": 33
+                    },
+                    {
+                        "name": "Expected assists (xA)",
+                        "home": "0.23",
+                        "away": "0.14",
+                        "homeValue": 0.23,
+                        "awayValue": 0.14
+                    },
+                    {
+                        "name": "Throw ins",
+                        "home": "4",
+                        "away": "6",
+                        "homeValue": 4,
+                        "awayValue": 6
+                    },
+                    {
+                        "name": "Fouls",
+                        "home": "7",
+                        "away": "3",
+                        "homeValue": 7,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Tackles",
+                        "home": "64% (7/11)",
+                        "away": "73% (8/11)",
+                        "homeValue": 64,
+                        "awayValue": 73
+                    },
+                    {
+                        "name": "Duels won",
+                        "home": "15",
+                        "away": "25",
+                        "homeValue": 15,
+                        "awayValue": 25
+                    },
+                    {
+                        "name": "Clearances",
+                        "home": "6",
+                        "away": "4",
+                        "homeValue": 6,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Interceptions",
+                        "home": "5",
+                        "away": "2",
+                        "homeValue": 5,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Errors leading to shot",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Errors leading to goal",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Goalkeeper saves",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "xGOT faced",
+                        "home": "0.00",
+                        "away": "0.26",
+                        "homeValue": 0,
+                        "awayValue": 0.26
+                    },
+                    {
+                        "name": "Goals prevented",
+                        "home": "0.00",
+                        "away": "-0.74",
+                        "homeValue": 0,
+                        "awayValue": -0.74
+                    }
+                ]
+            },
+            {
+                "period": "2nd Half",
+                "statisticsItems": [
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "1.06",
+                        "away": "0.21",
+                        "homeValue": 1.06,
+                        "awayValue": 0.21
+                    },
+                    {
+                        "name": "Ball possession",
+                        "home": "40%",
+                        "away": "60%",
+                        "homeValue": 40,
+                        "awayValue": 60
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "6",
+                        "away": "3",
+                        "homeValue": 6,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "5",
+                        "away": "0",
+                        "homeValue": 5,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "2",
+                        "away": "0",
+                        "homeValue": 2,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "87% (207/239)",
+                        "away": "92% (332/359)",
+                        "homeValue": 87,
+                        "awayValue": 92
+                    },
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "1.06",
+                        "away": "0.21",
+                        "homeValue": 1.06,
+                        "awayValue": 0.21
+                    },
+                    {
+                        "name": "xG on target (xGOT)",
+                        "home": "1.96",
+                        "away": "0.00",
+                        "homeValue": 1.96,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "6",
+                        "away": "3",
+                        "homeValue": 6,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "5",
+                        "away": "0",
+                        "homeValue": 5,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Shots off target",
+                        "home": "1",
+                        "away": "1",
+                        "homeValue": 1,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Blocked shots",
+                        "home": "0",
+                        "away": "2",
+                        "homeValue": 0,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Shots inside the box",
+                        "home": "3",
+                        "away": "0",
+                        "homeValue": 3,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Shots outside the box",
+                        "home": "3",
+                        "away": "3",
+                        "homeValue": 3,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Hit the woodwork",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "2",
+                        "away": "0",
+                        "homeValue": 2,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Touches in opposition box",
+                        "home": "8",
+                        "away": "5",
+                        "homeValue": 8,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Accurate through passes",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Offsides",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Free kicks",
+                        "home": "5",
+                        "away": "6",
+                        "homeValue": 5,
+                        "awayValue": 6
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "87% (207/239)",
+                        "away": "92% (332/359)",
+                        "homeValue": 87,
+                        "awayValue": 92
+                    },
+                    {
+                        "name": "Long passes",
+                        "home": "38% (5/13)",
+                        "away": "58% (11/19)",
+                        "homeValue": 38,
+                        "awayValue": 58
+                    },
+                    {
+                        "name": "Passes in final third",
+                        "home": "72% (26/36)",
+                        "away": "84% (88/105)",
+                        "homeValue": 72,
+                        "awayValue": 84
+                    },
+                    {
+                        "name": "Crosses",
+                        "home": "0% (0/3)",
+                        "away": "0% (0/6)",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Expected assists (xA)",
+                        "home": "0.30",
+                        "away": "0.25",
+                        "homeValue": 0.3,
+                        "awayValue": 0.25
+                    },
+                    {
+                        "name": "Throw ins",
+                        "home": "8",
+                        "away": "13",
+                        "homeValue": 8,
+                        "awayValue": 13
+                    },
+                    {
+                        "name": "Fouls",
+                        "home": "6",
+                        "away": "5",
+                        "homeValue": 6,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Tackles",
+                        "home": "75% (12/16)",
+                        "away": "33% (2/6)",
+                        "homeValue": 75,
+                        "awayValue": 33
+                    },
+                    {
+                        "name": "Duels won",
+                        "home": "24",
+                        "away": "18",
+                        "homeValue": 24,
+                        "awayValue": 18
+                    },
+                    {
+                        "name": "Clearances",
+                        "home": "11",
+                        "away": "8",
+                        "homeValue": 11,
+                        "awayValue": 8
+                    },
+                    {
+                        "name": "Interceptions",
+                        "home": "5",
+                        "away": "6",
+                        "homeValue": 5,
+                        "awayValue": 6
+                    },
+                    {
+                        "name": "Errors leading to shot",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Errors leading to goal",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Goalkeeper saves",
+                        "home": "0",
+                        "away": "3",
+                        "homeValue": 0,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "xGOT faced",
+                        "home": "0.00",
+                        "away": "1.96",
+                        "homeValue": 0,
+                        "awayValue": 1.96
+                    },
+                    {
+                        "name": "Goals prevented",
+                        "home": "0.00",
+                        "away": "-0.04",
+                        "homeValue": 0,
+                        "awayValue": -0.04
+                    }
+                ]
+            }
+        ],
+        "incidents": [
+            {
+                "time": 17,
+                "incidentType": "goal",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Messi L."
+                },
+                "assist": {
+                    "name": "de Paul R."
+                },
+                "homeScore": "1",
+                "awayScore": "0",
+                "description": "Goal! Great link up play between Lionel Messi (Argentina) and Rodrigo de Paul gives the former a clear sight of goal on the edge of the box. He doesn't disappoint and beats the keeper in the top right corner. 1:0."
+            },
+            {
+                "time": 46,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Montiel G."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 55,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Martinez L."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 55,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Almada T."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 60,
+                "incidentType": "goal",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Messi L."
+                },
+                "assist": null,
+                "homeScore": "2",
+                "awayScore": "0",
+                "description": "G"
+            },
+            {
+                "time": 64,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Boudaoui H."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 64,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Gouiri A."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 64,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Hadj Moussa A."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 76,
+                "incidentType": "goal",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Messi L."
+                },
+                "assist": {
+                    "name": "Gonzalez N."
+                },
+                "homeScore": "3",
+                "awayScore": "0",
+                "description": "Goal! Nicolas Gonzalez finds Lionel Messi (Argentina) with a clever pass. He steps inside his man on the edge of the box and whips a tremendous shot into the bottom left corner. Fantasy football! 3:0."
+            },
+            {
+                "time": 80,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Messi L."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 80,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Romero C."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 81,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Maza I."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 82,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Bentaleb N."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            }
+        ]
+    },
+    "match-wc20": {
+        "homeScore": 1,
+        "awayScore": 1,
+        "sideQuestions": {
+            "htResult": "home",
+            "firstScorer": "Schmid R.",
+            "redCard": false,
+            "cornersOverUnder": "under"
+        },
+        "statistics": [
+            {
+                "period": "Match",
+                "statisticsItems": [
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "1.69",
+                        "away": "0.46",
+                        "homeValue": 1.69,
+                        "awayValue": 0.46
+                    },
+                    {
+                        "name": "Ball possession",
+                        "home": "63%",
+                        "away": "37%",
+                        "homeValue": 63,
+                        "awayValue": 37
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "11",
+                        "away": "11",
+                        "homeValue": 11,
+                        "awayValue": 11
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "4",
+                        "away": "4",
+                        "homeValue": 4,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "4",
+                        "away": "0",
+                        "homeValue": 4,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "4",
+                        "away": "3",
+                        "homeValue": 4,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "84% (487/580)",
+                        "away": "73% (241/332)",
+                        "homeValue": 84,
+                        "awayValue": 73
+                    },
+                    {
+                        "name": "Yellow cards",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "1.69",
+                        "away": "0.46",
+                        "homeValue": 1.69,
+                        "awayValue": 0.46
+                    },
+                    {
+                        "name": "xG on target (xGOT)",
+                        "home": "1.29",
+                        "away": "1.17",
+                        "homeValue": 1.29,
+                        "awayValue": 1.17
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "11",
+                        "away": "11",
+                        "homeValue": 11,
+                        "awayValue": 11
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "4",
+                        "away": "4",
+                        "homeValue": 4,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Shots off target",
+                        "home": "6",
+                        "away": "5",
+                        "homeValue": 6,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Blocked shots",
+                        "home": "1",
+                        "away": "2",
+                        "homeValue": 1,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Shots inside the box",
+                        "home": "6",
+                        "away": "7",
+                        "homeValue": 6,
+                        "awayValue": 7
+                    },
+                    {
+                        "name": "Shots outside the box",
+                        "home": "5",
+                        "away": "4",
+                        "homeValue": 5,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Hit the woodwork",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "4",
+                        "away": "0",
+                        "homeValue": 4,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "4",
+                        "away": "3",
+                        "homeValue": 4,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Touches in opposition box",
+                        "home": "28",
+                        "away": "21",
+                        "homeValue": 28,
+                        "awayValue": 21
+                    },
+                    {
+                        "name": "Accurate through passes",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Offsides",
+                        "home": "3",
+                        "away": "1",
+                        "homeValue": 3,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Free kicks",
+                        "home": "7",
+                        "away": "12",
+                        "homeValue": 7,
+                        "awayValue": 12
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "84% (487/580)",
+                        "away": "73% (241/332)",
+                        "homeValue": 84,
+                        "awayValue": 73
+                    },
+                    {
+                        "name": "Long passes",
+                        "home": "38% (18/47)",
+                        "away": "44% (23/52)",
+                        "homeValue": 38,
+                        "awayValue": 44
+                    },
+                    {
+                        "name": "Passes in final third",
+                        "home": "69% (96/140)",
+                        "away": "70% (66/94)",
+                        "homeValue": 69,
+                        "awayValue": 70
+                    },
+                    {
+                        "name": "Crosses",
+                        "home": "18% (3/17)",
+                        "away": "20% (3/15)",
+                        "homeValue": 18,
+                        "awayValue": 20
+                    },
+                    {
+                        "name": "Expected assists (xA)",
+                        "home": "0.97",
+                        "away": "0.32",
+                        "homeValue": 0.97,
+                        "awayValue": 0.32
+                    },
+                    {
+                        "name": "Throw ins",
+                        "home": "21",
+                        "away": "19",
+                        "homeValue": 21,
+                        "awayValue": 19
+                    },
+                    {
+                        "name": "Fouls",
+                        "home": "12",
+                        "away": "7",
+                        "homeValue": 12,
+                        "awayValue": 7
+                    },
+                    {
+                        "name": "Tackles",
+                        "home": "53% (9/17)",
+                        "away": "40% (6/15)",
+                        "homeValue": 53,
+                        "awayValue": 40
+                    },
+                    {
+                        "name": "Duels won",
+                        "home": "43",
+                        "away": "48",
+                        "homeValue": 43,
+                        "awayValue": 48
+                    },
+                    {
+                        "name": "Clearances",
+                        "home": "24",
+                        "away": "39",
+                        "homeValue": 24,
+                        "awayValue": 39
+                    },
+                    {
+                        "name": "Interceptions",
+                        "home": "15",
+                        "away": "12",
+                        "homeValue": 15,
+                        "awayValue": 12
+                    },
+                    {
+                        "name": "Errors leading to shot",
+                        "home": "0",
+                        "away": "2",
+                        "homeValue": 0,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Errors leading to goal",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Goalkeeper saves",
+                        "home": "3",
+                        "away": "1",
+                        "homeValue": 3,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "xGOT faced",
+                        "home": "1.17",
+                        "away": "1.29",
+                        "homeValue": 1.17,
+                        "awayValue": 1.29
+                    },
+                    {
+                        "name": "Goals prevented",
+                        "home": "0.17",
+                        "away": "-0.71",
+                        "homeValue": 0.17,
+                        "awayValue": -0.71
+                    }
+                ]
+            },
+            {
+                "period": "1st Half",
+                "statisticsItems": [
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.27",
+                        "away": "0.30",
+                        "homeValue": 0.27,
+                        "awayValue": 0.3
+                    },
+                    {
+                        "name": "Ball possession",
+                        "home": "64%",
+                        "away": "36%",
+                        "homeValue": 64,
+                        "awayValue": 36
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "6",
+                        "away": "8",
+                        "homeValue": 6,
+                        "awayValue": 8
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "1",
+                        "away": "3",
+                        "homeValue": 1,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "1",
+                        "away": "3",
+                        "homeValue": 1,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "86% (255/295)",
+                        "away": "76% (122/161)",
+                        "homeValue": 86,
+                        "awayValue": 76
+                    },
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.27",
+                        "away": "0.30",
+                        "homeValue": 0.27,
+                        "awayValue": 0.3
+                    },
+                    {
+                        "name": "xG on target (xGOT)",
+                        "home": "0.42",
+                        "away": "0.39",
+                        "homeValue": 0.42,
+                        "awayValue": 0.39
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "6",
+                        "away": "8",
+                        "homeValue": 6,
+                        "awayValue": 8
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "1",
+                        "away": "3",
+                        "homeValue": 1,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Shots off target",
+                        "home": "4",
+                        "away": "4",
+                        "homeValue": 4,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Blocked shots",
+                        "home": "1",
+                        "away": "1",
+                        "homeValue": 1,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Shots inside the box",
+                        "home": "2",
+                        "away": "5",
+                        "homeValue": 2,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Shots outside the box",
+                        "home": "4",
+                        "away": "3",
+                        "homeValue": 4,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Hit the woodwork",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "1",
+                        "away": "3",
+                        "homeValue": 1,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Touches in opposition box",
+                        "home": "18",
+                        "away": "15",
+                        "homeValue": 18,
+                        "awayValue": 15
+                    },
+                    {
+                        "name": "Accurate through passes",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Offsides",
+                        "home": "2",
+                        "away": "0",
+                        "homeValue": 2,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Free kicks",
+                        "home": "3",
+                        "away": "7",
+                        "homeValue": 3,
+                        "awayValue": 7
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "86% (255/295)",
+                        "away": "76% (122/161)",
+                        "homeValue": 86,
+                        "awayValue": 76
+                    },
+                    {
+                        "name": "Long passes",
+                        "home": "35% (9/26)",
+                        "away": "44% (12/27)",
+                        "homeValue": 35,
+                        "awayValue": 44
+                    },
+                    {
+                        "name": "Passes in final third",
+                        "home": "70% (49/70)",
+                        "away": "71% (37/52)",
+                        "homeValue": 70,
+                        "awayValue": 71
+                    },
+                    {
+                        "name": "Crosses",
+                        "home": "25% (2/8)",
+                        "away": "33% (2/6)",
+                        "homeValue": 25,
+                        "awayValue": 33
+                    },
+                    {
+                        "name": "Expected assists (xA)",
+                        "home": "0.49",
+                        "away": "0.21",
+                        "homeValue": 0.49,
+                        "awayValue": 0.21
+                    },
+                    {
+                        "name": "Throw ins",
+                        "home": "6",
+                        "away": "9",
+                        "homeValue": 6,
+                        "awayValue": 9
+                    },
+                    {
+                        "name": "Fouls",
+                        "home": "7",
+                        "away": "3",
+                        "homeValue": 7,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Tackles",
+                        "home": "50% (5/10)",
+                        "away": "14% (1/7)",
+                        "homeValue": 50,
+                        "awayValue": 14
+                    },
+                    {
+                        "name": "Duels won",
+                        "home": "23",
+                        "away": "26",
+                        "homeValue": 23,
+                        "awayValue": 26
+                    },
+                    {
+                        "name": "Clearances",
+                        "home": "14",
+                        "away": "23",
+                        "homeValue": 14,
+                        "awayValue": 23
+                    },
+                    {
+                        "name": "Interceptions",
+                        "home": "4",
+                        "away": "5",
+                        "homeValue": 4,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Errors leading to shot",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Errors leading to goal",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Goalkeeper saves",
+                        "home": "3",
+                        "away": "0",
+                        "homeValue": 3,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "xGOT faced",
+                        "home": "0.39",
+                        "away": "0.42",
+                        "homeValue": 0.39,
+                        "awayValue": 0.42
+                    },
+                    {
+                        "name": "Goals prevented",
+                        "home": "0.39",
+                        "away": "-0.58",
+                        "homeValue": 0.39,
+                        "awayValue": -0.58
+                    }
+                ]
+            },
+            {
+                "period": "2nd Half",
+                "statisticsItems": [
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "1.42",
+                        "away": "0.16",
+                        "homeValue": 1.42,
+                        "awayValue": 0.16
+                    },
+                    {
+                        "name": "Ball possession",
+                        "home": "62%",
+                        "away": "38%",
+                        "homeValue": 62,
+                        "awayValue": 38
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "5",
+                        "away": "3",
+                        "homeValue": 5,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "3",
+                        "away": "1",
+                        "homeValue": 3,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "3",
+                        "away": "0",
+                        "homeValue": 3,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "3",
+                        "away": "0",
+                        "homeValue": 3,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "81% (232/285)",
+                        "away": "70% (119/171)",
+                        "homeValue": 81,
+                        "awayValue": 70
+                    },
+                    {
+                        "name": "Yellow cards",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "1.42",
+                        "away": "0.16",
+                        "homeValue": 1.42,
+                        "awayValue": 0.16
+                    },
+                    {
+                        "name": "xG on target (xGOT)",
+                        "home": "0.87",
+                        "away": "0.78",
+                        "homeValue": 0.87,
+                        "awayValue": 0.78
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "5",
+                        "away": "3",
+                        "homeValue": 5,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "3",
+                        "away": "1",
+                        "homeValue": 3,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Shots off target",
+                        "home": "2",
+                        "away": "1",
+                        "homeValue": 2,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Blocked shots",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Shots inside the box",
+                        "home": "4",
+                        "away": "2",
+                        "homeValue": 4,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Shots outside the box",
+                        "home": "1",
+                        "away": "1",
+                        "homeValue": 1,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Hit the woodwork",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "3",
+                        "away": "0",
+                        "homeValue": 3,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "3",
+                        "away": "0",
+                        "homeValue": 3,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Touches in opposition box",
+                        "home": "10",
+                        "away": "6",
+                        "homeValue": 10,
+                        "awayValue": 6
+                    },
+                    {
+                        "name": "Accurate through passes",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Offsides",
+                        "home": "1",
+                        "away": "1",
+                        "homeValue": 1,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Free kicks",
+                        "home": "4",
+                        "away": "5",
+                        "homeValue": 4,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "81% (232/285)",
+                        "away": "70% (119/171)",
+                        "homeValue": 81,
+                        "awayValue": 70
+                    },
+                    {
+                        "name": "Long passes",
+                        "home": "43% (9/21)",
+                        "away": "44% (11/25)",
+                        "homeValue": 43,
+                        "awayValue": 44
+                    },
+                    {
+                        "name": "Passes in final third",
+                        "home": "67% (47/70)",
+                        "away": "69% (29/42)",
+                        "homeValue": 67,
+                        "awayValue": 69
+                    },
+                    {
+                        "name": "Crosses",
+                        "home": "11% (1/9)",
+                        "away": "11% (1/9)",
+                        "homeValue": 11,
+                        "awayValue": 11
+                    },
+                    {
+                        "name": "Expected assists (xA)",
+                        "home": "0.48",
+                        "away": "0.11",
+                        "homeValue": 0.48,
+                        "awayValue": 0.11
+                    },
+                    {
+                        "name": "Throw ins",
+                        "home": "15",
+                        "away": "10",
+                        "homeValue": 15,
+                        "awayValue": 10
+                    },
+                    {
+                        "name": "Fouls",
+                        "home": "5",
+                        "away": "4",
+                        "homeValue": 5,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Tackles",
+                        "home": "57% (4/7)",
+                        "away": "63% (5/8)",
+                        "homeValue": 57,
+                        "awayValue": 63
+                    },
+                    {
+                        "name": "Duels won",
+                        "home": "20",
+                        "away": "22",
+                        "homeValue": 20,
+                        "awayValue": 22
+                    },
+                    {
+                        "name": "Clearances",
+                        "home": "10",
+                        "away": "16",
+                        "homeValue": 10,
+                        "awayValue": 16
+                    },
+                    {
+                        "name": "Interceptions",
+                        "home": "11",
+                        "away": "7",
+                        "homeValue": 11,
+                        "awayValue": 7
+                    },
+                    {
+                        "name": "Errors leading to shot",
+                        "home": "0",
+                        "away": "2",
+                        "homeValue": 0,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Errors leading to goal",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Goalkeeper saves",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "xGOT faced",
+                        "home": "0.78",
+                        "away": "0.87",
+                        "homeValue": 0.78,
+                        "awayValue": 0.87
+                    },
+                    {
+                        "name": "Goals prevented",
+                        "home": "-0.22",
+                        "away": "-0.13",
+                        "homeValue": -0.22,
+                        "awayValue": -0.13
+                    }
+                ]
+            }
+        ],
+        "incidents": [
+            {
+                "time": 21,
+                "incidentType": "goal",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Schmid R."
+                },
+                "assist": {
+                    "name": "Schlager X."
+                },
+                "homeScore": "1",
+                "awayScore": "0",
+                "description": "Romano Schmid (Austria) takes a great first touch to control a killer pass on the edge of the box and curls the ball into the top right corner in trademark fashion."
+            },
+            {
+                "time": 46,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Kalajdzic S."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 50,
+                "incidentType": "goal",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Olwan A."
+                },
+                "assist": {
+                    "name": "Al Rawabdeh N."
+                },
+                "homeScore": "1",
+                "awayScore": "1",
+                "description": "GOAL! Ali Olwan (Jordan) got to the ball in front of the goal and he couldn't miss from there. His strike went in off the right-hand post. The score is 1:1."
+            },
+            {
+                "time": 59,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Mwene P."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 59,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Alaba D."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 59,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Schlager X."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 72,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Abualnadi M."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 76,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Al Arab Y."
+                },
+                "assist": null,
+                "homeScore": "2",
+                "awayScore": "1",
+                "description": "I"
+            },
+            {
+                "time": 77,
+                "incidentType": "card",
+                "incidentClass": "yellow",
+                "isHome": true,
+                "player": {
+                    "name": "Sabitzer M."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": "M"
+            },
+            {
+                "time": 81,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Nasib A."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 81,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Haddad E."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 83,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Schmid R."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 88,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Tamari M."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 89,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Al Fakhouri O."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 90,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Arnautovic M."
+                },
+                "assist": null,
+                "homeScore": "3",
+                "awayScore": "1",
+                "description": "Marko Arnautovic (Austria) is heading towards the penalty spot to take it."
+            }
+        ]
+    },
+    "match-wc21": {
+        "homeScore": 1,
+        "awayScore": 1,
+        "sideQuestions": {
+            "htResult": "draw",
+            "firstScorer": "Neves J.",
+            "redCard": false,
+            "cornersOverUnder": "over"
+        },
+        "statistics": [
+            {
+                "period": "Match",
+                "statisticsItems": [
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.65",
+                        "away": "0.87",
+                        "homeValue": 0.65,
+                        "awayValue": 0.87
+                    },
+                    {
+                        "name": "Ball possession",
+                        "home": "75%",
+                        "away": "25%",
+                        "homeValue": 75,
+                        "awayValue": 25
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "7",
+                        "away": "8",
+                        "homeValue": 7,
+                        "awayValue": 8
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "1",
+                        "away": "2",
+                        "homeValue": 1,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "5",
+                        "away": "4",
+                        "homeValue": 5,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "92% (724/783)",
+                        "away": "78% (195/249)",
+                        "homeValue": 92,
+                        "awayValue": 78
+                    },
+                    {
+                        "name": "Yellow cards",
+                        "home": "3",
+                        "away": "1",
+                        "homeValue": 3,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.65",
+                        "away": "0.87",
+                        "homeValue": 0.65,
+                        "awayValue": 0.87
+                    },
+                    {
+                        "name": "xG on target (xGOT)",
+                        "home": "0.53",
+                        "away": "0.97",
+                        "homeValue": 0.53,
+                        "awayValue": 0.97
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "7",
+                        "away": "8",
+                        "homeValue": 7,
+                        "awayValue": 8
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "1",
+                        "away": "2",
+                        "homeValue": 1,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Shots off target",
+                        "home": "4",
+                        "away": "3",
+                        "homeValue": 4,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Blocked shots",
+                        "home": "2",
+                        "away": "3",
+                        "homeValue": 2,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Shots inside the box",
+                        "home": "5",
+                        "away": "2",
+                        "homeValue": 5,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Shots outside the box",
+                        "home": "2",
+                        "away": "6",
+                        "homeValue": 2,
+                        "awayValue": 6
+                    },
+                    {
+                        "name": "Hit the woodwork",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Headed goals",
+                        "home": "1",
+                        "away": "1",
+                        "homeValue": 1,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "5",
+                        "away": "4",
+                        "homeValue": 5,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Touches in opposition box",
+                        "home": "29",
+                        "away": "10",
+                        "homeValue": 29,
+                        "awayValue": 10
+                    },
+                    {
+                        "name": "Accurate through passes",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Offsides",
+                        "home": "3",
+                        "away": "2",
+                        "homeValue": 3,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Free kicks",
+                        "home": "10",
+                        "away": "9",
+                        "homeValue": 10,
+                        "awayValue": 9
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "92% (724/783)",
+                        "away": "78% (195/249)",
+                        "homeValue": 92,
+                        "awayValue": 78
+                    },
+                    {
+                        "name": "Long passes",
+                        "home": "64% (41/64)",
+                        "away": "28% (11/40)",
+                        "homeValue": 64,
+                        "awayValue": 28
+                    },
+                    {
+                        "name": "Passes in final third",
+                        "home": "85% (176/207)",
+                        "away": "68% (50/73)",
+                        "homeValue": 85,
+                        "awayValue": 68
+                    },
+                    {
+                        "name": "Crosses",
+                        "home": "26% (6/23)",
+                        "away": "10% (1/10)",
+                        "homeValue": 26,
+                        "awayValue": 10
+                    },
+                    {
+                        "name": "Expected assists (xA)",
+                        "home": "1.84",
+                        "away": "0.71",
+                        "homeValue": 1.84,
+                        "awayValue": 0.71
+                    },
+                    {
+                        "name": "Throw ins",
+                        "home": "16",
+                        "away": "15",
+                        "homeValue": 16,
+                        "awayValue": 15
+                    },
+                    {
+                        "name": "Fouls",
+                        "home": "9",
+                        "away": "10",
+                        "homeValue": 9,
+                        "awayValue": 10
+                    },
+                    {
+                        "name": "Tackles",
+                        "home": "50% (6/12)",
+                        "away": "53% (9/17)",
+                        "homeValue": 50,
+                        "awayValue": 53
+                    },
+                    {
+                        "name": "Duels won",
+                        "home": "34",
+                        "away": "42",
+                        "homeValue": 34,
+                        "awayValue": 42
+                    },
+                    {
+                        "name": "Clearances",
+                        "home": "10",
+                        "away": "27",
+                        "homeValue": 10,
+                        "awayValue": 27
+                    },
+                    {
+                        "name": "Interceptions",
+                        "home": "3",
+                        "away": "5",
+                        "homeValue": 3,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Errors leading to shot",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Errors leading to goal",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Goalkeeper saves",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "xGOT faced",
+                        "home": "0.97",
+                        "away": "0.53",
+                        "homeValue": 0.97,
+                        "awayValue": 0.53
+                    },
+                    {
+                        "name": "Goals prevented",
+                        "home": "-0.03",
+                        "away": "-0.47",
+                        "homeValue": -0.03,
+                        "awayValue": -0.47
+                    }
+                ]
+            },
+            {
+                "period": "1st Half",
+                "statisticsItems": [
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.08",
+                        "away": "0.55",
+                        "homeValue": 0.08,
+                        "awayValue": 0.55
+                    },
+                    {
+                        "name": "Ball possession",
+                        "home": "80%",
+                        "away": "20%",
+                        "homeValue": 80,
+                        "awayValue": 20
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "2",
+                        "away": "6",
+                        "homeValue": 2,
+                        "awayValue": 6
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "1",
+                        "away": "2",
+                        "homeValue": 1,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "1",
+                        "away": "3",
+                        "homeValue": 1,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "94% (461/490)",
+                        "away": "81% (96/118)",
+                        "homeValue": 94,
+                        "awayValue": 81
+                    },
+                    {
+                        "name": "Yellow cards",
+                        "home": "1",
+                        "away": "1",
+                        "homeValue": 1,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.08",
+                        "away": "0.55",
+                        "homeValue": 0.08,
+                        "awayValue": 0.55
+                    },
+                    {
+                        "name": "xG on target (xGOT)",
+                        "home": "0.53",
+                        "away": "0.97",
+                        "homeValue": 0.53,
+                        "awayValue": 0.97
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "2",
+                        "away": "6",
+                        "homeValue": 2,
+                        "awayValue": 6
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "1",
+                        "away": "2",
+                        "homeValue": 1,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Shots off target",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Blocked shots",
+                        "home": "1",
+                        "away": "3",
+                        "homeValue": 1,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Shots inside the box",
+                        "home": "1",
+                        "away": "1",
+                        "homeValue": 1,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Shots outside the box",
+                        "home": "1",
+                        "away": "5",
+                        "homeValue": 1,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Hit the woodwork",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Headed goals",
+                        "home": "1",
+                        "away": "1",
+                        "homeValue": 1,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "1",
+                        "away": "3",
+                        "homeValue": 1,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Touches in opposition box",
+                        "home": "11",
+                        "away": "4",
+                        "homeValue": 11,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Accurate through passes",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Offsides",
+                        "home": "1",
+                        "away": "1",
+                        "homeValue": 1,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Free kicks",
+                        "home": "5",
+                        "away": "3",
+                        "homeValue": 5,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "94% (461/490)",
+                        "away": "81% (96/118)",
+                        "homeValue": 94,
+                        "awayValue": 81
+                    },
+                    {
+                        "name": "Long passes",
+                        "home": "69% (20/29)",
+                        "away": "27% (4/15)",
+                        "homeValue": 69,
+                        "awayValue": 27
+                    },
+                    {
+                        "name": "Passes in final third",
+                        "home": "86% (93/108)",
+                        "away": "72% (21/29)",
+                        "homeValue": 86,
+                        "awayValue": 72
+                    },
+                    {
+                        "name": "Crosses",
+                        "home": "20% (2/10)",
+                        "away": "14% (1/7)",
+                        "homeValue": 20,
+                        "awayValue": 14
+                    },
+                    {
+                        "name": "Expected assists (xA)",
+                        "home": "0.31",
+                        "away": "0.36",
+                        "homeValue": 0.31,
+                        "awayValue": 0.36
+                    },
+                    {
+                        "name": "Throw ins",
+                        "home": "8",
+                        "away": "5",
+                        "homeValue": 8,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Fouls",
+                        "home": "3",
+                        "away": "5",
+                        "homeValue": 3,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Tackles",
+                        "home": "50% (4/8)",
+                        "away": "50% (4/8)",
+                        "homeValue": 50,
+                        "awayValue": 50
+                    },
+                    {
+                        "name": "Duels won",
+                        "home": "17",
+                        "away": "18",
+                        "homeValue": 17,
+                        "awayValue": 18
+                    },
+                    {
+                        "name": "Clearances",
+                        "home": "6",
+                        "away": "12",
+                        "homeValue": 6,
+                        "awayValue": 12
+                    },
+                    {
+                        "name": "Interceptions",
+                        "home": "0",
+                        "away": "3",
+                        "homeValue": 0,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Errors leading to shot",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Errors leading to goal",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Goalkeeper saves",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "xGOT faced",
+                        "home": "0.97",
+                        "away": "0.53",
+                        "homeValue": 0.97,
+                        "awayValue": 0.53
+                    },
+                    {
+                        "name": "Goals prevented",
+                        "home": "-0.03",
+                        "away": "-0.47",
+                        "homeValue": -0.03,
+                        "awayValue": -0.47
+                    }
+                ]
+            },
+            {
+                "period": "2nd Half",
+                "statisticsItems": [
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.57",
+                        "away": "0.32",
+                        "homeValue": 0.57,
+                        "awayValue": 0.32
+                    },
+                    {
+                        "name": "Ball possession",
+                        "home": "69%",
+                        "away": "31%",
+                        "homeValue": 69,
+                        "awayValue": 31
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "5",
+                        "away": "2",
+                        "homeValue": 5,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "4",
+                        "away": "1",
+                        "homeValue": 4,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "90% (263/293)",
+                        "away": "76% (99/131)",
+                        "homeValue": 90,
+                        "awayValue": 76
+                    },
+                    {
+                        "name": "Yellow cards",
+                        "home": "2",
+                        "away": "0",
+                        "homeValue": 2,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.57",
+                        "away": "0.32",
+                        "homeValue": 0.57,
+                        "awayValue": 0.32
+                    },
+                    {
+                        "name": "xG on target (xGOT)",
+                        "home": "0.00",
+                        "away": "0.00",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "5",
+                        "away": "2",
+                        "homeValue": 5,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Shots off target",
+                        "home": "4",
+                        "away": "2",
+                        "homeValue": 4,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Blocked shots",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Shots inside the box",
+                        "home": "4",
+                        "away": "1",
+                        "homeValue": 4,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Shots outside the box",
+                        "home": "1",
+                        "away": "1",
+                        "homeValue": 1,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Hit the woodwork",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "4",
+                        "away": "1",
+                        "homeValue": 4,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Touches in opposition box",
+                        "home": "18",
+                        "away": "6",
+                        "homeValue": 18,
+                        "awayValue": 6
+                    },
+                    {
+                        "name": "Accurate through passes",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Offsides",
+                        "home": "2",
+                        "away": "1",
+                        "homeValue": 2,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Free kicks",
+                        "home": "5",
+                        "away": "6",
+                        "homeValue": 5,
+                        "awayValue": 6
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "90% (263/293)",
+                        "away": "76% (99/131)",
+                        "homeValue": 90,
+                        "awayValue": 76
+                    },
+                    {
+                        "name": "Long passes",
+                        "home": "60% (21/35)",
+                        "away": "28% (7/25)",
+                        "homeValue": 60,
+                        "awayValue": 28
+                    },
+                    {
+                        "name": "Passes in final third",
+                        "home": "84% (83/99)",
+                        "away": "66% (29/44)",
+                        "homeValue": 84,
+                        "awayValue": 66
+                    },
+                    {
+                        "name": "Crosses",
+                        "home": "31% (4/13)",
+                        "away": "0% (0/3)",
+                        "homeValue": 31,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Expected assists (xA)",
+                        "home": "1.53",
+                        "away": "0.35",
+                        "homeValue": 1.53,
+                        "awayValue": 0.35
+                    },
+                    {
+                        "name": "Throw ins",
+                        "home": "8",
+                        "away": "10",
+                        "homeValue": 8,
+                        "awayValue": 10
+                    },
+                    {
+                        "name": "Fouls",
+                        "home": "6",
+                        "away": "5",
+                        "homeValue": 6,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Tackles",
+                        "home": "50% (2/4)",
+                        "away": "56% (5/9)",
+                        "homeValue": 50,
+                        "awayValue": 56
+                    },
+                    {
+                        "name": "Duels won",
+                        "home": "17",
+                        "away": "24",
+                        "homeValue": 17,
+                        "awayValue": 24
+                    },
+                    {
+                        "name": "Clearances",
+                        "home": "4",
+                        "away": "15",
+                        "homeValue": 4,
+                        "awayValue": 15
+                    },
+                    {
+                        "name": "Interceptions",
+                        "home": "3",
+                        "away": "2",
+                        "homeValue": 3,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Errors leading to shot",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Errors leading to goal",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Goalkeeper saves",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "xGOT faced",
+                        "home": "0.00",
+                        "away": "0.00",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Goals prevented",
+                        "home": "0.00",
+                        "away": "0.00",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    }
+                ]
+            }
+        ],
+        "incidents": [
+            {
+                "time": 6,
+                "incidentType": "goal",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Neves J."
+                },
+                "assist": {
+                    "name": "Neto P."
+                },
+                "homeScore": "1",
+                "awayScore": "0",
+                "description": "Goal! Joao Neves (Portugal) ran onto a clever lofted pass from Pedro Neto and easily beat the keeper with a header into the top right corner from close range. 1:0."
+            },
+            {
+                "time": 13,
+                "incidentType": "card",
+                "incidentClass": "yellow",
+                "isHome": true,
+                "player": {
+                    "name": "Silva B."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": "B"
+            },
+            {
+                "time": 32,
+                "incidentType": "card",
+                "incidentClass": "yellow",
+                "isHome": false,
+                "player": {
+                    "name": "Mbemba Ch."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": "C"
+            },
+            {
+                "time": 45,
+                "incidentType": "goal",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Wissa Y."
+                },
+                "assist": {
+                    "name": "Masuaku A."
+                },
+                "homeScore": "1",
+                "awayScore": "1",
+                "description": "It's a goal! Yoane Wissa (D.R. Congo) bursts into the box to get on the end of a whipped in cross from Arthur Masuaku and scores magnificently from close range into the roof of the net. 1:1."
+            },
+            {
+                "time": 46,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Silva B."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 57,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Mukau N."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 71,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Neto P."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 72,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Mendes N."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 74,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Kayembe E."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 74,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Masuaku A."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 83,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Vitinha"
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 85,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Wan-Bissaka A."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 85,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Bakambu C."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 88,
+                "incidentType": "card",
+                "incidentClass": "yellow",
+                "isHome": true,
+                "player": {
+                    "name": "Semedo N."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": "N"
+            },
+            {
+                "time": 90,
+                "incidentType": "card",
+                "incidentClass": "yellow",
+                "isHome": true,
+                "player": {
+                    "name": "Araujo T."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": "T"
+            }
+        ]
+    },
+    "match-wc22": {
+        "homeScore": 4,
+        "awayScore": 2,
+        "sideQuestions": {
+            "htResult": "away",
+            "firstScorer": "Baturina M.",
+            "redCard": false,
+            "cornersOverUnder": "over"
+        },
+        "statistics": [
+            {
+                "period": "Match",
+                "statisticsItems": [
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "3.21",
+                        "away": "0.70",
+                        "homeValue": 3.21,
+                        "awayValue": 0.7
+                    },
+                    {
+                        "name": "Ball possession",
+                        "home": "52%",
+                        "away": "48%",
+                        "homeValue": 52,
+                        "awayValue": 48
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "22",
+                        "away": "10",
+                        "homeValue": 22,
+                        "awayValue": 10
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "11",
+                        "away": "5",
+                        "homeValue": 11,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "7",
+                        "away": "2",
+                        "homeValue": 7,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "8",
+                        "away": "2",
+                        "homeValue": 8,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "86% (406/474)",
+                        "away": "86% (381/443)",
+                        "homeValue": 86,
+                        "awayValue": 86
+                    },
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "3.21",
+                        "away": "0.70",
+                        "homeValue": 3.21,
+                        "awayValue": 0.7
+                    },
+                    {
+                        "name": "xG on target (xGOT)",
+                        "home": "3.33",
+                        "away": "0.51",
+                        "homeValue": 3.33,
+                        "awayValue": 0.51
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "22",
+                        "away": "10",
+                        "homeValue": 22,
+                        "awayValue": 10
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "11",
+                        "away": "5",
+                        "homeValue": 11,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Shots off target",
+                        "home": "6",
+                        "away": "3",
+                        "homeValue": 6,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Blocked shots",
+                        "home": "5",
+                        "away": "2",
+                        "homeValue": 5,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Shots inside the box",
+                        "home": "20",
+                        "away": "4",
+                        "homeValue": 20,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Shots outside the box",
+                        "home": "2",
+                        "away": "6",
+                        "homeValue": 2,
+                        "awayValue": 6
+                    },
+                    {
+                        "name": "Hit the woodwork",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Headed goals",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "7",
+                        "away": "2",
+                        "homeValue": 7,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "8",
+                        "away": "2",
+                        "homeValue": 8,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Touches in opposition box",
+                        "home": "37",
+                        "away": "16",
+                        "homeValue": 37,
+                        "awayValue": 16
+                    },
+                    {
+                        "name": "Accurate through passes",
+                        "home": "2",
+                        "away": "1",
+                        "homeValue": 2,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Offsides",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Free kicks",
+                        "home": "12",
+                        "away": "10",
+                        "homeValue": 12,
+                        "awayValue": 10
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "86% (406/474)",
+                        "away": "86% (381/443)",
+                        "homeValue": 86,
+                        "awayValue": 86
+                    },
+                    {
+                        "name": "Long passes",
+                        "home": "38% (16/42)",
+                        "away": "43% (18/42)",
+                        "homeValue": 38,
+                        "awayValue": 43
+                    },
+                    {
+                        "name": "Passes in final third",
+                        "home": "61% (49/80)",
+                        "away": "74% (64/86)",
+                        "homeValue": 61,
+                        "awayValue": 74
+                    },
+                    {
+                        "name": "Crosses",
+                        "home": "46% (6/13)",
+                        "away": "15% (2/13)",
+                        "homeValue": 46,
+                        "awayValue": 15
+                    },
+                    {
+                        "name": "Expected assists (xA)",
+                        "home": "1.10",
+                        "away": "0.82",
+                        "homeValue": 1.1,
+                        "awayValue": 0.82
+                    },
+                    {
+                        "name": "Throw ins",
+                        "home": "15",
+                        "away": "18",
+                        "homeValue": 15,
+                        "awayValue": 18
+                    },
+                    {
+                        "name": "Fouls",
+                        "home": "10",
+                        "away": "12",
+                        "homeValue": 10,
+                        "awayValue": 12
+                    },
+                    {
+                        "name": "Tackles",
+                        "home": "78% (7/9)",
+                        "away": "73% (8/11)",
+                        "homeValue": 78,
+                        "awayValue": 73
+                    },
+                    {
+                        "name": "Duels won",
+                        "home": "38",
+                        "away": "41",
+                        "homeValue": 38,
+                        "awayValue": 41
+                    },
+                    {
+                        "name": "Clearances",
+                        "home": "16",
+                        "away": "17",
+                        "homeValue": 16,
+                        "awayValue": 17
+                    },
+                    {
+                        "name": "Interceptions",
+                        "home": "7",
+                        "away": "9",
+                        "homeValue": 7,
+                        "awayValue": 9
+                    },
+                    {
+                        "name": "Errors leading to shot",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Errors leading to goal",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Goalkeeper saves",
+                        "home": "3",
+                        "away": "7",
+                        "homeValue": 3,
+                        "awayValue": 7
+                    },
+                    {
+                        "name": "xGOT faced",
+                        "home": "0.51",
+                        "away": "3.33",
+                        "homeValue": 0.51,
+                        "awayValue": 3.33
+                    },
+                    {
+                        "name": "Goals prevented",
+                        "home": "-1.49",
+                        "away": "-0.67",
+                        "homeValue": -1.49,
+                        "awayValue": -0.67
+                    }
+                ]
+            },
+            {
+                "period": "1st Half",
+                "statisticsItems": [
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "1.38",
+                        "away": "0.37",
+                        "homeValue": 1.38,
+                        "awayValue": 0.37
+                    },
+                    {
+                        "name": "Ball possession",
+                        "home": "48%",
+                        "away": "52%",
+                        "homeValue": 48,
+                        "awayValue": 52
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "9",
+                        "away": "4",
+                        "homeValue": 9,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "2",
+                        "away": "2",
+                        "homeValue": 2,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "2",
+                        "away": "1",
+                        "homeValue": 2,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "3",
+                        "away": "1",
+                        "homeValue": 3,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "82% (180/219)",
+                        "away": "87% (203/234)",
+                        "homeValue": 82,
+                        "awayValue": 87
+                    },
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "1.38",
+                        "away": "0.37",
+                        "homeValue": 1.38,
+                        "awayValue": 0.37
+                    },
+                    {
+                        "name": "xG on target (xGOT)",
+                        "home": "0.87",
+                        "away": "0.16",
+                        "homeValue": 0.87,
+                        "awayValue": 0.16
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "9",
+                        "away": "4",
+                        "homeValue": 9,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "2",
+                        "away": "2",
+                        "homeValue": 2,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Shots off target",
+                        "home": "3",
+                        "away": "2",
+                        "homeValue": 3,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Blocked shots",
+                        "home": "4",
+                        "away": "0",
+                        "homeValue": 4,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Shots inside the box",
+                        "home": "7",
+                        "away": "2",
+                        "homeValue": 7,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Shots outside the box",
+                        "home": "2",
+                        "away": "2",
+                        "homeValue": 2,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Hit the woodwork",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Headed goals",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "2",
+                        "away": "1",
+                        "homeValue": 2,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "3",
+                        "away": "1",
+                        "homeValue": 3,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Touches in opposition box",
+                        "home": "15",
+                        "away": "8",
+                        "homeValue": 15,
+                        "awayValue": 8
+                    },
+                    {
+                        "name": "Accurate through passes",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Offsides",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Free kicks",
+                        "home": "5",
+                        "away": "6",
+                        "homeValue": 5,
+                        "awayValue": 6
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "82% (180/219)",
+                        "away": "87% (203/234)",
+                        "homeValue": 82,
+                        "awayValue": 87
+                    },
+                    {
+                        "name": "Long passes",
+                        "home": "27% (6/22)",
+                        "away": "46% (11/24)",
+                        "homeValue": 27,
+                        "awayValue": 46
+                    },
+                    {
+                        "name": "Passes in final third",
+                        "home": "48% (19/40)",
+                        "away": "70% (26/37)",
+                        "homeValue": 48,
+                        "awayValue": 70
+                    },
+                    {
+                        "name": "Crosses",
+                        "home": "60% (3/5)",
+                        "away": "50% (2/4)",
+                        "homeValue": 60,
+                        "awayValue": 50
+                    },
+                    {
+                        "name": "Expected assists (xA)",
+                        "home": "0.27",
+                        "away": "0.67",
+                        "homeValue": 0.27,
+                        "awayValue": 0.67
+                    },
+                    {
+                        "name": "Throw ins",
+                        "home": "8",
+                        "away": "7",
+                        "homeValue": 8,
+                        "awayValue": 7
+                    },
+                    {
+                        "name": "Fouls",
+                        "home": "6",
+                        "away": "5",
+                        "homeValue": 6,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Tackles",
+                        "home": "50% (1/2)",
+                        "away": "50% (2/4)",
+                        "homeValue": 50,
+                        "awayValue": 50
+                    },
+                    {
+                        "name": "Duels won",
+                        "home": "14",
+                        "away": "20",
+                        "homeValue": 14,
+                        "awayValue": 20
+                    },
+                    {
+                        "name": "Clearances",
+                        "home": "5",
+                        "away": "8",
+                        "homeValue": 5,
+                        "awayValue": 8
+                    },
+                    {
+                        "name": "Interceptions",
+                        "home": "4",
+                        "away": "3",
+                        "homeValue": 4,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Errors leading to shot",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Errors leading to goal",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Goalkeeper saves",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "xGOT faced",
+                        "home": "0.16",
+                        "away": "0.87",
+                        "homeValue": 0.16,
+                        "awayValue": 0.87
+                    },
+                    {
+                        "name": "Goals prevented",
+                        "home": "-1.84",
+                        "away": "-1.13",
+                        "homeValue": -1.84,
+                        "awayValue": -1.13
+                    }
+                ]
+            },
+            {
+                "period": "2nd Half",
+                "statisticsItems": [
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "1.83",
+                        "away": "0.33",
+                        "homeValue": 1.83,
+                        "awayValue": 0.33
+                    },
+                    {
+                        "name": "Ball possession",
+                        "home": "55%",
+                        "away": "45%",
+                        "homeValue": 55,
+                        "awayValue": 45
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "13",
+                        "away": "6",
+                        "homeValue": 13,
+                        "awayValue": 6
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "9",
+                        "away": "3",
+                        "homeValue": 9,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "5",
+                        "away": "1",
+                        "homeValue": 5,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "5",
+                        "away": "1",
+                        "homeValue": 5,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "89% (226/255)",
+                        "away": "85% (178/209)",
+                        "homeValue": 89,
+                        "awayValue": 85
+                    },
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "1.83",
+                        "away": "0.33",
+                        "homeValue": 1.83,
+                        "awayValue": 0.33
+                    },
+                    {
+                        "name": "xG on target (xGOT)",
+                        "home": "2.46",
+                        "away": "0.35",
+                        "homeValue": 2.46,
+                        "awayValue": 0.35
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "13",
+                        "away": "6",
+                        "homeValue": 13,
+                        "awayValue": 6
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "9",
+                        "away": "3",
+                        "homeValue": 9,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Shots off target",
+                        "home": "3",
+                        "away": "1",
+                        "homeValue": 3,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Blocked shots",
+                        "home": "1",
+                        "away": "2",
+                        "homeValue": 1,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Shots inside the box",
+                        "home": "13",
+                        "away": "2",
+                        "homeValue": 13,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Shots outside the box",
+                        "home": "0",
+                        "away": "4",
+                        "homeValue": 0,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Hit the woodwork",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "5",
+                        "away": "1",
+                        "homeValue": 5,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "5",
+                        "away": "1",
+                        "homeValue": 5,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Touches in opposition box",
+                        "home": "22",
+                        "away": "8",
+                        "homeValue": 22,
+                        "awayValue": 8
+                    },
+                    {
+                        "name": "Accurate through passes",
+                        "home": "2",
+                        "away": "0",
+                        "homeValue": 2,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Offsides",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Free kicks",
+                        "home": "7",
+                        "away": "4",
+                        "homeValue": 7,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "89% (226/255)",
+                        "away": "85% (178/209)",
+                        "homeValue": 89,
+                        "awayValue": 85
+                    },
+                    {
+                        "name": "Long passes",
+                        "home": "50% (10/20)",
+                        "away": "39% (7/18)",
+                        "homeValue": 50,
+                        "awayValue": 39
+                    },
+                    {
+                        "name": "Passes in final third",
+                        "home": "75% (30/40)",
+                        "away": "78% (38/49)",
+                        "homeValue": 75,
+                        "awayValue": 78
+                    },
+                    {
+                        "name": "Crosses",
+                        "home": "38% (3/8)",
+                        "away": "0% (0/9)",
+                        "homeValue": 38,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Expected assists (xA)",
+                        "home": "0.83",
+                        "away": "0.15",
+                        "homeValue": 0.83,
+                        "awayValue": 0.15
+                    },
+                    {
+                        "name": "Throw ins",
+                        "home": "7",
+                        "away": "11",
+                        "homeValue": 7,
+                        "awayValue": 11
+                    },
+                    {
+                        "name": "Fouls",
+                        "home": "4",
+                        "away": "7",
+                        "homeValue": 4,
+                        "awayValue": 7
+                    },
+                    {
+                        "name": "Tackles",
+                        "home": "86% (6/7)",
+                        "away": "86% (6/7)",
+                        "homeValue": 86,
+                        "awayValue": 86
+                    },
+                    {
+                        "name": "Duels won",
+                        "home": "24",
+                        "away": "21",
+                        "homeValue": 24,
+                        "awayValue": 21
+                    },
+                    {
+                        "name": "Clearances",
+                        "home": "11",
+                        "away": "9",
+                        "homeValue": 11,
+                        "awayValue": 9
+                    },
+                    {
+                        "name": "Interceptions",
+                        "home": "3",
+                        "away": "6",
+                        "homeValue": 3,
+                        "awayValue": 6
+                    },
+                    {
+                        "name": "Errors leading to shot",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Errors leading to goal",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Goalkeeper saves",
+                        "home": "3",
+                        "away": "7",
+                        "homeValue": 3,
+                        "awayValue": 7
+                    },
+                    {
+                        "name": "xGOT faced",
+                        "home": "0.35",
+                        "away": "2.46",
+                        "homeValue": 0.35,
+                        "awayValue": 2.46
+                    },
+                    {
+                        "name": "Goals prevented",
+                        "home": "0.35",
+                        "away": "0.46",
+                        "homeValue": 0.35,
+                        "awayValue": 0.46
+                    }
+                ]
+            }
+        ],
+        "incidents": [
+            {
+                "time": 12,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Kane H."
+                },
+                "assist": null,
+                "homeScore": "1",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 36,
+                "incidentType": "goal",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Baturina M."
+                },
+                "assist": {
+                    "name": "Sucic P."
+                },
+                "homeScore": "1",
+                "awayScore": "1",
+                "description": "Goal! Great play by Petar Sucic releases Martin Baturina (Croatia) in space on the edge of the box. He spots the keeper off his line and coolly puts the ball into the left side of the goal. 1:1."
+            },
+            {
+                "time": 42,
+                "incidentType": "goal",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Kane H."
+                },
+                "assist": {
+                    "name": "Rice D."
+                },
+                "homeScore": "2",
+                "awayScore": "1",
+                "description": "Harry Kane (England) jumped highest inside the box to meet a perfectly executed corner kick by Declan Rice. His header bounced off the ground and went inside the left post behind the goalkeeper. It's 2:1."
+            },
+            {
+                "time": 45,
+                "incidentType": "goal",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Musa P."
+                },
+                "assist": {
+                    "name": "Perisic I."
+                },
+                "homeScore": "2",
+                "awayScore": "2",
+                "description": "GOAL! Ivan Perisic meets a cross inside the box and heads the ball across the goal, where Petar Musa (Croatia) lurks and pokes it into the back of the net. 2:2."
+            },
+            {
+                "time": 47,
+                "incidentType": "goal",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Bellingham J."
+                },
+                "assist": {
+                    "name": "Anderson E."
+                },
+                "homeScore": "3",
+                "awayScore": "2",
+                "description": "Jude Bellingham (England) finishes his beautiful individual effort with a superb strike from inside the box. Dominik Livakovic is just a bystander as the ball flies off the post into the bottom left corner. The score is 3:2."
+            },
+            {
+                "time": 58,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Modric L."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 66,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Vuskovic L."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 66,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Musa P."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 72,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Gordon A."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 72,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Madueke N."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 72,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Rice D."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 78,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Baturina M."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 78,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Pasalic M."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 80,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Bellingham J."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 85,
+                "incidentType": "goal",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Rashford M."
+                },
+                "assist": {
+                    "name": "Saka B."
+                },
+                "homeScore": "4",
+                "awayScore": "2",
+                "description": "Goal - 4:2! Bukayo Saka laid the ball off to Marcus Rashford (England), who shot from close range into the bottom right corner, leaving the goalkeeper helpless."
+            },
+            {
+                "time": 87,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Stones J."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            }
+        ]
+    },
+    "match-wc23": {
+        "homeScore": 1,
+        "awayScore": 0,
+        "sideQuestions": {
+            "htResult": "draw",
+            "firstScorer": "Yirenkyi C.",
+            "redCard": false,
+            "cornersOverUnder": "under"
+        },
+        "statistics": [
+            {
+                "period": "Match",
+                "statisticsItems": [
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "1.31",
+                        "away": "0.73",
+                        "homeValue": 1.31,
+                        "awayValue": 0.73
+                    },
+                    {
+                        "name": "Ball possession",
+                        "home": "38%",
+                        "away": "62%",
+                        "homeValue": 38,
+                        "awayValue": 62
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "7",
+                        "away": "11",
+                        "homeValue": 7,
+                        "awayValue": 11
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "2",
+                        "away": "4",
+                        "homeValue": 2,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "1",
+                        "away": "2",
+                        "homeValue": 1,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "2",
+                        "away": "2",
+                        "homeValue": 2,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "83% (292/352)",
+                        "away": "86% (503/583)",
+                        "homeValue": 83,
+                        "awayValue": 86
+                    },
+                    {
+                        "name": "Yellow cards",
+                        "home": "1",
+                        "away": "2",
+                        "homeValue": 1,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "1.31",
+                        "away": "0.73",
+                        "homeValue": 1.31,
+                        "awayValue": 0.73
+                    },
+                    {
+                        "name": "xG on target (xGOT)",
+                        "home": "1.04",
+                        "away": "1.36",
+                        "homeValue": 1.04,
+                        "awayValue": 1.36
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "7",
+                        "away": "11",
+                        "homeValue": 7,
+                        "awayValue": 11
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "2",
+                        "away": "4",
+                        "homeValue": 2,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Shots off target",
+                        "home": "4",
+                        "away": "5",
+                        "homeValue": 4,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Blocked shots",
+                        "home": "1",
+                        "away": "2",
+                        "homeValue": 1,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Shots inside the box",
+                        "home": "6",
+                        "away": "6",
+                        "homeValue": 6,
+                        "awayValue": 6
+                    },
+                    {
+                        "name": "Shots outside the box",
+                        "home": "1",
+                        "away": "5",
+                        "homeValue": 1,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Hit the woodwork",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "1",
+                        "away": "2",
+                        "homeValue": 1,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "2",
+                        "away": "2",
+                        "homeValue": 2,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Touches in opposition box",
+                        "home": "14",
+                        "away": "19",
+                        "homeValue": 14,
+                        "awayValue": 19
+                    },
+                    {
+                        "name": "Accurate through passes",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Offsides",
+                        "home": "4",
+                        "away": "1",
+                        "homeValue": 4,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Free kicks",
+                        "home": "11",
+                        "away": "9",
+                        "homeValue": 11,
+                        "awayValue": 9
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "83% (292/352)",
+                        "away": "86% (503/583)",
+                        "homeValue": 83,
+                        "awayValue": 86
+                    },
+                    {
+                        "name": "Long passes",
+                        "home": "58% (30/52)",
+                        "away": "49% (34/70)",
+                        "homeValue": 58,
+                        "awayValue": 49
+                    },
+                    {
+                        "name": "Passes in final third",
+                        "home": "69% (55/80)",
+                        "away": "62% (78/126)",
+                        "homeValue": 69,
+                        "awayValue": 62
+                    },
+                    {
+                        "name": "Crosses",
+                        "home": "25% (4/16)",
+                        "away": "19% (4/21)",
+                        "homeValue": 25,
+                        "awayValue": 19
+                    },
+                    {
+                        "name": "Expected assists (xA)",
+                        "home": "0.45",
+                        "away": "0.87",
+                        "homeValue": 0.45,
+                        "awayValue": 0.87
+                    },
+                    {
+                        "name": "Throw ins",
+                        "home": "21",
+                        "away": "23",
+                        "homeValue": 21,
+                        "awayValue": 23
+                    },
+                    {
+                        "name": "Fouls",
+                        "home": "9",
+                        "away": "11",
+                        "homeValue": 9,
+                        "awayValue": 11
+                    },
+                    {
+                        "name": "Tackles",
+                        "home": "56% (9/16)",
+                        "away": "38% (11/29)",
+                        "homeValue": 56,
+                        "awayValue": 38
+                    },
+                    {
+                        "name": "Duels won",
+                        "home": "56",
+                        "away": "57",
+                        "homeValue": 56,
+                        "awayValue": 57
+                    },
+                    {
+                        "name": "Clearances",
+                        "home": "28",
+                        "away": "17",
+                        "homeValue": 28,
+                        "awayValue": 17
+                    },
+                    {
+                        "name": "Interceptions",
+                        "home": "8",
+                        "away": "5",
+                        "homeValue": 8,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Errors leading to shot",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Errors leading to goal",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Goalkeeper saves",
+                        "home": "4",
+                        "away": "2",
+                        "homeValue": 4,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "xGOT faced",
+                        "home": "1.36",
+                        "away": "1.04",
+                        "homeValue": 1.36,
+                        "awayValue": 1.04
+                    },
+                    {
+                        "name": "Goals prevented",
+                        "home": "1.36",
+                        "away": "0.04",
+                        "homeValue": 1.36,
+                        "awayValue": 0.04
+                    }
+                ]
+            },
+            {
+                "period": "1st Half",
+                "statisticsItems": [
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.00",
+                        "away": "0.11",
+                        "homeValue": 0,
+                        "awayValue": 0.11
+                    },
+                    {
+                        "name": "Ball possession",
+                        "home": "36%",
+                        "away": "64%",
+                        "homeValue": 36,
+                        "awayValue": 64
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "0",
+                        "away": "3",
+                        "homeValue": 0,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "83% (143/172)",
+                        "away": "88% (277/316)",
+                        "homeValue": 83,
+                        "awayValue": 88
+                    },
+                    {
+                        "name": "Yellow cards",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.00",
+                        "away": "0.11",
+                        "homeValue": 0,
+                        "awayValue": 0.11
+                    },
+                    {
+                        "name": "xG on target (xGOT)",
+                        "home": "0.00",
+                        "away": "0.66",
+                        "homeValue": 0,
+                        "awayValue": 0.66
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "0",
+                        "away": "3",
+                        "homeValue": 0,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Shots off target",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Blocked shots",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Shots inside the box",
+                        "home": "0",
+                        "away": "3",
+                        "homeValue": 0,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Shots outside the box",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Hit the woodwork",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Touches in opposition box",
+                        "home": "3",
+                        "away": "5",
+                        "homeValue": 3,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Accurate through passes",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Offsides",
+                        "home": "3",
+                        "away": "1",
+                        "homeValue": 3,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Free kicks",
+                        "home": "6",
+                        "away": "3",
+                        "homeValue": 6,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "83% (143/172)",
+                        "away": "88% (277/316)",
+                        "homeValue": 83,
+                        "awayValue": 88
+                    },
+                    {
+                        "name": "Long passes",
+                        "home": "46% (12/26)",
+                        "away": "47% (18/38)",
+                        "homeValue": 46,
+                        "awayValue": 47
+                    },
+                    {
+                        "name": "Passes in final third",
+                        "home": "55% (17/31)",
+                        "away": "59% (38/64)",
+                        "homeValue": 55,
+                        "awayValue": 59
+                    },
+                    {
+                        "name": "Crosses",
+                        "home": "0% (0/4)",
+                        "away": "25% (2/8)",
+                        "homeValue": 0,
+                        "awayValue": 25
+                    },
+                    {
+                        "name": "Expected assists (xA)",
+                        "home": "0.06",
+                        "away": "0.47",
+                        "homeValue": 0.06,
+                        "awayValue": 0.47
+                    },
+                    {
+                        "name": "Throw ins",
+                        "home": "9",
+                        "away": "14",
+                        "homeValue": 9,
+                        "awayValue": 14
+                    },
+                    {
+                        "name": "Fouls",
+                        "home": "3",
+                        "away": "6",
+                        "homeValue": 3,
+                        "awayValue": 6
+                    },
+                    {
+                        "name": "Tackles",
+                        "home": "57% (4/7)",
+                        "away": "60% (6/10)",
+                        "homeValue": 57,
+                        "awayValue": 60
+                    },
+                    {
+                        "name": "Duels won",
+                        "home": "25",
+                        "away": "22",
+                        "homeValue": 25,
+                        "awayValue": 22
+                    },
+                    {
+                        "name": "Clearances",
+                        "home": "13",
+                        "away": "10",
+                        "homeValue": 13,
+                        "awayValue": 10
+                    },
+                    {
+                        "name": "Interceptions",
+                        "home": "6",
+                        "away": "2",
+                        "homeValue": 6,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Errors leading to shot",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Errors leading to goal",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Goalkeeper saves",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "xGOT faced",
+                        "home": "0.66",
+                        "away": "0.00",
+                        "homeValue": 0.66,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Goals prevented",
+                        "home": "0.66",
+                        "away": "0.00",
+                        "homeValue": 0.66,
+                        "awayValue": 0
+                    }
+                ]
+            },
+            {
+                "period": "2nd Half",
+                "statisticsItems": [
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "1.31",
+                        "away": "0.62",
+                        "homeValue": 1.31,
+                        "awayValue": 0.62
+                    },
+                    {
+                        "name": "Ball possession",
+                        "home": "41%",
+                        "away": "59%",
+                        "homeValue": 41,
+                        "awayValue": 59
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "7",
+                        "away": "8",
+                        "homeValue": 7,
+                        "awayValue": 8
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "2",
+                        "away": "3",
+                        "homeValue": 2,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "1",
+                        "away": "2",
+                        "homeValue": 1,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "2",
+                        "away": "2",
+                        "homeValue": 2,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "83% (149/180)",
+                        "away": "85% (226/267)",
+                        "homeValue": 83,
+                        "awayValue": 85
+                    },
+                    {
+                        "name": "Yellow cards",
+                        "home": "0",
+                        "away": "2",
+                        "homeValue": 0,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "1.31",
+                        "away": "0.62",
+                        "homeValue": 1.31,
+                        "awayValue": 0.62
+                    },
+                    {
+                        "name": "xG on target (xGOT)",
+                        "home": "1.04",
+                        "away": "0.70",
+                        "homeValue": 1.04,
+                        "awayValue": 0.7
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "7",
+                        "away": "8",
+                        "homeValue": 7,
+                        "awayValue": 8
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "2",
+                        "away": "3",
+                        "homeValue": 2,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Shots off target",
+                        "home": "4",
+                        "away": "4",
+                        "homeValue": 4,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Blocked shots",
+                        "home": "1",
+                        "away": "1",
+                        "homeValue": 1,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Shots inside the box",
+                        "home": "6",
+                        "away": "3",
+                        "homeValue": 6,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Shots outside the box",
+                        "home": "1",
+                        "away": "5",
+                        "homeValue": 1,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Hit the woodwork",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "1",
+                        "away": "2",
+                        "homeValue": 1,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "2",
+                        "away": "2",
+                        "homeValue": 2,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Touches in opposition box",
+                        "home": "11",
+                        "away": "14",
+                        "homeValue": 11,
+                        "awayValue": 14
+                    },
+                    {
+                        "name": "Accurate through passes",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Offsides",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Free kicks",
+                        "home": "5",
+                        "away": "6",
+                        "homeValue": 5,
+                        "awayValue": 6
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "83% (149/180)",
+                        "away": "85% (226/267)",
+                        "homeValue": 83,
+                        "awayValue": 85
+                    },
+                    {
+                        "name": "Long passes",
+                        "home": "69% (18/26)",
+                        "away": "50% (16/32)",
+                        "homeValue": 69,
+                        "awayValue": 50
+                    },
+                    {
+                        "name": "Passes in final third",
+                        "home": "78% (38/49)",
+                        "away": "65% (40/62)",
+                        "homeValue": 78,
+                        "awayValue": 65
+                    },
+                    {
+                        "name": "Crosses",
+                        "home": "33% (4/12)",
+                        "away": "15% (2/13)",
+                        "homeValue": 33,
+                        "awayValue": 15
+                    },
+                    {
+                        "name": "Expected assists (xA)",
+                        "home": "0.39",
+                        "away": "0.40",
+                        "homeValue": 0.39,
+                        "awayValue": 0.4
+                    },
+                    {
+                        "name": "Throw ins",
+                        "home": "12",
+                        "away": "9",
+                        "homeValue": 12,
+                        "awayValue": 9
+                    },
+                    {
+                        "name": "Fouls",
+                        "home": "6",
+                        "away": "5",
+                        "homeValue": 6,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Tackles",
+                        "home": "56% (5/9)",
+                        "away": "26% (5/19)",
+                        "homeValue": 56,
+                        "awayValue": 26
+                    },
+                    {
+                        "name": "Duels won",
+                        "home": "31",
+                        "away": "35",
+                        "homeValue": 31,
+                        "awayValue": 35
+                    },
+                    {
+                        "name": "Clearances",
+                        "home": "15",
+                        "away": "7",
+                        "homeValue": 15,
+                        "awayValue": 7
+                    },
+                    {
+                        "name": "Interceptions",
+                        "home": "2",
+                        "away": "3",
+                        "homeValue": 2,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Errors leading to shot",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Errors leading to goal",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Goalkeeper saves",
+                        "home": "3",
+                        "away": "2",
+                        "homeValue": 3,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "xGOT faced",
+                        "home": "0.70",
+                        "away": "1.04",
+                        "homeValue": 0.7,
+                        "awayValue": 1.04
+                    },
+                    {
+                        "name": "Goals prevented",
+                        "home": "0.70",
+                        "away": "0.04",
+                        "homeValue": 0.7,
+                        "awayValue": 0.04
+                    }
+                ]
+            }
+        ],
+        "incidents": [
+            {
+                "time": 16,
+                "incidentType": "card",
+                "incidentClass": "yellow",
+                "isHome": true,
+                "player": {
+                    "name": "Yirenkyi C."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": "C"
+            },
+            {
+                "time": 46,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Ati Zigi L."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 58,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Nuamah E."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 58,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Sulemana K."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 63,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Waterman C."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 63,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Martinez C."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 72,
+                "incidentType": "card",
+                "incidentClass": "yellow",
+                "isHome": false,
+                "player": {
+                    "name": "Blackman C."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": "C"
+            },
+            {
+                "time": 74,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Rodriguez J."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 78,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Owusu E."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 87,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Ayew J."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 90,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Blackman C."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 90,
+                "incidentType": "goal",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Yirenkyi C."
+                },
+                "assist": null,
+                "homeScore": "1",
+                "awayScore": "0",
+                "description": "G"
+            },
+            {
+                "time": 90,
+                "incidentType": "card",
+                "incidentClass": "yellow",
+                "isHome": false,
+                "player": {
+                    "name": "Harvey C."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": "G"
+            }
+        ]
+    },
+    "match-wc24": {
+        "homeScore": 1,
+        "awayScore": 3,
+        "sideQuestions": {
+            "htResult": "away",
+            "firstScorer": "Munoz D.",
+            "redCard": false,
+            "cornersOverUnder": "under"
+        },
+        "statistics": [
+            {
+                "period": "Match",
+                "statisticsItems": [
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "1.16",
+                        "away": "1.61",
+                        "homeValue": 1.16,
+                        "awayValue": 1.61
+                    },
+                    {
+                        "name": "Ball possession",
+                        "home": "39%",
+                        "away": "61%",
+                        "homeValue": 39,
+                        "awayValue": 61
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "8",
+                        "away": "15",
+                        "homeValue": 8,
+                        "awayValue": 15
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "2",
+                        "away": "4",
+                        "homeValue": 2,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "1",
+                        "away": "4",
+                        "homeValue": 1,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "3",
+                        "away": "4",
+                        "homeValue": 3,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "76% (243/319)",
+                        "away": "86% (444/519)",
+                        "homeValue": 76,
+                        "awayValue": 86
+                    },
+                    {
+                        "name": "Yellow cards",
+                        "home": "1",
+                        "away": "1",
+                        "homeValue": 1,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "1.16",
+                        "away": "1.61",
+                        "homeValue": 1.16,
+                        "awayValue": 1.61
+                    },
+                    {
+                        "name": "xG on target (xGOT)",
+                        "home": "1.19",
+                        "away": "1.37",
+                        "homeValue": 1.19,
+                        "awayValue": 1.37
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "8",
+                        "away": "15",
+                        "homeValue": 8,
+                        "awayValue": 15
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "2",
+                        "away": "4",
+                        "homeValue": 2,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Shots off target",
+                        "home": "4",
+                        "away": "7",
+                        "homeValue": 4,
+                        "awayValue": 7
+                    },
+                    {
+                        "name": "Blocked shots",
+                        "home": "2",
+                        "away": "4",
+                        "homeValue": 2,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Shots inside the box",
+                        "home": "4",
+                        "away": "10",
+                        "homeValue": 4,
+                        "awayValue": 10
+                    },
+                    {
+                        "name": "Shots outside the box",
+                        "home": "4",
+                        "away": "5",
+                        "homeValue": 4,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Hit the woodwork",
+                        "home": "2",
+                        "away": "1",
+                        "homeValue": 2,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Headed goals",
+                        "home": "1",
+                        "away": "1",
+                        "homeValue": 1,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "1",
+                        "away": "4",
+                        "homeValue": 1,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "3",
+                        "away": "4",
+                        "homeValue": 3,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Touches in opposition box",
+                        "home": "5",
+                        "away": "27",
+                        "homeValue": 5,
+                        "awayValue": 27
+                    },
+                    {
+                        "name": "Accurate through passes",
+                        "home": "0",
+                        "away": "2",
+                        "homeValue": 0,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Offsides",
+                        "home": "0",
+                        "away": "3",
+                        "homeValue": 0,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Free kicks",
+                        "home": "11",
+                        "away": "14",
+                        "homeValue": 11,
+                        "awayValue": 14
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "76% (243/319)",
+                        "away": "86% (444/519)",
+                        "homeValue": 76,
+                        "awayValue": 86
+                    },
+                    {
+                        "name": "Long passes",
+                        "home": "32% (17/53)",
+                        "away": "35% (17/48)",
+                        "homeValue": 32,
+                        "awayValue": 35
+                    },
+                    {
+                        "name": "Passes in final third",
+                        "home": "53% (47/89)",
+                        "away": "68% (89/131)",
+                        "homeValue": 53,
+                        "awayValue": 68
+                    },
+                    {
+                        "name": "Crosses",
+                        "home": "23% (3/13)",
+                        "away": "38% (6/16)",
+                        "homeValue": 23,
+                        "awayValue": 38
+                    },
+                    {
+                        "name": "Expected assists (xA)",
+                        "home": "0.14",
+                        "away": "1.45",
+                        "homeValue": 0.14,
+                        "awayValue": 1.45
+                    },
+                    {
+                        "name": "Throw ins",
+                        "home": "24",
+                        "away": "26",
+                        "homeValue": 24,
+                        "awayValue": 26
+                    },
+                    {
+                        "name": "Fouls",
+                        "home": "14",
+                        "away": "11",
+                        "homeValue": 14,
+                        "awayValue": 11
+                    },
+                    {
+                        "name": "Tackles",
+                        "home": "70% (7/10)",
+                        "away": "30% (3/10)",
+                        "homeValue": 70,
+                        "awayValue": 30
+                    },
+                    {
+                        "name": "Duels won",
+                        "home": "34",
+                        "away": "36",
+                        "homeValue": 34,
+                        "awayValue": 36
+                    },
+                    {
+                        "name": "Clearances",
+                        "home": "24",
+                        "away": "20",
+                        "homeValue": 24,
+                        "awayValue": 20
+                    },
+                    {
+                        "name": "Interceptions",
+                        "home": "7",
+                        "away": "6",
+                        "homeValue": 7,
+                        "awayValue": 6
+                    },
+                    {
+                        "name": "Errors leading to shot",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Errors leading to goal",
+                        "home": "1",
+                        "away": "1",
+                        "homeValue": 1,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Goalkeeper saves",
+                        "home": "1",
+                        "away": "1",
+                        "homeValue": 1,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "xGOT faced",
+                        "home": "1.37",
+                        "away": "1.19",
+                        "homeValue": 1.37,
+                        "awayValue": 1.19
+                    },
+                    {
+                        "name": "Goals prevented",
+                        "home": "-1.63",
+                        "away": "0.19",
+                        "homeValue": -1.63,
+                        "awayValue": 0.19
+                    }
+                ]
+            },
+            {
+                "period": "1st Half",
+                "statisticsItems": [
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.02",
+                        "away": "0.81",
+                        "homeValue": 0.02,
+                        "awayValue": 0.81
+                    },
+                    {
+                        "name": "Ball possession",
+                        "home": "29%",
+                        "away": "71%",
+                        "homeValue": 29,
+                        "awayValue": 71
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "1",
+                        "away": "7",
+                        "homeValue": 1,
+                        "awayValue": 7
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "0",
+                        "away": "2",
+                        "homeValue": 0,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "0",
+                        "away": "2",
+                        "homeValue": 0,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "1",
+                        "away": "2",
+                        "homeValue": 1,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "72% (88/122)",
+                        "away": "89% (275/309)",
+                        "homeValue": 72,
+                        "awayValue": 89
+                    },
+                    {
+                        "name": "Yellow cards",
+                        "home": "1",
+                        "away": "1",
+                        "homeValue": 1,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.02",
+                        "away": "0.81",
+                        "homeValue": 0.02,
+                        "awayValue": 0.81
+                    },
+                    {
+                        "name": "xG on target (xGOT)",
+                        "home": "0.00",
+                        "away": "0.51",
+                        "homeValue": 0,
+                        "awayValue": 0.51
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "1",
+                        "away": "7",
+                        "homeValue": 1,
+                        "awayValue": 7
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "0",
+                        "away": "2",
+                        "homeValue": 0,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Shots off target",
+                        "home": "1",
+                        "away": "3",
+                        "homeValue": 1,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Blocked shots",
+                        "home": "0",
+                        "away": "2",
+                        "homeValue": 0,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Shots inside the box",
+                        "home": "0",
+                        "away": "4",
+                        "homeValue": 0,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Shots outside the box",
+                        "home": "1",
+                        "away": "3",
+                        "homeValue": 1,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Hit the woodwork",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "0",
+                        "away": "2",
+                        "homeValue": 0,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "1",
+                        "away": "2",
+                        "homeValue": 1,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Touches in opposition box",
+                        "home": "0",
+                        "away": "14",
+                        "homeValue": 0,
+                        "awayValue": 14
+                    },
+                    {
+                        "name": "Accurate through passes",
+                        "home": "0",
+                        "away": "2",
+                        "homeValue": 0,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Offsides",
+                        "home": "0",
+                        "away": "2",
+                        "homeValue": 0,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Free kicks",
+                        "home": "5",
+                        "away": "9",
+                        "homeValue": 5,
+                        "awayValue": 9
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "72% (88/122)",
+                        "away": "89% (275/309)",
+                        "homeValue": 72,
+                        "awayValue": 89
+                    },
+                    {
+                        "name": "Long passes",
+                        "home": "26% (6/23)",
+                        "away": "26% (5/19)",
+                        "homeValue": 26,
+                        "awayValue": 26
+                    },
+                    {
+                        "name": "Passes in final third",
+                        "home": "32% (8/25)",
+                        "away": "73% (58/80)",
+                        "homeValue": 32,
+                        "awayValue": 73
+                    },
+                    {
+                        "name": "Crosses",
+                        "home": "0% (0/4)",
+                        "away": "38% (3/8)",
+                        "homeValue": 0,
+                        "awayValue": 38
+                    },
+                    {
+                        "name": "Expected assists (xA)",
+                        "home": "0.01",
+                        "away": "0.89",
+                        "homeValue": 0.01,
+                        "awayValue": 0.89
+                    },
+                    {
+                        "name": "Throw ins",
+                        "home": "12",
+                        "away": "15",
+                        "homeValue": 12,
+                        "awayValue": 15
+                    },
+                    {
+                        "name": "Fouls",
+                        "home": "9",
+                        "away": "5",
+                        "homeValue": 9,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Tackles",
+                        "home": "33% (1/3)",
+                        "away": "50% (2/4)",
+                        "homeValue": 33,
+                        "awayValue": 50
+                    },
+                    {
+                        "name": "Duels won",
+                        "home": "11",
+                        "away": "18",
+                        "homeValue": 11,
+                        "awayValue": 18
+                    },
+                    {
+                        "name": "Clearances",
+                        "home": "11",
+                        "away": "8",
+                        "homeValue": 11,
+                        "awayValue": 8
+                    },
+                    {
+                        "name": "Interceptions",
+                        "home": "3",
+                        "away": "1",
+                        "homeValue": 3,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Errors leading to shot",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Errors leading to goal",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Goalkeeper saves",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "xGOT faced",
+                        "home": "0.51",
+                        "away": "0.00",
+                        "homeValue": 0.51,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Goals prevented",
+                        "home": "-0.49",
+                        "away": "0.00",
+                        "homeValue": -0.49,
+                        "awayValue": 0
+                    }
+                ]
+            },
+            {
+                "period": "2nd Half",
+                "statisticsItems": [
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "1.14",
+                        "away": "0.80",
+                        "homeValue": 1.14,
+                        "awayValue": 0.8
+                    },
+                    {
+                        "name": "Ball possession",
+                        "home": "49%",
+                        "away": "51%",
+                        "homeValue": 49,
+                        "awayValue": 51
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "7",
+                        "away": "8",
+                        "homeValue": 7,
+                        "awayValue": 8
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "2",
+                        "away": "2",
+                        "homeValue": 2,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "1",
+                        "away": "2",
+                        "homeValue": 1,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "2",
+                        "away": "2",
+                        "homeValue": 2,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "79% (155/197)",
+                        "away": "80% (169/210)",
+                        "homeValue": 79,
+                        "awayValue": 80
+                    },
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "1.14",
+                        "away": "0.80",
+                        "homeValue": 1.14,
+                        "awayValue": 0.8
+                    },
+                    {
+                        "name": "xG on target (xGOT)",
+                        "home": "1.19",
+                        "away": "0.86",
+                        "homeValue": 1.19,
+                        "awayValue": 0.86
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "7",
+                        "away": "8",
+                        "homeValue": 7,
+                        "awayValue": 8
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "2",
+                        "away": "2",
+                        "homeValue": 2,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Shots off target",
+                        "home": "3",
+                        "away": "4",
+                        "homeValue": 3,
+                        "awayValue": 4
+                    },
+                    {
+                        "name": "Blocked shots",
+                        "home": "2",
+                        "away": "2",
+                        "homeValue": 2,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Shots inside the box",
+                        "home": "4",
+                        "away": "6",
+                        "homeValue": 4,
+                        "awayValue": 6
+                    },
+                    {
+                        "name": "Shots outside the box",
+                        "home": "3",
+                        "away": "2",
+                        "homeValue": 3,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Hit the woodwork",
+                        "home": "2",
+                        "away": "0",
+                        "homeValue": 2,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Headed goals",
+                        "home": "1",
+                        "away": "1",
+                        "homeValue": 1,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "1",
+                        "away": "2",
+                        "homeValue": 1,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "2",
+                        "away": "2",
+                        "homeValue": 2,
+                        "awayValue": 2
+                    },
+                    {
+                        "name": "Touches in opposition box",
+                        "home": "5",
+                        "away": "13",
+                        "homeValue": 5,
+                        "awayValue": 13
+                    },
+                    {
+                        "name": "Accurate through passes",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Offsides",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Free kicks",
+                        "home": "6",
+                        "away": "5",
+                        "homeValue": 6,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "79% (155/197)",
+                        "away": "80% (169/210)",
+                        "homeValue": 79,
+                        "awayValue": 80
+                    },
+                    {
+                        "name": "Long passes",
+                        "home": "37% (11/30)",
+                        "away": "41% (12/29)",
+                        "homeValue": 37,
+                        "awayValue": 41
+                    },
+                    {
+                        "name": "Passes in final third",
+                        "home": "61% (39/64)",
+                        "away": "61% (31/51)",
+                        "homeValue": 61,
+                        "awayValue": 61
+                    },
+                    {
+                        "name": "Crosses",
+                        "home": "33% (3/9)",
+                        "away": "38% (3/8)",
+                        "homeValue": 33,
+                        "awayValue": 38
+                    },
+                    {
+                        "name": "Expected assists (xA)",
+                        "home": "0.13",
+                        "away": "0.56",
+                        "homeValue": 0.13,
+                        "awayValue": 0.56
+                    },
+                    {
+                        "name": "Throw ins",
+                        "home": "12",
+                        "away": "11",
+                        "homeValue": 12,
+                        "awayValue": 11
+                    },
+                    {
+                        "name": "Fouls",
+                        "home": "5",
+                        "away": "6",
+                        "homeValue": 5,
+                        "awayValue": 6
+                    },
+                    {
+                        "name": "Tackles",
+                        "home": "86% (6/7)",
+                        "away": "17% (1/6)",
+                        "homeValue": 86,
+                        "awayValue": 17
+                    },
+                    {
+                        "name": "Duels won",
+                        "home": "23",
+                        "away": "18",
+                        "homeValue": 23,
+                        "awayValue": 18
+                    },
+                    {
+                        "name": "Clearances",
+                        "home": "13",
+                        "away": "12",
+                        "homeValue": 13,
+                        "awayValue": 12
+                    },
+                    {
+                        "name": "Interceptions",
+                        "home": "4",
+                        "away": "5",
+                        "homeValue": 4,
+                        "awayValue": 5
+                    },
+                    {
+                        "name": "Errors leading to shot",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Errors leading to goal",
+                        "home": "1",
+                        "away": "1",
+                        "homeValue": 1,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Goalkeeper saves",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "xGOT faced",
+                        "home": "0.86",
+                        "away": "1.19",
+                        "homeValue": 0.86,
+                        "awayValue": 1.19
+                    },
+                    {
+                        "name": "Goals prevented",
+                        "home": "-1.14",
+                        "away": "0.19",
+                        "homeValue": -1.14,
+                        "awayValue": 0.19
+                    }
+                ]
+            }
+        ],
+        "incidents": [
+            {
+                "time": 7,
+                "incidentType": "card",
+                "incidentClass": "yellow",
+                "isHome": false,
+                "player": {
+                    "name": "Mojica J."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": "W"
+            },
+            {
+                "time": 34,
+                "incidentType": "card",
+                "incidentClass": "yellow",
+                "isHome": true,
+                "player": {
+                    "name": "Khusanov A."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": "Y"
+            },
+            {
+                "time": 40,
+                "incidentType": "goal",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Munoz D."
+                },
+                "assist": {
+                    "name": "Diaz L."
+                },
+                "homeScore": "0",
+                "awayScore": "1",
+                "description": "Goal! Luis Diaz puts a cross into the box and finds Daniel Munoz (Colombia), who latches on to it and strikes the ball into the roof of the net. He makes it 0:1."
+            },
+            {
+                "time": 46,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Urunov O."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 46,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Nasrullaev S."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 60,
+                "incidentType": "goal",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Fayzullaev A."
+                },
+                "assist": null,
+                "homeScore": "1",
+                "awayScore": "1",
+                "description": "A"
+            },
+            {
+                "time": 65,
+                "incidentType": "goal",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Diaz L."
+                },
+                "assist": {
+                    "name": "Puerta G."
+                },
+                "homeScore": "1",
+                "awayScore": "2",
+                "description": "Goal Luis Diaz (Colombia)! Luis Diaz (Colombia) was put through by Gustavo Puerta and he showed brilliant composure inside the box to bury the ball into the back of the net. 1:2."
+            },
+            {
+                "time": 72,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Rodriguez J."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 77,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Fayzullaev A."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 77,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Ashurmatov R."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 80,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Suarez L."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 80,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Puerta G."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 90,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Diaz L."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 90,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Arias J."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 90,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Shomurodov E."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            },
+            {
+                "time": 90,
+                "incidentType": "goal",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Campaz J."
+                },
+                "assist": {
+                    "name": "Hernandez C."
+                },
+                "homeScore": "1",
+                "awayScore": "3",
+                "description": "It's a goal! Jaminton Campaz (Colombia) makes it 1:3. He jumped highest to connect with a perfect cross from Cucho Hernandez and planted his close-range header into the bottom left corner. Utkir Yusupov was helpless."
+            }
+        ]
+    },
+    "match-wc25": {
+        "homeScore": 1,
+        "awayScore": 0,
+        "sideQuestions": {
+            "htResult": "home",
+            "firstScorer": "Sadilek M.",
+            "redCard": false,
+            "cornersOverUnder": "under"
+        },
+        "statistics": [
+            {
+                "period": "Match",
+                "statisticsItems": [
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.09",
+                        "away": "0.00",
+                        "homeValue": 0.09,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Ball possession",
+                        "home": "62%",
+                        "away": "38%",
+                        "homeValue": 62,
+                        "awayValue": 38
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "95% (21/22)",
+                        "away": "88% (14/16)",
+                        "homeValue": 95,
+                        "awayValue": 88
+                    },
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.09",
+                        "away": "0.00",
+                        "homeValue": 0.09,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "xG on target (xGOT)",
+                        "home": "0.00",
+                        "away": "0.00",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Shots off target",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Blocked shots",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Shots inside the box",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Shots outside the box",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Hit the woodwork",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Touches in opposition box",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Accurate through passes",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Offsides",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Free kicks",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "95% (21/22)",
+                        "away": "88% (14/16)",
+                        "homeValue": 95,
+                        "awayValue": 88
+                    },
+                    {
+                        "name": "Long passes",
+                        "home": "100% (1/1)",
+                        "away": "50% (2/4)",
+                        "homeValue": 100,
+                        "awayValue": 50
+                    },
+                    {
+                        "name": "Passes in final third",
+                        "home": "100% (4/4)",
+                        "away": "0% (0/1)",
+                        "homeValue": 100,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Expected assists (xA)",
+                        "home": "0.02",
+                        "away": "0.00",
+                        "homeValue": 0.02,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Throw ins",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Fouls",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Tackles",
+                        "home": "0% (0/1)",
+                        "away": "50% (1/2)",
+                        "homeValue": 0,
+                        "awayValue": 50
+                    },
+                    {
+                        "name": "Duels won",
+                        "home": "4",
+                        "away": "3",
+                        "homeValue": 4,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Clearances",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Interceptions",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Errors leading to shot",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Errors leading to goal",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Goalkeeper saves",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "xGOT faced",
+                        "home": "0.00",
+                        "away": "0.00",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Goals prevented",
+                        "home": "0.00",
+                        "away": "0.00",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    }
+                ]
+            },
+            {
+                "period": "1st Half",
+                "statisticsItems": [
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.09",
+                        "away": "0.00",
+                        "homeValue": 0.09,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Ball possession",
+                        "home": "62%",
+                        "away": "38%",
+                        "homeValue": 62,
+                        "awayValue": 38
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "95% (21/22)",
+                        "away": "88% (14/16)",
+                        "homeValue": 95,
+                        "awayValue": 88
+                    },
+                    {
+                        "name": "Expected goals (xG)",
+                        "home": "0.09",
+                        "away": "0.00",
+                        "homeValue": 0.09,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "xG on target (xGOT)",
+                        "home": "0.00",
+                        "away": "0.00",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Total shots",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Shots on target",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Shots off target",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Blocked shots",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Shots inside the box",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Shots outside the box",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Hit the woodwork",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Big chances",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Corners",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Touches in opposition box",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Accurate through passes",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Offsides",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Free kicks",
+                        "home": "1",
+                        "away": "0",
+                        "homeValue": 1,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Passes",
+                        "home": "95% (21/22)",
+                        "away": "88% (14/16)",
+                        "homeValue": 95,
+                        "awayValue": 88
+                    },
+                    {
+                        "name": "Long passes",
+                        "home": "100% (1/1)",
+                        "away": "50% (2/4)",
+                        "homeValue": 100,
+                        "awayValue": 50
+                    },
+                    {
+                        "name": "Passes in final third",
+                        "home": "100% (4/4)",
+                        "away": "0% (0/1)",
+                        "homeValue": 100,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Expected assists (xA)",
+                        "home": "0.02",
+                        "away": "0.00",
+                        "homeValue": 0.02,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Throw ins",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Fouls",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Tackles",
+                        "home": "0% (0/1)",
+                        "away": "50% (1/2)",
+                        "homeValue": 0,
+                        "awayValue": 50
+                    },
+                    {
+                        "name": "Duels won",
+                        "home": "4",
+                        "away": "3",
+                        "homeValue": 4,
+                        "awayValue": 3
+                    },
+                    {
+                        "name": "Clearances",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Interceptions",
+                        "home": "0",
+                        "away": "1",
+                        "homeValue": 0,
+                        "awayValue": 1
+                    },
+                    {
+                        "name": "Errors leading to shot",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Errors leading to goal",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Goalkeeper saves",
+                        "home": "0",
+                        "away": "0",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "xGOT faced",
+                        "home": "0.00",
+                        "away": "0.00",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    },
+                    {
+                        "name": "Goals prevented",
+                        "home": "0.00",
+                        "away": "0.00",
+                        "homeValue": 0,
+                        "awayValue": 0
+                    }
+                ]
+            }
+        ],
+        "incidents": [
+            {
+                "time": 6,
+                "incidentType": "goal",
+                "incidentClass": "",
+                "isHome": true,
+                "player": {
+                    "name": "Sadilek M."
+                },
+                "assist": {
+                    "name": "Sojka A."
+                },
+                "homeScore": "1",
+                "awayScore": "0",
+                "description": "Goal! Michal Sadilek (Czech Republic) finds himself some space inside the box to get on the end of a pass from Alexandr Sojka, then sends the ball inside the right post. 1:0."
+            },
+            {
+                "time": 33,
+                "incidentType": "card",
+                "incidentClass": "yellow",
+                "isHome": false,
+                "player": {
+                    "name": "Mokoena T."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": "T"
+            },
+            {
+                "time": 40,
+                "incidentType": "card",
+                "incidentClass": "yellow",
+                "isHome": false,
+                "player": {
+                    "name": "Mbatha T."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": "T"
+            },
+            {
+                "time": 46,
+                "incidentType": "other",
+                "incidentClass": "",
+                "isHome": false,
+                "player": {
+                    "name": "Adams J."
+                },
+                "assist": null,
+                "homeScore": "0",
+                "awayScore": "0",
+                "description": ""
+            }
+        ]
+    }
+};
+
+// Apply mappings and completed results to INITIAL_MOCK_DATA.matches programmatically on load
 INITIAL_MOCK_DATA.matches.forEach(m => {
     const targetEventId = HISTORIC_MATCH_SPORTDB_MAPPINGS[m.id];
     if (targetEventId) {
@@ -1577,6 +27258,16 @@ INITIAL_MOCK_DATA.matches.forEach(m => {
             details: `/api/flashscore/match/${targetEventId}/details`,
             stats: `/api/flashscore/match/${targetEventId}/stats`
         };
+    }
+    const result = COMPLETED_MATCH_RESULTS[m.id];
+    if (result) {
+        m.homeScore = result.homeScore;
+        m.awayScore = result.awayScore;
+        m.status = "FINISHED";
+        m.isFinalized = true;
+        m.sideQuestions = result.sideQuestions;
+        m.statistics = result.statistics;
+        m.incidents = result.incidents;
     }
 });
 
@@ -1622,15 +27313,27 @@ async function migrateMatchesEventIds() {
             if (docSnap.exists()) {
                 const matchData = docSnap.data();
                 const hasBadLinks = matchData.sportDbLinks && matchData.sportDbLinks.details && matchData.sportDbLinks.details.includes('/football/');
-                if (!matchData.sportDbEventId || hasBadLinks) {
-                    console.log(`Migrating ${matchId} SportDB ID to ${eventId} (correcting links)...`);
-                    await fStore.updateDoc(matchRef, {
+                const result = COMPLETED_MATCH_RESULTS[matchId];
+                
+                if (!matchData.sportDbEventId || hasBadLinks || (result && !matchData.isFinalized)) {
+                    console.log(`Migrating/Finalizing ${matchId} SportDB ID and scores (correcting links)...`);
+                    const updatePayload = {
                         sportDbEventId: eventId,
                         sportDbLinks: {
                             details: `/api/flashscore/match/${eventId}/details`,
                             stats: `/api/flashscore/match/${eventId}/stats`
                         }
-                    });
+                    };
+                    if (result) {
+                        updatePayload.homeScore = result.homeScore;
+                        updatePayload.awayScore = result.awayScore;
+                        updatePayload.status = "FINISHED";
+                        updatePayload.isFinalized = true;
+                        updatePayload.sideQuestions = result.sideQuestions;
+                        updatePayload.statistics = result.statistics;
+                        updatePayload.incidents = result.incidents;
+                    }
+                    await fStore.updateDoc(matchRef, updatePayload);
                 }
             }
         }
@@ -1791,18 +27494,29 @@ async function initDb() {
                 needsSave = true;
             }
 
-            // Auto-migrate SportDB Event IDs in existing matches (Demo Mode)
+            // Auto-migrate SportDB Event IDs and final scores/status in existing matches (Demo Mode)
             data.matches.forEach(m => {
                 const targetEventId = HISTORIC_MATCH_SPORTDB_MAPPINGS[m.id];
                 if (targetEventId) {
                     const hasBadLinks = m.sportDbLinks && m.sportDbLinks.details && m.sportDbLinks.details.includes('/football/');
-                    if (!m.sportDbEventId || hasBadLinks) {
-                        console.log(`Demo Mode: Migrating ${m.id} SportDB ID to ${targetEventId} (correcting links)...`);
+                    const result = COMPLETED_MATCH_RESULTS[m.id];
+                    
+                    if (!m.sportDbEventId || hasBadLinks || (result && !m.isFinalized)) {
+                        console.log(`Demo Mode: Migrating/Finalizing ${m.id}...`);
                         m.sportDbEventId = targetEventId;
                         m.sportDbLinks = {
                             details: `/api/flashscore/match/${targetEventId}/details`,
                             stats: `/api/flashscore/match/${targetEventId}/stats`
                         };
+                        if (result) {
+                            m.homeScore = result.homeScore;
+                            m.awayScore = result.awayScore;
+                            m.status = "FINISHED";
+                            m.isFinalized = true;
+                            m.sideQuestions = result.sideQuestions;
+                            m.statistics = result.statistics;
+                            m.incidents = result.incidents;
+                        }
                         needsSave = true;
                     }
                 }
