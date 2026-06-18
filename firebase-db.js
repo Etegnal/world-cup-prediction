@@ -1,6 +1,6 @@
 // Firebase Firestore & Local Mock Database Interface for Ultimate World Cup Tahmin Platformu
 import { CONFIG } from './config.js';
-import scrapedPlayers from './scratch/scraped_players.json';
+import scrapedPlayers from './scratch/scraped_players.json' with { type: 'json' };
 import { TEAMS_DATA } from './components/teamsData.js';
 
 // // 0. Password hashing helper (SHA-256 + Salt)
@@ -27453,11 +27453,19 @@ async function seedPlayersIfEmpty() {
 async function initDb() {
     if (!CONFIG.IS_DEMO_MODE && (!db || !fStore)) {
         try {
-            // Dynamically import Firebase libraries from CDN to run fully client-side
-            const { initializeApp } = await import("https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js");
+            // Dynamically import Firebase libraries from local npm package if running in Node, else CDN
+            let firebaseApp, firebaseFirestore;
+            if (typeof process !== 'undefined' && process.release && process.release.name === 'node') {
+                firebaseApp = await import("firebase/app");
+                firebaseFirestore = await import("firebase/firestore");
+            } else {
+                firebaseApp = await import("https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js");
+                firebaseFirestore = await import("https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js");
+            }
+            const { initializeApp } = firebaseApp;
             const { 
                 getFirestore, doc, getDoc, getDocs, setDoc, updateDoc, deleteDoc, collection, query, where, writeBatch 
-            } = await import("https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js");
+            } = firebaseFirestore;
             
             const app = initializeApp(CONFIG.FIREBASE_CONFIG);
             db = getFirestore(app);
@@ -30954,4 +30962,33 @@ export function getMatchFantasyRound(match, matches = []) {
         }
     }
     return null;
+}
+
+export async function savePlayerRatingsBatch(batchRatings) {
+    await initDb();
+    if (CONFIG.IS_DEMO_MODE) {
+        const data = getMockData();
+        if (!data) return false;
+        for (const [matchId, ratings] of Object.entries(batchRatings)) {
+            const match = data.matches.find(m => m.id === matchId);
+            if (match) {
+                match.playerRatings = { ...ratings };
+            }
+        }
+        saveMockData(data);
+        await recalculateAllUsersPoints();
+        return true;
+    } else {
+        try {
+            for (const [matchId, ratings] of Object.entries(batchRatings)) {
+                const docRef = fStore.doc(db, "matches", matchId);
+                await fStore.updateDoc(docRef, { playerRatings: { ...ratings } });
+            }
+            await recalculateAllUsersPoints();
+            return true;
+        } catch (err) {
+            console.error("Failed to save player ratings batch in Firestore:", err);
+            return false;
+        }
+    }
 }
