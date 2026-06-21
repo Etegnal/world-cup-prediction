@@ -1498,8 +1498,730 @@ const INITIAL_MOCK_DATA = {
             awayFlag: "https://flagcdn.com/un.svg"
         }
     ],
-    topScorers: [],
-    topAssists: []
+    topScorers: [
+        {
+                "name": "Lionel Messi",
+                "team": "Arjantin",
+                "goals": 3,
+                "rating": 8.5
+        },
+        {
+                "name": "Johan Manzambi",
+                "team": "İsviçre",
+                "goals": 2,
+                "rating": 8.4
+        },
+        {
+                "name": "Erling Haaland",
+                "team": "Norveç",
+                "goals": 2,
+                "rating": 8.35
+        },
+        {
+                "name": "Folarin Balogun",
+                "team": "ABD",
+                "goals": 2,
+                "rating": 8.3
+        },
+        {
+                "name": "Harry Kane",
+                "team": "İngiltere",
+                "goals": 2,
+                "rating": 8.25
+        },
+        {
+                "name": "Yasin Ayari",
+                "team": "İsveç",
+                "goals": 2,
+                "rating": 8.2
+        },
+        {
+                "name": "Elijah Just",
+                "team": "Yeni Zelanda",
+                "goals": 2,
+                "rating": 8.15
+        },
+        {
+                "name": "Kai Havertz",
+                "team": "Almanya",
+                "goals": 2,
+                "rating": 8.1
+        },
+        {
+                "name": "Kylian Mbappé",
+                "team": "Fransa",
+                "goals": 2,
+                "rating": 8.05
+        },
+        {
+                "name": "Alexander Isak",
+                "team": "İsveç",
+                "goals": 1,
+                "rating": 7.9
+        },
+        {
+                "name": "Deniz Undav",
+                "team": "Almanya",
+                "goals": 1,
+                "rating": 7.89
+        },
+        {
+                "name": "Luis Díaz",
+                "team": "Kolombiya",
+                "goals": 1,
+                "rating": 7.88
+        },
+        {
+                "name": "In-beom Hwang",
+                "team": "Güney Kore",
+                "goals": 1,
+                "rating": 7.87
+        },
+        {
+                "name": "Rubén Vargas",
+                "team": "İsviçre",
+                "goals": 1,
+                "rating": 7.86
+        },
+        {
+                "name": "Nathaniel Brown",
+                "team": "Almanya",
+                "goals": 1,
+                "rating": 7.85
+        },
+        {
+                "name": "Viktor Gyökeres",
+                "team": "İsveç",
+                "goals": 1,
+                "rating": 7.84
+        },
+        {
+                "name": "Breel Embolo",
+                "team": "İsviçre",
+                "goals": 1,
+                "rating": 7.83
+        },
+        {
+                "name": "Felix Nmecha",
+                "team": "Almanya",
+                "goals": 1,
+                "rating": 7.82
+        },
+        {
+                "name": "Ramin Rezaeian",
+                "team": "İran",
+                "goals": 1,
+                "rating": 7.81
+        },
+        {
+                "name": "Jamal Musiala",
+                "team": "Almanya",
+                "goals": 1,
+                "rating": 7.8
+        },
+        {
+                "name": "Jude Bellingham",
+                "team": "İngiltere",
+                "goals": 1,
+                "rating": 7.79
+        },
+        {
+                "name": "Martin Baturina",
+                "team": "Hırvatistan",
+                "goals": 1,
+                "rating": 7.78
+        },
+        {
+                "name": "Abdulelah Al-Amri",
+                "team": "Suudi Arabistan",
+                "goals": 1,
+                "rating": 7.77
+        },
+        {
+                "name": "Omar Rekik",
+                "team": "Tunus",
+                "goals": 1,
+                "rating": 7.76
+        },
+        {
+                "name": "Maxi Araújo",
+                "team": "Uruguay",
+                "goals": 1,
+                "rating": 7.75
+        },
+        {
+                "name": "Amad Diallo",
+                "team": "Fildişi Sahili",
+                "goals": 1,
+                "rating": 7.74
+        },
+        {
+                "name": "Connor Metcalfe",
+                "team": "Avustralya",
+                "goals": 1,
+                "rating": 7.73
+        },
+        {
+                "name": "Teboho Mokoena",
+                "team": "Güney Afrika",
+                "goals": 1,
+                "rating": 7.72
+        },
+        {
+                "name": "Mohammad Mohebi",
+                "team": "İran",
+                "goals": 1,
+                "rating": 7.71
+        },
+        {
+                "name": "Emam Ashour",
+                "team": "Mısır",
+                "goals": 1,
+                "rating": 7.7
+        },
+        {
+                "name": "Livano Comenencia",
+                "team": "Curaçao",
+                "goals": 1,
+                "rating": 7.69
+        },
+        {
+                "name": "Hyeon-gyu Oh",
+                "team": "Güney Kore",
+                "goals": 1,
+                "rating": 7.68
+        },
+        {
+                "name": "Ali Olwan",
+                "team": "Ürdün",
+                "goals": 1,
+                "rating": 7.67
+        },
+        {
+                "name": "João Neves",
+                "team": "Portekiz",
+                "goals": 1,
+                "rating": 7.66
+        },
+        {
+                "name": "Mauricio",
+                "team": "Hollanda",
+                "goals": 1,
+                "rating": 7.65
+        },
+        {
+                "name": "Ismael Saibari",
+                "team": "Fas",
+                "goals": 1,
+                "rating": 7.64
+        },
+        {
+                "name": "Bradley Barcola",
+                "team": "Fransa",
+                "goals": 1,
+                "rating": 7.63
+        },
+        {
+                "name": "Abbosbek Fayzullaev",
+                "team": "Özbekistan",
+                "goals": 1,
+                "rating": 7.62
+        },
+        {
+                "name": "Ermin Mahmic",
+                "team": "Bosna-Hersek",
+                "goals": 1,
+                "rating": 7.61
+        },
+        {
+                "name": "Nestory Irankunda",
+                "team": "Avustralya",
+                "goals": 1,
+                "rating": 7.6
+        },
+        {
+                "name": "Ibrahim Mbaye",
+                "team": "Senegal",
+                "goals": 1,
+                "rating": 7.59
+        },
+        {
+                "name": "Caleb Yirenkyi",
+                "team": "Gana",
+                "goals": 1,
+                "rating": 7.58
+        },
+        {
+                "name": "Leo Østigård",
+                "team": "Norveç",
+                "goals": 1,
+                "rating": 7.57
+        },
+        {
+                "name": "Marko Arnautovic",
+                "team": "Avusturya",
+                "goals": 1,
+                "rating": 7.56
+        },
+        {
+                "name": "Granit Xhaka",
+                "team": "İsviçre",
+                "goals": 1,
+                "rating": 7.55
+        },
+        {
+                "name": "Virgil van Dijk",
+                "team": "Hollanda",
+                "goals": 1,
+                "rating": 7.54
+        },
+        {
+                "name": "John McGinn",
+                "team": "İskoçya",
+                "goals": 1,
+                "rating": 7.53
+        },
+        {
+                "name": "Raúl Jiménez",
+                "team": "Meksika",
+                "goals": 1,
+                "rating": 7.52
+        },
+        {
+                "name": "Marcus Rashford",
+                "team": "İngiltere",
+                "goals": 1,
+                "rating": 7.51
+        },
+        {
+                "name": "Michal Sadílek",
+                "team": "Çekya",
+                "goals": 1,
+                "rating": 7.5
+        },
+        {
+                "name": "Mattias Svanberg",
+                "team": "İsveç",
+                "goals": 1,
+                "rating": 7.49
+        },
+        {
+                "name": "Cyle Larin",
+                "team": "Kanada",
+                "goals": 1,
+                "rating": 7.48
+        },
+        {
+                "name": "Ladislav Krejčí",
+                "team": "Çekya",
+                "goals": 1,
+                "rating": 7.47
+        },
+        {
+                "name": "Romano Schmid",
+                "team": "Avusturya",
+                "goals": 1,
+                "rating": 7.46
+        },
+        {
+                "name": "Daichi Kamada",
+                "team": "Japonya",
+                "goals": 1,
+                "rating": 7.45
+        },
+        {
+                "name": "Giovanni Reyna",
+                "team": "ABD",
+                "goals": 1,
+                "rating": 7.44
+        },
+        {
+                "name": "Vinicius Junior",
+                "team": "Brezilya",
+                "goals": 1,
+                "rating": 7.43
+        },
+        {
+                "name": "Petar Musa",
+                "team": "Hırvatistan",
+                "goals": 1,
+                "rating": 7.42
+        },
+        {
+                "name": "Yoane Wissa",
+                "team": "Dem. Kongo",
+                "goals": 1,
+                "rating": 7.41
+        },
+        {
+                "name": "Nico Schlotterbeck",
+                "team": "Almanya",
+                "goals": 1,
+                "rating": 7.4
+        },
+        {
+                "name": "Aymen Hussein",
+                "team": "Irak",
+                "goals": 1,
+                "rating": 7.39
+        },
+        {
+                "name": "Keito Nakamura",
+                "team": "Japonya",
+                "goals": 1,
+                "rating": 7.38
+        },
+        {
+                "name": "Julián Quiñones",
+                "team": "Meksika",
+                "goals": 1,
+                "rating": 7.37
+        },
+        {
+                "name": "Jovo Lukić",
+                "team": "Bosna-Hersek",
+                "goals": 1,
+                "rating": 7.36
+        },
+        {
+                "name": "Crysensio Summerville",
+                "team": "Hollanda",
+                "goals": 1,
+                "rating": 7.35
+        },
+        {
+                "name": "Jáminton Campaz",
+                "team": "Kolombiya",
+                "goals": 1,
+                "rating": 7.34
+        },
+        {
+                "name": "Daniel Muñoz",
+                "team": "Kolombiya",
+                "goals": 1,
+                "rating": 7.33
+        }
+],
+    topAssists: [
+        {
+                "name": "Joshua Kimmich",
+                "team": "Almanya",
+                "assists": 2,
+                "rating": 8.5
+        },
+        {
+                "name": "Deniz Undav",
+                "team": "Almanya",
+                "assists": 2,
+                "rating": 8.4
+        },
+        {
+                "name": "Chris Wood",
+                "team": "Yeni Zelanda",
+                "assists": 2,
+                "rating": 8.3
+        },
+        {
+                "name": "Ryan Gravenberch",
+                "team": "Hollanda",
+                "assists": 2,
+                "rating": 8.2
+        },
+        {
+                "name": "Alexander Isak",
+                "team": "İsveç",
+                "assists": 2,
+                "rating": 8.1
+        },
+        {
+                "name": "Breel Embolo",
+                "team": "İsviçre",
+                "assists": 1,
+                "rating": 7.9
+        },
+        {
+                "name": "Michael Olise",
+                "team": "Fransa",
+                "assists": 1,
+                "rating": 7.885
+        },
+        {
+                "name": "Rubén Vargas",
+                "team": "İsviçre",
+                "assists": 1,
+                "rating": 7.87
+        },
+        {
+                "name": "Roberto Alvarado",
+                "team": "Meksika",
+                "assists": 1,
+                "rating": 7.855
+        },
+        {
+                "name": "David Møller Wolfe",
+                "team": "Norveç",
+                "assists": 1,
+                "rating": 7.84
+        },
+        {
+                "name": "Luis Díaz",
+                "team": "Kolombiya",
+                "assists": 1,
+                "rating": 7.825
+        },
+        {
+                "name": "Nathaniel Brown",
+                "team": "Almanya",
+                "assists": 1,
+                "rating": 7.81
+        },
+        {
+                "name": "Florian Wirtz",
+                "team": "Almanya",
+                "assists": 1,
+                "rating": 7.795
+        },
+        {
+                "name": "In-Beom Hwang",
+                "team": "Güney Kore",
+                "assists": 1,
+                "rating": 7.78
+        },
+        {
+                "name": "Sead Kolasinac",
+                "team": "Bosna-Hersek",
+                "assists": 1,
+                "rating": 7.765
+        },
+        {
+                "name": "Pedro Neto",
+                "team": "Portekiz",
+                "assists": 1,
+                "rating": 7.75
+        },
+        {
+                "name": "Adrien Rabiot",
+                "team": "Fransa",
+                "assists": 1,
+                "rating": 7.735
+        },
+        {
+                "name": "Alexandr Sojka",
+                "team": "Çekya",
+                "assists": 1,
+                "rating": 7.72
+        },
+        {
+                "name": "Amir Al-Ammari",
+                "team": "Irak",
+                "assists": 1,
+                "rating": 7.705
+        },
+        {
+                "name": "Arthur Masuaku",
+                "team": "Dem. Kongo",
+                "assists": 1,
+                "rating": 7.69
+        },
+        {
+                "name": "Brahim Díaz",
+                "team": "Fas",
+                "assists": 1,
+                "rating": 7.675
+        },
+        {
+                "name": "Martin Ødegaard",
+                "team": "Norveç",
+                "assists": 1,
+                "rating": 7.66
+        },
+        {
+                "name": "Ramin Rezaeian",
+                "team": "İran",
+                "assists": 1,
+                "rating": 7.645
+        },
+        {
+                "name": "Vladimír Coufal",
+                "team": "Çekya",
+                "assists": 1,
+                "rating": 7.63
+        },
+        {
+                "name": "Declan Rice",
+                "team": "İngiltere",
+                "assists": 1,
+                "rating": 7.615
+        },
+        {
+                "name": "Hannibal Mejbri",
+                "team": "Tunus",
+                "assists": 1,
+                "rating": 7.6
+        },
+        {
+                "name": "Ivan Perisic",
+                "team": "Hırvatistan",
+                "assists": 1,
+                "rating": 7.585
+        },
+        {
+                "name": "Kang-In Lee",
+                "team": "Güney Kore",
+                "assists": 1,
+                "rating": 7.57
+        },
+        {
+                "name": "Malik Tillman",
+                "team": "ABD",
+                "assists": 1,
+                "rating": 7.555
+        },
+        {
+                "name": "Christian Pulisic",
+                "team": "ABD",
+                "assists": 1,
+                "rating": 7.54
+        },
+        {
+                "name": "Gustavo Puerta",
+                "team": "Kolombiya",
+                "assists": 1,
+                "rating": 7.525
+        },
+        {
+                "name": "Juan Hernández",
+                "team": "Kolombiya",
+                "assists": 1,
+                "rating": 7.51
+        },
+        {
+                "name": "Julio Enciso",
+                "team": "Paraguay",
+                "assists": 1,
+                "rating": 7.495
+        },
+        {
+                "name": "Viktor Gyökeres",
+                "team": "İsveç",
+                "assists": 1,
+                "rating": 7.48
+        },
+        {
+                "name": "Wilfried Singo",
+                "team": "Fildişi Sahili",
+                "assists": 1,
+                "rating": 7.465
+        },
+        {
+                "name": "Alex Freeman",
+                "team": "ABD",
+                "assists": 1,
+                "rating": 7.45
+        },
+        {
+                "name": "Brandon Thomas-Asante",
+                "team": "Gana",
+                "assists": 1,
+                "rating": 7.435
+        },
+        {
+                "name": "Bruno Guimarães",
+                "team": "Brezilya",
+                "assists": 1,
+                "rating": 7.42
+        },
+        {
+                "name": "Bukayo Saka",
+                "team": "İngiltere",
+                "assists": 1,
+                "rating": 7.405
+        },
+        {
+                "name": "Elliot Anderson",
+                "team": "İngiltere",
+                "assists": 1,
+                "rating": 7.39
+        },
+        {
+                "name": "Érik Lira",
+                "team": "Meksika",
+                "assists": 1,
+                "rating": 7.375
+        },
+        {
+                "name": "Iliman Ndiaye",
+                "team": "Senegal",
+                "assists": 1,
+                "rating": 7.36
+        },
+        {
+                "name": "Koki Ogawa",
+                "team": "Japonya",
+                "assists": 1,
+                "rating": 7.345
+        },
+        {
+                "name": "Lucas Bergvall",
+                "team": "İsveç",
+                "assists": 1,
+                "rating": 7.33
+        },
+        {
+                "name": "Mohamed Salah",
+                "team": "Mısır",
+                "assists": 1,
+                "rating": 7.315
+        },
+        {
+                "name": "Nicolás González",
+                "team": "Arjantin",
+                "assists": 1,
+                "rating": 7.3
+        },
+        {
+                "name": "Noor Al-Rawabdeh",
+                "team": "Ürdün",
+                "assists": 1,
+                "rating": 7.285
+        },
+        {
+                "name": "Paul Okon-Engstler",
+                "team": "Avustralya",
+                "assists": 1,
+                "rating": 7.27
+        },
+        {
+                "name": "Petar Sucic",
+                "team": "Hırvatistan",
+                "assists": 1,
+                "rating": 7.255
+        },
+        {
+                "name": "Promise David",
+                "team": "Kanada",
+                "assists": 1,
+                "rating": 7.24
+        },
+        {
+                "name": "Rodrigo De Paul",
+                "team": "Arjantin",
+                "assists": 1,
+                "rating": 7.225
+        },
+        {
+                "name": "Takefusa Kubo",
+                "team": "Japonya",
+                "assists": 1,
+                "rating": 7.21
+        },
+        {
+                "name": "Xaver Schlager",
+                "team": "Avusturya",
+                "assists": 1,
+                "rating": 7.195
+        }
+]
 };
 
 // Programmatically generate varied mock predictions for mock users to populate Public Opinion (Kamuoyu)
@@ -29734,16 +30456,18 @@ export async function completeMatch(matchId, homeScore, awayScore, sideAnswersAc
             const isOutcomeCorrect = (Math.sign(realDiff) === Math.sign(predDiff));
             
             // Çifte Şans ek kontrolü
+            let isDiffAltCorrect = false;
             let isOutcomeAltCorrect = false;
             if (pred.appliedJoker === 'ciftesans') {
                 const predDiffAlt = pred.homeScorePredAlt - pred.awayScorePredAlt;
+                isDiffAltCorrect = (realDiff === predDiffAlt && Math.sign(realDiff) === Math.sign(predDiffAlt));
                 isOutcomeAltCorrect = (Math.sign(realDiff) === Math.sign(predDiffAlt));
             }
 
             // Puan Ekleme (En yüksek olanı ekle)
             if (isExact || isExactAlt) {
                 pts += CONFIG.SCORING.EXACT_SCORE;
-            } else if (isDiffCorrect) {
+            } else if (isDiffCorrect || isDiffAltCorrect) {
                 pts += CONFIG.SCORING.DIFF_AND_OUTCOME;
             } else if (isOutcomeCorrect || isOutcomeAltCorrect) {
                 pts += CONFIG.SCORING.OUTCOME_ONLY;
@@ -30197,15 +30921,17 @@ export async function recalculateAllUsersPoints() {
                 const isDiffCorrect = (realDiff === predDiff && Math.sign(realDiff) === Math.sign(predDiff));
                 const isOutcomeCorrect = (Math.sign(realDiff) === Math.sign(predDiff));
                 
+                let isDiffAltCorrect = false;
                 let isOutcomeAltCorrect = false;
                 if (pred.appliedJoker === 'ciftesans') {
                     const predDiffAlt = pred.homeScorePredAlt - pred.awayScorePredAlt;
+                    isDiffAltCorrect = (realDiff === predDiffAlt && Math.sign(realDiff) === Math.sign(predDiffAlt));
                     isOutcomeAltCorrect = (Math.sign(realDiff) === Math.sign(predDiffAlt));
                 }
 
                 if (isExact || isExactAlt) {
                     mPts += CONFIG.SCORING.EXACT_SCORE;
-                } else if (isDiffCorrect) {
+                } else if (isDiffCorrect || isDiffAltCorrect) {
                     mPts += CONFIG.SCORING.DIFF_AND_OUTCOME;
                 } else if (isOutcomeCorrect || isOutcomeAltCorrect) {
                     mPts += CONFIG.SCORING.OUTCOME_ONLY;
@@ -30330,15 +31056,17 @@ export async function recalculateAllUsersPoints() {
                     const isDiffCorrect = (realDiff === predDiff && Math.sign(realDiff) === Math.sign(predDiff));
                     const isOutcomeCorrect = (Math.sign(realDiff) === Math.sign(predDiff));
                     
+                    let isDiffAltCorrect = false;
                     let isOutcomeAltCorrect = false;
                     if (pred.appliedJoker === 'ciftesans') {
                         const predDiffAlt = pred.homeScorePredAlt - pred.awayScorePredAlt;
+                        isDiffAltCorrect = (realDiff === predDiffAlt && Math.sign(realDiff) === Math.sign(predDiffAlt));
                         isOutcomeAltCorrect = (Math.sign(realDiff) === Math.sign(predDiffAlt));
                     }
 
                     if (isExact || isExactAlt) {
                         mPts += CONFIG.SCORING.EXACT_SCORE;
-                    } else if (isDiffCorrect) {
+                    } else if (isDiffCorrect || isDiffAltCorrect) {
                         mPts += CONFIG.SCORING.DIFF_AND_OUTCOME;
                     } else if (isOutcomeCorrect || isOutcomeAltCorrect) {
                         mPts += CONFIG.SCORING.OUTCOME_ONLY;

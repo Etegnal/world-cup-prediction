@@ -1,5 +1,5 @@
 // Tournament Stats Component (renders API loaded lists of top scorers, assists, group standings and fixtures)
-import { getApiStats, getMatches } from '../firebase-db.js';
+import { getApiStats, getMatches, getPlayers } from '../firebase-db.js';
 
 export class Stats {
     constructor(containerId, appState) {
@@ -11,6 +11,12 @@ export class Stats {
     async render() {
         this.container.innerHTML = '';
         const stats = await getApiStats();
+        let dbPlayers = [];
+        try {
+            dbPlayers = await getPlayers();
+        } catch (err) {
+            console.error("Failed to load players for stats mapping:", err);
+        }
 
         // Update stats screen subtitle dynamically
         const subtitleEl = document.getElementById('stats-subtitle');
@@ -135,6 +141,35 @@ export class Stats {
                     };
                     const flagUrl = flagMap[player.team] || "https://flagcdn.com/un.svg";
 
+                    // Match player with DB ratings dynamically
+                    const normalizeName = (name) => {
+                        return name.toLowerCase()
+                            .normalize("NFD")
+                            .replace(/[\u0300-\u036f]/g, "")
+                            .replace(/ı/g, 'i')
+                            .replace(/ş/g, 's')
+                            .replace(/ğ/g, 'g')
+                            .replace(/ç/g, 'c')
+                            .replace(/ü/g, 'u')
+                            .replace(/ö/g, 'o')
+                            .trim();
+                    };
+                    const searchName = normalizeName(player.name);
+                    const dbPlayer = dbPlayers.find(p => normalizeName(p.name) === searchName);
+
+                    let ratingDisplay = '0.0';
+                    if (dbPlayer && dbPlayer.rating !== undefined) {
+                        const rawRating = parseFloat(dbPlayer.rating);
+                        if (!isNaN(rawRating)) {
+                            ratingDisplay = (rawRating > 10 ? rawRating / 10 : rawRating).toFixed(1);
+                        }
+                    } else if (player && player.rating !== undefined) {
+                        const rawRating = parseFloat(player.rating);
+                        if (!isNaN(rawRating)) {
+                            ratingDisplay = rawRating.toFixed(1);
+                        }
+                    }
+
                     item.innerHTML = `
                         <div class="flex items-center gap-3.5">
                             <div class="w-6 h-6 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-xs font-bold text-slate-400 font-outfit">
@@ -160,7 +195,7 @@ export class Stats {
                             </div>
 
                             <div class="border-l border-white/5 pl-4 py-1 text-center min-w-[45px]">
-                                <span class="text-xs font-outfit font-black text-brand-cyan">${player.rating.toFixed(1)}</span>
+                                <span class="text-xs font-outfit font-black text-brand-cyan">${ratingDisplay}</span>
                                 <p class="text-[8px] text-slate-500 font-bold uppercase tracking-widest">Reyting</p>
                             </div>
                         </div>

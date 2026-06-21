@@ -255,7 +255,8 @@ export class JokerWallet {
         if (isDetailOpen) {
             const matchIndex = this.appState.matches.findIndex(m => m.id === matchId);
             const activeMatch = this.appState.matches[matchIndex];
-            this.appState.fixtureCardComp.openMatchDetail(activeMatch, matchIndex);
+            this.appState.fixtureCardComp.openMatchDetail(activeMatch, matchIndex, null, true);
+            this.appState.refreshDashboard();
         } else {
             this.appState.refreshDashboard();
         }
@@ -284,7 +285,14 @@ export class JokerWallet {
             btn.addEventListener('click', async () => {
                 this.hideModal();
                 
+                const preds = await getPredictions(this.appState.activeUser.id, matchId);
+                const existingPred = preds.length > 0 ? preds[0] : {};
+                
                 const pred = {
+                    homeScorePred: 0,
+                    awayScorePred: 0,
+                    sideAnswers: { htResult: 'draw', firstScorer: 'Diğer', redCard: false, cornersOverUnder: 'under' },
+                    ...existingPred,
                     userId: this.appState.activeUser.id,
                     matchId: matchId,
                     appliedJoker: 'sabotaj',
@@ -294,7 +302,18 @@ export class JokerWallet {
 
                 await savePrediction(pred);
                 alert(`${f.name} başarıyla sabote edildi! ☠️`);
-                this.appState.refreshDashboard();
+                
+                // Sync re-render of overlay if it is open
+                const detailModal = document.getElementById('match-detail-modal');
+                const isDetailOpen = detailModal && detailModal.classList.contains('active');
+                if (isDetailOpen) {
+                    const matchIndex = this.appState.matches.findIndex(m => m.id === matchId);
+                    const activeMatch = this.appState.matches[matchIndex];
+                    this.appState.fixtureCardComp.openMatchDetail(activeMatch, matchIndex, null, true);
+                    this.appState.refreshDashboard();
+                } else {
+                    this.appState.refreshDashboard();
+                }
             });
 
             this.modalMatchSelector.appendChild(btn);

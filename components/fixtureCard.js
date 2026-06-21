@@ -965,13 +965,15 @@ export class FixtureCard {
         return row;
     }
 
-    async openMatchDetail(match, index, pred = null) {
+    async openMatchDetail(match, index, pred = null, isRefresh = false) {
         // Update index so that Joker Wallet applies to this active match index
         this.appState.activeMatchIndex = index;
         const isMatchOver = match.status === 'FINISHED' || match.status === 'LIVE';
-        this.activeTab = isMatchOver ? 'report' : 'predictions'; // Finished → Report, Unplayed → Predictions
+        if (!isRefresh) {
+            this.activeTab = isMatchOver ? 'report' : 'predictions'; // Finished → Report, Unplayed → Predictions
+        }
 
-        if (!this.isBackAction) {
+        if (!this.isBackAction && !isRefresh) {
             window.history.pushState({
                 screen: this.appState.activeScreen,
                 modal: 'match-detail',
@@ -1203,12 +1205,13 @@ export class FixtureCard {
                     };
                     if (updatedPred.homeScorePredAlt !== undefined) delete updatedPred.homeScorePredAlt;
                     if (updatedPred.awayScorePredAlt !== undefined) delete updatedPred.awayScorePredAlt;
+                    if (updatedPred.targetUserId !== undefined) delete updatedPred.targetUserId;
                     
                     await savePrediction(updatedPred);
                     alert("Joker başarıyla iptal edildi ve cüzdanınıza geri yüklendi!");
                     
-                    // Refresh modal
-                    this.openMatchDetail(match, index);
+                    // Refresh modal in place
+                    this.openMatchDetail(match, index, null, true);
                     this.appState.refreshDashboard();
                 }
             });
@@ -1529,17 +1532,22 @@ export class FixtureCard {
                     predObject.awayScorePredAlt = activeAwayAlt;
                 }
 
+                // Preserve targetUserId for sabotage joker
+                if (pred && pred.targetUserId) {
+                    predObject.targetUserId = pred.targetUserId;
+                }
+
                 await savePrediction(predObject);
 
                 if (activeLocked) {
                     this.triggerConfetti(lockBtn);
                 }
 
-                // Close and refresh after a small delay to see the result
+                // Refresh dashboard and modal in place instead of going back
                 setTimeout(() => {
-                    window.history.back();
+                    this.openMatchDetail(match, index, null, true);
                     this.appState.refreshDashboard();
-                }, 1000);
+                }, activeLocked ? 1000 : 0);
             });
         } 
         
