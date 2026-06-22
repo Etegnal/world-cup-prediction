@@ -31469,6 +31469,7 @@ export async function savePlayerRatings(matchId, ratings, sofaScoreId = null, ho
             if (homeScore !== null && homeScore !== undefined) match.homeScore = parseInt(homeScore);
             if (awayScore !== null && awayScore !== undefined) match.awayScore = parseInt(awayScore);
             if (status) match.status = status;
+            if (status === "FINISHED") match.isFinalized = true;
             if (statistics) match.statistics = statistics;
             if (incidents) match.incidents = incidents;
 
@@ -31522,6 +31523,7 @@ export async function savePlayerRatings(matchId, ratings, sofaScoreId = null, ho
             if (homeScore !== null && homeScore !== undefined) updateObj.homeScore = parseInt(homeScore);
             if (awayScore !== null && awayScore !== undefined) updateObj.awayScore = parseInt(awayScore);
             if (status) updateObj.status = status;
+            if (status === "FINISHED") updateObj.isFinalized = true;
             if (statistics) updateObj.statistics = statistics;
             if (incidents) updateObj.incidents = incidents;
 
