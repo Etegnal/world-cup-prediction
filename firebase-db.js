@@ -29792,17 +29792,13 @@ export async function syncLiveScoresFromSportDb(forceUpdate = false) {
             if (localMatch) {
                 if (localMatch.isFinalized) return;
 
+                // Canlı skorları çekme, sadece biten maçları işle (User request: only finished matches)
+                if (g.eventStage !== "FINISHED") return;
+
                 const newHomeScore = parseInt(g.homeScore) || 0;
                 const newAwayScore = parseInt(g.awayScore) || 0;
-                
-                let newStatus = "SCHEDULED";
-                if (g.eventStage === "FINISHED") {
-                    newStatus = "FINISHED";
-                } else if (g.eventStage === "LIVE" || g.eventStage === "IN_PROGRESS") {
-                    newStatus = "LIVE";
-                }
-
-                const elapsedTime = g.gameTime && g.gameTime !== "-1" ? `${g.gameTime}'` : (newStatus === "FINISHED" ? "MS" : "");
+                const newStatus = "FINISHED";
+                const elapsedTime = "MS";
 
                 cacheMatches.push({
                     id: localMatch.id,
@@ -29811,14 +29807,16 @@ export async function syncLiveScoresFromSportDb(forceUpdate = false) {
                     status: newStatus,
                     elapsedTime: elapsedTime,
                     sportDbEventId: g.eventId,
-                    sportDbLinks: g.links
+                    sportDbLinks: g.links,
+                    isFinalized: true
                 });
 
                 if (localMatch.homeScore !== newHomeScore || 
                     localMatch.awayScore !== newAwayScore || 
                     localMatch.status !== newStatus ||
                     localMatch.elapsedTime !== elapsedTime ||
-                    !localMatch.sportDbEventId) {
+                    !localMatch.sportDbEventId ||
+                    !localMatch.isFinalized) {
                     
                     localMatch.homeScore = newHomeScore;
                     localMatch.awayScore = newAwayScore;
@@ -29826,6 +29824,7 @@ export async function syncLiveScoresFromSportDb(forceUpdate = false) {
                     localMatch.elapsedTime = elapsedTime;
                     localMatch.sportDbEventId = g.eventId;
                     localMatch.sportDbLinks = g.links;
+                    localMatch.isFinalized = true;
 
                     dbUpdates.push(localMatch);
                     updatedCount++;
@@ -29848,7 +29847,7 @@ export async function syncLiveScoresFromSportDb(forceUpdate = false) {
 
         // Veritabanını güncelle
         if (updatedCount > 0) {
-            console.log(`SportDB sync: ${updatedCount} maç skoru güncellendi.`);
+            console.log(`SportDB sync: ${updatedCount} completed match scores updated.`);
             if (CONFIG.IS_DEMO_MODE) {
                 const mockData = getMockData();
                 mockData.matches = matches;
@@ -29861,6 +29860,11 @@ export async function syncLiveScoresFromSportDb(forceUpdate = false) {
                 });
                 await batch.commit();
             }
+
+            // Recalculate user points since match(es) have completed
+            console.log("SportDB sync: Recalculating all user points...");
+            await recalculateAllUsersPoints();
+            console.log("SportDB sync: Points recalculation complete!");
         }
         
         return matches;
