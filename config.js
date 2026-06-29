@@ -31,6 +31,8 @@ export const CONFIG = {
         EXACT_SCORE: 10,       // Tam Skor
         DIFF_AND_OUTCOME: 5,   // Fark ve Sonuç Doğru
         OUTCOME_ONLY: 3,       // Sadece Sonuç Doğru
-        SIDE_QUESTION: 0       // Her bir yan soru (Pasif)
+        SIDE_QUESTION: 0,      // Her bir yan soru (Pasif)
+        PENALTY_WINNER: 3,     // Penaltı Kazananı Doğru
+        PENALTY_EXACT_SCORE: 5 // Penaltı Skoru Tam Doğru
     }
 };

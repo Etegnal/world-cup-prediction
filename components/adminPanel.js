@@ -160,6 +160,26 @@ export class AdminPanel {
                                         </select>
                                     </div>
                                 </div>
+
+                                <!-- Penaltı Sonuçları Girişi (Sadece Eleme Maçları İçin) -->
+                                <div class="grid grid-cols-3 gap-2 border-t border-white/5 pt-2 mt-1">
+                                    <div>
+                                        <label class="text-[8px] font-bold text-brand-gold uppercase block mb-1">Pen. Kazananı</label>
+                                        <select id="admin-comp-pen-winner" class="w-full bg-slate-900 border border-white/10 rounded-lg px-1.5 py-1.5 text-[9px] text-white outline-none">
+                                            <option value="">Yok (None)</option>
+                                            <option value="home">Ev Sahibi (home)</option>
+                                            <option value="away">Deplasman (away)</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label class="text-[8px] font-bold text-slate-400 uppercase block mb-1">Pen. Ev Sahibi</label>
+                                        <input type="number" id="admin-comp-pen-home-score" min="0" placeholder="0" class="w-full bg-slate-900 border border-white/10 rounded-lg px-2 py-1 text-[10px] text-white outline-none">
+                                    </div>
+                                    <div>
+                                        <label class="text-[8px] font-bold text-slate-400 uppercase block mb-1">Pen. Deplasman</label>
+                                        <input type="number" id="admin-comp-pen-away-score" min="0" placeholder="0" class="w-full bg-slate-900 border border-white/10 rounded-lg px-2 py-1 text-[10px] text-white outline-none">
+                                    </div>
+                                </div>
                             </div>
 
                             <button id="admin-comp-fetch-api-btn" class="w-full py-2 mb-2 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-black text-xs font-black uppercase tracking-wider rounded-xl transition-all active:scale-95 shadow-md flex items-center justify-center gap-1">
@@ -1408,6 +1428,20 @@ export class AdminPanel {
                 };
 
                 const extraData = this.compExtraData || {};
+
+                const compPenWinner = document.getElementById('admin-comp-pen-winner');
+                const compPenHomeScore = document.getElementById('admin-comp-pen-home-score');
+                const compPenAwayScore = document.getElementById('admin-comp-pen-away-score');
+
+                if (compPenWinner && compPenWinner.value) {
+                    extraData.penaltyWinner = compPenWinner.value;
+                }
+                if (compPenHomeScore && compPenHomeScore.value !== "") {
+                    extraData.penaltyHomeScore = parseInt(compPenHomeScore.value);
+                }
+                if (compPenAwayScore && compPenAwayScore.value !== "") {
+                    extraData.penaltyAwayScore = parseInt(compPenAwayScore.value);
+                }
 
                 const success = await completeMatch(matchId, hScore, aScore, sideAnswers, extraData);
                 if (success) {

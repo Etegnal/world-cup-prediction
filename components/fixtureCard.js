@@ -1343,6 +1343,40 @@ export class FixtureCard {
                     ` : ''}
                 </div>
 
+                <!-- 3. PENALTI TAHMİNİ (Sadece Eleme Maçları ve Beraberlik Durumunda) -->
+                <div id="penalty-predict-container" class="flex flex-col gap-3 bg-slate-950/40 border border-brand-cyan/25 rounded-3xl p-5 mt-2.5 shadow-lg" style="display: none;">
+                    <span class="text-[9px] font-black text-brand-gold uppercase tracking-widest text-center mb-1">PENALTI ATIŞLARI TAHMİNİ 🏆</span>
+                    
+                    <div class="flex flex-col gap-2 items-center">
+                        <span class="text-[8px] font-bold text-slate-400 uppercase tracking-wider">KİM TUR ATLAR?</span>
+                        <div class="grid grid-cols-2 gap-3 w-full">
+                            <button id="pen-winner-home" class="py-2 rounded-xl text-[10px] font-black uppercase tracking-wider text-slate-400 bg-white/5 border border-white/5 transition-all hover:bg-white/10" type="button" ${isInputDisabled ? 'disabled' : ''}>
+                                ${match.homeTeam}
+                            </button>
+                            <button id="pen-winner-away" class="py-2 rounded-xl text-[10px] font-black uppercase tracking-wider text-slate-400 bg-white/5 border border-white/5 transition-all hover:bg-white/10" type="button" ${isInputDisabled ? 'disabled' : ''}>
+                                ${match.awayTeam}
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col gap-2 items-center mt-2.5">
+                        <span class="text-[8px] font-bold text-slate-400 uppercase tracking-wider">PENALTI SKORU TAHMİNİ</span>
+                        <div class="flex items-center gap-4 justify-center">
+                            <div class="flex items-center gap-1.5">
+                                <button class="pen-stepper-minus-home w-8 h-8 rounded-lg bg-white/5 hover:bg-white/10 flex items-center justify-center font-bold text-white text-xs border border-white/5" type="button" ${isInputDisabled ? 'disabled' : ''}>-</button>
+                                <span id="pen-home-score" class="text-base font-outfit font-black text-white w-6 text-center">4</span>
+                                <button class="pen-stepper-plus-home w-8 h-8 rounded-lg bg-white/5 hover:bg-white/10 flex items-center justify-center font-bold text-white text-xs border border-white/5" type="button" ${isInputDisabled ? 'disabled' : ''}>+</button>
+                            </div>
+                            <span class="text-xs text-slate-600 font-black">:</span>
+                            <div class="flex items-center gap-1.5">
+                                <button class="pen-stepper-minus-away w-8 h-8 rounded-lg bg-white/5 hover:bg-white/10 flex items-center justify-center font-bold text-white text-xs border border-white/5" type="button" ${isInputDisabled ? 'disabled' : ''}>-</button>
+                                <span id="pen-away-score" class="text-base font-outfit font-black text-white w-6 text-center">3</span>
+                                <button class="pen-stepper-plus-away w-8 h-8 rounded-lg bg-white/5 hover:bg-white/10 flex items-center justify-center font-bold text-white text-xs border border-white/5" type="button" ${isInputDisabled ? 'disabled' : ''}>+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Lock Button ("Meydana Oku") -->
                 <div class="mt-2">
                     <button id="detail-lock-btn" class="w-full py-3 rounded-xl font-outfit font-black tracking-widest text-xs uppercase flex items-center justify-center gap-2 shadow-lg transition-all active:scale-95 duration-200 border ${
@@ -1365,6 +1399,11 @@ export class FixtureCard {
             let activeHomeAlt = homeScoreAlt;
             let activeAwayAlt = awayScoreAlt;
             let activeLocked = isLocked;
+            
+            // Penalty variables (default to 4-3 and winner home if empty)
+            let activePenWinner = pred ? (pred.penaltyWinner || null) : null;
+            let activePenHomeScore = pred ? (pred.penaltyHomeScore !== undefined ? pred.penaltyHomeScore : 4) : 4;
+            let activePenAwayScore = pred ? (pred.penaltyAwayScore !== undefined ? pred.penaltyAwayScore : 3) : 3;
             
             // Dummy sideAnswers to satisfy database structure/recalculation safely
             const sideAnswers = {
@@ -1412,6 +1451,41 @@ export class FixtureCard {
                         // Draw: Both flags glow and wave!
                         flagHome.className = flagHome.className.replace('flag-btn-dimmed', '').replace('flag-btn-active', '').trim() + ' flag-btn-active';
                         flagAway.className = flagAway.className.replace('flag-btn-dimmed', '').replace('flag-btn-active', '').trim() + ' flag-btn-active';
+                    }
+                }
+
+                // Penaltı Paneli Görsel Güncellemesi (Eleme Maçları ve Beraberlik Durumunda)
+                const isKnockout = !match.group || !['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L'].includes(match.group);
+                const penContainer = document.getElementById('penalty-predict-container');
+                if (penContainer) {
+                    if (isKnockout && activeHome === activeAway) {
+                        penContainer.style.display = 'flex';
+                        
+                        const penHomeEl = document.getElementById('pen-home-score');
+                        const penAwayEl = document.getElementById('pen-away-score');
+                        if (penHomeEl) penHomeEl.textContent = activePenHomeScore;
+                        if (penAwayEl) penAwayEl.textContent = activePenAwayScore;
+                        
+                        const btnHome = document.getElementById('pen-winner-home');
+                        const btnAway = document.getElementById('pen-winner-away');
+                        
+                        if (btnHome && btnAway) {
+                            btnHome.className = "py-2 rounded-xl text-[10px] font-black uppercase tracking-wider transition-all";
+                            btnAway.className = "py-2 rounded-xl text-[10px] font-black uppercase tracking-wider transition-all";
+                            
+                            if (activePenWinner === 'home') {
+                                btnHome.className += " bg-brand-green/20 text-brand-green border border-brand-green/30 shadow-neon-green";
+                                btnAway.className += " bg-white/5 text-slate-400 border border-white/5";
+                            } else if (activePenWinner === 'away') {
+                                btnAway.className += " bg-brand-green/20 text-brand-green border border-brand-green/30 shadow-neon-green";
+                                btnHome.className += " bg-white/5 text-slate-400 border border-white/5";
+                            } else {
+                                btnHome.className += " bg-white/5 text-slate-400 border border-white/5";
+                                btnAway.className += " bg-white/5 text-slate-400 border border-white/5";
+                            }
+                        }
+                    } else {
+                        penContainer.style.display = 'none';
                     }
                 }
             };
@@ -1506,6 +1580,68 @@ export class FixtureCard {
                 });
             });
 
+            // Bind Penalty Winner Buttons
+            const btnPenHome = document.getElementById('pen-winner-home');
+            const btnPenAway = document.getElementById('pen-winner-away');
+            
+            if (btnPenHome) {
+                btnPenHome.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    if (isInputDisabled) return;
+                    activePenWinner = 'home';
+                    // Auto-adjust scores to favor home
+                    if (activePenHomeScore <= activePenAwayScore) {
+                        activePenHomeScore = activePenAwayScore + 1;
+                    }
+                    updateVisuals();
+                });
+            }
+            if (btnPenAway) {
+                btnPenAway.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    if (isInputDisabled) return;
+                    activePenWinner = 'away';
+                    // Auto-adjust scores to favor away
+                    if (activePenAwayScore <= activePenHomeScore) {
+                        activePenAwayScore = activePenHomeScore + 1;
+                    }
+                    updateVisuals();
+                });
+            }
+
+            // Bind Penalty Steppers
+            const addPenStepper = (btnClass, increment, isHome) => {
+                const btn = contentContainer.querySelector(btnClass);
+                if (!btn) return;
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    if (isInputDisabled) return;
+                    if (isHome) {
+                        activePenHomeScore = Math.max(0, activePenHomeScore + increment);
+                        // Auto-adjust winner based on score relation
+                        if (activePenHomeScore > activePenAwayScore) {
+                            activePenWinner = 'home';
+                        } else if (activePenHomeScore < activePenAwayScore) {
+                            activePenWinner = 'away';
+                        }
+                    } else {
+                        activePenAwayScore = Math.max(0, activePenAwayScore + increment);
+                        // Auto-adjust winner based on score relation
+                        if (activePenHomeScore > activePenAwayScore) {
+                            activePenWinner = 'home';
+                        } else if (activePenHomeScore < activePenAwayScore) {
+                            activePenWinner = 'away';
+                        }
+                    }
+                    updateVisuals();
+                });
+            };
+
+            addPenStepper('.pen-stepper-plus-home', 1, true);
+            addPenStepper('.pen-stepper-minus-home', -1, true);
+            addPenStepper('.pen-stepper-plus-away', 1, false);
+            addPenStepper('.pen-stepper-minus-away', -1, false);
+
             // Initialize visuals immediately
             updateVisuals();
 
@@ -1524,7 +1660,10 @@ export class FixtureCard {
                     awayScorePred: activeAway,
                     sideAnswers: { ...sideAnswers },
                     appliedJoker: appliedJoker,
-                    isLocked: activeLocked
+                    isLocked: activeLocked,
+                    penaltyWinner: activePenWinner,
+                    penaltyHomeScore: activePenHomeScore,
+                    penaltyAwayScore: activePenAwayScore
                 };
 
                 if (appliedJoker === 'ciftesans') {

@@ -30438,6 +30438,9 @@ export async function completeMatch(matchId, homeScore, awayScore, sideAnswersAc
         match.sideQuestions = { ...sideAnswersActual };
         if (extraData.statistics) match.statistics = extraData.statistics;
         if (extraData.incidents) match.incidents = extraData.incidents;
+        if (extraData.penaltyWinner) match.penaltyWinner = extraData.penaltyWinner;
+        if (extraData.penaltyHomeScore !== undefined) match.penaltyHomeScore = parseInt(extraData.penaltyHomeScore);
+        if (extraData.penaltyAwayScore !== undefined) match.penaltyAwayScore = parseInt(extraData.penaltyAwayScore);
 
         // Puanlama Hesaplaması
         const matchPredictions = data.predictions.filter(p => p.matchId === matchId);
@@ -30475,6 +30478,19 @@ export async function completeMatch(matchId, homeScore, awayScore, sideAnswersAc
                 pts += CONFIG.SCORING.DIFF_AND_OUTCOME;
             } else if (isOutcomeCorrect || isOutcomeAltCorrect) {
                 pts += CONFIG.SCORING.OUTCOME_ONLY;
+            }
+
+            // Penaltı Tahmin Puanlaması (Eleme Maçları İçin)
+            const isKnockout = !match.group || !['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L'].includes(match.group);
+            if (isKnockout && match.homeScore === match.awayScore && match.penaltyWinner) {
+                if (pred.penaltyWinner && pred.penaltyWinner === match.penaltyWinner) {
+                    pts += (CONFIG.SCORING.PENALTY_WINNER || 3);
+                }
+                if (pred.penaltyHomeScore !== undefined && pred.penaltyAwayScore !== undefined &&
+                    match.penaltyHomeScore !== undefined && match.penaltyAwayScore !== undefined &&
+                    pred.penaltyHomeScore === match.penaltyHomeScore && pred.penaltyAwayScore === match.penaltyAwayScore) {
+                    pts += (CONFIG.SCORING.PENALTY_EXACT_SCORE || 5);
+                }
             }
 
             // 2. Yan Sorular Karşılaştırma
@@ -30541,6 +30557,9 @@ export async function completeMatch(matchId, homeScore, awayScore, sideAnswersAc
             if (extraData.statistics) updatePayload.statistics = extraData.statistics;
             if (extraData.incidents) updatePayload.incidents = extraData.incidents;
             if (extraData.elapsedTime) updatePayload.elapsedTime = extraData.elapsedTime;
+            if (extraData.penaltyWinner) updatePayload.penaltyWinner = extraData.penaltyWinner;
+            if (extraData.penaltyHomeScore !== undefined) updatePayload.penaltyHomeScore = parseInt(extraData.penaltyHomeScore);
+            if (extraData.penaltyAwayScore !== undefined) updatePayload.penaltyAwayScore = parseInt(extraData.penaltyAwayScore);
             
             await fStore.updateDoc(matchDocRef, updatePayload);
             await recalculateAllUsersPoints();
@@ -30941,6 +30960,19 @@ export async function recalculateAllUsersPoints() {
                     mPts += CONFIG.SCORING.OUTCOME_ONLY;
                 }
 
+                // Penaltı Tahmin Puanlaması (Eleme Maçları İçin)
+                const isKnockout = !match.group || !['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L'].includes(match.group);
+                if (isKnockout && match.homeScore === match.awayScore && match.penaltyWinner) {
+                    if (pred.penaltyWinner && pred.penaltyWinner === match.penaltyWinner) {
+                        mPts += (CONFIG.SCORING.PENALTY_WINNER || 3);
+                    }
+                    if (pred.penaltyHomeScore !== undefined && pred.penaltyAwayScore !== undefined &&
+                        match.penaltyHomeScore !== undefined && match.penaltyAwayScore !== undefined &&
+                        pred.penaltyHomeScore === match.penaltyHomeScore && pred.penaltyAwayScore === match.penaltyAwayScore) {
+                        mPts += (CONFIG.SCORING.PENALTY_EXACT_SCORE || 5);
+                    }
+                }
+
                 if (pred.sideAnswers && match.sideQuestions) {
                     if (pred.sideAnswers.htResult === match.sideQuestions.htResult) mPts += CONFIG.SCORING.SIDE_QUESTION;
                     if (pred.sideAnswers.firstScorer === match.sideQuestions.firstScorer) mPts += CONFIG.SCORING.SIDE_QUESTION;
@@ -31074,6 +31106,19 @@ export async function recalculateAllUsersPoints() {
                         mPts += CONFIG.SCORING.DIFF_AND_OUTCOME;
                     } else if (isOutcomeCorrect || isOutcomeAltCorrect) {
                         mPts += CONFIG.SCORING.OUTCOME_ONLY;
+                    }
+
+                    // Penaltı Tahmin Puanlaması (Eleme Maçları İçin)
+                    const isKnockout = !match.group || !['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L'].includes(match.group);
+                    if (isKnockout && match.homeScore === match.awayScore && match.penaltyWinner) {
+                        if (pred.penaltyWinner && pred.penaltyWinner === match.penaltyWinner) {
+                            mPts += (CONFIG.SCORING.PENALTY_WINNER || 3);
+                        }
+                        if (pred.penaltyHomeScore !== undefined && pred.penaltyAwayScore !== undefined &&
+                            match.penaltyHomeScore !== undefined && match.penaltyAwayScore !== undefined &&
+                            pred.penaltyHomeScore === match.penaltyHomeScore && pred.penaltyAwayScore === match.penaltyAwayScore) {
+                            mPts += (CONFIG.SCORING.PENALTY_EXACT_SCORE || 5);
+                        }
                     }
 
                     if (pred.sideAnswers && match.sideQuestions) {
