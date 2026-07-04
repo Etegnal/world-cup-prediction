@@ -28200,6 +28200,13 @@ async function initDb() {
             await seedPlayersIfEmpty();
         } catch (e) {
             console.error("Firebase connection failed. Falling back to local Demo Mode...", e);
+            if (typeof document !== 'undefined') {
+                const warnDiv = document.createElement('div');
+                warnDiv.id = "firebase-connection-warning-banner";
+                warnDiv.style.cssText = "position:fixed;top:0;left:0;width:100%;background:#ef4444;color:white;text-align:center;padding:10px;font-size:12px;font-weight:bold;z-index:99999;box-shadow:0 4px 6px rgba(0,0,0,0.1);";
+                warnDiv.innerHTML = "⚠️ GERÇEK VERİTABANI BAĞLANTISI BAŞARISIZ! VERİLER DEMO MODUNDAN (LOCALSTORAGE) YÜKLENDİ. LÜTFEN İNTERNETİNİZİ KONTROL EDİN VE SAYFAYI YENİLEYİN.";
+                document.body.appendChild(warnDiv);
+            }
             CONFIG.IS_DEMO_MODE = true;
         }
     }
@@ -30908,7 +30915,7 @@ export function calculateBracketPoints(userId, data) {
                 if (actualMatch && actualMatch.status === 'FINISHED') {
                     const hScore = parseInt(actualMatch.homeScore) || 0;
                     const aScore = parseInt(actualMatch.awayScore) || 0;
-                    const actualWinner = hScore > aScore ? actualMatch.homeTeam : actualMatch.awayTeam;
+                    const actualWinner = hScore > aScore ? actualMatch.homeTeam : (hScore < aScore ? actualMatch.awayTeam : (actualMatch.penaltyWinner || actualMatch.awayTeam));
                     if (actualWinner === predWinner) {
                         pts += 2;
                     }

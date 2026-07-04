@@ -687,6 +687,9 @@ export class FixtureCard {
                     <span class="text-slate-600 font-bold">:</span>
                     <span>${match.awayScore}</span>
                 </div>
+                ${match.penaltyHomeScore !== undefined && match.penaltyAwayScore !== undefined ? `
+                    <span class="text-[8px] font-bold text-slate-400 mt-0.5">(pen. ${match.penaltyHomeScore}:${match.penaltyAwayScore})</span>
+                ` : ''}
                 <span class="text-[8px] font-black text-slate-500 uppercase tracking-wider mt-1 bg-white/5 px-2 py-0.5 rounded-full">BİTTİ 🏁</span>
             </div>
 
@@ -823,6 +826,9 @@ export class FixtureCard {
                 <div class="flex flex-col items-center justify-center shrink-0" style="min-width:80px;">
                     ${isFinished || isLive ? `
                         <span class="text-3xl font-outfit font-black text-white tracking-wider">${match.homeScore} : ${match.awayScore}</span>
+                        ${match.penaltyHomeScore !== undefined && match.penaltyAwayScore !== undefined ? `
+                            <span class="text-[10px] font-bold text-white/70 mt-1">(pen. ${match.penaltyHomeScore}:${match.penaltyAwayScore})</span>
+                        ` : ''}
                         <span class="text-[9px] font-black text-red-300 bg-red-500/30 px-3 py-0.5 rounded-full mt-2 tracking-widest flex items-center gap-1">
                             <span class="w-1.5 h-1.5 rounded-full bg-red-400 animate-ping"></span>
                             ${isLive ? `CANLI ${match.elapsedTime ? `(${match.elapsedTime})` : ''}` : 'BİTTİ'}
@@ -930,6 +936,9 @@ export class FixtureCard {
             <div class="flex flex-col items-center justify-center min-w-[70px] z-10">
                 ${isFinished || isLive ? `
                     <span class="text-sm font-outfit font-black text-brand-cyan">${match.homeScore} : ${match.awayScore}</span>
+                    ${match.penaltyHomeScore !== undefined && match.penaltyAwayScore !== undefined ? `
+                        <span class="text-[8px] font-bold text-slate-400 mt-0.5">(pen. ${match.penaltyHomeScore}:${match.penaltyAwayScore})</span>
+                    ` : ''}
                     ${isLive ? `<span class="text-[7px] text-red-400 font-extrabold animate-pulse tracking-widest mt-0.5">CANLI ${match.elapsedTime ? `(${match.elapsedTime})` : ''}</span>` : ''}
                 ` : `
                     <span class="text-xs font-outfit font-bold text-slate-400">${timeStr}</span>
@@ -1071,7 +1080,10 @@ export class FixtureCard {
                                     <span class="text-slate-500 font-bold text-xs">:</span>
                                     <span class="text-lg font-outfit font-black text-brand-cyan ${isLive ? 'pulse-live' : ''}">${match.awayScore}</span>
                                 </div>
-                                <span class="text-[10px] text-red-400 font-black uppercase mt-1.5 tracking-widest animate-pulse">${isLive ? `Canlı Maç ${match.elapsedTime ? `(${match.elapsedTime})` : ''}` : 'Maç Sonucu'}</span>
+                                ${match.penaltyHomeScore !== undefined && match.penaltyAwayScore !== undefined ? `
+                                    <span class="text-[10px] font-bold text-slate-400 mt-1">(pen. ${match.penaltyHomeScore}:${match.penaltyAwayScore})</span>
+                                ` : ''}
+                                <span class="text-[10px] text-red-400 font-black uppercase mt-1.5 tracking-widest ${isLive ? 'animate-pulse' : ''}">${isLive ? `Canlı Maç ${match.elapsedTime ? `(${match.elapsedTime})` : ''}` : 'Maç Sonucu'}</span>
                             ` : `
                                 <span class="text-xs font-outfit font-black text-slate-400 tracking-wider bg-black/50 px-3 py-1 rounded-lg border border-white/5">VS</span>
                                 <span class="text-xs font-outfit font-bold text-slate-200 mt-2 tracking-wide whitespace-nowrap">${this.formatDate(match.date)}</span>

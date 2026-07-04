@@ -577,9 +577,60 @@ export class UserProfile {
         }
 
         const teamInfoMap = {};
+        const TEAM_CODES = {
+            "Türkiye": "TUR",
+            "Arjantin": "ARG",
+            "Fransa": "FRA",
+            "Brezilya": "BRA",
+            "İngiltere": "ENG",
+            "Portekiz": "POR",
+            "İspanya": "ESP",
+            "Belçika": "BEL",
+            "Hollanda": "NED",
+            "Almanya": "GER",
+            "Hırvatistan": "CRO",
+            "Uruguay": "URU",
+            "Kolombiya": "COL",
+            "Fas": "MAR",
+            "İsviçre": "SUI",
+            "ABD": "USA",
+            "Japonya": "JPN",
+            "Senegal": "SEN",
+            "Güney Kore": "KOR",
+            "İsveç": "SWE",
+            "Avusturya": "AUT",
+            "Meksika": "MEX",
+            "Norveç": "NOR",
+            "Ukrayna": "UKR",
+            "Paraguay": "PAR",
+            "Avustralya": "AUS",
+            "Çekya": "CZE",
+            "Ekvador": "ECU",
+            "Fildişi Sahili": "CIV",
+            "Cezayir": "ALG",
+            "Mısır": "EGY",
+            "İskoçya": "SCO",
+            "Tunus": "TUN",
+            "İran": "IRN",
+            "Özbekistan": "UZB",
+            "Bosna-Hersek": "BIH",
+            "Demokratik Kongo": "COD",
+            "Gana": "GHA",
+            "Katar": "QAT",
+            "Panama": "PAN",
+            "Haiti": "HAI",
+            "Yeşil Burun Adaları": "CPV",
+            "Ürdün": "JOR",
+            "Irak": "IRQ",
+            "Suudi Arabistan": "KSA",
+            "Yeni Zelanda": "NZL",
+            "Curaçao": "CUW",
+            "Kanada": "CAN"
+        };
+
         matches.forEach(m => {
-            if (m.homeTeam) teamInfoMap[m.homeTeam] = { code: m.homeTeamCode, flag: m.homeFlag };
-            if (m.awayTeam) teamInfoMap[m.awayTeam] = { code: m.awayTeamCode, flag: m.awayFlag };
+            if (m.homeTeam) teamInfoMap[m.homeTeam] = { code: TEAM_CODES[m.homeTeam] || m.homeTeam.substring(0, 3).toUpperCase(), flag: m.homeFlag };
+            if (m.awayTeam) teamInfoMap[m.awayTeam] = { code: TEAM_CODES[m.awayTeam] || m.awayTeam.substring(0, 3).toUpperCase(), flag: m.awayFlag };
         });
 
         // Display Bracket predictions summary
@@ -640,15 +691,30 @@ export class UserProfile {
         winnerList.forEach(([matchId, winnerTeam]) => {
             const tInfo = teamInfoMap[winnerTeam] || { code: 'N/A', flag: 'https://flagcdn.com/un.svg' };
             
-            // Check if match exists and is finished
-            const match = matches.find(m => m.id === matchId);
+            // Translate bracket match ID (e.g., match-r32-1) to actual database match ID (e.g., match-wc73)
+            const getActualMatchIdFromBracketId = (bracketMatchId) => {
+                const mapping = {
+                    'match-r32-1': 'match-wc73', 'match-r32-2': 'match-wc74', 'match-r32-3': 'match-wc75', 'match-r32-4': 'match-wc76',
+                    'match-r32-5': 'match-wc77', 'match-r32-6': 'match-wc78', 'match-r32-7': 'match-wc79', 'match-r32-8': 'match-wc80',
+                    'match-r32-9': 'match-wc81', 'match-r32-10': 'match-wc82', 'match-r32-11': 'match-wc83', 'match-r32-12': 'match-wc84',
+                    'match-r32-13': 'match-wc85', 'match-r32-14': 'match-wc86', 'match-r32-15': 'match-wc87', 'match-r32-16': 'match-wc88',
+                    'match-r16-1': 'match-wc89', 'match-r16-2': 'match-wc90', 'match-r16-3': 'match-wc91', 'match-r16-4': 'match-wc92',
+                    'match-r16-5': 'match-wc93', 'match-r16-6': 'match-wc94', 'match-r16-7': 'match-wc95', 'match-r16-8': 'match-wc96',
+                    'match-qf-1': 'match-wc97', 'match-qf-2': 'match-wc98', 'match-qf-3': 'match-wc99', 'match-qf-4': 'match-wc100',
+                    'match-sf-1': 'match-wc101', 'match-sf-2': 'match-wc102', 'match-final-1': 'match-wc104'
+                };
+                return mapping[bracketMatchId] || bracketMatchId;
+            };
+
+            const actualMatchId = getActualMatchIdFromBracketId(matchId);
+            const match = matches.find(m => m.id === actualMatchId);
             let indicatorColor = 'border-white/5 bg-white/5 text-slate-300';
             let iconHtml = '';
 
             if (match && match.status === 'FINISHED') {
                 const hScore = parseInt(match.homeScore) || 0;
                 const aScore = parseInt(match.awayScore) || 0;
-                const actualWinner = hScore > aScore ? match.homeTeam : match.awayTeam;
+                const actualWinner = hScore > aScore ? match.homeTeam : (hScore < aScore ? match.awayTeam : (match.penaltyWinner || match.awayTeam));
                 const isCorrect = actualWinner === winnerTeam;
                 
                 if (isCorrect) {

@@ -214,6 +214,10 @@ export class Stats {
             const groups = {};
             const teamFlags = {};
             
+            const isKnockoutStage = (groupName) => {
+                return ['Son 32', 'Son 16', 'Çeyrek Final', 'Yarı Final', 'Üçüncülük', 'Final'].includes(groupName);
+            };
+
             matches.forEach(m => {
                 if (m.group) {
                     if (!groups[m.group]) groups[m.group] = [];
@@ -230,27 +234,29 @@ export class Stats {
 
             const standings = {};
 
-            // Initialize standings for all teams
+            // Initialize standings ONLY for group stage groups
             Object.keys(groups).forEach(gName => {
-                groups[gName].forEach(team => {
-                    standings[team] = {
-                        team: team,
-                        group: gName,
-                        played: 0,
-                        won: 0,
-                        drawn: 0,
-                        lost: 0,
-                        gf: 0,
-                        ga: 0,
-                        gd: 0,
-                        points: 0
-                    };
-                });
+                if (!isKnockoutStage(gName)) {
+                    groups[gName].forEach(team => {
+                        standings[team] = {
+                            team: team,
+                            group: gName,
+                            played: 0,
+                            won: 0,
+                            drawn: 0,
+                            lost: 0,
+                            gf: 0,
+                            ga: 0,
+                            gd: 0,
+                            points: 0
+                        };
+                    });
+                }
             });
 
-            // Calculate standings from matches
+            // Calculate standings from matches ONLY for group stage matches
             matches.forEach(m => {
-                if (m.status === 'FINISHED') {
+                if (m.status === 'FINISHED' && m.group && !isKnockoutStage(m.group)) {
                     const home = m.homeTeam;
                     const away = m.awayTeam;
                     const hs = parseInt(m.homeScore) || 0;
@@ -284,66 +290,91 @@ export class Stats {
                 }
             });
 
-            // Render each Group Standing table
+            // Render each Group Standing table or Knockout Stage teams list
             const standingsGrid = document.createElement('div');
             standingsGrid.className = 'flex flex-col gap-6 pr-1 pb-10';
 
             Object.keys(groups).forEach(gName => {
-                const groupTeams = groups[gName].map(t => standings[t] || { team: t, played: 0, won: 0, drawn: 0, lost: 0, gf: 0, ga: 0, gd: 0, points: 0 });
-                // Sort by points desc, then gd desc, then gf desc
-                groupTeams.sort((a, b) => b.points - a.points || b.gd - a.gd || b.gf - a.gf);
+                if (isKnockoutStage(gName)) {
+                    const groupTeams = groups[gName];
 
-                const groupCard = document.createElement('div');
-                groupCard.className = 'shrink-0 bg-slate-100/50 dark:bg-slate-950/50 border border-slate-300 dark:border-white/5 rounded-3xl p-4 flex flex-col gap-3 relative overflow-hidden';
-                groupCard.innerHTML = `
-                    <div class="absolute -top-12 left-0 w-24 h-24 bg-brand-cyan/5 blur-xl pointer-events-none"></div>
-                    <div class="flex justify-between items-center border-b border-slate-300 dark:border-white/5 pb-2">
-                        <span class="text-xs font-outfit font-black text-brand-gold tracking-widest uppercase">Grup ${gName} Puan Durumu</span>
-                        <span class="text-[8px] font-bold text-slate-500 uppercase tracking-wider">World Cup 2026</span>
-                    </div>
-                    <table class="w-full text-left text-[10px] font-semibold text-slate-800 dark:text-slate-300">
-                        <thead>
-                            <tr class="text-slate-500 uppercase tracking-wider text-[8px] border-b border-slate-200 dark:border-white/5">
-                                <th class="py-1.5 w-6">#</th>
-                                <th class="py-1.5">Takım</th>
-                                <th class="py-1.5 text-center w-6">O</th>
-                                <th class="py-1.5 text-center w-6">G</th>
-                                <th class="py-1.5 text-center w-6">B</th>
-                                <th class="py-1.5 text-center w-6">M</th>
-                                <th class="py-1.5 text-center w-6">Av</th>
-                                <th class="py-1.5 text-center w-8 text-slate-800 dark:text-white">P</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            ${groupTeams.map((t, idx) => {
-                                const isQualifying = idx < 2;
-                                const rowColorClass = isQualifying ? 'bg-brand-green/[0.05] dark:bg-brand-green/[0.02]' : '';
-                                const numColorClass = idx === 0 ? 'text-brand-gold' : (idx === 1 ? 'text-slate-600 dark:text-slate-300' : 'text-slate-400 dark:text-slate-500');
-                                const gdColor = t.gd > 0 ? 'text-green-600 dark:text-green-400' : (t.gd < 0 ? 'text-red-500 dark:text-red-400' : 'text-slate-500 dark:text-slate-400');
-                                const gdText = t.gd > 0 ? '+' + t.gd : String(t.gd);
-                                const ptColor = isQualifying ? 'text-green-600 dark:text-green-400 font-extrabold' : 'text-slate-800 dark:text-white';
+                    const groupCard = document.createElement('div');
+                    groupCard.className = 'shrink-0 bg-slate-100/50 dark:bg-slate-950/50 border border-slate-300 dark:border-white/5 rounded-3xl p-4 flex flex-col gap-3 relative overflow-hidden';
+                    groupCard.innerHTML = `
+                        <div class="absolute -top-12 left-0 w-24 h-24 bg-brand-cyan/5 blur-xl pointer-events-none"></div>
+                        <div class="flex justify-between items-center border-b border-slate-300 dark:border-white/5 pb-2">
+                            <span class="text-xs font-outfit font-black text-brand-gold tracking-widest uppercase">${gName}</span>
+                            <span class="text-[8px] font-bold text-slate-500 uppercase tracking-wider">World Cup 2026</span>
+                        </div>
+                        <div class="grid grid-cols-2 gap-2 text-[10px] font-semibold text-slate-800 dark:text-slate-300">
+                            ${groupTeams.map(teamName => {
                                 return `
-                                    <tr class="border-b border-slate-200 dark:border-white/[0.02] hover:bg-slate-200/50 dark:hover:bg-white/[0.02] ${rowColorClass}">
-                                        <td class="py-2 font-bold ${numColorClass}">${idx + 1}</td>
-                                        <td class="py-2">
-                                            <div style="display:flex;align-items:center;gap:6px;">
-                                                <img src="${teamFlags[t.team] || 'https://flagcdn.com/un.svg'}" alt="${t.team}" style="width:14px;height:10px;object-fit:cover;border-radius:2px;border:1px solid rgba(255,255,255,0.1);">
-                                                <span class="text-slate-800 dark:text-slate-200" style="font-weight:700;max-width:70px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${t.team}</span>
-                                            </div>
-                                        </td>
-                                        <td class="py-2 text-center font-medium">${t.played}</td>
-                                        <td class="py-2 text-center font-medium text-slate-500">${t.won}</td>
-                                        <td class="py-2 text-center font-medium text-slate-500">${t.drawn}</td>
-                                        <td class="py-2 text-center font-medium text-slate-500">${t.lost}</td>
-                                        <td class="py-2 text-center font-bold ${gdColor}">${gdText}</td>
-                                        <td class="py-2 text-center font-black ${ptColor}">${t.points}</td>
-                                    </tr>
+                                    <div class="flex items-center gap-2 p-2 bg-slate-200/50 dark:bg-white/[0.02] border border-slate-200 dark:border-white/5 rounded-2xl">
+                                        <img src="${teamFlags[teamName] || 'https://flagcdn.com/un.svg'}" alt="${teamName}" style="width:16px;height:12px;object-fit:cover;border-radius:2px;border:1px solid rgba(255,255,255,0.1);" class="shrink-0">
+                                        <span class="text-slate-800 dark:text-slate-200 truncate font-bold">${teamName}</span>
+                                    </div>
                                 `;
                             }).join('')}
-                        </tbody>
-                    </table>
-                `;
-                standingsGrid.appendChild(groupCard);
+                        </div>
+                    `;
+                    standingsGrid.appendChild(groupCard);
+                } else {
+                    const groupTeams = groups[gName].map(t => standings[t] || { team: t, played: 0, won: 0, drawn: 0, lost: 0, gf: 0, ga: 0, gd: 0, points: 0 });
+                    // Sort by points desc, then gd desc, then gf desc
+                    groupTeams.sort((a, b) => b.points - a.points || b.gd - a.gd || b.gf - a.gf);
+
+                    const groupCard = document.createElement('div');
+                    groupCard.className = 'shrink-0 bg-slate-100/50 dark:bg-slate-950/50 border border-slate-300 dark:border-white/5 rounded-3xl p-4 flex flex-col gap-3 relative overflow-hidden';
+                    groupCard.innerHTML = `
+                        <div class="absolute -top-12 left-0 w-24 h-24 bg-brand-cyan/5 blur-xl pointer-events-none"></div>
+                        <div class="flex justify-between items-center border-b border-slate-300 dark:border-white/5 pb-2">
+                            <span class="text-xs font-outfit font-black text-brand-gold tracking-widest uppercase">Grup ${gName} Puan Durumu</span>
+                            <span class="text-[8px] font-bold text-slate-500 uppercase tracking-wider">World Cup 2026</span>
+                        </div>
+                        <table class="w-full text-left text-[10px] font-semibold text-slate-800 dark:text-slate-300">
+                            <thead>
+                                <tr class="text-slate-500 uppercase tracking-wider text-[8px] border-b border-slate-200 dark:border-white/5">
+                                    <th class="py-1.5 w-6">#</th>
+                                    <th class="py-1.5">Takım</th>
+                                    <th class="py-1.5 text-center w-6">O</th>
+                                    <th class="py-1.5 text-center w-6">G</th>
+                                    <th class="py-1.5 text-center w-6">B</th>
+                                    <th class="py-1.5 text-center w-6">M</th>
+                                    <th class="py-1.5 text-center w-6">Av</th>
+                                    <th class="py-1.5 text-center w-8 text-slate-800 dark:text-white">P</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${groupTeams.map((t, idx) => {
+                                    const isQualifying = idx < 2;
+                                    const rowColorClass = isQualifying ? 'bg-brand-green/[0.05] dark:bg-brand-green/[0.02]' : '';
+                                    const numColorClass = idx === 0 ? 'text-brand-gold' : (idx === 1 ? 'text-slate-600 dark:text-slate-300' : 'text-slate-400 dark:text-slate-500');
+                                    const gdColor = t.gd > 0 ? 'text-green-600 dark:text-green-400' : (t.gd < 0 ? 'text-red-500 dark:text-red-400' : 'text-slate-500 dark:text-slate-400');
+                                    const gdText = t.gd > 0 ? '+' + t.gd : String(t.gd);
+                                    const ptColor = isQualifying ? 'text-green-600 dark:text-green-400 font-extrabold' : 'text-slate-800 dark:text-white';
+                                    return `
+                                        <tr class="border-b border-slate-200 dark:border-white/[0.02] hover:bg-slate-200/50 dark:hover:bg-white/[0.02] ${rowColorClass}">
+                                            <td class="py-2 font-bold ${numColorClass}">${idx + 1}</td>
+                                            <td class="py-2">
+                                                <div style="display:flex;align-items:center;gap:6px;">
+                                                    <img src="${teamFlags[t.team] || 'https://flagcdn.com/un.svg'}" alt="${t.team}" style="width:14px;height:10px;object-fit:cover;border-radius:2px;border:1px solid rgba(255,255,255,0.1);">
+                                                    <span class="text-slate-800 dark:text-slate-200" style="font-weight:700;max-width:70px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${t.team}</span>
+                                                </div>
+                                            </td>
+                                            <td class="py-2 text-center font-medium">${t.played}</td>
+                                            <td class="py-2 text-center font-medium text-slate-500">${t.won}</td>
+                                            <td class="py-2 text-center font-medium text-slate-500">${t.drawn}</td>
+                                            <td class="py-2 text-center font-medium text-slate-500">${t.lost}</td>
+                                            <td class="py-2 text-center font-bold ${gdColor}">${gdText}</td>
+                                            <td class="py-2 text-center font-black ${ptColor}">${t.points}</td>
+                                        </tr>
+                                    `;
+                                }).join('')}
+                            </tbody>
+                        </table>
+                    `;
+                    standingsGrid.appendChild(groupCard);
+                }
             });
 
             this.container.appendChild(standingsGrid);
@@ -397,6 +428,9 @@ export class Stats {
                         <div class="flex flex-col items-center justify-center min-w-[70px] text-center px-1">
                             ${isFinished || isLive ? `
                                 <span class="text-xs font-outfit font-black ${isLive ? 'text-red-400 animate-pulse' : 'text-brand-cyan'}">${m.homeScore} : ${m.awayScore}</span>
+                                ${m.penaltyHomeScore !== undefined && m.penaltyAwayScore !== undefined ? `
+                                    <span class="text-[8px] font-bold text-slate-400 mt-0.5">(pen. ${m.penaltyHomeScore}:${m.penaltyAwayScore})</span>
+                                ` : ''}
                                 <span class="text-[7px] font-bold ${isLive ? 'text-red-400 animate-pulse' : 'text-slate-500'} tracking-wider mt-0.5">${isLive ? 'CANLI' : 'BİTTİ'}</span>
                             ` : `
                                 <span class="text-xs font-outfit font-black text-slate-300 leading-none">${timeStr}</span>
