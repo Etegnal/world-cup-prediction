@@ -633,6 +633,73 @@ export class UserProfile {
             if (m.awayTeam) teamInfoMap[m.awayTeam] = { code: TEAM_CODES[m.awayTeam] || m.awayTeam.substring(0, 3).toUpperCase(), flag: m.awayFlag };
         });
 
+        // Helper to get match winner
+        const getMatchWinner = (m) => {
+            if (m.status !== 'FINISHED') return null;
+            const h = parseInt(m.homeScore) || 0;
+            const a = parseInt(m.awayScore) || 0;
+            if (h > a) return m.homeTeam;
+            if (a > h) return m.awayTeam;
+            return m.penaltyWinner || null;
+        };
+
+        // Teams in Son 32
+        const son32Teams = new Set();
+        matches.forEach(m => {
+            if (m.id >= 'match-wc73' && m.id <= 'match-wc88') {
+                if (m.homeTeam && m.homeTeam !== 'Belirsiz') son32Teams.add(m.homeTeam);
+                if (m.awayTeam && m.awayTeam !== 'Belirsiz') son32Teams.add(m.awayTeam);
+            }
+        });
+
+        // Eliminated teams list
+        const eliminatedTeams = new Set();
+        // Check if group stage finished
+        const groupMatches = matches.filter(m => !m.group || (!m.group.startsWith('Son') && !m.group.startsWith('Çeyrek') && !m.group.startsWith('Yarı') && m.group !== 'Final' && m.group !== 'Üçüncülük'));
+        const isGroupStageFinished = groupMatches.every(m => m.status === 'FINISHED');
+        if (isGroupStageFinished) {
+            const allTeams = new Set();
+            matches.forEach(m => {
+                if (m.homeTeam && m.homeTeam !== 'Belirsiz') allTeams.add(m.homeTeam);
+                if (m.awayTeam && m.awayTeam !== 'Belirsiz') allTeams.add(m.awayTeam);
+            });
+            allTeams.forEach(t => {
+                if (!son32Teams.has(t)) eliminatedTeams.add(t);
+            });
+        }
+
+        // Add teams that lost in knockout matches
+        matches.forEach(m => {
+            const isKnockout = m.id >= 'match-wc73' && m.id <= 'match-wc104' && m.id !== 'match-wc103';
+            if (isKnockout && m.status === 'FINISHED') {
+                const winner = getMatchWinner(m);
+                if (winner) {
+                    if (m.homeTeam && m.homeTeam !== 'Belirsiz' && m.homeTeam !== winner) eliminatedTeams.add(m.homeTeam);
+                    if (m.awayTeam && m.awayTeam !== 'Belirsiz' && m.awayTeam !== winner) eliminatedTeams.add(m.awayTeam);
+                }
+            }
+        });
+
+        // Reached stages
+        const reachedStage = {
+            r32: new Set(), // Reached Son 16 (won r32 match)
+            r16: new Set(), // Reached QF (won r16 match)
+            qf: new Set(),  // Reached SF (won qf match)
+            sf: new Set(),  // Reached Final (won sf match)
+            final: new Set() // Won Final (Champion)
+        };
+
+        matches.forEach(m => {
+            const winner = getMatchWinner(m);
+            if (winner) {
+                if (m.id >= 'match-wc73' && m.id <= 'match-wc88') reachedStage.r32.add(winner);
+                else if (m.id >= 'match-wc89' && m.id <= 'match-wc96') reachedStage.r16.add(winner);
+                else if (m.id >= 'match-wc97' && m.id <= 'match-wc100') reachedStage.qf.add(winner);
+                else if (m.id >= 'match-wc101' && m.id <= 'match-wc102') reachedStage.sf.add(winner);
+                else if (m.id === 'match-wc104') reachedStage.final.add(winner);
+            }
+        });
+
         // Display Bracket predictions summary
         const championName = userBracketPred.final['match-final-1'];
         const champInfo = teamInfoMap[championName] || { code: 'N/A', flag: 'https://flagcdn.com/un.svg' };
@@ -645,11 +712,11 @@ export class UserProfile {
         let champHeader = 'TAHMİNİ DÜNYA ŞAMPİYONU 👑';
 
         if (finalMatch && finalMatch.status === 'FINISHED') {
-            const actualChamp = finalMatch.homeScore > finalMatch.awayScore ? finalMatch.homeTeam : finalMatch.awayTeam;
+            const actualChamp = getMatchWinner(finalMatch);
             if (actualChamp === championName) {
                 champGlowClass = 'border-brand-green bg-gradient-to-tr from-green-500/15 via-green-600/5 to-transparent shadow-neon-green';
                 champHeader = 'DÜNYA ŞAMPİYONU TAHMİNİ (DOĞRU!) 🏆';
-            } else {
+            } else if (actualChamp) {
                 champGlowClass = 'border-brand-red bg-gradient-to-tr from-red-500/15 via-red-600/5 to-transparent shadow-neon-red';
                 champHeader = 'DÜNYA ŞAMPİYONU TAHMİNİ (YANLIŞ) ❌';
             }
@@ -670,11 +737,11 @@ export class UserProfile {
             <div class="bg-slate-950/40 p-4 rounded-2xl border border-white/5 flex flex-col gap-3">
                 <span class="text-[8px] font-bold text-slate-400 uppercase tracking-widest pl-1">Eleme Turları Kazanan Tahminleriniz</span>
                 <div class="flex flex-col gap-3.5 mt-1">
-                    ${this.renderRoundWinnersSummary('r32', 'Son 32 Turu', userBracketPred.r32, matches, teamInfoMap)}
-                    ${this.renderRoundWinnersSummary('r16', 'Son 16 Turu', userBracketPred.r16, matches, teamInfoMap)}
-                    ${this.renderRoundWinnersSummary('qf', 'Çeyrek Final', userBracketPred.qf, matches, teamInfoMap)}
-                    ${this.renderRoundWinnersSummary('sf', 'Yarı Final', userBracketPred.sf, matches, teamInfoMap)}
-                    ${this.renderRoundWinnersSummary('final', 'Final Aşaması', userBracketPred.final, matches, teamInfoMap)}
+                    ${this.renderRoundWinnersSummary('r32', 'Son 32 Turu', userBracketPred.r32, reachedStage.r32, eliminatedTeams, teamInfoMap)}
+                    ${this.renderRoundWinnersSummary('r16', 'Son 16 Turu', userBracketPred.r16, reachedStage.r16, eliminatedTeams, teamInfoMap)}
+                    ${this.renderRoundWinnersSummary('qf', 'Çeyrek Final', userBracketPred.qf, reachedStage.qf, eliminatedTeams, teamInfoMap)}
+                    ${this.renderRoundWinnersSummary('sf', 'Yarı Final', userBracketPred.sf, reachedStage.sf, eliminatedTeams, teamInfoMap)}
+                    ${this.renderRoundWinnersSummary('final', 'Final Aşaması', userBracketPred.final, reachedStage.final, eliminatedTeams, teamInfoMap)}
                 </div>
             </div>
         `;
@@ -682,7 +749,7 @@ export class UserProfile {
         container.innerHTML = html;
     }
 
-    renderRoundWinnersSummary(roundKey, roundTitle, roundWinnersMap, matches, teamInfoMap) {
+    renderRoundWinnersSummary(roundKey, roundTitle, roundWinnersMap, stageWinners, eliminatedTeams, teamInfoMap) {
         if (!roundWinnersMap || Object.keys(roundWinnersMap).length === 0) return '';
         
         const winnerList = Object.entries(roundWinnersMap);
@@ -691,39 +758,18 @@ export class UserProfile {
         winnerList.forEach(([matchId, winnerTeam]) => {
             const tInfo = teamInfoMap[winnerTeam] || { code: 'N/A', flag: 'https://flagcdn.com/un.svg' };
             
-            // Translate bracket match ID (e.g., match-r32-1) to actual database match ID (e.g., match-wc73)
-            const getActualMatchIdFromBracketId = (bracketMatchId) => {
-                const mapping = {
-                    'match-r32-1': 'match-wc73', 'match-r32-2': 'match-wc74', 'match-r32-3': 'match-wc75', 'match-r32-4': 'match-wc76',
-                    'match-r32-5': 'match-wc77', 'match-r32-6': 'match-wc78', 'match-r32-7': 'match-wc79', 'match-r32-8': 'match-wc80',
-                    'match-r32-9': 'match-wc81', 'match-r32-10': 'match-wc82', 'match-r32-11': 'match-wc83', 'match-r32-12': 'match-wc84',
-                    'match-r32-13': 'match-wc85', 'match-r32-14': 'match-wc86', 'match-r32-15': 'match-wc87', 'match-r32-16': 'match-wc88',
-                    'match-r16-1': 'match-wc89', 'match-r16-2': 'match-wc90', 'match-r16-3': 'match-wc91', 'match-r16-4': 'match-wc92',
-                    'match-r16-5': 'match-wc93', 'match-r16-6': 'match-wc94', 'match-r16-7': 'match-wc95', 'match-r16-8': 'match-wc96',
-                    'match-qf-1': 'match-wc97', 'match-qf-2': 'match-wc98', 'match-qf-3': 'match-wc99', 'match-qf-4': 'match-wc100',
-                    'match-sf-1': 'match-wc101', 'match-sf-2': 'match-wc102', 'match-final-1': 'match-wc104'
-                };
-                return mapping[bracketMatchId] || bracketMatchId;
-            };
-
-            const actualMatchId = getActualMatchIdFromBracketId(matchId);
-            const match = matches.find(m => m.id === actualMatchId);
             let indicatorColor = 'border-white/5 bg-white/5 text-slate-300';
             let iconHtml = '';
 
-            if (match && match.status === 'FINISHED') {
-                const hScore = parseInt(match.homeScore) || 0;
-                const aScore = parseInt(match.awayScore) || 0;
-                const actualWinner = hScore > aScore ? match.homeTeam : (hScore < aScore ? match.awayTeam : (match.penaltyWinner || match.awayTeam));
-                const isCorrect = actualWinner === winnerTeam;
-                
-                if (isCorrect) {
-                    indicatorColor = 'border-green-500/20 bg-green-500/10 text-brand-green';
-                    iconHtml = '<i data-lucide="check" class="w-2.5 h-2.5 text-brand-green"></i>';
-                } else {
-                    indicatorColor = 'border-red-500/20 bg-red-500/10 text-brand-red';
-                    iconHtml = '<i data-lucide="x" class="w-2.5 h-2.5 text-brand-red"></i>';
-                }
+            const isCorrect = stageWinners.has(winnerTeam);
+            const isWrong = eliminatedTeams.has(winnerTeam);
+
+            if (isCorrect) {
+                indicatorColor = 'border-green-500/20 bg-green-500/10 text-brand-green';
+                iconHtml = '<i data-lucide="check" class="w-2.5 h-2.5 text-brand-green"></i>';
+            } else if (isWrong) {
+                indicatorColor = 'border-red-500/20 bg-red-500/10 text-brand-red';
+                iconHtml = '<i data-lucide="x" class="w-2.5 h-2.5 text-brand-red"></i>';
             }
 
             teamRowsHtml += `
