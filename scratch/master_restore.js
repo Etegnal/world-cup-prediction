@@ -43,7 +43,10 @@ async function main() {
         console.log("\n7. Restoring Quarter-Final match details, ratings, and SF matchups...");
         execSync("node scratch/parse_qf_ratings.js --run", { stdio: 'inherit' });
 
-        console.log("\n8. Final calculation of all user points...");
+        console.log("\n8. Restoring Semi-Final match details, ratings, and Final/3rd Place matchups...");
+        execSync("node scratch/parse_sf_ratings.js --run", { stdio: 'inherit' });
+
+        console.log("\n9. Final calculation of all user points...");
         await recalculateAllUsersPoints();
         console.log("Master Restore completed successfully! All data is fully recovered.");
         process.exit(0);
